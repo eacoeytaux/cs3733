@@ -6,4 +6,8 @@ public class Game {
 	EliminationLevel[] eliminationLevels;
 	ReleaseLevel[] releaseLevels;
 	GlobalStats globalStats;
+	
+	public static void main(String[] args) {
+		Game game = new Game();
+	}
 }
