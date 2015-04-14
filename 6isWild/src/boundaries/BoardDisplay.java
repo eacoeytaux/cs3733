@@ -1,5 +1,6 @@
 package boundaries;
 
 public class BoardDisplay implements IDisplay {
-	SquareDisplay[] squares;
+	SquareDisplay[] squares; 
+	//dank memes ;^)
 }
