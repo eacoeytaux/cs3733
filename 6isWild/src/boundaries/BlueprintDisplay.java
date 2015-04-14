@@ -45,21 +45,29 @@ public class BlueprintDisplay extends JFrame implements IDisplay {
 		starScore3TextField = new JTextField();
 		starScore3TextField.setColumns(10);
 		
-		JSlider slider = new JSlider();
+		JSlider slider_1 = new JSlider();
 		
 		JLabel valueFrequencyLabel = new JLabel("Tile Value Frequencies");
 		
-		JLabel label = new JLabel("1:");
+		JLabel label_1 = new JLabel("1:");
 		
-		JLabel label_1 = new JLabel("2:");
+		JLabel label_2 = new JLabel("2:");
 		
-		JLabel label_2 = new JLabel("1:");
+		JLabel label_3 = new JLabel("3:");
 		
-		JLabel label_3 = new JLabel("1:");
+		JLabel label_4 = new JLabel("4:");
 		
-		JLabel label_4 = new JLabel("1:");
+		JLabel label_5 = new JLabel("5:");
 		
-		JLabel label_5 = new JLabel("1:");
+		JLabel label_6 = new JLabel("6:");
+		
+		JSlider slider = new JSlider();
+		
+		JSlider slider_2 = new JSlider();
+		
+		JSlider slider_3 = new JSlider();
+		
+		JSlider slider_4 = new JSlider();
 		GroupLayout groupLayout = new GroupLayout(getContentPane());
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -69,12 +77,6 @@ public class BlueprintDisplay extends JFrame implements IDisplay {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(levelTypeLabel)
 							.addContainerGap(553, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(levelTypeComboBox, 0, 331, Short.MAX_VALUE)
-							.addGap(333))
-						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-							.addComponent(tileTypeComboBox, Alignment.LEADING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-							.addComponent(tileTypeLabel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(lblStarScores)
 							.addContainerGap(591, Short.MAX_VALUE))
@@ -91,26 +93,32 @@ public class BlueprintDisplay extends JFrame implements IDisplay {
 						.addComponent(movesTimeTextField, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addComponent(valueFrequencyLabel)
-							.addContainerGap(603, Short.MAX_VALUE))
+							.addContainerGap(524, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(label)
-								.addComponent(label_1, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE))
+								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+									.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE)
+									.addComponent(label_1))
+								.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE))
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(slider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(slider_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(slider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(slider_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(slider_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+								.addComponent(slider_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
 							.addContainerGap(456, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(label_2, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap(652, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(label_3, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap(652, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(label_4, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap(652, Short.MAX_VALUE))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE)
-							.addContainerGap(652, Short.MAX_VALUE))))
+							.addGap(30)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(label_5, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE)
+								.addComponent(label_6, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE))
+							.addContainerGap(622, Short.MAX_VALUE))
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+							.addComponent(levelTypeComboBox, Alignment.LEADING, 0, 0, Short.MAX_VALUE)
+							.addComponent(tileTypeLabel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 111, Short.MAX_VALUE)
+							.addComponent(tileTypeComboBox, Alignment.LEADING, 0, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -139,20 +147,30 @@ public class BlueprintDisplay extends JFrame implements IDisplay {
 					.addComponent(valueFrequencyLabel)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(slider_1, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_1))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(slider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addComponent(label_2))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(label_3)
+						.addComponent(slider_2, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(label)
+							.addComponent(slider_3, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
 							.addPreferredGap(ComponentPlacement.RELATED)
-							.addComponent(label_1))
-						.addComponent(slider, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE))
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label_2)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label_3)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label_4)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(label_5)
-					.addContainerGap(134, Short.MAX_VALUE))
+							.addComponent(slider_4, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
+							.addComponent(label_5)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(label_6)
+							.addGap(42))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addComponent(label_4)
+							.addContainerGap())))
 		);
 		getContentPane().setLayout(groupLayout);
 	}
