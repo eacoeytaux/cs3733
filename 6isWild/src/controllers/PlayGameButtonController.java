@@ -1,22 +1,34 @@
 package controllers;
 
-import boundaries.SelectLevelDisplay;
+import boundaries.LevelDisplay;
 import entities.AbstractLevel; 
 import entities.Stat;
 import entities.Game;
 
 public class PlayGameButtonController {
 	String type;
-	int level;
+	int n;
+	Game game;
+	AbstractLevel level;
 	
-	public PlayGameButtonController(Game game){
-			if(isValid()){			
+	public PlayGameButtonController(String type, int n, Game game){
+		this.level = requestLevel();
+		this.game = game;
+			if(isValid()){
+				
 		}
 	}
 	
 	private boolean isValid(){
-		return true;			
-		}
+		Stat sample = level.getStats();
+		return sample.getStars() < 1;
+	}
+	
+	private AbstractLevel requestLevel(){
+		return level;
 		
 	}
+	
+}
+		
 

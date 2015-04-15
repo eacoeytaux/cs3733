@@ -5,4 +5,20 @@ public abstract class AbstractLevel {
 	Board board;
 	Stat stats;
 	boolean[][] emptyTiles;
+	
+	public AbstractLevel(){
+		
+	}
+
+	public Stat getStats(){
+		return this.stats;
+	}
+	
+	public void updateStats(){
+		
+	}
+	
+	public void addBoard(){
+		
+	}
 }
