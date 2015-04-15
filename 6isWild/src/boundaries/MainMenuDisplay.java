@@ -1,59 +1,69 @@
 package boundaries;
 
-import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 
 import controllers.PlayGameButtonController;
 import controllers.StatsButtonController;
+import entities.Model;
 
 public class MainMenuDisplay extends AbstractDisplay {
+	private static final long serialVersionUID = 1L;
+	
 	Application application;
+
 	JButton playGameButton;
 	JButton statsButton;
 
-	public MainMenuDisplay(Application applicatione) {
+	public MainMenuDisplay(Model model, Application application) {
+		super(model);
 		this.application = application;
 
-		playGameButton = new JButton("PLAY GAME!");
+		playGameButton = new JButton("PLAY GAME");
 
-		statsButton = new JButton("STATS!");
-
+		statsButton = new JButton("STATS");
+		
 		setup();
 	}
+	
+	@Override
+	public void paintComponent(Graphics g) {
+		super.paintComponent(g);
+		try { //load images
+			BufferedImage background = ImageIO.read(getClass().getResourceAsStream("/TitleScreen.png"));
+			g.drawImage(background, 0, 0, null);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 
+	@Override
 	public void setup() {
-		JLabel lblSixIsWild = new JLabel("Six is Wild!");
-		lblSixIsWild.setFont(new Font("Lucida Grande", Font.PLAIN, 55));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-						.addContainerGap(171, Short.MAX_VALUE)
-						.addComponent(lblSixIsWild)
-						.addGap(251))
-						.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-								.addGap(348)
-								.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addComponent(statsButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
-										.addComponent(playGameButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-										.addGap(333))
-				);
+					.addGap(303)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+						.addComponent(statsButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 119, Short.MAX_VALUE)
+						.addComponent(playGameButton, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+					.addGap(333))
+		);
 		groupLayout.setVerticalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-						.addGap(158)
-						.addComponent(lblSixIsWild)
-						.addGap(46)
-						.addComponent(playGameButton)
-						.addGap(18)
-						.addComponent(statsButton)
-						.addContainerGap(254, Short.MAX_VALUE))
-				);
+					.addGap(300)
+					.addComponent(playGameButton)
+					.addGap(50)
+					.addComponent(statsButton)
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+		);
 		setLayout(groupLayout);
 	}
 

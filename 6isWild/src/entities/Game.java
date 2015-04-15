@@ -15,18 +15,14 @@ public class Game {
 	public static final int ELIMINATION_ID = 2;
 	public static final int RELEASE_ID = 3;
 	
-	ArrayList<PuzzleLevel> puzzleLevels;
-	ArrayList<LightningLevel> lightningLevels;
-	ArrayList<EliminationLevel> eliminationLevels;
-	ArrayList<ReleaseLevel> releaseLevels;
-	GlobalStats globalStats;
+	Model model;
 
 	public Game() {
 		init();
 	}
 
 	public static void main(String[] args) {
-		Game game = new Game();
+		new Game();
 	}
 	
 	private void init() {
@@ -36,16 +32,11 @@ public class Game {
 	}
 	
 	private void initializeEntities(){
-		puzzleLevels = new ArrayList<PuzzleLevel>();
-		puzzleLevels.add(0, new PuzzleLevel());
-		lightningLevels = new ArrayList<LightningLevel>(); 
-		eliminationLevels = new ArrayList<EliminationLevel>(); 
-		releaseLevels = new ArrayList<ReleaseLevel>(); 
-		globalStats = new GlobalStats(0,0,0);		
+		model = new Model();	
 	}
 	
 	private void initializeBoundaries(){
-		Application application = new Application(this);
+		Application application = new Application(model);
 	}
 	
 	private void initializeControllers(){

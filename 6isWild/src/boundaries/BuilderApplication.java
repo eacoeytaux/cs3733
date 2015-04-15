@@ -5,9 +5,16 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
+import entities.Model;
+
 public class BuilderApplication extends JFrame {
+	private static final long serialVersionUID = 1L;
 	
-	public BuilderApplication() {
+	Model model;
+
+	public BuilderApplication(Model model) {
+		this.model = model;
+		
 		setBackground(new Color(0x006600));
 		SplashScreenDisplay splashScreenDisplay = new SplashScreenDisplay();
 		setContentPane(splashScreenDisplay);
@@ -20,7 +27,7 @@ public class BuilderApplication extends JFrame {
 		
 		splashScreenDisplay.setSplashScreen();
 		getContentPane().removeAll();
-		setContentPane(new BlueprintDisplay());
+		setContentPane(new BlueprintDisplay(model));
 		pack();
 	}
 }

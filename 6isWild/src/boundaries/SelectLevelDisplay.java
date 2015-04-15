@@ -1,7 +1,5 @@
 package boundaries;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -10,6 +8,10 @@ import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controllers.BackController;
+import controllers.SelectPuzzleLevelButtonController;
+import entities.Game;
+import entities.Model;
+import entities.PuzzleLevel;
 
 public class SelectLevelDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
@@ -17,36 +19,65 @@ public class SelectLevelDisplay extends AbstractDisplay {
 	Application application;
 	int gameMode;
 	
+	String modeName;
+	
 	JButton btnBack;
 	
-	public SelectLevelDisplay(Application application, int gameMode) {
+	
+	JButton btnLvl[] = new JButton[4];
+	
+	public SelectLevelDisplay(Model model, Application application, int gameMode) {
+		super(model);
 		this.application = application;
 		this.gameMode = gameMode;
 
-		btnBack = new JButton("back");
+		btnBack = new JButton("Back");
+		btnLvl[0] = new JButton("1");
 		
-		setup();
+		switch (gameMode) {
+		case Game.PUZZLE_ID:
+			modeName = "Puzzle Mode";
+			break;
+		case Game.LIGHTNING_ID:
+			modeName = "Lightning Mode";
+			break;
+		case Game.ELIMINATION_ID:
+			modeName = "Elimination Mode";
+			break;
+		case Game.RELEASE_ID:
+			modeName = "Release Mode";
+			break;
+		default:
+			modeName = "??? Mode";
+			break;
+		}
+		
+		initControllers();
+	}
+	
+	public void initControllers() {
+		for (int i = 0; i < 1; i++) {
+			LevelDisplay lvlDisplay = new LevelDisplay(model, gameMode);
+			lvlDisplay.setBackController(new BackController(application, this));
+			btnLvl[i].addActionListener(new SelectPuzzleLevelButtonController(model, application, lvlDisplay));
+		}
 	}
 	
 	@Override
 	public void setup() {
-		
 		JButton button = new JButton("2");
-		
-		JButton button_1 = new JButton("1");
+		button.setEnabled(false);
 		
 		JButton button_2 = new JButton("3");
-		button_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
+		button_2.setEnabled(false);
 		
 		JButton button_3 = new JButton("4");
+		button_3.setEnabled(false);
 		
 		JLabel lblSelectALevel = new JLabel("SELECT A LEVEL!");
 		lblSelectALevel.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
 		
-		JLabel lblGameMode = new JLabel("game mode");
+		JLabel lblGameMode = new JLabel(modeName);
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -63,7 +94,7 @@ public class SelectLevelDisplay extends AbstractDisplay {
 					.addGap(116)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
-						.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnLvl[0], GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE))
 					.addGap(103)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
@@ -86,7 +117,7 @@ public class SelectLevelDisplay extends AbstractDisplay {
 					.addGap(45)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(button, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)
-						.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnLvl[0], GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)
@@ -98,5 +129,8 @@ public class SelectLevelDisplay extends AbstractDisplay {
 	
 	public void setBackController(BackController c) {
 		btnBack.addActionListener(c);
+	}
+	
+	public void setButtonControllers() {
 	}
 }

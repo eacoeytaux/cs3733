@@ -8,18 +8,20 @@ import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controllers.BackController;
+import entities.Model;
 
 public class LevelStatDisplay extends AbstractDisplay {
+	private static final long serialVersionUID = 1L;
+
 	Application application;
 	
 	JButton btnBack;
 	
-	public LevelStatDisplay(Application application) {
+	public LevelStatDisplay(Model model, Application application) {
+		super(model);
 		this.application = application;
 
 		btnBack = new JButton("Back");
-		
-		setup();
 	}
 
 	@Override
@@ -110,14 +112,14 @@ public class LevelStatDisplay extends AbstractDisplay {
 								.addComponent(label_14, GroupLayout.PREFERRED_SIZE, 65, GroupLayout.PREFERRED_SIZE)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(btnBack)))
+							.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)))
 					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(btnBack)
+					.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
 					.addGap(73)
 					.addComponent(lblStats)
 					.addGap(54)
