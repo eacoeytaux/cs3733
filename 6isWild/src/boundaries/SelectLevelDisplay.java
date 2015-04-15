@@ -1,10 +1,11 @@
 package boundaries;
 
-import javax.swing.JButton;
+import javax.swing.JPanel;
 
-public class SelectLevelDisplay {
-	JButton backButton;
-	String gameMode;
+public class SelectLevelDisplay extends JPanel {
+	Application application;
 	
-	
+	public SelectLevelDisplay(Application application) {
+		this.application = application;
+	}
 }

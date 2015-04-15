@@ -10,6 +10,11 @@ import javax.imageio.ImageIO;
 import boundaries.*;
 
 public class Game {
+	public static final int PUZZLE_ID = 0;
+	public static final int LIGHTNING_ID = 1;
+	public static final int ELIMINATION_ID = 2;
+	public static final int RELEASE_ID = 3;
+	
 	ArrayList<PuzzleLevel> puzzleLevels;
 	ArrayList<LightningLevel> lightningLevels;
 	ArrayList<EliminationLevel> eliminationLevels;
@@ -17,31 +22,17 @@ public class Game {
 	GlobalStats globalStats;
 
 	public Game() {
-		
-		/*BufferedImage splashScreen;
-		BufferedImage splashScreenGlitch1;
-		BufferedImage splashScreenGlitch2;
-		
-		try { //load images
-			splashScreen = ImageIO.read(getClass().getResourceAsStream("/SplashScreen.png"));
-			splashScreenGlitch1 = ImageIO.read(getClass().getResourceAsStream("/SplashScreenGlitch1.jpg"));
-			splashScreenGlitch2 = ImageIO.read(getClass().getResourceAsStream("/SplashScreenGlitch2.jpg"));
-			application.drawImage(splashScreen);
-			Thread.sleep(3000);
-			application.drawImage(splashScreenGlitch2);
-			Thread.sleep(500);
-			application.drawImage(splashScreenGlitch1);
-			Thread.sleep(250);
-			application.goToMainMenu();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}*/
+		init();
 	}
 
 	public static void main(String[] args) {
 		Game game = new Game();
+	}
+	
+	private void init() {
+		initializeEntities();
+		initializeBoundaries();
+		initializeControllers();
 	}
 	
 	private void initializeEntities(){

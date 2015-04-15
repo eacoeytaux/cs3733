@@ -34,36 +34,43 @@ public class BlueprintDisplay extends JPanel {
 		JLabel lblNewLabel = new JLabel("Moves:");
 		
 		movesTextField = new JTextField();
+		movesTextField.setText("25");
 		movesTextField.setColumns(10);
 		
 		JLabel lblFirstStar = new JLabel("First Star:");
 		
 		firstStarTextField = new JTextField();
+		firstStarTextField.setText("100");
 		firstStarTextField.setColumns(10);
 		
 		JLabel lblSecondStar = new JLabel("Second Star:");
 		
 		secondStarTextField = new JTextField();
+		secondStarTextField.setText("200");
 		secondStarTextField.setColumns(10);
 		
 		JLabel lblThirdStar = new JLabel("Third Star:");
 		
 		thirdStarTextField = new JTextField();
+		thirdStarTextField.setText("300");
 		thirdStarTextField.setColumns(10);
 		
 		JLabel lblShufflePowerups = new JLabel("Shuffle Powerups:");
 		
 		shuffleTextField = new JTextField();
+		shuffleTextField.setText("5");
 		shuffleTextField.setColumns(10);
 		
 		JLabel lblSwapPowerups = new JLabel("Swap Powerups:");
 		
 		swapTextField = new JTextField();
+		swapTextField.setText("5");
 		swapTextField.setColumns(10);
 		
 		JLabel lblRemovePowerups = new JLabel("Remove Powerups:");
 		
 		removeTextField = new JTextField();
+		removeTextField.setText("5");
 		removeTextField.setColumns(10);
 		
 		JLabel lblTileValueFrequencies = new JLabel("Tile Value Frequencies:");
