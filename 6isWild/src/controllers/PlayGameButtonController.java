@@ -3,32 +3,27 @@ package controllers;
 import boundaries.LevelDisplay;
 import entities.AbstractLevel; 
 import entities.Stat;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import boundaries.Application;
 import entities.Game;
 
-public class PlayGameButtonController {
-	String type;
-	int n;
-	Game game;
-	AbstractLevel level;
-	
-	public PlayGameButtonController(String type, int n, Game game){
-		this.level = requestLevel();
-		this.game = game;
-			if(isValid()){
-				
-		}
+public class PlayGameButtonController implements ActionListener {
+	Application application;
+
+	public PlayGameButtonController(Application application){
+		this.application = application;
+
 	}
-	
-	private boolean isValid(){
-		Stat sample = level.getStats();
-		return sample.getStars() < 1;
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		application.switchToGameTypeSelect();
+
 	}
-	
-	private AbstractLevel requestLevel(){
-		return level;
-		
-	}
+
 	
 }
-		
+
 
