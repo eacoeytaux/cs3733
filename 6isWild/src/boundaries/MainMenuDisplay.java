@@ -6,10 +6,17 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JLabel;
+
+import java.awt.Dimension;
 import java.awt.Font;
 
 public class MainMenuDisplay extends JPanel {
 	public MainMenuDisplay() {
+
+		super();
+		setPreferredSize(new Dimension(800, 600));
+		setFocusable(true);
+		requestFocus();
 		
 		JButton btnNewButton = new JButton("PLAY GAME!");
 		
