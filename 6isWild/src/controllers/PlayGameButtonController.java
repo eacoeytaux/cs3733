@@ -17,7 +17,8 @@ public class PlayGameButtonController implements ActionListener {
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		application.changePanel(sgmDisplay);;
+		application.changePanel(sgmDisplay);
 	}
 }
+
 

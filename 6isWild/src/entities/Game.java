@@ -37,6 +37,7 @@ public class Game {
 	
 	private void initializeEntities(){
 		puzzleLevels = new ArrayList<PuzzleLevel>();
+		puzzleLevels.add(0, new PuzzleLevel());
 		lightningLevels = new ArrayList<LightningLevel>(); 
 		eliminationLevels = new ArrayList<EliminationLevel>(); 
 		releaseLevels = new ArrayList<ReleaseLevel>(); 
@@ -48,6 +49,10 @@ public class Game {
 	}
 	
 	private void initializeControllers(){
+		
+	}
+	
+	public void getLevel(int type, int n){
 		
 	}
 }
