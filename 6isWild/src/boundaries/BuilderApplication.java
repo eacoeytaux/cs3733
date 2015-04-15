@@ -5,10 +5,9 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-public class Application extends JFrame {
-	private static final long serialVersionUID = 1L;
-
-	public Application() {
+public class BuilderApplication extends JFrame {
+	
+	public BuilderApplication() {
 		setBackground(new Color(0x006600));
 		SplashScreenDisplay splashScreenDisplay = new SplashScreenDisplay();
 		setContentPane(splashScreenDisplay);
@@ -21,7 +20,7 @@ public class Application extends JFrame {
 		
 		splashScreenDisplay.setSplashScreen();
 		getContentPane().removeAll();
-		setContentPane(new MainMenuDisplay());
+		setContentPane(new BlueprintDisplay());
 		pack();
 	}
 }

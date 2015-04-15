@@ -1,5 +1,5 @@
 package boundaries;
 
-public class StatsDisplay implements IDisplay {
+public class StatsDisplay {
 	LevelStatDisplay[] stats;
 }

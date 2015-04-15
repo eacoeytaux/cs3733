@@ -1,5 +1,5 @@
 package boundaries;
 
-public class SquareDisplay implements IDisplay {
+public class SquareDisplay {
 	TileDisplay tile;
 }

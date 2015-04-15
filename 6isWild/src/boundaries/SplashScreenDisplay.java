@@ -1,5 +1,6 @@
 package boundaries;
 
+import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
@@ -13,6 +14,7 @@ public class SplashScreenDisplay extends JPanel {
 
 	public SplashScreenDisplay() {
 		super();
+		setBackground(new Color(0x006600));
 		setPreferredSize(new Dimension(800, 600));
 		setFocusable(true);
 		requestFocus();
@@ -30,9 +32,9 @@ public class SplashScreenDisplay extends JPanel {
 			g.drawImage(splashScreen, 0, 0, splashScreen.getWidth(), splashScreen.getHeight(), null);
 			Thread.sleep(3000);
 			g.drawImage(splashScreenGlitch1, 0, 0, splashScreenGlitch1.getWidth(), splashScreenGlitch1.getHeight(), null);
-			Thread.sleep(500);
-			g.drawImage(splashScreenGlitch2, 0, 0, splashScreenGlitch2.getWidth(), splashScreenGlitch2.getHeight(), null);
 			Thread.sleep(250);
+			g.drawImage(splashScreenGlitch2, 0, 0, splashScreenGlitch2.getWidth(), splashScreenGlitch2.getHeight(), null);
+			Thread.sleep(50);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {

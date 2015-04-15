@@ -1,5 +1,5 @@
 package boundaries;
 
-public class TileDisplay implements IDisplay {
+public class TileDisplay {
 
 }
