@@ -3,20 +3,20 @@ package entities;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.imageio.ImageIO;
 
-import boundaries.Application;
+import boundaries.*;
 
 public class Game {
-	PuzzleLevel[] puzzleLevels;
-	LightningLevel[] lightningLevels;
-	EliminationLevel[] eliminationLevels;
-	ReleaseLevel[] releaseLevels;
+	ArrayList<PuzzleLevel> puzzleLevels;
+	ArrayList<LightningLevel> lightningLevels;
+	ArrayList<EliminationLevel> eliminationLevels;
+	ArrayList<ReleaseLevel> releaseLevels;
 	GlobalStats globalStats;
 
 	public Game() {
-		Application application = new Application();
 		
 		/*BufferedImage splashScreen;
 		BufferedImage splashScreenGlitch1;
@@ -42,5 +42,21 @@ public class Game {
 
 	public static void main(String[] args) {
 		Game game = new Game();
+	}
+	
+	private void initializeEntities(){
+		puzzleLevels = new ArrayList<PuzzleLevel>();
+		lightningLevels = new ArrayList<LightningLevel>(); 
+		eliminationLevels = new ArrayList<EliminationLevel>(); 
+		releaseLevels = new ArrayList<ReleaseLevel>(); 
+		globalStats = new GlobalStats(0,0,0);		
+	}
+	
+	private void initializeBoundaries(){
+		Application application = new Application(this);
+	}
+	
+	private void initializeControllers(){
+		
 	}
 }

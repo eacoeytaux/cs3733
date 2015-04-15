@@ -1,11 +1,22 @@
 package controllers;
 
-import boundaries.Application;
+import boundaries.SelectLevelDisplay;
+import entities.AbstractLevel; 
+import entities.Stat;
+import entities.Game;
 
 public class PlayGameButtonController {
-	Application app;
+	String type;
+	int level;
 	
-	public PlayGameButtonController(Application app){
-		this.app=app;
+	public PlayGameButtonController(Game game){
+			if(isValid()){			
+		}
 	}
-}
+	
+	private boolean isValid(){
+		return true;			
+		}
+		
+	}
+

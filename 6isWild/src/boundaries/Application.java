@@ -6,10 +6,15 @@ import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 
+import entities.Game;
+
 public class Application extends JFrame {
 	private static final long serialVersionUID = 1L;
-
-	public Application() {
+	private Game game;
+	
+	public Application(Game game) {
+		super();
+		this.game=game;
 		SplashScreenDisplay splashScreenDisplay = new SplashScreenDisplay();
 		setContentPane(splashScreenDisplay);
 		setPreferredSize(new Dimension(800, 600));

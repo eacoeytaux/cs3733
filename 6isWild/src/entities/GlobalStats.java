@@ -1,9 +1,11 @@
 package entities;
 
-import java.sql.Time;
-
 public class GlobalStats {
-	Time timePlayed;
+	int timePlayed;
 	int totalMoves;
 	int powerUpsUsed;
+	
+	public GlobalStats(int timePlayed, int totalMoves, int powerUpsUsed){
+		
+	}
 }
