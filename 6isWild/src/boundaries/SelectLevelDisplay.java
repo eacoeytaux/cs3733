@@ -2,7 +2,7 @@ package boundaries;
 
 import javax.swing.JButton;
 
-public class SelectLevelDisplay implements IDisplay {
+public class SelectLevelDisplay {
 	JButton backButton;
 	String gameMode;
 	

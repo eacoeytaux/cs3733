@@ -5,15 +5,10 @@ import java.awt.Dimension;
 
 import javax.swing.JFrame;
 
-import entities.Game;
-
-public class Application extends JFrame {
-	private static final long serialVersionUID = 1L;
+public class BuilderApplication extends JFrame {
 	
-	Game game;
-	
-	public Application(Game game) {
-		this.game = game;
+	public BuilderApplication() {
+		setBackground(new Color(0x006600));
 		SplashScreenDisplay splashScreenDisplay = new SplashScreenDisplay();
 		setContentPane(splashScreenDisplay);
 		setPreferredSize(new Dimension(800, 600));
@@ -25,7 +20,7 @@ public class Application extends JFrame {
 		
 		splashScreenDisplay.setSplashScreen();
 		getContentPane().removeAll();
-		setContentPane(new MainMenuDisplay());
+		setContentPane(new BlueprintDisplay());
 		pack();
 	}
 }

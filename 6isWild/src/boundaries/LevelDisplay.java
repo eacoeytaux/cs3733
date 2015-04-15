@@ -2,7 +2,7 @@ package boundaries;
 
 import javax.swing.JButton;
 
-public class LevelDisplay implements IDisplay {
+public class LevelDisplay {
 	BoardDisplay board;
 	String gameMode;
 	int level;
