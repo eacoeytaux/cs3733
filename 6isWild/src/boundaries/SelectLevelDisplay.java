@@ -27,7 +27,7 @@ public class SelectLevelDisplay extends AbstractDisplay {
 
 		btnBack = new JButton("Back");
 		
-		/*switch (gameMode) {
+		switch (gameMode) {
 		case Game.PUZZLE_ID:
 			modeName = "Puzzle Mode";
 			break;
@@ -43,8 +43,12 @@ public class SelectLevelDisplay extends AbstractDisplay {
 		default:
 			modeName = "??? Mode";
 			break;
-		}*/
+		}
 		
+	}
+	
+	@Override
+	public void setup() {
 		JButton button = new JButton("2");
 		button.setEnabled(false);
 		
@@ -111,10 +115,6 @@ public class SelectLevelDisplay extends AbstractDisplay {
 					.addContainerGap(71, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
-	}
-	
-	@Override
-	public void setup() {
 	}
 	
 	public void setBackController(BackController c) {

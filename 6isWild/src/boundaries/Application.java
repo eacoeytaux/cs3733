@@ -72,7 +72,7 @@ public class Application extends JFrame {
 			newPanel.setup();
 			pack();
 		} else {
-			System.out.println("ERROR: attempted to change to null panel");
+			System.out.println("ERROR: attempted to change to null display");
 			//TODO print error
 		}
 	}

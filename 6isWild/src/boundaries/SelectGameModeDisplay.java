@@ -13,6 +13,8 @@ import controllers.SelectGameModeButtonController;
 import entities.Game;
 
 public class SelectGameModeDisplay extends AbstractDisplay {
+	private static final long serialVersionUID = 1L;
+
 	Application application;
 
 	SelectLevelDisplay puzzleLevelDisplay;
@@ -62,18 +64,18 @@ public class SelectGameModeDisplay extends AbstractDisplay {
 									.addPreferredGap(ComponentPlacement.UNRELATED)
 									.addComponent(btnRelease, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE))))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(22)
+							.addContainerGap()
 							.addComponent(btnBack)))
-					.addContainerGap(157, Short.MAX_VALUE))
+					.addContainerGap(GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
 					.addGap(22)
-					.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 35, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(lblSelectAGame)
-					.addPreferredGap(ComponentPlacement.RELATED, 67, Short.MAX_VALUE)
+					.addPreferredGap(ComponentPlacement.RELATED, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(btnRelease, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)
 						.addComponent(btnPuzzle, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)
@@ -87,10 +89,13 @@ public class SelectGameModeDisplay extends AbstractDisplay {
 	public void initBoundaries() { //TODO pass level data
 		puzzleLevelDisplay = new SelectLevelDisplay(application, Game.PUZZLE_ID);
 		puzzleLevelDisplay.setBackController(new BackController(application, this));
+		
 		lightningLevelDisplay = new SelectLevelDisplay(application, Game.LIGHTNING_ID);
 		lightningLevelDisplay.setBackController(new BackController(application, this));
+		
 		eliminationLevelDisplay = new SelectLevelDisplay(application, Game.ELIMINATION_ID);
 		eliminationLevelDisplay.setBackController(new BackController(application, this));
+		
 		releaseLevelDisplay = new SelectLevelDisplay(application, Game.RELEASE_ID);
 		releaseLevelDisplay.setBackController(new BackController(application, this));
 	}
