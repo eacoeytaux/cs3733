@@ -1,5 +1,8 @@
 package boundaries;
 
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
@@ -11,6 +14,7 @@ public class SquareDisplay extends AbstractDisplay {
 	public SquareDisplay() {
 
 		tile = new TileDisplay();
+	
 		setup();
 	}
 
@@ -18,18 +22,18 @@ public class SquareDisplay extends AbstractDisplay {
 	public void setup() {
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-						.addComponent(tile, GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-						.addContainerGap())
-				);
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(tile, GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+					.addContainerGap())
+		);
 		groupLayout.setVerticalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(tile, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-						.addContainerGap())
-				);
+					.addComponent(tile, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+					.addGap(12))
+		);
 		setLayout(groupLayout);
 	}
 }
