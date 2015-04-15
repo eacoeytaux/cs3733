@@ -5,7 +5,8 @@ import boundaries.BuilderApplication;
 public class Builder {
 	
 	public Builder() {
-		BuilderApplication builderApplication = new BuilderApplication();
+		Model model = new Model();
+		BuilderApplication builderApplication = new BuilderApplication(model);
 	}
 
 	public static void main(String[] args) {

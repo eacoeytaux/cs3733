@@ -1,7 +1,5 @@
 package boundaries;
 import java.awt.Font;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -11,6 +9,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controllers.BackController;
 import entities.Game;
+import entities.Model;
 
 public class SelectLevelDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
@@ -19,13 +18,18 @@ public class SelectLevelDisplay extends AbstractDisplay {
 	int gameMode;
 	
 	String modeName;
+	
 	JButton btnBack;
 	
-	public SelectLevelDisplay(Application application, int gameMode) {
+	JButton btnLvl1;
+	
+	public SelectLevelDisplay(Model model, Application application, int gameMode) {
+		super(model);
 		this.application = application;
 		this.gameMode = gameMode;
 
 		btnBack = new JButton("Back");
+		btnLvl1 = new JButton("1");
 		
 		switch (gameMode) {
 		case Game.PUZZLE_ID:
@@ -44,7 +48,6 @@ public class SelectLevelDisplay extends AbstractDisplay {
 			modeName = "??? Mode";
 			break;
 		}
-		
 	}
 	
 	@Override
@@ -52,14 +55,8 @@ public class SelectLevelDisplay extends AbstractDisplay {
 		JButton button = new JButton("2");
 		button.setEnabled(false);
 		
-		JButton button_1 = new JButton("1");
-		
 		JButton button_2 = new JButton("3");
 		button_2.setEnabled(false);
-		button_2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-			}
-		});
 		
 		JButton button_3 = new JButton("4");
 		button_3.setEnabled(false);
@@ -84,7 +81,7 @@ public class SelectLevelDisplay extends AbstractDisplay {
 					.addGap(116)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
-						.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnLvl1, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE))
 					.addGap(103)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(button_3, GroupLayout.PREFERRED_SIZE, 228, GroupLayout.PREFERRED_SIZE)
@@ -107,7 +104,7 @@ public class SelectLevelDisplay extends AbstractDisplay {
 					.addGap(45)
 					.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
 						.addComponent(button, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)
-						.addComponent(button_1, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE))
+						.addComponent(btnLvl1, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(button_2, GroupLayout.PREFERRED_SIZE, 149, GroupLayout.PREFERRED_SIZE)
@@ -119,5 +116,8 @@ public class SelectLevelDisplay extends AbstractDisplay {
 	
 	public void setBackController(BackController c) {
 		btnBack.addActionListener(c);
+	}
+	
+	public void setButtonControllers() {
 	}
 }

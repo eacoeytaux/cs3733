@@ -11,6 +11,7 @@ import javax.swing.JButton;
 
 import controllers.PlayGameButtonController;
 import controllers.StatsButtonController;
+import entities.Model;
 
 public class MainMenuDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
@@ -21,7 +22,8 @@ public class MainMenuDisplay extends AbstractDisplay {
 	JButton playGameButton;
 	JButton statsButton;
 
-	public MainMenuDisplay(Application application) {
+	public MainMenuDisplay(Model model, Application application) {
+		super(model);
 		this.application = application;
 		this.background = null;
 

@@ -9,6 +9,8 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import entities.Model;
+
 public class BlueprintDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 	
@@ -20,7 +22,8 @@ public class BlueprintDisplay extends AbstractDisplay {
 	private JTextField swapTextField;
 	private JTextField removeTextField;
 	
-	public BlueprintDisplay() {
+	public BlueprintDisplay(Model model) {
+		super(model);
 		movesTextField = new JTextField();
 		firstStarTextField = new JTextField();
 		secondStarTextField = new JTextField();

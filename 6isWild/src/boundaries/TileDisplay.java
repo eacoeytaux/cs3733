@@ -6,10 +6,13 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
 
+import entities.Model;
+
 public class TileDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 
-	public TileDisplay() {
+	public TileDisplay(Model model) {
+		super(model);
 		
 		setup();
 	}

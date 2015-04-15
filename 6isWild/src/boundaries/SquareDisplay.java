@@ -3,14 +3,17 @@ package boundaries;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
+import entities.Model;
+
 public class SquareDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 	
 	TileDisplay tile;
 
-	public SquareDisplay() {
+	public SquareDisplay(Model model) {
+		super(model);
 
-		tile = new TileDisplay();
+		tile = new TileDisplay(model);
 		setup();
 	}
 

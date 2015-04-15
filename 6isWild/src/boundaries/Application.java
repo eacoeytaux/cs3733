@@ -9,11 +9,12 @@ import controllers.PlayGameButtonController;
 import controllers.SelectGameModeButtonController;
 import controllers.StatsButtonController;
 import entities.Game;
+import entities.Model;
 
 public class Application extends JFrame {
 	private static final long serialVersionUID = 1L;
 
-	Game game;
+	Model model;
 
 	MainMenuDisplay mmDisplay;
 	LevelStatDisplay lsDisplay;
@@ -25,9 +26,9 @@ public class Application extends JFrame {
 	LevelDisplay lDisplay;
 	StatsDisplay sDisplay;
 
-	public Application(Game game) {
+	public Application(Model model) {
 		super();
-		this.game = game;
+		this.model = model;
 		init();
 		SplashScreenDisplay splashScreenDisplay = new SplashScreenDisplay();
 		setContentPane(splashScreenDisplay);
@@ -45,9 +46,9 @@ public class Application extends JFrame {
 	}
 
 	private void init() {
-		mmDisplay = new MainMenuDisplay(this);
-		lsDisplay = new LevelStatDisplay(this);
-		sgmDisplay = new SelectGameModeDisplay(this);
+		mmDisplay = new MainMenuDisplay(model, this);
+		lsDisplay = new LevelStatDisplay(model, this);
+		sgmDisplay = new SelectGameModeDisplay(model, this);
 		sgmDisplay.initBoundaries();
 		initControllers();
 	}

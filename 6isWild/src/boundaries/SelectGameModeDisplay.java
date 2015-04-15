@@ -11,6 +11,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import controllers.BackController;
 import controllers.SelectGameModeButtonController;
 import entities.Game;
+import entities.Model;
 
 public class SelectGameModeDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
@@ -29,7 +30,8 @@ public class SelectGameModeDisplay extends AbstractDisplay {
 	
 	JButton btnBack;
 	
-	public SelectGameModeDisplay(Application application) {
+	public SelectGameModeDisplay(Model model, Application application) {
+		super(model);
 		this.application = application;
 		
 		btnLightning = new JButton("LIGHTNING");
@@ -87,16 +89,16 @@ public class SelectGameModeDisplay extends AbstractDisplay {
 	}
 	
 	public void initBoundaries() { //TODO pass level data
-		puzzleLevelDisplay = new SelectLevelDisplay(application, Game.PUZZLE_ID);
+		puzzleLevelDisplay = new SelectLevelDisplay(model, application, Game.PUZZLE_ID);
 		puzzleLevelDisplay.setBackController(new BackController(application, this));
 		
-		lightningLevelDisplay = new SelectLevelDisplay(application, Game.LIGHTNING_ID);
+		lightningLevelDisplay = new SelectLevelDisplay(model, application, Game.LIGHTNING_ID);
 		lightningLevelDisplay.setBackController(new BackController(application, this));
 		
-		eliminationLevelDisplay = new SelectLevelDisplay(application, Game.ELIMINATION_ID);
+		eliminationLevelDisplay = new SelectLevelDisplay(model, application, Game.ELIMINATION_ID);
 		eliminationLevelDisplay.setBackController(new BackController(application, this));
 		
-		releaseLevelDisplay = new SelectLevelDisplay(application, Game.RELEASE_ID);
+		releaseLevelDisplay = new SelectLevelDisplay(model, application, Game.RELEASE_ID);
 		releaseLevelDisplay.setBackController(new BackController(application, this));
 	}
 	
