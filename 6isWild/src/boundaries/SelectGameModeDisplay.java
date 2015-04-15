@@ -1,6 +1,5 @@
 package boundaries;
 
-import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
@@ -8,8 +7,8 @@ import java.io.IOException;
 import javax.imageio.ImageIO;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controllers.BackController;
@@ -37,12 +36,24 @@ public class SelectGameModeDisplay extends AbstractDisplay {
 	public SelectGameModeDisplay(Model model, Application application) {
 		super(model);
 		this.application = application;
-
-		btnLightning = new JButton("LIGHTNING");
-		btnElimination = new JButton("ELIMINATION");
-		btnPuzzle = new JButton("PUZZLE");
-		btnRelease = new JButton("RELEASE");
+		btnPuzzle = new JButton("");
+		btnLightning = new JButton("");
+		btnElimination = new JButton("");
+		btnRelease = new JButton("");
 		btnBack = new JButton("Back");
+		
+		try { //load images
+			BufferedImage puzzle = ImageIO.read(getClass().getResourceAsStream("/PuzzleButton.png"));
+			btnPuzzle.setIcon(new ImageIcon(puzzle));
+			BufferedImage lightning = ImageIO.read(getClass().getResourceAsStream("/LightningButton.png"));
+			btnLightning.setIcon(new ImageIcon(lightning));
+			BufferedImage elimination = ImageIO.read(getClass().getResourceAsStream("/EliminationButton.png"));
+			btnElimination.setIcon(new ImageIcon(elimination));
+			BufferedImage release = ImageIO.read(getClass().getResourceAsStream("/ReleaseButton.png"));
+			btnRelease.setIcon(new ImageIcon(release));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 		setup();
 
@@ -61,38 +72,39 @@ public class SelectGameModeDisplay extends AbstractDisplay {
 
 	@Override
 	public void setup() {
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addGroup(groupLayout.createSequentialGroup()
-										.addContainerGap()
-										.addComponent(btnBack))
-										.addGroup(groupLayout.createSequentialGroup()
-												.addGap(146)
-												.addComponent(btnLightning)
-												.addPreferredGap(ComponentPlacement.UNRELATED)
-												.addComponent(btnElimination, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
-												.addPreferredGap(ComponentPlacement.UNRELATED)
-												.addComponent(btnPuzzle, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)
-												.addGap(12)
-												.addComponent(btnRelease, GroupLayout.PREFERRED_SIZE, 115, GroupLayout.PREFERRED_SIZE)))
-												.addContainerGap(158, Short.MAX_VALUE))
-				);
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addContainerGap()
+							.addComponent(btnBack))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(107)
+							.addComponent(btnPuzzle, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnLightning, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnElimination, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addComponent(btnRelease, GroupLayout.PREFERRED_SIZE, 142, GroupLayout.PREFERRED_SIZE)))
+					.addContainerGap(96, Short.MAX_VALUE))
+		);
 		groupLayout.setVerticalGroup(
-				groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-						.addGap(207)
-						.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
-								.addComponent(btnLightning, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnElimination, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnPuzzle, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)
-								.addComponent(btnRelease, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE))
-								.addGap(19))
-				);
+					.addContainerGap()
+					.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+					.addGap(189)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addComponent(btnRelease, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnElimination, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnLightning, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE)
+						.addComponent(btnPuzzle, GroupLayout.PREFERRED_SIZE, 326, GroupLayout.PREFERRED_SIZE))
+					.addGap(37))
+		);
 		setLayout(groupLayout);
 	}
 
