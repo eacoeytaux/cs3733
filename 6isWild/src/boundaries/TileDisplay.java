@@ -7,9 +7,16 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-public class TileDisplay extends JPanel {
+public class TileDisplay extends AbstractDisplay {
+	private static final long serialVersionUID = 1L;
+
 	public TileDisplay() {
 		
+		setup();
+	}
+	
+	@Override
+	public void setup() {
 		JLabel label = new JLabel("1");
 		label.setFont(new Font("Lucida Grande", Font.PLAIN, 30));
 		

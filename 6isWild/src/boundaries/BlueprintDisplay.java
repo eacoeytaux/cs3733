@@ -11,7 +11,7 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTextField;
 import javax.swing.JSlider;
 
-public class BlueprintDisplay extends JPanel {
+public class BlueprintDisplay extends AbstractDisplay {
 	private JTextField movesTextField;
 	private JTextField firstStarTextField;
 	private JTextField secondStarTextField;
@@ -19,7 +19,21 @@ public class BlueprintDisplay extends JPanel {
 	private JTextField shuffleTextField;
 	private JTextField swapTextField;
 	private JTextField removeTextField;
+	
 	public BlueprintDisplay() {
+		movesTextField = new JTextField();
+		firstStarTextField = new JTextField();
+		secondStarTextField = new JTextField();
+		thirdStarTextField = new JTextField();
+		shuffleTextField = new JTextField();
+		swapTextField = new JTextField();
+		removeTextField = new JTextField();
+		
+		setup();
+	}
+	
+	@Override
+	public void setup() {
 		
 		JLabel lblLevelModeSelect = new JLabel("Level Mode:");
 		
@@ -33,43 +47,36 @@ public class BlueprintDisplay extends JPanel {
 		
 		JLabel lblNewLabel = new JLabel("Moves:");
 		
-		movesTextField = new JTextField();
 		movesTextField.setText("25");
 		movesTextField.setColumns(10);
 		
 		JLabel lblFirstStar = new JLabel("First Star:");
 		
-		firstStarTextField = new JTextField();
 		firstStarTextField.setText("100");
 		firstStarTextField.setColumns(10);
 		
 		JLabel lblSecondStar = new JLabel("Second Star:");
 		
-		secondStarTextField = new JTextField();
 		secondStarTextField.setText("200");
 		secondStarTextField.setColumns(10);
 		
 		JLabel lblThirdStar = new JLabel("Third Star:");
 		
-		thirdStarTextField = new JTextField();
 		thirdStarTextField.setText("300");
 		thirdStarTextField.setColumns(10);
 		
 		JLabel lblShufflePowerups = new JLabel("Shuffle Powerups:");
 		
-		shuffleTextField = new JTextField();
 		shuffleTextField.setText("5");
 		shuffleTextField.setColumns(10);
 		
 		JLabel lblSwapPowerups = new JLabel("Swap Powerups:");
 		
-		swapTextField = new JTextField();
 		swapTextField.setText("5");
 		swapTextField.setColumns(10);
 		
 		JLabel lblRemovePowerups = new JLabel("Remove Powerups:");
 		
-		removeTextField = new JTextField();
 		removeTextField.setText("5");
 		removeTextField.setColumns(10);
 		

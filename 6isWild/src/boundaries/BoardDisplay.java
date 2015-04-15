@@ -1,5 +1,11 @@
 package boundaries;
 
-public class BoardDisplay {
-	SquareDisplay[] squares; 
+public class BoardDisplay extends AbstractDisplay {
+	SquareDisplay[] squares;
+
+	@Override
+	public void setup() {
+		// TODO Auto-generated method stub
+		
+	} 
 }

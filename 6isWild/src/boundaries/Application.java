@@ -3,8 +3,11 @@ package boundaries;
 import java.awt.Dimension;
 
 import javax.swing.JFrame;
-import javax.swing.JPanel;
 
+import controllers.BackController;
+import controllers.PlayGameButtonController;
+import controllers.SelectGameModeButtonController;
+import controllers.StatsButtonController;
 import entities.Game;
 
 public class Application extends JFrame {
@@ -13,6 +16,7 @@ public class Application extends JFrame {
 	Game game;
 
 	MainMenuDisplay mmDisplay;
+	LevelStatDisplay lsDisplay;
 	SelectGameModeDisplay sgmDisplay;
 	SelectLevelDisplay puzzle_slDisplay;
 	SelectLevelDisplay lightning_slDisplay;
@@ -42,16 +46,35 @@ public class Application extends JFrame {
 
 	private void init() {
 		mmDisplay = new MainMenuDisplay(this);
+		lsDisplay = new LevelStatDisplay(this);
+		sgmDisplay = new SelectGameModeDisplay(this);
+		sgmDisplay.initBoundaries();
+		initControllers();
 	}
 
-	private void changePanel(JPanel newPanel) {
-		getContentPane().removeAll();
-		setContentPane(sgmDisplay);
-		pack();
+	private void initControllers() {
+		mmDisplay.setPlayGameButtonController(new PlayGameButtonController(this, sgmDisplay));
+		mmDisplay.setStatsButtonController(new StatsButtonController(this, lsDisplay));
+		
+		lsDisplay.setBackController(new BackController(this, mmDisplay));
+
+		sgmDisplay.setBackController(new BackController(this, mmDisplay));
+		sgmDisplay.setPuzzleButtonController(new SelectGameModeButtonController(this));
+		sgmDisplay.setLightningButtonController(new SelectGameModeButtonController(this));
+		sgmDisplay.setEliminationButtonController(new SelectGameModeButtonController(this));
+		sgmDisplay.setReleaseButtonController(new SelectGameModeButtonController(this));
 	}
 
-	public void switchToGameTypeSelect() {
-		changePanel(sgmDisplay);
+	public void changePanel(AbstractDisplay newPanel) {
+		if (newPanel != null) {
+			getContentPane().removeAll();
+			setContentPane(newPanel);
+			newPanel.setup();
+			pack();
+		} else {
+			System.out.println("ERROR: attempted to change to null panel");
+			//TODO print error
+		}
 	}
 
 	public void switchToLevelSelect(int gameType) {

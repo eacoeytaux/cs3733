@@ -4,18 +4,20 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import boundaries.Application;
-import entities.Game;
+import boundaries.SelectGameModeDisplay;
 
 public class PlayGameButtonController implements ActionListener {
 	Application application;
-
-	public PlayGameButtonController(Application application){
+	SelectGameModeDisplay sgmDisplay;
+	
+	public PlayGameButtonController(Application application, SelectGameModeDisplay sgmDisplay) {
 		this.application = application;
+		this.sgmDisplay = sgmDisplay;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		application.switchToGameTypeSelect();
+		application.changePanel(sgmDisplay);;
 	}
 }
 
