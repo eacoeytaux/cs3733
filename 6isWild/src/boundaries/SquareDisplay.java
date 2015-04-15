@@ -1,10 +1,11 @@
 package boundaries;
 
-import javax.swing.JPanel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
 public class SquareDisplay extends AbstractDisplay {
+	private static final long serialVersionUID = 1L;
+	
 	TileDisplay tile;
 
 	public SquareDisplay() {

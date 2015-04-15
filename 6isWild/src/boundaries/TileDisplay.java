@@ -1,11 +1,10 @@
 package boundaries;
 
-import javax.swing.JPanel;
+import java.awt.Font;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
-import java.awt.Font;
-import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class TileDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;

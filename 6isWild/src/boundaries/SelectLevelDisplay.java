@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controllers.BackController;
+import entities.Game;
 
 public class SelectLevelDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
@@ -17,6 +18,7 @@ public class SelectLevelDisplay extends AbstractDisplay {
 	Application application;
 	int gameMode;
 	
+	String modeName;
 	JButton btnBack;
 	
 	public SelectLevelDisplay(Application application, int gameMode) {
@@ -25,7 +27,23 @@ public class SelectLevelDisplay extends AbstractDisplay {
 
 		btnBack = new JButton("back");
 		
-		setup();
+		switch (gameMode) {
+		case Game.PUZZLE_ID:
+			modeName = "Puzzle Mode";
+			break;
+		case Game.LIGHTNING_ID:
+			modeName = "Lightning Mode";
+			break;
+		case Game.ELIMINATION_ID:
+			modeName = "Elimination Mode";
+			break;
+		case Game.RELEASE_ID:
+			modeName = "Release Mode";
+			break;
+		default:
+			modeName = "??? Mode";
+			break;
+		}
 	}
 	
 	@Override
@@ -46,7 +64,7 @@ public class SelectLevelDisplay extends AbstractDisplay {
 		JLabel lblSelectALevel = new JLabel("SELECT A LEVEL!");
 		lblSelectALevel.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
 		
-		JLabel lblGameMode = new JLabel("game mode");
+		JLabel lblGameMode = new JLabel(modeName);
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(

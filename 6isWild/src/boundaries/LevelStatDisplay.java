@@ -10,6 +10,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import controllers.BackController;
 
 public class LevelStatDisplay extends AbstractDisplay {
+	private static final long serialVersionUID = 1L;
+
 	Application application;
 	
 	JButton btnBack;

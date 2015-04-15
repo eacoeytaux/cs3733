@@ -6,7 +6,8 @@ import java.awt.Dimension;
 import javax.swing.JFrame;
 
 public class BuilderApplication extends JFrame {
-	
+	private static final long serialVersionUID = 1L;
+
 	public BuilderApplication() {
 		setBackground(new Color(0x006600));
 		SplashScreenDisplay splashScreenDisplay = new SplashScreenDisplay();

@@ -1,17 +1,17 @@
 package boundaries;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JPanel;
-import javax.swing.JLabel;
-import javax.swing.JRadioButton;
 import javax.swing.JComboBox;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JTextField;
+import javax.swing.JLabel;
 import javax.swing.JSlider;
+import javax.swing.JTextField;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 public class BlueprintDisplay extends AbstractDisplay {
+	private static final long serialVersionUID = 1L;
+	
 	private JTextField movesTextField;
 	private JTextField firstStarTextField;
 	private JTextField secondStarTextField;
