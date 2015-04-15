@@ -17,7 +17,6 @@ public class MainMenuDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 	
 	Application application;
-	BufferedImage background;
 
 	JButton playGameButton;
 	JButton statsButton;
@@ -25,7 +24,6 @@ public class MainMenuDisplay extends AbstractDisplay {
 	public MainMenuDisplay(Model model, Application application) {
 		super(model);
 		this.application = application;
-		this.background = null;
 
 		playGameButton = new JButton("PLAY GAME");
 
@@ -38,7 +36,7 @@ public class MainMenuDisplay extends AbstractDisplay {
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
 		try { //load images
-			background = ImageIO.read(getClass().getResourceAsStream("/TitleScreen.png"));
+			BufferedImage background = ImageIO.read(getClass().getResourceAsStream("/TitleScreen.png"));
 			g.drawImage(background, 0, 0, null);
 		} catch (IOException e) {
 			e.printStackTrace();
