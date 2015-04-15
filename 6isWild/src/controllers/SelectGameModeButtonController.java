@@ -20,6 +20,7 @@ public class SelectGameModeButtonController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		System.out.println("ha");
 		application.changePanel(gameModeDisplay);
 	}
 

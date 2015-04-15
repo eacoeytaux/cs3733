@@ -25,9 +25,9 @@ public class SelectLevelDisplay extends AbstractDisplay {
 		this.application = application;
 		this.gameMode = gameMode;
 
-		btnBack = new JButton("back");
+		btnBack = new JButton("Back");
 		
-		switch (gameMode) {
+		/*switch (gameMode) {
 		case Game.PUZZLE_ID:
 			modeName = "Puzzle Mode";
 			break;
@@ -43,23 +43,22 @@ public class SelectLevelDisplay extends AbstractDisplay {
 		default:
 			modeName = "??? Mode";
 			break;
-		}
-	}
-	
-	@Override
-	public void setup() {
+		}*/
 		
 		JButton button = new JButton("2");
+		button.setEnabled(false);
 		
 		JButton button_1 = new JButton("1");
 		
 		JButton button_2 = new JButton("3");
+		button_2.setEnabled(false);
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 			}
 		});
 		
 		JButton button_3 = new JButton("4");
+		button_3.setEnabled(false);
 		
 		JLabel lblSelectALevel = new JLabel("SELECT A LEVEL!");
 		lblSelectALevel.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
@@ -112,6 +111,10 @@ public class SelectLevelDisplay extends AbstractDisplay {
 					.addContainerGap(71, Short.MAX_VALUE))
 		);
 		setLayout(groupLayout);
+	}
+	
+	@Override
+	public void setup() {
 	}
 	
 	public void setBackController(BackController c) {

@@ -13,8 +13,6 @@ import controllers.SelectGameModeButtonController;
 import entities.Game;
 
 public class SelectGameModeDisplay extends AbstractDisplay {
-	private static final long serialVersionUID = 1L;
-
 	Application application;
 
 	SelectLevelDisplay puzzleLevelDisplay;
