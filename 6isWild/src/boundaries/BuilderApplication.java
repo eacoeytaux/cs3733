@@ -2,24 +2,21 @@ package boundaries;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import entities.Model;
+import entities.Blueprint;
 
 public class BuilderApplication extends JFrame {
 	private static final long serialVersionUID = 1L;
 	
-	Model model;
+	Blueprint blueprint;
 
-	public BuilderApplication(Model model) {
-		this.model = model;
+	public BuilderApplication(Blueprint blueprint) {
+		this.blueprint = blueprint;
 		
 		setBackground(new Color(0x006600));
 		SplashScreenDisplay splashScreenDisplay = new SplashScreenDisplay();
@@ -46,7 +43,7 @@ public class BuilderApplication extends JFrame {
 		
 		splashScreenDisplay.setSplashScreen();
 		getContentPane().removeAll();
-		setContentPane(new BlueprintDisplay(model));
+		setContentPane(new BlueprintDisplay());
 		pack();
 	}
 }
