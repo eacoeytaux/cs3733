@@ -112,4 +112,8 @@ public class Application extends JFrame {
 			break;
 		}*/
 	}
+	
+	public LevelStatDisplay getLSDisplay(){
+		return this.lsDisplay;
+	}
 }
