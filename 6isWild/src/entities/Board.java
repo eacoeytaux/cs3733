@@ -1,12 +1,12 @@
 package entities;
 
 import java.util.ArrayList;
+import entities.Index;
 
 public class Board {
-
 	Square[][] board;
-	ArrayList<Square> selectedSquares;
-
+	ArrayList<Index> selectedSquares;
+	
 	public Board(Square[][] board) {
 		this.board = board;
 	}

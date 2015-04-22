@@ -2,8 +2,12 @@ package controllers;
 
 import boundaries.LevelDisplay;
 import entities.AbstractLevel;
+import entities.Board;
 
-public class MakeMove {
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+public class MakeMove implements ActionListener {
 	LevelDisplay levelScreen;
 	AbstractLevel level;
 
@@ -11,4 +15,14 @@ public class MakeMove {
 		this.level=level;
 		this.levelScreen = levelScreen;
 	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+	}
+	
+	private void removeTile(){
+		
+	}
+	
 }

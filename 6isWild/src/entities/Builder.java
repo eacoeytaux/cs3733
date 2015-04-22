@@ -1,10 +1,12 @@
 package entities;
 
+import boundaries.Application;
 import boundaries.BuilderApplication;
 
 public class Builder {
 	Blueprint blueprint;
 	BuilderApplication builderApplication;
+	
 	
 	public Builder() {
 		blueprint = new Blueprint();
@@ -13,5 +15,9 @@ public class Builder {
 
 	public static void main(String[] args) {
 		new Builder();
+	}
+	
+	public void closeBuilder() {
+		builderApplication.dispose();
 	}
 }

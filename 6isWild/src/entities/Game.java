@@ -40,4 +40,8 @@ public class Game {
 	public void closeGame() {
 		application.dispose();
 	}
+	
+	public Application getApplication() {
+		return this.application;
+	}
 }
