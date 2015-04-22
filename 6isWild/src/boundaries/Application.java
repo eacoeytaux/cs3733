@@ -15,6 +15,8 @@ public class Application extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	Model model;
+	
+	AbstractDisplay currentDisplay;
 
 	MainMenuDisplay mmDisplay;
 	LevelStatDisplay lsDisplay;
@@ -40,9 +42,7 @@ public class Application extends JFrame {
 		setVisible(true);
 
 		splashScreenDisplay.setSplashScreen();
-		getContentPane().removeAll();
-		setContentPane(mmDisplay);
-		pack();
+		changePanel(mmDisplay);
 	}
 
 	private void init() {
@@ -66,11 +66,12 @@ public class Application extends JFrame {
 		sgmDisplay.setReleaseButtonController(new SelectGameModeButtonController(this));
 	}
 
-	public void changePanel(AbstractDisplay newPanel) {
-		if (newPanel != null) {
+	public void changePanel(AbstractDisplay nextDisplay) {
+		if (nextDisplay != null) {
 			getContentPane().removeAll();
-			setContentPane(newPanel);
-			newPanel.setup();
+			setContentPane(nextDisplay);
+			nextDisplay.setup();
+			currentDisplay = nextDisplay;
 			pack();
 		} else {
 			System.out.println("ERROR: attempted to change to null display");

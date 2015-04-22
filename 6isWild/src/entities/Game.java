@@ -16,6 +16,7 @@ public class Game {
 	public static final int RELEASE_ID = 3;
 	
 	Model model;
+	Application application;
 
 	public Game() {
 		init();
@@ -36,7 +37,7 @@ public class Game {
 	}
 	
 	private void initializeBoundaries(){
-		Application application = new Application(model);
+		application = new Application(model);
 	}
 	
 	private void initializeControllers(){
