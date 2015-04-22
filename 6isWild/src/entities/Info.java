@@ -8,7 +8,16 @@ public class Info {
 	int swaps;
 	int shuffles;
 	int removes;
-	int[] starRequirements;
+	int score;
+	int[] starRequirements; //index 0 = 1 star req, 1 -> 2 stars, 2 -> 3 stars
 	int[] valueFrequencies;
 	int[] multiplierFrequencies;
+	
+	public int[] getStarRequirements(){ 
+		return this.starRequirements;
+	}
+	
+	public int getScore(){
+		return this.score;
+	}
 }

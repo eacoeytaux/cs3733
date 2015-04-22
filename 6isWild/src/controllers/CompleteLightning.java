@@ -10,5 +10,6 @@ public class CompleteLightning {
 	public CompleteLightning(LightningLevel level, Application app){
 		this.level = level;
 		this.app = app;
+		new SaveScore(level, app);
 	}
 }
