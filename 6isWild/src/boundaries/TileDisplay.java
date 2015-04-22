@@ -1,26 +1,28 @@
 package boundaries;
 
-import javax.swing.JPanel;
+import java.awt.Font;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JLabel;
+import javax.swing.LayoutStyle.ComponentPlacement;
 
 import entities.Model;
-import java.awt.Font;
-import java.awt.Graphics;
-
-import javax.swing.LayoutStyle.ComponentPlacement;
+import entities.Tile;
 
 public class TileDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
+	
+	Tile tile;
 
-	public TileDisplay(Model model) {
+	public TileDisplay(Model model, Tile tile) {
 		super(model);
+		this.tile = tile;
 		
-		JLabel lblNewLabel = new JLabel("1");
+		JLabel lblNewLabel = new JLabel("" + tile.getValue());
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		
-		JLabel lblX = new JLabel("x2");
+		JLabel lblX = new JLabel("x" + tile.getMultiplier());
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)

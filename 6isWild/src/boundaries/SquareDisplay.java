@@ -1,22 +1,22 @@
 package boundaries;
 
-import java.awt.Color;
-
-import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
 import entities.Model;
+import entities.Square;
 
 public class SquareDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 	
-	TileDisplay tile;
+	TileDisplay tileDisplay;
+	Square square;
 
-	public SquareDisplay(Model model) {
+	public SquareDisplay(Model model, Square square) {
 		super(model);
+		this.square = square;
 
-		tile = new TileDisplay(model);
+		tileDisplay = new TileDisplay(model, square.getTile());
 	
 		setup();
 	}
@@ -28,13 +28,13 @@ public class SquareDisplay extends AbstractDisplay {
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
 					.addContainerGap()
-					.addComponent(tile, GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+					.addComponent(tileDisplay, GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
 					.addContainerGap())
 		);
 		groupLayout.setVerticalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(tile, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+					.addComponent(tileDisplay, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
 					.addGap(12))
 		);
 		setLayout(groupLayout);

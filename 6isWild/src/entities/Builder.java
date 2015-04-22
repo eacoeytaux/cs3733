@@ -4,13 +4,15 @@ import boundaries.Application;
 import boundaries.BuilderApplication;
 
 public class Builder {
+	Blueprint blueprint;
 	
-	Model model;
 	BuilderApplication builderApplication;
 	
+	
 	public Builder() {
-		model = new Model();
-		builderApplication = new BuilderApplication(model);
+		blueprint = new Blueprint();
+		builderApplication = new BuilderApplication(blueprint);
+		
 	}
 
 	public static void main(String[] args) {

@@ -8,13 +8,14 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
-import entities.Model;
+import entities.Board;
 
-public class BlueprintDisplay extends AbstractDisplay {
+public class BlueprintDisplay extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private JTextField movesTextField;
@@ -25,8 +26,7 @@ public class BlueprintDisplay extends AbstractDisplay {
 	private JTextField swapTextField;
 	private JTextField removeTextField;
 	
-	public BlueprintDisplay(Model model) {
-		super(model);
+	public BlueprintDisplay() {
 		movesTextField = new JTextField();
 		firstStarTextField = new JTextField();
 		secondStarTextField = new JTextField();
@@ -38,7 +38,6 @@ public class BlueprintDisplay extends AbstractDisplay {
 		setup();
 	}
 	
-	@Override
 	public void setup() {
 		
 		JLabel lblLevelModeSelect = new JLabel("Level Mode:");
@@ -126,7 +125,7 @@ public class BlueprintDisplay extends AbstractDisplay {
 		
 		JLabel lblX3 = new JLabel("x3:");
 		
-		BoardDisplay panel = new BoardDisplay(model);
+		BoardDisplay panel = new BoardDisplay(null, new Board(null));
 		panel.setBorder(BorderFactory.createLineBorder(Color.black));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
