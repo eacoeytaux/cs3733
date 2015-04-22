@@ -5,4 +5,5 @@ public class Square {
 	boolean inert;
 	boolean bucket;
 	boolean bucketFull;
+
 }
