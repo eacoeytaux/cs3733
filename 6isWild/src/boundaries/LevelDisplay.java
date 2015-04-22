@@ -4,14 +4,15 @@ import java.awt.Color;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JProgressBar;
-import javax.swing.SwingConstants;
-import javax.swing.GroupLayout.Alignment;
 import javax.swing.LayoutStyle.ComponentPlacement;
+import javax.swing.SwingConstants;
 
 import controllers.BackController;
+import entities.Board;
 import entities.Game;
 import entities.Model;
 
@@ -62,7 +63,7 @@ public class LevelDisplay extends AbstractDisplay {
 		
 		JLabel lblNewLabel_1 = new JLabel("Game Mode/Level #");
 		
-		BoardDisplay panel = new BoardDisplay(model);
+		BoardDisplay panel = new BoardDisplay(model, new Board(null));
 		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(

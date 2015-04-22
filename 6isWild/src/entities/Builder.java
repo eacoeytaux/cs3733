@@ -3,10 +3,10 @@ package entities;
 import boundaries.BuilderApplication;
 
 public class Builder {
+	Blueprint blueprint;
 	
 	public Builder() {
-		Model model = new Model();
-		BuilderApplication builderApplication = new BuilderApplication(model);
+		BuilderApplication builderApplication = new BuilderApplication(blueprint);
 	}
 
 	public static void main(String[] args) {
