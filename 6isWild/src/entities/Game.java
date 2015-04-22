@@ -1,13 +1,6 @@
 package entities;
 
-import java.awt.Graphics;
-import java.awt.image.BufferedImage;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import javax.imageio.ImageIO;
-
-import boundaries.*;
+import boundaries.Application;
 
 public class Game {
 	public static final int PUZZLE_ID = 0;
@@ -44,7 +37,7 @@ public class Game {
 		
 	}
 	
-	public void getLevel(int type, int n){
-		
+	public void closeGame() {
+		application.dispose();
 	}
 }
