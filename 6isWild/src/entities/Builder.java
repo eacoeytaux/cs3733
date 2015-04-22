@@ -4,9 +4,11 @@ import boundaries.BuilderApplication;
 
 public class Builder {
 	Blueprint blueprint;
+	BuilderApplication builderApplication;
 	
 	public Builder() {
-		BuilderApplication builderApplication = new BuilderApplication(blueprint);
+		blueprint = new Blueprint();
+		builderApplication = new BuilderApplication(blueprint);
 	}
 
 	public static void main(String[] args) {

@@ -13,20 +13,30 @@ import javax.swing.JSlider;
 import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
+import entities.Blueprint;
 import entities.Board;
+import entities.Square;
+import entities.Tile;
 
 public class BlueprintDisplay extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-	private JTextField movesTextField;
-	private JTextField firstStarTextField;
-	private JTextField secondStarTextField;
-	private JTextField thirdStarTextField;
-	private JTextField shuffleTextField;
-	private JTextField swapTextField;
-	private JTextField removeTextField;
+	Blueprint blueprint;
 	
-	public BlueprintDisplay() {
+	JTextField movesTextField;
+	JTextField firstStarTextField;
+	JTextField secondStarTextField;
+	JTextField thirdStarTextField;
+	JTextField shuffleTextField;
+	JTextField swapTextField;
+	JTextField removeTextField;
+	JComboBox levelModeComboBox;
+	JComboBox tileTypeComboBox;
+	BoardDisplay panel;
+	
+	public BlueprintDisplay(Blueprint blueprint) {
+		this.blueprint = blueprint;
+		
 		movesTextField = new JTextField();
 		firstStarTextField = new JTextField();
 		secondStarTextField = new JTextField();
@@ -34,6 +44,7 @@ public class BlueprintDisplay extends JPanel {
 		shuffleTextField = new JTextField();
 		swapTextField = new JTextField();
 		removeTextField = new JTextField();
+		panel = new BoardDisplay(null, new Board(null));
 		
 		setup();
 	}
@@ -42,13 +53,13 @@ public class BlueprintDisplay extends JPanel {
 		
 		JLabel lblLevelModeSelect = new JLabel("Level Mode:");
 		
-		JComboBox levelModeComboBox = new JComboBox();
+		levelModeComboBox = new JComboBox();
 		levelModeComboBox.setModel(new DefaultComboBoxModel(new String[] {"Puzzle", "Lightning", "Elimination", "Release"}));
 		
 		JLabel lblTileType = new JLabel("Tile Type:");
 		
-		JComboBox tileTypeComboBox = new JComboBox();
-		tileTypeComboBox.setModel(new DefaultComboBoxModel(new String[] {"Inert", "1", "2", "3", "4", "5", "6", "Bucket"}));
+		tileTypeComboBox = new JComboBox();
+		tileTypeComboBox.setModel(new DefaultComboBoxModel(new String[] {"Inert", "1", "2", "3", "4", "5", "6", "Random Value", "Bucket"}));
 		
 		JLabel lblNewLabel = new JLabel("Moves:");
 		
@@ -125,7 +136,7 @@ public class BlueprintDisplay extends JPanel {
 		
 		JLabel lblX3 = new JLabel("x3:");
 		
-		BoardDisplay panel = new BoardDisplay(null, new Board(null));
+		
 		panel.setBorder(BorderFactory.createLineBorder(Color.black));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -299,5 +310,12 @@ public class BlueprintDisplay extends JPanel {
 					.addGap(31))
 		);
 		setLayout(groupLayout);
+	}
+	
+	public void changeSquare(int x, int y) {
+		Tile tile = new Tile(0, 0);
+		Square square = new Square(tile, false, false, false);
+		blueprint.changeSquare(x, y, square);
+		panel.repaint();
 	}
 }

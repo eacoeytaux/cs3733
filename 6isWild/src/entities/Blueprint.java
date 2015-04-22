@@ -10,7 +10,12 @@ public class Blueprint implements Serializable {
 	int[] starRequirements, valueFrequencies;
 
 	public Blueprint() {
-		
+		board = new Square[9][9];
+	}
+	
+	public void changeSquare(int row, int col, Square square) {
+		board[row][col] = square;
+		System.out.println(square.tile.value);
 	}
 
 	@Override

@@ -9,6 +9,8 @@ import entities.Square;
 public class SquareDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 	
+	public static final int pixelSize = 62;
+	
 	TileDisplay tileDisplay;
 	Square square;
 
