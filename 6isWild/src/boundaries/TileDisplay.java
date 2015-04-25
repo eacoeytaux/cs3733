@@ -12,42 +12,45 @@ import entities.Tile;
 
 public class TileDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
-	
+
 	Tile tile;
 
 	public TileDisplay(Model model, Tile tile) {
 		super(model);
 		this.tile = tile;
-		
+
+		setup();
+	}
+
+	public void setup() {
 		JLabel lblNewLabel = new JLabel("" + tile.getValue());
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
-		
+
 		JLabel lblX = new JLabel("x" + tile.getMultiplier());
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+				groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(lblX)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblNewLabel)
-					.addContainerGap(23, Short.MAX_VALUE))
-		);
-		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addComponent(lblX)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(14)
-							.addComponent(lblNewLabel)))
-					.addContainerGap(16, Short.MAX_VALUE))
-		);
+						.addPreferredGap(ComponentPlacement.RELATED)
+						.addComponent(lblNewLabel)
+						.addContainerGap(23, Short.MAX_VALUE))
+				);
+		groupLayout.setVerticalGroup(
+				groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addComponent(lblX)
+								.addGroup(groupLayout.createSequentialGroup()
+										.addGap(14)
+										.addComponent(lblNewLabel)))
+										.addContainerGap(16, Short.MAX_VALUE))
+				);
 		setLayout(groupLayout);
 	}
 
-	@Override
-	public void setup() {
-		// TODO Auto-generated method stub
-		
+	public void changeTile(Tile tile) {
+		this.tile = tile;
+		setup();
 	}
 }

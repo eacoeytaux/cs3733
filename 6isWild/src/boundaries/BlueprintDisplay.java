@@ -32,7 +32,7 @@ public class BlueprintDisplay extends JPanel {
 	JTextField removeTextField;
 	JComboBox levelModeComboBox;
 	JComboBox tileTypeComboBox;
-	BoardDisplay panel;
+	BuilderBoardDisplay panel;
 	
 	public BlueprintDisplay(Blueprint blueprint) {
 		this.blueprint = blueprint;
@@ -44,7 +44,7 @@ public class BlueprintDisplay extends JPanel {
 		shuffleTextField = new JTextField();
 		swapTextField = new JTextField();
 		removeTextField = new JTextField();
-		panel = new BoardDisplay(null, new Board(null));
+		panel = new BuilderBoardDisplay(this, new Board(null));
 		
 		setup();
 	}
@@ -59,7 +59,7 @@ public class BlueprintDisplay extends JPanel {
 		JLabel lblTileType = new JLabel("Tile Type:");
 		
 		tileTypeComboBox = new JComboBox();
-		tileTypeComboBox.setModel(new DefaultComboBoxModel(new String[] {"Inert", "1", "2", "3", "4", "5", "6", "Random Value", "Bucket"}));
+		tileTypeComboBox.setModel(new DefaultComboBoxModel(new String[] {"Inert", "Bucket", "1", "2", "3", "4", "5", "6", "Random Value"}));
 		
 		JLabel lblNewLabel = new JLabel("Moves:");
 		
@@ -312,10 +312,25 @@ public class BlueprintDisplay extends JPanel {
 		setLayout(groupLayout);
 	}
 	
-	public void changeSquare(int x, int y) {
-		Tile tile = new Tile(0, 0);
-		Square square = new Square(tile, false, false, false);
-		blueprint.changeSquare(x, y, square);
-		panel.repaint();
+	public Square getNewSquare() {
+		int type = tileTypeComboBox.getSelectedIndex();
+		switch (type) {
+			case 0:
+				return new Square(null, true, false);
+			case 1:
+				return new Square(null, false, true);
+			case 2:
+			case 3:
+			case 4:
+			case 5:
+			case 6:
+			case 7:
+				return new Square(new Tile(type - 1, 0), false, false);
+			case 8:
+			default:
+				return new Square(new Tile(0, 0), false, false);
+					
+		}
+				
 	}
 }

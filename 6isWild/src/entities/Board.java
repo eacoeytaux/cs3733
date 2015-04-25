@@ -13,6 +13,6 @@ public class Board {
 
 	public Square getSquare(int row, int col) {
 		if (board != null) return board[row][col];
-		else return new Square(new Tile(-1, -1), false, false, false);
+		else return new Square(new Tile(0, 0), false, false);
 	}
 }

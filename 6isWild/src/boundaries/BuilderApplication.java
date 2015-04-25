@@ -8,7 +8,6 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
-import controllers.BlueprintDisplayController;
 import entities.Blueprint;
 
 public class BuilderApplication extends JFrame {
@@ -19,7 +18,7 @@ public class BuilderApplication extends JFrame {
 
 	public BuilderApplication(Blueprint blueprint) {
 		this.blueprint = blueprint;
-		display = new BlueprintDisplay(blueprint);
+		display = new BlueprintDisplay(this.blueprint);
 		
 		setBackground(new Color(0x006600));
 		SplashScreenDisplay splashScreenDisplay = new SplashScreenDisplay();
@@ -48,11 +47,5 @@ public class BuilderApplication extends JFrame {
 		getContentPane().removeAll();
 		setContentPane(display);
 		pack();
-		
-		initControllers();
-	}
-	
-	public void initControllers() {
-		addMouseListener(new BlueprintDisplayController(display));
 	}
 }

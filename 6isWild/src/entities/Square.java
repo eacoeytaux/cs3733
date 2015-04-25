@@ -10,11 +10,11 @@ public class Square implements Serializable {
 	boolean bucket;
 	boolean bucketFull;
 	
-	public Square(Tile tile, boolean inert, boolean bucket, boolean bucketFull) {
+	public Square(Tile tile, boolean inert, boolean bucket) {
 		this.tile = tile;
 		this.inert = inert;
 		this.bucket = bucket;
-		this.bucketFull = bucketFull;
+		this.bucketFull = false;
 		
 	}
 	
@@ -22,8 +22,18 @@ public class Square implements Serializable {
 		return tile;
 	}
 	
+	public boolean isInert() {
+		return inert;
+	}
+	
+	public boolean isBucket() {
+		return bucket;
+	}
+	
 	@Override
 	public String toString() {
-		return tile.toString() + ", inert: " + inert + ", bucket: " + bucket;
+		if (inert) return "inert";
+		else if (bucket) return "bucket";
+		else return tile.toString();
 	}
 }
