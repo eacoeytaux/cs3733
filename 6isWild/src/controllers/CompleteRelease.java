@@ -10,5 +10,6 @@ public class CompleteRelease {
 	public CompleteRelease(ReleaseLevel level, Application app){
 		this.level = level;
 		this.app = app;
+		new SaveScore(level, app);
 	}
 }
