@@ -51,4 +51,8 @@ public class Blueprint implements Serializable {
 		this.valueFrequencies = valueFrequencies;
 		this.multiplierFrequencies = multiplierFrequencies;
 	}
+	
+	public void setBoard(Square[][] board){
+		this.board = board;
+	}
 }

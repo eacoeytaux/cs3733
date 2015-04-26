@@ -8,7 +8,14 @@ public abstract class AbstractLevel {
 	boolean[][] emptyTiles;
 	
 	public AbstractLevel(){
-		
+	}
+	
+	public int getLevel(){
+		return this.level;
+	}
+
+	public Board getBoard(){
+		return this.board;
 	}
 
 	public Stat getStats(){
@@ -26,4 +33,5 @@ public abstract class AbstractLevel {
 	public void addBoard(){
 		
 	}
+	
 }

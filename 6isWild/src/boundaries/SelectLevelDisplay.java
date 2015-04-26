@@ -57,7 +57,7 @@ public class SelectLevelDisplay extends AbstractDisplay {
 	
 	public void initControllers() {
 		for (int i = 0; i < 1; i++) {
-			LevelDisplay lvlDisplay = new LevelDisplay(model, gameMode);
+			LevelDisplay lvlDisplay = new LevelDisplay(model, model.level);
 			lvlDisplay.setBackController(new BackController(application, this));
 			btnLvl[i].addActionListener(new SelectPuzzleLevelButtonController(model, application, lvlDisplay));
 		}

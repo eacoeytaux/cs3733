@@ -12,6 +12,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
 import controllers.BackController;
+import entities.AbstractLevel;
 import entities.Board;
 import entities.Game;
 import entities.Model;
@@ -19,7 +20,8 @@ import entities.Model;
 public class LevelDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 	
-	BoardDisplay board;
+
+	Board board;
 	int gameMode;
 	int level;
 	int score;
@@ -34,11 +36,15 @@ public class LevelDisplay extends AbstractDisplay {
 	
 	JLabel lblMovesTimeLeft;
 	
-	public LevelDisplay(Model model, int gameMode) {
+	public LevelDisplay(Model model, AbstractLevel level) {
 		super(model);
 		
-		this.gameMode = gameMode;
-		
+		this.board = level.getBoard();
+		this.gameMode = Game.PUZZLE_ID;
+		this.level = level.getLevel();
+		this.score = level.getInfo().getScore();
+		this.moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
+
 		btnBack = new JButton("Back");
 		
 		setup();
@@ -63,7 +69,7 @@ public class LevelDisplay extends AbstractDisplay {
 		
 		JLabel lblNewLabel_1 = new JLabel("Game Mode/Level #");
 		
-		BoardDisplay panel = new BoardDisplay(model, new Board(null));
+		BoardDisplay panel = new BoardDisplay(model, this.board);
 		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
