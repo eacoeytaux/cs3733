@@ -6,7 +6,7 @@ public class Blueprint implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	Square[][] board;
-	int levelType, shuffle, swap, remove, timeTotal, movesTotal;
+	int levelType, shuffle, swap, remove, movesTotal;
 	int[] starRequirements, valueFrequencies, multiplierFrequencies;
 
 	public Blueprint() {
@@ -27,7 +27,7 @@ public class Blueprint implements Serializable {
 			}
 		}
 		string += board.toString() + "\nlevelType: " + levelType + ", shuffle: " + shuffle + ", swap: " + swap
-				+ ", remove: " + remove + ", timeTotal: " + timeTotal + ", movesTotal: " + movesTotal;
+				+ ", remove: " + remove + ", movesTotal: " + movesTotal;
 		for (int i = 0; i < starRequirements.length; i++) {
 			string += ", starReq" + i + ": " + starRequirements[i];
 		}
@@ -40,12 +40,11 @@ public class Blueprint implements Serializable {
 		return string;
 	}
 	
-	public void setValues(int levelType, int shuffle, int swap, int remove, int timeTotal, int movesTotal, int[] starRequirements, int[] valueFrequencies, int[] multiplierFrequencies) {
+	public void setValues(int levelType, int shuffle, int swap, int remove, int movesTotal, int[] starRequirements, int[] valueFrequencies, int[] multiplierFrequencies) {
 		this.levelType = levelType;
 		this.shuffle = shuffle;
 		this.swap = swap;
 		this.remove = remove;
-		this.timeTotal = timeTotal;
 		this.movesTotal = movesTotal;
 		this.starRequirements = starRequirements;
 		this.valueFrequencies = valueFrequencies;

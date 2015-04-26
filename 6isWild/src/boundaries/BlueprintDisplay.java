@@ -35,6 +35,17 @@ public class BlueprintDisplay extends JPanel {
 	JComboBox tileTypeComboBox;
 	BuilderBoardDisplay panel;
 	
+	JSlider slider_1;
+	JSlider slider_2;
+	JSlider slider_3;
+	JSlider slider_4;
+	JSlider slider_5;
+	JSlider slider_6;
+
+	JSlider slider_x1;
+	JSlider slider_x2;
+	JSlider slider_x3;
+	
 	public BlueprintDisplay(Blueprint blueprint) {
 		this.blueprint = blueprint;
 		
@@ -46,6 +57,17 @@ public class BlueprintDisplay extends JPanel {
 		swapTextField = new JTextField();
 		removeTextField = new JTextField();
 		panel = new BuilderBoardDisplay(this, new Board(null));
+		
+		slider_1 = new JSlider();
+		slider_2 = new JSlider();
+		slider_3 = new JSlider();
+		slider_4 = new JSlider();
+		slider_5 = new JSlider();
+		slider_6 = new JSlider();
+
+		slider_x1 = new JSlider();
+		slider_x2 = new JSlider();
+		slider_x3 = new JSlider();
 		
 		setup();
 	}
@@ -101,18 +123,6 @@ public class BlueprintDisplay extends JPanel {
 		
 		JLabel lblNewLabel_1 = new JLabel("1:");
 		
-		JSlider slider_1 = new JSlider();
-		
-		JSlider slider_2 = new JSlider();
-		
-		JSlider slider_3 = new JSlider();
-		
-		JSlider slider_4 = new JSlider();
-		
-		JSlider slider_5 = new JSlider();
-		
-		JSlider slider_6 = new JSlider();
-		
 		JLabel lblNewLabel_2 = new JLabel("2:");
 		
 		JLabel lblNewLabel_3 = new JLabel("3:");
@@ -124,12 +134,6 @@ public class BlueprintDisplay extends JPanel {
 		JLabel lblNewLabel_6 = new JLabel("6:");
 		
 		JLabel lblTileMultiplierFrequencies = new JLabel("Tile Multiplier Frequencies:");
-		
-		JSlider slider_x1 = new JSlider();
-		
-		JSlider slider_x2 = new JSlider();
-		
-		JSlider slider_x3 = new JSlider();
 		
 		JLabel lblX1 = new JLabel("x1:");
 		
@@ -145,11 +149,7 @@ public class BlueprintDisplay extends JPanel {
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-							.addGroup(groupLayout.createSequentialGroup()
-								.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE)
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(slider_2, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE))
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 							.addGroup(groupLayout.createSequentialGroup()
 								.addComponent(lblNewLabel_3, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.UNRELATED)
@@ -170,10 +170,6 @@ public class BlueprintDisplay extends JPanel {
 								.addComponent(lblX3, GroupLayout.PREFERRED_SIZE, 20, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.RELATED)
 								.addComponent(slider_x3, 0, 0, Short.MAX_VALUE))
-							.addGroup(groupLayout.createSequentialGroup()
-								.addComponent(lblNewLabel_1)
-								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(slider_1, 0, 0, Short.MAX_VALUE))
 							.addGroup(groupLayout.createSequentialGroup()
 								.addComponent(lblRemovePowerups)
 								.addPreferredGap(ComponentPlacement.RELATED)
@@ -217,18 +213,29 @@ public class BlueprintDisplay extends JPanel {
 							.addGroup(groupLayout.createSequentialGroup()
 								.addComponent(lblNewLabel_6, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE)
 								.addPreferredGap(ComponentPlacement.UNRELATED)
-								.addComponent(slider_6, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE)))
+								.addComponent(slider_6, GroupLayout.PREFERRED_SIZE, 183, GroupLayout.PREFERRED_SIZE))
+							.addGroup(groupLayout.createSequentialGroup()
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+									.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
+										.addComponent(lblNewLabel_2, GroupLayout.PREFERRED_SIZE, 12, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.UNRELATED))
+									.addGroup(groupLayout.createSequentialGroup()
+										.addComponent(lblNewLabel_1)
+										.addGap(17)))
+								.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+									.addComponent(slider_1, 0, 0, Short.MAX_VALUE)
+									.addComponent(slider_2, GroupLayout.DEFAULT_SIZE, 183, Short.MAX_VALUE))))
 						.addComponent(lblTileValueFrequencies)
 						.addComponent(lblTileMultiplierFrequencies))
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE)
-					.addContainerGap(21, Short.MAX_VALUE))
+					.addContainerGap(16, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
-				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-						.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
 							.addComponent(panel, GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
@@ -272,8 +279,8 @@ public class BlueprintDisplay extends JPanel {
 							.addComponent(lblTileValueFrequencies)
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(slider_1, 0, 0, Short.MAX_VALUE)
-								.addComponent(lblNewLabel_1))
+								.addComponent(lblNewLabel_1)
+								.addComponent(slider_1, 0, 0, Short.MAX_VALUE))
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 								.addComponent(lblNewLabel_2)
@@ -338,6 +345,7 @@ public class BlueprintDisplay extends JPanel {
 	public void save() {
 		int levelType;
 		switch (levelModeComboBox.getSelectedIndex()) {
+		default:
 		case 0:
 			levelType = Game.PUZZLE_ID;
 			break;
@@ -355,7 +363,9 @@ public class BlueprintDisplay extends JPanel {
 		int swap = Integer.parseInt(swapTextField.getText());
 		int remove = Integer.parseInt(removeTextField.getText());
 		int movesTotal = Integer.parseInt(movesTextField.getText());
-		//int[] starRequirements;
-		//blueprint.setValues(levelType, shuffle, swap, remove, movesTotal, starRequirements, valueFrequencies, multiplierFrequencies);
+		int[] starRequirements = {Integer.parseInt(firstStarTextField.getText()), Integer.parseInt(secondStarTextField.getText()), Integer.parseInt(thirdStarTextField.getText())};
+		int[] valueFrequencies = {slider_1.getValue(), slider_2.getValue(), slider_3.getValue(), slider_4.getValue(), slider_5.getValue(), slider_6.getValue()};
+		int[] multiplierFrequencies = {slider_x1.getValue(), slider_x2.getValue(), slider_x3.getValue()};
+		blueprint.setValues(levelType, shuffle, swap, remove, movesTotal, starRequirements, valueFrequencies, multiplierFrequencies);
 	}
 }
