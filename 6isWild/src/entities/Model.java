@@ -15,7 +15,7 @@ public class Model {
 	
 	public Model() {
 		
-		blueprint.setValues(Game.PUZZLE_ID, 5, 4, 3, 40, 10, new int[]{2,2,2}, new int[]{20,20,20,20,20}, new int[]{30, 30, 40} );
+		blueprint.setValues(Game.PUZZLE_ID, 5, 4, 3, 40, new int[]{2,2,2}, new int[]{20,20,20,20,20}, new int[]{30, 30, 40} );
 		blueprint.setBoard(new Square[][]{{
 			new Square(new Tile(2,1), false, false),
 			new Square(new Tile(2,1), false, false),
