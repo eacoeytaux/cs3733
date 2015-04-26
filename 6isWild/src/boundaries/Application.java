@@ -95,23 +95,6 @@ public class Application extends JFrame {
 			break;
 		}
 	}
-
-	public void switchToLevel(int gameType, int levelNum) {
-		/*switch (gameType) {
-		case Game.PUZZLE_ID:
-			changePanel(puzzle_slDisplay);
-			break;
-		case Game.LIGHTNING_ID:
-			changePanel(lightning_slDisplay);
-			break;
-		case Game.ELIMINATION_ID:
-			changePanel(elimination_slDisplay);
-			break;
-		case Game.RELEASE_ID:
-			changePanel(release_slDisplay);
-			break;
-		}*/
-	}
 	
 	public LevelStatDisplay getLSDisplay(){
 		return this.lsDisplay;

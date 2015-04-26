@@ -15,6 +15,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import entities.Blueprint;
 import entities.Board;
+import entities.Game;
 import entities.Square;
 import entities.Tile;
 
@@ -332,5 +333,29 @@ public class BlueprintDisplay extends JPanel {
 					
 		}
 				
+	}
+	
+	public void save() {
+		int levelType;
+		switch (levelModeComboBox.getSelectedIndex()) {
+		case 0:
+			levelType = Game.PUZZLE_ID;
+			break;
+		case 1:
+			levelType = Game.LIGHTNING_ID;
+			break;
+		case 2:
+			levelType = Game.ELIMINATION_ID;
+			break;
+		case 3:
+			levelType = Game.RELEASE_ID;
+			break;
+		}
+		int shuffle = Integer.parseInt(shuffleTextField.getText());
+		int swap = Integer.parseInt(swapTextField.getText());
+		int remove = Integer.parseInt(removeTextField.getText());
+		int movesTotal = Integer.parseInt(movesTextField.getText());
+		//int[] starRequirements;
+		//blueprint.setValues(levelType, shuffle, swap, remove, movesTotal, starRequirements, valueFrequencies, multiplierFrequencies);
 	}
 }

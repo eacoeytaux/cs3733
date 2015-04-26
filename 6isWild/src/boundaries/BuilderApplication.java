@@ -2,6 +2,8 @@ package boundaries;
 
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -37,6 +39,15 @@ public class BuilderApplication extends JFrame {
         JMenuItem saveMenuItem = new JMenuItem("Save");
         JMenuItem loadMenuItem = new JMenuItem("Load");
 
+        saveMenuItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				saveBoard();
+			}
+        	
+        });
+        
         file.add(saveMenuItem);
         file.add(loadMenuItem);
         menubar.add(file);
@@ -47,5 +58,9 @@ public class BuilderApplication extends JFrame {
 		getContentPane().removeAll();
 		setContentPane(display);
 		pack();
+	}
+	
+	public void saveBoard() {
+		
 	}
 }
