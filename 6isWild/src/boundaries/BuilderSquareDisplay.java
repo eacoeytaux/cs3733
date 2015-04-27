@@ -48,7 +48,7 @@ public class BuilderSquareDisplay extends JPanel {
 	}
 
 	public void changeSquare() {
-		square = parent.getNewSquare();
+		square.copyValues(parent.getNewSquare());
 		setup();
 	}
 }

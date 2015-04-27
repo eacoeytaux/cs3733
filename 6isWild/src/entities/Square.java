@@ -30,6 +30,13 @@ public class Square implements Serializable {
 		return bucket;
 	}
 	
+	public void copyValues(Square other) {
+		tile = other.tile;
+		inert = other.inert;
+		bucket = other.bucket;
+		bucketFull = other.bucketFull;
+	}
+	
 	@Override
 	public String toString() {
 		if (inert) return "inert";
