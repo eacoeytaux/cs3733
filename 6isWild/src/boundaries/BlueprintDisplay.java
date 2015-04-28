@@ -19,6 +19,11 @@ import entities.Game;
 import entities.Square;
 import entities.Tile;
 
+/**
+ * 
+ * @author eacoeytaux
+ *
+ */
 public class BlueprintDisplay extends JPanel {
 	private static final long serialVersionUID = 1L;
 	

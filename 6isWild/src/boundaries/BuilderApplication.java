@@ -17,7 +17,6 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
 import entities.Blueprint;
-import entities.Board;
 
 public class BuilderApplication extends JFrame {
 	private static final long serialVersionUID = 1L;
@@ -76,9 +75,6 @@ public class BuilderApplication extends JFrame {
 		pack();
 	}
 
-	/** 
-	 * saves the modified blueprint to storage
-	 */
 	public void saveBoard() {
 		display.setValues();
 
@@ -100,9 +96,6 @@ public class BuilderApplication extends JFrame {
 		}
 	}
 
-	/**
-	 * sets the current blueprint to blueprint from storage
-	 */
 	public void loadBoard() {
 		JFileChooser chooser = new JFileChooser();
 		chooser.setSelectedFile(new File("level.txt"));
