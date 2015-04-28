@@ -14,10 +14,10 @@ public class PuzzleLevel extends AbstractLevel {
 		this.info.swaps = blueprint.swap;
 		this.info.removes = blueprint.remove;
 		this.info.timeTotal = 45;
-		this.info.movesTotal = blueprint.movesTotal;
-		this.info.starRequirements = blueprint.starRequirements;
-		this.info.valueFrequencies = blueprint.valueFrequencies;
-		this.info.multiplierFrequencies = blueprint.multiplierFrequencies;
+		this.info.movesTotal = blueprint.getMovesTotal();
+		this.info.starRequirements = blueprint.getStarRequirements();
+		this.info.valueFrequencies = blueprint.getValueFrequencies();
+		this.info.multiplierFrequencies = blueprint.getMultiplierFrequencies();
 		
 	}
 	

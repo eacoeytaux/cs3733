@@ -56,7 +56,12 @@ public class BlueprintDisplay extends JPanel {
 		shuffleTextField = new JTextField();
 		swapTextField = new JTextField();
 		removeTextField = new JTextField();
-		panel = new BuilderBoardDisplay(this, new Board(null));
+
+		levelModeComboBox = new JComboBox();
+
+		tileTypeComboBox = new JComboBox();
+		
+		panel = new BuilderBoardDisplay(this, this.blueprint);
 		
 		slider_1 = new JSlider();
 		slider_2 = new JSlider();
@@ -64,10 +69,21 @@ public class BlueprintDisplay extends JPanel {
 		slider_4 = new JSlider();
 		slider_5 = new JSlider();
 		slider_6 = new JSlider();
+		
+		slider_1.setValue(blueprint.getValueFrequencies()[0]);
+		slider_2.setValue(blueprint.getValueFrequencies()[1]);
+		slider_3.setValue(blueprint.getValueFrequencies()[2]);
+		slider_4.setValue(blueprint.getValueFrequencies()[3]);
+		slider_5.setValue(blueprint.getValueFrequencies()[4]);
+		slider_6.setValue(blueprint.getValueFrequencies()[5]);
 
 		slider_x1 = new JSlider();
 		slider_x2 = new JSlider();
 		slider_x3 = new JSlider();
+		
+		slider_x1.setValue(blueprint.getMultiplierFrequencies()[0]);
+		slider_x2.setValue(blueprint.getMultiplierFrequencies()[1]);
+		slider_x3.setValue(blueprint.getMultiplierFrequencies()[2]);
 		
 		setup();
 	}
@@ -76,47 +92,46 @@ public class BlueprintDisplay extends JPanel {
 		
 		JLabel lblLevelModeSelect = new JLabel("Level Mode:");
 		
-		levelModeComboBox = new JComboBox();
 		levelModeComboBox.setModel(new DefaultComboBoxModel(new String[] {"Puzzle", "Lightning", "Elimination", "Release"}));
+		levelModeComboBox.setSelectedIndex(blueprint.getLevelType());
 		
 		JLabel lblTileType = new JLabel("Tile Type:");
 		
-		tileTypeComboBox = new JComboBox();
 		tileTypeComboBox.setModel(new DefaultComboBoxModel(new String[] {"Inert", "Bucket", "1", "2", "3", "4", "5", "6", "Random Value"}));
 		
 		JLabel lblNewLabel = new JLabel("Moves:");
 		
-		movesTextField.setText("25");
+		movesTextField.setText("" + blueprint.getMovesTotal());
 		movesTextField.setColumns(10);
 		
 		JLabel lblFirstStar = new JLabel("First Star:");
 		
-		firstStarTextField.setText("100");
+		firstStarTextField.setText("" + blueprint.getStarRequirements()[0]);
 		firstStarTextField.setColumns(10);
 		
 		JLabel lblSecondStar = new JLabel("Second Star:");
 		
-		secondStarTextField.setText("200");
+		secondStarTextField.setText("" + blueprint.getStarRequirements()[1]);
 		secondStarTextField.setColumns(10);
 		
 		JLabel lblThirdStar = new JLabel("Third Star:");
 		
-		thirdStarTextField.setText("300");
+		thirdStarTextField.setText("" + blueprint.getStarRequirements()[2]);
 		thirdStarTextField.setColumns(10);
 		
 		JLabel lblShufflePowerups = new JLabel("Shuffle Powerups:");
 		
-		shuffleTextField.setText("5");
+		shuffleTextField.setText("" + blueprint.getShuffle());
 		shuffleTextField.setColumns(10);
 		
 		JLabel lblSwapPowerups = new JLabel("Swap Powerups:");
 		
-		swapTextField.setText("5");
+		swapTextField.setText("" + blueprint.getSwap());
 		swapTextField.setColumns(10);
 		
 		JLabel lblRemovePowerups = new JLabel("Remove Powerups:");
 		
-		removeTextField.setText("5");
+		removeTextField.setText("" + blueprint.getRemove());
 		removeTextField.setColumns(10);
 		
 		JLabel lblTileValueFrequencies = new JLabel("Tile Value Frequencies:");
@@ -342,7 +357,7 @@ public class BlueprintDisplay extends JPanel {
 				
 	}
 	
-	public void save() {
+	public void setValues() {
 		int levelType;
 		switch (levelModeComboBox.getSelectedIndex()) {
 		default:

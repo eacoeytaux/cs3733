@@ -6,27 +6,26 @@ import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import controllers.BuilderSquareController;
+import entities.Blueprint;
 import entities.Board;
-import entities.Model;
 import entities.Square;
-import entities.Tile;
 
 public class BuilderBoardDisplay extends JPanel {
 	private static final long serialVersionUID = 1L;
 
 	BlueprintDisplay parent;
-	Board board;
-	BuilderSquareDisplay[][] squares;
+	Blueprint blueprint;
+	//Board board;
+	BuilderSquareDisplay[][] squaresDisplay;
 	JPanel panel;
 
-	public BuilderBoardDisplay(BlueprintDisplay parent, Board board) {
+	public BuilderBoardDisplay(BlueprintDisplay parent, Blueprint blueprint) {
 		this.parent = parent;
-		this.board = board;
+		this.blueprint = blueprint;
 
-		squares = new BuilderSquareDisplay[9][9];
+		squaresDisplay = new BuilderSquareDisplay[9][9];
 
 		setLayout(new GridLayout(1, 0, 0, 0));
-
 
 		panel = new JPanel();
 		add(panel);
@@ -34,11 +33,11 @@ public class BuilderBoardDisplay extends JPanel {
 
 		for( int i=0; i< 9; i++){
 			for( int j=0; j<9; j++){
-				squares[i][j] = new BuilderSquareDisplay(this, board.getSquare(i, j));
-				squares[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
-				squares[i][j].setBounds(i*62, j*62, 62, 62);
-				squares[i][j].addMouseListener(new BuilderSquareController(squares[i][j]));
-				panel.add(squares[i][j]);
+				squaresDisplay[i][j] = new BuilderSquareDisplay(this, blueprint.board[i][j]);
+				squaresDisplay[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
+				squaresDisplay[i][j].setBounds(i*62, j*62, 62, 62);
+				squaresDisplay[i][j].addMouseListener(new BuilderSquareController(squaresDisplay[i][j]));
+				panel.add(squaresDisplay[i][j]);
 			}
 		}
 	}
