@@ -2,6 +2,11 @@ package entities;
 
 import java.io.Serializable;
 
+/**
+ * Tile contains a value and a multiplier
+ * @author Hugh Whelan
+ *
+ */
 public class Tile implements Serializable {
 	private static final long serialVersionUID = 1L;
 	

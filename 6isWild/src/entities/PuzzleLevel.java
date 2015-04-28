@@ -2,6 +2,11 @@ package entities;
 
 import boundaries.BoardDisplay;
 
+/**
+ * Puzzle levels have no extension to the AbstractLevel Class.  Puzzle levels are constructed from a blueprint
+ * @author Hugh Whelan
+ *
+ */
 public class PuzzleLevel extends AbstractLevel {
 	
 	

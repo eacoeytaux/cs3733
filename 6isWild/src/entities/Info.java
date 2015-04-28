@@ -1,5 +1,10 @@
 package entities;
 
+/**
+ * this class contains the info that is needed for all levels
+ * @author Hugh Whelan
+ *
+ */
 public class Info {
 	int movesPlayed;
 	int movesTotal;

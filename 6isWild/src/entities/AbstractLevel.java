@@ -1,5 +1,10 @@
 package entities;
 
+/**
+ * Abstract class for all levels
+ * @author Hugh Whelan
+ *
+ */
 public abstract class AbstractLevel {
 	int level;
 	Board board;

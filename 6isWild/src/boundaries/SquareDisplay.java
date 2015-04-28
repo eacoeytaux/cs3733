@@ -6,6 +6,11 @@ import javax.swing.GroupLayout.Alignment;
 import entities.Model;
 import entities.Square;
 
+/**
+ * Boundary class, displays a Square, which contains a Tile and a border
+ * @author Hugh Whelan
+ *
+ */
 public class SquareDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 	

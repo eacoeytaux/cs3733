@@ -10,6 +10,12 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import entities.Model;
 import entities.Tile;
 
+
+/**
+ * Boundary class, displays a Tile, which contains a value and a multiplier
+ * @author Hugh Whelan
+ *
+ */
 public class TileDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 
