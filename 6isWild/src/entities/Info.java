@@ -41,4 +41,16 @@ public class Info {
 	public int getMovesPlayed(){
 		return this.movesPlayed;
 	}
+	
+	public int getSwaps(){
+		return this.swaps;
+	}
+	
+	public int getShuffles(){
+		return this.shuffles;
+	}
+	
+	public int getRemoves(){
+		return this.removes;
+	}
 }

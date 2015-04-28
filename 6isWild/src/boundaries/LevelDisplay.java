@@ -44,6 +44,7 @@ public class LevelDisplay extends AbstractDisplay {
 		this.level = level.getLevel();
 		this.score = level.getInfo().getScore();
 		this.moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
+		this.powerUps = new int[]{level.getInfo().getSwaps(), level.getInfo().getShuffles(), level.getInfo().getRemoves()};
 
 		btnBack = new JButton("Back");
 		
@@ -59,11 +60,11 @@ public class LevelDisplay extends AbstractDisplay {
 		
 		lblMovesTimeLeft = new JLabel(((gameMode == Game.LIGHTNING_ID) ? "Time" : "Moves") + " left: ---");
 		
-		JButton btnNewButton = new JButton("Swap (1)");
+		JButton btnNewButton = new JButton("" + powerUps[0]);
 		
-		JButton btnShuffle = new JButton("Shuffle (1)");
+		JButton btnShuffle = new JButton("" + powerUps[1]);
 		
-		JButton btnRemove = new JButton("Remove (1)");
+		JButton btnRemove = new JButton("" + powerUps[2]);
 		
 		
 		

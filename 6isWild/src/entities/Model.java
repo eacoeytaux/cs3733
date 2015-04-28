@@ -34,7 +34,7 @@ public class Model {
 			new Square(new Tile(2,1), false, false),
 			new Square(new Tile(2,1), false, false),
 			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
+			new Square(new Tile(4,3), false, false),
 			new Square(new Tile(2,1), false, false)},{
 				
 			new Square(new Tile(2,1), false, false),
