@@ -11,6 +11,9 @@ public class InertDisplay extends AbstractDisplay {
 		setup();
 	}
 
+	/**
+	 * sets up display of inert Tile
+	 */
 	@Override
 	public void setup() {
 

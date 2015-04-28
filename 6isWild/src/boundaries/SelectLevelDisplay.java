@@ -55,6 +55,9 @@ public class SelectLevelDisplay extends AbstractDisplay {
 		initControllers();
 	}
 	
+	/**
+	 * initialize level display, then adds a back button and  adds action listener to that back button
+	 */
 	public void initControllers() {
 		for (int i = 0; i < 1; i++) {
 			LevelDisplay lvlDisplay = new LevelDisplay(model, model.level);
@@ -63,6 +66,9 @@ public class SelectLevelDisplay extends AbstractDisplay {
 		}
 	}
 	
+	/**
+	 * setup for select Level Display
+	 */
 	@Override
 	public void setup() {
 		JButton button = new JButton("2");
@@ -127,6 +133,10 @@ public class SelectLevelDisplay extends AbstractDisplay {
 		setLayout(groupLayout);
 	}
 	
+	/**
+	 *  adds action listener to back button
+	 * @param c controller back button
+	 */
 	public void setBackController(BackController c) {
 		btnBack.addActionListener(c);
 	}

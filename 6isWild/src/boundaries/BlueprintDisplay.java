@@ -87,7 +87,9 @@ public class BlueprintDisplay extends JPanel {
 		
 		setup();
 	}
-	
+	/**
+	 * sets up display of the blueprint
+	 */
 	public void setup() {
 		
 		JLabel lblLevelModeSelect = new JLabel("Level Mode:");
@@ -357,6 +359,9 @@ public class BlueprintDisplay extends JPanel {
 				
 	}
 	
+	/**
+	 * takes values set by user and applies them to the blueprint, changing all values to the corresponding changes made in the builder
+	 */
 	public void setValues() {
 		int levelType;
 		switch (levelModeComboBox.getSelectedIndex()) {

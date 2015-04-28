@@ -23,6 +23,9 @@ public class BuilderSquareDisplay extends JPanel {
 		setup();
 	}
 
+	/**
+	 * sets up display of Builder Square
+	 */
 	public void setup() {
 		if (square.isInert()) display = new InertDisplay(null);
 		else if (square.isBucket()) display = new BucketDisplay(null);
@@ -47,6 +50,9 @@ public class BuilderSquareDisplay extends JPanel {
 		setLayout(groupLayout);
 	}
 
+	/**
+	 * 
+	 */
 	public void changeSquare() {
 		square.copyValues(parent.getNewSquare());
 		setup();

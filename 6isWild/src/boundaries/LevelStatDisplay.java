@@ -24,6 +24,9 @@ public class LevelStatDisplay extends AbstractDisplay {
 		btnBack = new JButton("Back");
 	}
 
+	/**
+	 * setup for Level Stat Display
+	 */
 	@Override
 	public void setup() {
 		
@@ -157,6 +160,10 @@ public class LevelStatDisplay extends AbstractDisplay {
 		setLayout(groupLayout);
 	}
 	
+	/**
+	 * adds an action listener to back button
+	 * @param c controller for back button
+	 */
 	public void setBackController(BackController c) {
 		btnBack.addActionListener(c);
 	}

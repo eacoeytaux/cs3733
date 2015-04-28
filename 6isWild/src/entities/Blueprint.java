@@ -54,11 +54,15 @@ public class Blueprint implements Serializable {
 		multiplierFrequencies[2] = 50;
 	}
 	
+	
 	public void changeSquare(int row, int col, Square square) {
 		getBoard()[row][col] = square;
 		System.out.println(square.tile.value);
 	}
 
+	/**
+	 * converts a blueprint to a String
+	 */
 	@Override
 	public String toString() {
 		String string = "";

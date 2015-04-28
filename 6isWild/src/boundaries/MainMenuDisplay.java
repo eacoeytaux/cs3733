@@ -43,6 +43,9 @@ public class MainMenuDisplay extends AbstractDisplay {
 		}
 	}
 
+	/**
+	 * sets up display of main menu
+	 */
 	@Override
 	public void setup() {
 		GroupLayout groupLayout = new GroupLayout(this);
@@ -67,10 +70,18 @@ public class MainMenuDisplay extends AbstractDisplay {
 		setLayout(groupLayout);
 	}
 
+	/**
+	 * adds Action listener to play game button
+	 * @param c play game button controller
+	 */
 	public void setPlayGameButtonController(PlayGameButtonController c) {
 		playGameButton.addActionListener(c);
 	}
 
+	/**
+	 * adds Action Listener to stats Button
+	 * @param c Stats button Controller
+	 */
 	public void setStatsButtonController(StatsButtonController c) {
 		statsButton.addActionListener(c);
 	}

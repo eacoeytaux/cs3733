@@ -20,6 +20,9 @@ public class SplashScreenDisplay extends JPanel {
 		requestFocus();
 	}
 	
+	/**
+	 * loads and display splash screen
+	 */
 	public void setSplashScreen() {
 		Graphics g = getGraphics();
 		BufferedImage splashScreen;

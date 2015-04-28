@@ -17,6 +17,9 @@ public class Builder {
 		new Builder();
 	}
 	
+	/**
+	 * disposes of builder when closed
+	 */
 	public void closeBuilder() {
 		builderApplication.dispose();
 	}

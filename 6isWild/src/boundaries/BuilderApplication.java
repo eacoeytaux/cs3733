@@ -76,6 +76,9 @@ public class BuilderApplication extends JFrame {
 		pack();
 	}
 
+	/** 
+	 * saves the modified blueprint to storage
+	 */
 	public void saveBoard() {
 		display.setValues();
 
@@ -97,6 +100,9 @@ public class BuilderApplication extends JFrame {
 		}
 	}
 
+	/**
+	 * sets the current blueprint to blueprint from storage
+	 */
 	public void loadBoard() {
 		JFileChooser chooser = new JFileChooser();
 		chooser.setSelectedFile(new File("level.txt"));

@@ -22,14 +22,26 @@ public class Square implements Serializable {
 		return tile;
 	}
 	
+	/**
+	 * return true if tile is inert
+	 * @return boolean true if tile is inert, false otherwise
+	 */
 	public boolean isInert() {
 		return inert;
 	}
 	
+	/**
+	 * return true if tile is a bucket
+	 * @return boolean true if tile is a bucket, false otherwise
+	 */
 	public boolean isBucket() {
 		return bucket;
 	}
 	
+	/**
+	 * changes all attributes of this to match other square
+	 * @param other square to be copied
+	 */
 	public void copyValues(Square other) {
 		tile = other.tile;
 		inert = other.inert;
@@ -37,6 +49,9 @@ public class Square implements Serializable {
 		bucketFull = other.bucketFull;
 	}
 	
+	/**
+	 * converts square to string.  If it is inert or a bucket, that is the string.  Otherwise the tile in the square is converted to a string and returned
+	 */
 	@Override
 	public String toString() {
 		if (inert) return "inert";

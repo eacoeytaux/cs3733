@@ -21,6 +21,9 @@ public class Tile implements Serializable {
 		return multiplier;
 	}
 	
+	/**
+	 * converts to string in the format "value:multiplier"
+	 */
 	@Override
 	public String toString() {
 		return value + ":" + multiplier;

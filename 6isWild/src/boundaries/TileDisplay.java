@@ -22,6 +22,9 @@ public class TileDisplay extends AbstractDisplay {
 		setup();
 	}
 
+	/**
+	 * sets up tile display
+	 */
 	public void setup() {
 		JLabel lblNewLabel = new JLabel("" + tile.getValue());
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
@@ -49,6 +52,10 @@ public class TileDisplay extends AbstractDisplay {
 		setLayout(groupLayout);
 	}
 
+	/**
+	 * sets this tile to given tile
+	 * @param tile tile that is to be placed in this.tile
+	 */
 	public void changeTile(Tile tile) {
 		this.tile = tile;
 		setup();

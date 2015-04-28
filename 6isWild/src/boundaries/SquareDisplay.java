@@ -25,6 +25,9 @@ public class SquareDisplay extends AbstractDisplay {
 		setup();
 	}
 
+	/**
+	 * sets up square display
+	 */
 	@Override
 	public void setup() {
 

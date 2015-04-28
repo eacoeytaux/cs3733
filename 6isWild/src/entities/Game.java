@@ -19,28 +19,47 @@ public class Game {
 		new Game();
 	}
 	
+	/**
+	 * Call all initialize functions
+	 */
 	private void init() {
 		initializeEntities();
 		initializeBoundaries();
 		initializeControllers();
 	}
 	
+	/**
+	 * create new Model entity
+	 */
 	private void initializeEntities(){
 		model = new Model();	
 	}
 	
+	/**
+	 * create new application boundary
+	 */
 	private void initializeBoundaries(){
 		application = new Application(model);
 	}
 	
+	/**
+	 * initialize controllers
+	 */
 	private void initializeControllers(){
 		
 	}
 	
+	/**
+	 * dispose of game when closed
+	 */
 	public void closeGame() {
 		application.dispose();
 	}
 	
+	/**
+	 * return application boundary
+	 * @return
+	 */
 	public Application getApplication() {
 		return this.application;
 	}

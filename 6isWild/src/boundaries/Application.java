@@ -45,6 +45,9 @@ public class Application extends JFrame {
 		changePanel(mmDisplay);
 	}
 
+	/**
+	 * initializes all menu displays, then initializes controllers for these menus
+	 */
 	private void init() {
 		mmDisplay = new MainMenuDisplay(model, this);
 		lsDisplay = new LevelStatDisplay(model, this);
@@ -53,6 +56,9 @@ public class Application extends JFrame {
 		initControllers();
 	}
 
+	/**
+	 * initializes controllers for menus. this includes button controllers
+	 */
 	private void initControllers() {
 		mmDisplay.setPlayGameButtonController(new PlayGameButtonController(this, sgmDisplay));
 		mmDisplay.setStatsButtonController(new StatsButtonController(this, lsDisplay));
@@ -66,6 +72,10 @@ public class Application extends JFrame {
 		sgmDisplay.setReleaseButtonController(new SelectGameModeButtonController(this));
 	}
 
+	/**
+	 * Changes what is being displayed on the screen.
+	 * @param nextDisplay the next Display to be displayed
+	 */
 	public void changePanel(AbstractDisplay nextDisplay) {
 		if (nextDisplay != null) {
 			getContentPane().removeAll();
@@ -79,6 +89,10 @@ public class Application extends JFrame {
 		}
 	}
 
+	/**
+	 * changes the display to selectLevelDisplay corresponding to the game mode chosen
+	 * @param gameType game mode chosen
+	 */
 	public void switchToLevelSelect(int gameType) {
 		switch (gameType) {
 		case Game.PUZZLE_ID:

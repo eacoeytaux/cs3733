@@ -17,6 +17,9 @@ public class BucketDisplay extends AbstractDisplay {
 		setup();
 	}
 
+	/**
+	 * sets up display of Bucket
+	 */
 	@Override
 	public void setup() {
 

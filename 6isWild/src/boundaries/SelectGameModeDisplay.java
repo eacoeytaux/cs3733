@@ -70,6 +70,9 @@ public class SelectGameModeDisplay extends AbstractDisplay {
 		}
 	}
 
+	/**
+	 * sets up Select game mode display
+	 */
 	@Override
 	public void setup() {
 		
@@ -108,6 +111,9 @@ public class SelectGameModeDisplay extends AbstractDisplay {
 		setLayout(groupLayout);
 	}
 
+	/**
+	 * creates level select menu display for all game modes, then sets back button controllers for the menus
+	 */
 	public void initBoundaries() { //TODO pass level data
 		puzzleLevelDisplay = new SelectLevelDisplay(model, application, Game.PUZZLE_ID);
 		puzzleLevelDisplay.setBackController(new BackController(application, this));
@@ -122,25 +128,45 @@ public class SelectGameModeDisplay extends AbstractDisplay {
 		releaseLevelDisplay.setBackController(new BackController(application, this));
 	}
 
+	/**
+	 * adds an action listener to back button
+	 * @param c controller for back button
+	 */
 	public void setBackController(BackController c) {
 		btnBack.addActionListener(c);
 	}
 
+	/**
+	 * sets next display to be this game mode's level select, and adds action listener to this game modes button in select game mode menu
+	 * @param c controller for select Game mode button
+	 */
 	public void setPuzzleButtonController(SelectGameModeButtonController c) {
 		c.setNextDisplay(puzzleLevelDisplay);
 		btnPuzzle.addActionListener(c);
 	}
 
+	/**
+	 * sets next display to be this game mode's level select, and adds action listener to this game modes button in select game mode menu
+	 * @param c controller for select Game mode button
+	 */
 	public void setLightningButtonController(SelectGameModeButtonController c) {
 		c.setNextDisplay(lightningLevelDisplay);
 		btnLightning.addActionListener(c);
 	}
 
+	/**
+	 * sets next display to be this game mode's level select, and adds action listener to this game modes button in select game mode menu
+	 * @param c controller for select Game mode button
+	 */
 	public void setEliminationButtonController(SelectGameModeButtonController c) {
 		c.setNextDisplay(eliminationLevelDisplay);
 		btnElimination.addActionListener(c);
 	}
 
+	/**
+	 * sets next display to be this game mode's level select, and adds action listener to this game modes button in select game mode menu
+	 * @param c controller for select Game mode button
+	 */
 	public void setReleaseButtonController(SelectGameModeButtonController c) {
 		c.setNextDisplay(releaseLevelDisplay);
 		btnRelease.addActionListener(c);

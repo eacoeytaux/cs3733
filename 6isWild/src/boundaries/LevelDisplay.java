@@ -51,6 +51,9 @@ public class LevelDisplay extends AbstractDisplay {
 		setup();
 	}
 	
+	/**
+	 * sets up display of Level
+	 */
 	@Override
 	public void setup() {
 		
@@ -125,6 +128,10 @@ public class LevelDisplay extends AbstractDisplay {
 		setLayout(groupLayout);
 	}
 	
+	/**
+	 * adds an action listener to back button
+	 * @param c controller for back button
+	 */
 	public void setBackController(BackController c) {
 		btnBack.addActionListener(c);
 	}
