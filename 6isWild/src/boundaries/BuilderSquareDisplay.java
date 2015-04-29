@@ -77,7 +77,7 @@ public class BuilderSquareDisplay extends JPanel {
 	}
 	
 	public Square getCopySquare() {
-		return( new Square(this.square.getTile(), this.square.isInert(), this.square.isInert()) );
+		return( new Square(this.square.getTile(), this.square.isInert(), this.square.isInert(), this.square.getParentBoard(), this.square.getIIndex(), this.square.getJIndex()) );
 	}
 	
 	/**

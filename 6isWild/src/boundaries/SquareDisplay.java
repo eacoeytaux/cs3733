@@ -1,5 +1,8 @@
 package boundaries;
 
+import java.awt.Color;
+
+import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 
@@ -39,6 +42,12 @@ public class SquareDisplay extends AbstractDisplay {
 		if (square.isInert()) display = new InertDisplay(model);
 		else if (square.isBucket()) display = new BucketDisplay(model);
 		else display = new TileDisplay(model, square.getTile());
+		if(square.isSelected()){
+			this.setBorder(BorderFactory.createBevelBorder(1, new Color(100,0,0), new Color(100,0,0))); 
+		}
+		else{
+			this.setBorder(BorderFactory.createEmptyBorder());
+		}
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -57,4 +66,7 @@ public class SquareDisplay extends AbstractDisplay {
 		setLayout(groupLayout);
 	}
 	
+	public Square getSquare(){
+		return this.square;
+	}
 }

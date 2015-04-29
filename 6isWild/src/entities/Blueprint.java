@@ -20,12 +20,14 @@ public class Blueprint implements Serializable {
 	int[] valueFrequencies;
 
 	int[] multiplierFrequencies;
+	
+	Board futureBoard;
 
 	public Blueprint() {
 		board = new Square[9][9];
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				board[i][j] = new Square(new Tile(0, 0), false, false);
+				board[i][j] = new Square(new Tile(0, 0), false, false, null, i, j);
 			}
 		}
 		
