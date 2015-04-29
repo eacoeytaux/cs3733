@@ -42,8 +42,8 @@ public abstract class AbstractLevel {
 	}
 	
 	public void resetBoard() {
-		this.board = new Board(blueprint.board.clone());
-		board.fillRandom();
+		this.board = blueprint.board.clone();
+		//board.fillRandom();
 	}
 	
 }

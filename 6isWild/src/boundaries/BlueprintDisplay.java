@@ -79,6 +79,10 @@ public class BlueprintDisplay extends JPanel {
 		slider_5 = new JSlider();
 		slider_6 = new JSlider();
 		
+		if(builder.getBlueprint() == null){
+			System.out.println("null");
+		}
+		
 		slider_1.setValue(blueprint.getValueFrequencies()[0]);
 		slider_2.setValue(blueprint.getValueFrequencies()[1]);
 		slider_3.setValue(blueprint.getValueFrequencies()[2]);

@@ -41,7 +41,8 @@ public class SquareDisplay extends AbstractDisplay {
 
 		if (square.isInert()) display = new InertDisplay(model);
 		else if (square.isBucket()) display = new BucketDisplay(model);
-		else display = new TileDisplay(model, square.getTile());
+		else display = new TileDisplay(model, this.square.getTile());
+		
 		if(square.isSelected()){
 			this.setBorder(BorderFactory.createLineBorder(Color.red));
 		}

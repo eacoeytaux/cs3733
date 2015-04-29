@@ -38,7 +38,13 @@ public class BuilderBoardDisplay extends JPanel {
 
 		for( int i=0; i< 9; i++){
 			for( int j=0; j<9; j++){
-				squaresDisplay[i][j] = new BuilderSquareDisplay(this, blueprint.board[i][j]);
+				if(blueprint.getBoard()==null){
+					System.out.println("no");
+				}
+				if(blueprint.getBoard().getSquare(i,j)==null){
+					System.out.println("nono");
+				}
+				squaresDisplay[i][j] = new BuilderSquareDisplay(this, blueprint.getBoard().getSquare(i,j));
 				squaresDisplay[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
 				squaresDisplay[i][j].setBounds(i*62, j*62, 62, 62);
 				squaresDisplay[i][j].addMouseListener(new BuilderSquareController(squaresDisplay[i][j]));
