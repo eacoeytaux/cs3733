@@ -14,9 +14,13 @@ public class SaveScore {
 		this.level = level;
 		Info info = level.getInfo();
 		Stat stat = level.getStats();
-		if(info.getScore() > stat.getScore())
+		if(info.getScore() > stat.getScore())  //if the score from the completed level is higher than the recorded high score
 		{
-			stat.setScore(info.getScore());
+			stat.setScore(info.getScore());   //assign the level's score as the new high score
+			
+			/*
+			 * Check how many stars the player has earned, and assign that in the stats
+			 */
 			if(info.getScore() > info.getStarRequirements()[2]){
 				stat.setStars(3);
 			}
