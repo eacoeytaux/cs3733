@@ -45,4 +45,8 @@ public class BuilderBoardDisplay extends JPanel {
 	public Square getNewSquare() {
 		return parent.getNewSquare();
 	}
+	
+	public BuilderSquareDisplay getSquareDisplay(int row, int col) {
+		return squaresDisplay[row][col];
+	}
 }

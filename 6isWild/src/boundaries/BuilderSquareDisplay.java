@@ -51,10 +51,18 @@ public class BuilderSquareDisplay extends JPanel {
 	}
 
 	/**
-	 * 
+	 * updates square to values on current board
 	 */
 	public void changeSquare() {
 		square.copyValues(parent.getNewSquare());
 		setup();
+	}
+	
+	/**
+	 * returns square held in display
+	 * @return
+	 */
+	public Square getSquare() {
+		return square;
 	}
 }

@@ -46,6 +46,7 @@ public class BuilderApplication extends JFrame {
 
 		JMenu file = new JMenu("File");
 
+		JMenuItem newMenuItem = new JMenuItem("New");
 		JMenuItem saveMenuItem = new JMenuItem("Save");
 		JMenuItem loadMenuItem = new JMenuItem("Load");
 
@@ -65,6 +66,7 @@ public class BuilderApplication extends JFrame {
 			}
 		});
 
+		file.add(newMenuItem);
 		file.add(saveMenuItem);
 		file.add(loadMenuItem);
 		menubar.add(file);
@@ -118,5 +120,9 @@ public class BuilderApplication extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public BlueprintDisplay getDisplay() {
+		return display;
 	}
 }

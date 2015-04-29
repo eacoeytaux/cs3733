@@ -1,6 +1,5 @@
 package entities;
 
-import boundaries.Application;
 import boundaries.BuilderApplication;
 
 public class Builder {
@@ -22,5 +21,13 @@ public class Builder {
 	 */
 	public void closeBuilder() {
 		builderApplication.dispose();
+	}
+	
+	/**
+	 * gets builderApplication
+	 * @return
+	 */
+	public BuilderApplication getBuilderApplication() {
+		return builderApplication;
 	}
 }
