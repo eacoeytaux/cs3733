@@ -39,7 +39,8 @@ public class LevelDisplay extends AbstractDisplay {
 	public LevelDisplay(Model model, AbstractLevel level) {
 		super(model);
 		
-		this.board = level.getBoard();
+		this.board = level.getBoard().clone();
+		this.board.fillRandom();
 		this.gameMode = Game.PUZZLE_ID;
 		this.level = level.getLevel();
 		this.score = level.getInfo().getScore();
@@ -47,21 +48,14 @@ public class LevelDisplay extends AbstractDisplay {
 		this.powerUps = new int[]{level.getInfo().getSwaps(), level.getInfo().getShuffles(), level.getInfo().getRemoves()};
 
 		btnBack = new JButton("Back");
-		
-		setup();
-	}
-	
-	/**
-	 * sets up display of Level
-	 */
-	@Override
-	public void setup() {
+
 		
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setMaximum(200);
 		progressBar.setOrientation(SwingConstants.VERTICAL);
 		
-		lblMovesTimeLeft = new JLabel(((gameMode == Game.LIGHTNING_ID) ? "Time" : "Moves") + " left: ---");
+		lblMovesTimeLeft = new JLabel("Moves/time left: ---");
+		//lblMovesTimeLeft = new JLabel(((gameMode == Game.LIGHTNING_ID) ? "Time" : "Moves") + " left: ---");
 		
 		JButton btnNewButton = new JButton("" + powerUps[0]);
 		
@@ -90,11 +84,11 @@ public class LevelDisplay extends AbstractDisplay {
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(34)
 									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addComponent(btnShuffle, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
 										.addComponent(btnRemove, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-											.addComponent(lblMovesTimeLeft)
-											.addComponent(btnNewButton))))
+										.addComponent(lblMovesTimeLeft)
+										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+											.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addComponent(btnShuffle, GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))))
 								.addComponent(lblNewLabel_1)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(106)
@@ -102,15 +96,91 @@ public class LevelDisplay extends AbstractDisplay {
 					.addGap(755))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(12)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 						.addComponent(progressBar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE))
-					.addPreferredGap(ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-					.addContainerGap())
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addContainerGap(28, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblNewLabel_1)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblMovesTimeLeft)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnNewButton)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnShuffle)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnRemove)
+					.addPreferredGap(ComponentPlacement.RELATED, 394, Short.MAX_VALUE)
+					.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+					.addGap(15))
+		);
+		setLayout(groupLayout);
+	}
+	
+	/**
+	 * sets up display of Level
+	 */
+	@Override
+	public void setup() {
+		
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setMaximum(200);
+		progressBar.setOrientation(SwingConstants.VERTICAL);
+		
+		lblMovesTimeLeft = new JLabel("Moves/time left: ---");
+		//lblMovesTimeLeft = new JLabel(((gameMode == Game.LIGHTNING_ID) ? "Time" : "Moves") + " left: ---");
+		
+		JButton btnNewButton = new JButton("" + powerUps[0]);
+		
+		JButton btnShuffle = new JButton("" + powerUps[1]);
+		
+		JButton btnRemove = new JButton("" + powerUps[2]);
+		
+		
+		
+		JLabel lblNewLabel_1 = new JLabel("Game Mode/Level #");
+		
+		BoardDisplay panel = new BoardDisplay(model, this.board);
+		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		GroupLayout groupLayout = new GroupLayout(this);
+		groupLayout.setHorizontalGroup(
+			groupLayout.createParallelGroup(Alignment.TRAILING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+								.addGroup(groupLayout.createSequentialGroup()
+									.addGap(34)
+									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+										.addComponent(btnRemove, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+										.addComponent(lblMovesTimeLeft)
+										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+											.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addComponent(btnShuffle, GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))))
+								.addComponent(lblNewLabel_1)))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(106)
+							.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)))
+					.addGap(755))
+		);
+		groupLayout.setVerticalGroup(
+			groupLayout.createParallelGroup(Alignment.LEADING)
+				.addGroup(groupLayout.createSequentialGroup()
+					.addGap(12)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(progressBar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE))
+					.addContainerGap(28, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblNewLabel_1)
 					.addPreferredGap(ComponentPlacement.RELATED)

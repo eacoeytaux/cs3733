@@ -6,7 +6,8 @@ package entities;
  *
  */
 public abstract class AbstractLevel {
-	int level;
+	int levelType;
+	int level; //
 	Board board;
 	Stat stats;
 	Info info;

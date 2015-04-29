@@ -49,6 +49,10 @@ public class Square implements Serializable {
 		bucketFull = other.bucketFull;
 	}
 	
+	public Square clone() {
+		return new Square((tile == null) ? null : tile.clone(), inert, bucket);
+	}
+	
 	/**
 	 * converts square to string.  If it is inert or a bucket, that is the string.  Otherwise the tile in the square is converted to a string and returned
 	 */

@@ -5,6 +5,8 @@ public class LightningLevel extends AbstractLevel {
 	public LightningLevel(Blueprint blueprint){
 		super();
 		
+		this.levelType = blueprint.levelType;
+		
 		this.board = new Board(blueprint.board);
 		this.info = new Info(blueprint.movesTotal, 45, blueprint.swap, blueprint.shuffle, blueprint.remove, blueprint.starRequirements, blueprint.multiplierFrequencies);
 		this.info.shuffles = blueprint.shuffle;
