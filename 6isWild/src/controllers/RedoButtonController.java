@@ -2,6 +2,7 @@ package controllers;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.EmptyStackException;
 
 import entities.AbstractBuilderMove;
 import entities.Builder;
@@ -24,9 +25,11 @@ public class RedoButtonController implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		AbstractBuilderMove popped = builder.popRedo();
-		builder.pushMove(popped);
-		popped.redo();
+		try{
+			AbstractBuilderMove popped = builder.popRedo();
+			builder.pushMove(popped);
+			popped.redo();
+		} catch (EmptyStackException ex){System.err.println("Tried to redo but there is nothing to redo");}
 		
 	}
 

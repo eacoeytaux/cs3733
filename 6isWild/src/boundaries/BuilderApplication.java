@@ -22,6 +22,11 @@ import entities.Blueprint;
 import entities.Board;
 import entities.Builder;
 
+/**
+ * 
+ * @author Hugh Whelan
+ * @author Ethan Coeytaux
+ */
 public class BuilderApplication extends JFrame {
 	private static final long serialVersionUID = 1L;
 

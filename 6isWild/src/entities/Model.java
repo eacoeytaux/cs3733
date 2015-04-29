@@ -16,96 +16,15 @@ public class Model {
 	public Model() {
 		
 		blueprint.setValues(Game.PUZZLE_ID, 5, 4, 3, 40, new int[]{2,2,2}, new int[]{20,20,20,20,20}, new int[]{30, 30, 40} );
-		blueprint.setBoard(new Square[][]{{
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false)},{
-				
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(4,3), false, false),
-			new Square(new Tile(2,1), false, false)},{
-				
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false)},{
-				
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false)},{
-				
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false)},{
-				
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false)},{
-								
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false)},{
-				
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false)},{
-				
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false),
-			new Square(new Tile(2,1), false, false)}});
+		
+		Square[][] squareArray = new Square[9][9];
+		
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				squareArray[i][j] = new Square(new Tile(i,j), false, false, null, i, j);
+			}
+				blueprint.setBoard(squareArray);
+		}
 			
 
 		level = new PuzzleLevel(blueprint);
@@ -118,3 +37,4 @@ public class Model {
 		globalStats = new GlobalStats(0,0,0);	
 	}
 }
+
