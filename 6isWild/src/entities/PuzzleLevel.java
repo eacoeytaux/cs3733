@@ -14,6 +14,8 @@ public class PuzzleLevel extends AbstractLevel {
 		super();
 		
 		this.board = new Board(blueprint.board, blueprint);
+		this.blueprint = blueprint;
+		resetBoard();
 		this.info = new Info(blueprint.movesTotal, 45, blueprint.swap, blueprint.shuffle, blueprint.remove, blueprint.starRequirements, blueprint.multiplierFrequencies);
 		this.info.shuffles = blueprint.shuffle;
 		this.info.swaps = blueprint.swap;

@@ -20,7 +20,7 @@ public class SelectPuzzleLevelButtonController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		//lvlDisplay.
+		lvlDisplay.reinitBoard();
 		application.changePanel(lvlDisplay);
 	}
 

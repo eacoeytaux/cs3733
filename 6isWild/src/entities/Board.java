@@ -3,6 +3,11 @@ package entities;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * 
+ * @author Hugh Whelan
+ *
+ */
 public class Board {
 	Square[][] board;
 	Blueprint bp;
@@ -21,15 +26,14 @@ public class Board {
 	}
 	
 	public void fillRandom() { //TODO set tiles based off frequencies
-		Random random = new Random(System.currentTimeMillis());
 		
 		for (Square[] squares : board) {
 			for (Square square : squares) {
 				if (square.isInert() || square.isBucket()) continue;
 				
 				Tile tile = square.getTile();
-				if (tile.value == 0) tile.value = random.nextInt(5) + 1;
-				if (tile.multiplier == 0) tile.multiplier = random.nextInt(3) + 1;
+				if (tile.value == 0) tile.value = getRandomTileValue();
+				if (tile.multiplier == 0) tile.multiplier = getRandomMultiplier();
 			}
 		}
 	}
@@ -75,6 +79,7 @@ public class Board {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				newBoard[i][j] = board[i][j].clone();
+				newBoard[i][j].setRowCol(i, j);
 			}
 		}
 		
@@ -98,13 +103,41 @@ public class Board {
 	 */
 	public void addToSelected(Square square){
 		selectedSquares.add(square);
+		if(selectedSquares.isEmpty()){
+			System.out.println("empty");
+		}
 	}
 	
-	public void removeFromSelected(Square square){
-		selectedSquares.get(selectedSquares.indexOf(square));
-	}
 	
 	public int getNumberOfSelected(){
 		return selectedSquares.size();
+	}
+	
+	/**
+	 * checks to see if sum of all values of tiles in selected squares equals six
+	 * @return boolean indicating whether move is valid
+	 */
+	public boolean validMove(){
+		int moveValue = 0;
+		
+		for(Square square : selectedSquares){
+			moveValue += square.getTile().getValue();
+		}
+		
+		return(moveValue == 6);
+	}
+	
+	/**
+	 * calls deselect on each square, then cleares selectedTiles
+	 */
+	public void deselectAll(){
+		if(selectedSquares.isEmpty()){
+			System.out.println("empty");
+		}
+		for(Square square : selectedSquares){
+			System.out.println("d");
+			square.deselect();
+		}
+		selectedSquares.clear();
 	}
 }
