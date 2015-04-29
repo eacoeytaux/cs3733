@@ -8,9 +8,11 @@ public class Board {
 	ArrayList<Square> selectedSquares = new ArrayList<Square>();
 	
 	public Board(Square[][] board) {
-		this.board = board;
+		this.board = new Square[9][9];
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
+				this.board[i][j] = board[i][j].clone();
+				this.board[i][j].setRowCol(i, j);
 				this.board[i][j].setParentBoard(this);
 			}
 		}

@@ -100,6 +100,11 @@ public class Square implements Serializable {
 
 	}
 	
+	public void setRowCol(int row, int col) {
+		iIndex = row;
+		jIndex = col;
+	}
+	
 	public void setParentBoard(Board board){
 		this.parentBoard = board;
 	}
