@@ -36,5 +36,9 @@ public class Model {
 		releaseLevels = new ArrayList<ReleaseLevel>(); 
 		globalStats = new GlobalStats(0,0,0);	
 	}
+	
+	public AbstractLevel getLevel(){
+		return this.level;
+	}
 }
 

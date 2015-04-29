@@ -3,6 +3,11 @@ package entities;
 import java.util.ArrayList;
 import entities.Index;
 
+/**
+ * 
+ * @author Hugh Whelan
+ *
+ */
 public class Board {
 	Square[][] board;
 	ArrayList<Square> selectedSquares = new ArrayList<Square>();
@@ -33,13 +38,41 @@ public class Board {
 	 */
 	public void addToSelected(Square square){
 		selectedSquares.add(square);
+		if(selectedSquares.isEmpty()){
+			System.out.println("empty");
+		}
 	}
 	
-	public void removeFromSelected(Square square){
-		selectedSquares.get(selectedSquares.indexOf(square));
-	}
 	
 	public int getNumberOfSelected(){
 		return selectedSquares.size();
+	}
+	
+	/**
+	 * checks to see if sum of all values of tiles in selected squares equals six
+	 * @return boolean indicating whether move is valid
+	 */
+	public boolean validMove(){
+		int moveValue = 0;
+		
+		for(Square square : selectedSquares){
+			moveValue += square.getTile().getValue();
+		}
+		
+		return(moveValue == 6);
+	}
+	
+	/**
+	 * calls deselect on each square, then cleares selectedTiles
+	 */
+	public void deselectAll(){
+		if(selectedSquares.isEmpty()){
+			System.out.println("empty");
+		}
+		for(Square square : selectedSquares){
+			System.out.println("d");
+			square.deselect();
+		}
+		selectedSquares.clear();
 	}
 }

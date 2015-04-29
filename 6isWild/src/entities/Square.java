@@ -88,12 +88,13 @@ public class Square implements Serializable {
 			parentBoard.addToSelected(this);
 			this.selected = true;
 			return true;
-		}else{
-			parentBoard.removeFromSelected(this);
-			this.selected = false;
-			return false;
 		}
+		return false;
 
+	}
+	
+	public void deselect(){
+		this.selected = false;
 	}
 	
 	public void setParentBoard(Board board){

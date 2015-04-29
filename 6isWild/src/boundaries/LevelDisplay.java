@@ -12,11 +12,17 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
 import controllers.BackController;
+import controllers.MakeMoveController;
 import entities.AbstractLevel;
 import entities.Board;
 import entities.Game;
 import entities.Model;
 
+/**
+ * 
+ * @author Hugh Whelan
+ *
+ */
 public class LevelDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 	
@@ -29,6 +35,8 @@ public class LevelDisplay extends AbstractDisplay {
 	int[] powerUps;
 	
 	JButton btnBack;
+	
+	JButton btnMakeMove;
 	
 	JButton btnSwap;
 	JButton btnRemove;
@@ -47,6 +55,7 @@ public class LevelDisplay extends AbstractDisplay {
 		this.powerUps = new int[]{level.getInfo().getSwaps(), level.getInfo().getShuffles(), level.getInfo().getRemoves()};
 
 		btnBack = new JButton("Back");
+		//btnMakeMove = new JButton("Make Move");
 		
 		setup();
 	}
@@ -61,7 +70,7 @@ public class LevelDisplay extends AbstractDisplay {
 		progressBar.setMaximum(200);
 		progressBar.setOrientation(SwingConstants.VERTICAL);
 		
-		lblMovesTimeLeft = new JLabel(((gameMode == Game.LIGHTNING_ID) ? "Time" : "Moves") + " left: ---");
+		lblMovesTimeLeft = new JLabel("moves/time left: ");
 		
 		JButton btnNewButton = new JButton("" + powerUps[0]);
 		
@@ -75,6 +84,8 @@ public class LevelDisplay extends AbstractDisplay {
 		
 		BoardDisplay panel = new BoardDisplay(model, this.board);
 		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		
+		btnMakeMove = new JButton("Make Move");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -90,11 +101,14 @@ public class LevelDisplay extends AbstractDisplay {
 								.addGroup(groupLayout.createSequentialGroup()
 									.addGap(34)
 									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addComponent(btnShuffle, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
 										.addComponent(btnRemove, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+											.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addComponent(btnShuffle, GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
+										.addGroup(groupLayout.createSequentialGroup()
 											.addComponent(lblMovesTimeLeft)
-											.addComponent(btnNewButton))))
+											.addGap(5))
+										.addComponent(btnMakeMove)))
 								.addComponent(lblNewLabel_1)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(106)
@@ -102,15 +116,14 @@ public class LevelDisplay extends AbstractDisplay {
 					.addGap(755))
 		);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
 					.addGap(12)
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 						.addComponent(progressBar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE))
-					.addPreferredGap(ComponentPlacement.RELATED, 28, Short.MAX_VALUE)
-					.addContainerGap())
-				.addGroup(Alignment.LEADING, groupLayout.createSequentialGroup()
+					.addContainerGap(29, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblNewLabel_1)
 					.addPreferredGap(ComponentPlacement.RELATED)
@@ -121,7 +134,9 @@ public class LevelDisplay extends AbstractDisplay {
 					.addComponent(btnShuffle)
 					.addPreferredGap(ComponentPlacement.RELATED)
 					.addComponent(btnRemove)
-					.addPreferredGap(ComponentPlacement.RELATED, 394, Short.MAX_VALUE)
+					.addGap(133)
+					.addComponent(btnMakeMove)
+					.addPreferredGap(ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
 					.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
 					.addGap(15))
 		);
@@ -134,5 +149,9 @@ public class LevelDisplay extends AbstractDisplay {
 	 */
 	public void setBackController(BackController c) {
 		btnBack.addActionListener(c);
+	}
+	
+	public void setMakeMoveController(MakeMoveController c){
+		btnMakeMove.addActionListener(c);
 	}
 }
