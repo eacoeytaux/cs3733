@@ -59,6 +59,7 @@ public class BuilderApplication extends JFrame {
 		JMenu file = new JMenu("File");
 		JMenu edit = new JMenu("Edit");
 
+		JMenuItem newMenuItem = new JMenuItem("New");
 		JMenuItem saveMenuItem = new JMenuItem("Save");
 		JMenuItem loadMenuItem = new JMenuItem("Load");
 		JMenuItem undoMenuItem = new JMenuItem("undo");
@@ -92,6 +93,7 @@ public class BuilderApplication extends JFrame {
 		redoMenuItem.addActionListener(new RedoButtonController(this.builder));
 		
 
+		file.add(newMenuItem);
 		file.add(saveMenuItem);
 		file.add(loadMenuItem);
 		edit.add(undoMenuItem);
@@ -105,9 +107,6 @@ public class BuilderApplication extends JFrame {
 		pack();
 	}
 
-	/** 
-	 * saves the modified blueprint to storage
-	 */
 	public void saveBoard() {
 		display.setValues();
 
@@ -129,9 +128,6 @@ public class BuilderApplication extends JFrame {
 		}
 	}
 
-	/**
-	 * sets the current blueprint to blueprint from storage
-	 */
 	public void loadBoard() {
 		JFileChooser chooser = new JFileChooser();
 		chooser.setSelectedFile(new File("level.txt"));
@@ -154,5 +150,9 @@ public class BuilderApplication extends JFrame {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public BlueprintDisplay getDisplay() {
+		return display;
 	}
 }

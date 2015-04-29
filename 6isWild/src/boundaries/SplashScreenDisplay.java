@@ -35,13 +35,13 @@ public class SplashScreenDisplay extends JPanel {
 			splashScreenGlitch2 = ImageIO.read(getClass().getResourceAsStream("/SplashScreenGlitch2.jpg"));
 			splashScreenGlitch3 = ImageIO.read(getClass().getResourceAsStream("/SplashScreenGlitch3.jpg"));
 			g.drawImage(splashScreen, 0, 0, splashScreen.getWidth(), splashScreen.getHeight(), null);
-			Thread.sleep(2000);
+			Thread.sleep(1);//2000);
 			g.drawImage(splashScreenGlitch1, 0, 0, null);
-			Thread.sleep(150);
+			Thread.sleep(1);//150);
 			g.drawImage(splashScreenGlitch3, 0, 0, null);
-			Thread.sleep(200);
+			Thread.sleep(1);//200);
 			g.drawImage(splashScreenGlitch2, 0, 0, null);
-			Thread.sleep(25);
+			Thread.sleep(1);//25);
 		} catch (IOException e) {
 			e.printStackTrace();
 		} catch (InterruptedException e) {

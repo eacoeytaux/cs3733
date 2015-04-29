@@ -56,7 +56,7 @@ public class BuilderSquareDisplay extends JPanel {
 	}
 
 	/**
-	 * 
+	 * updates square to values on current board
 	 */
 	public Square changeSquare() {
 		Square newSquare = parent.getNewSquare();
@@ -70,11 +70,6 @@ public class BuilderSquareDisplay extends JPanel {
 		square.copyValues(newSquare);
 		setup();
 	}
-
-	
-	public Square getSquare(){
-		return this.square;
-	}
 	
 
 	public BuilderBoardDisplay getParentDisplay(){
@@ -83,5 +78,13 @@ public class BuilderSquareDisplay extends JPanel {
 	
 	public Square getCopySquare() {
 		return( new Square(this.square.getTile(), this.square.isInert(), this.square.isInert(), this.square.getParentBoard(), this.square.getIIndex(), this.square.getJIndex()) );
+	}
+	
+	/**
+	 * returns square held in display
+	 * @return
+	 */
+	public Square getSquare() {
+		return square;
 	}
 }

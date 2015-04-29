@@ -47,7 +47,8 @@ public class LevelDisplay extends AbstractDisplay {
 	public LevelDisplay(Model model, AbstractLevel level) {
 		super(model);
 		
-		this.board = level.getBoard();
+		this.board = level.getBoard().clone();
+		this.board.fillRandom();
 		this.gameMode = Game.PUZZLE_ID;
 		this.level = level.getLevel();
 		this.score = level.getInfo().getScore();
@@ -55,7 +56,8 @@ public class LevelDisplay extends AbstractDisplay {
 		this.powerUps = new int[]{level.getInfo().getSwaps(), level.getInfo().getShuffles(), level.getInfo().getRemoves()};
 
 		btnBack = new JButton("Back");
-		//btnMakeMove = new JButton("Make Move");
+		btnMakeMove = new JButton("Make Move");
+
 		
 		setup();
 	}
@@ -69,7 +71,7 @@ public class LevelDisplay extends AbstractDisplay {
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setMaximum(200);
 		progressBar.setOrientation(SwingConstants.VERTICAL);
-		
+	
 		lblMovesTimeLeft = new JLabel("moves/time left: ");
 		
 		JButton btnNewButton = new JButton("" + powerUps[0]);
@@ -109,6 +111,7 @@ public class LevelDisplay extends AbstractDisplay {
 											.addComponent(lblMovesTimeLeft)
 											.addGap(5))
 										.addComponent(btnMakeMove)))
+
 								.addComponent(lblNewLabel_1)))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(106)
@@ -122,7 +125,9 @@ public class LevelDisplay extends AbstractDisplay {
 					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 						.addComponent(progressBar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE))
+
 					.addContainerGap(29, Short.MAX_VALUE))
+
 				.addGroup(groupLayout.createSequentialGroup()
 					.addContainerGap()
 					.addComponent(lblNewLabel_1)
@@ -151,6 +156,7 @@ public class LevelDisplay extends AbstractDisplay {
 		btnBack.addActionListener(c);
 	}
 	
+
 	public void setMakeMoveController(MakeMoveController c){
 		btnMakeMove.addActionListener(c);
 	}

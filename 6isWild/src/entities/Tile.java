@@ -26,6 +26,10 @@ public class Tile implements Serializable {
 		return multiplier;
 	}
 	
+	public Tile clone() {
+		return new Tile(value, multiplier);
+	}
+	
 	/**
 	 * converts to string in the format "value:multiplier"
 	 */

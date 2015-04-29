@@ -11,8 +11,8 @@ public class Square implements Serializable {
 	boolean bucketFull;
 	boolean selected = false;
 	Board parentBoard;
-	int iIndex;
-	int jIndex;
+	int iIndex; // row
+	int jIndex; // column
 	
 	
 	public Square(Tile tile, boolean inert, boolean bucket) {
@@ -66,6 +66,10 @@ public class Square implements Serializable {
 		bucketFull = other.bucketFull;
 	}
 	
+	public Square clone() {
+		return new Square((tile == null) ? null : tile.clone(), inert, bucket);
+	}
+	
 	/**
 	 * converts square to string.  If it is inert or a bucket, that is the string.  Otherwise the tile in the square is converted to a string and returned
 	 */
@@ -93,8 +97,14 @@ public class Square implements Serializable {
 
 	}
 	
+
 	public void deselect(){
 		this.selected = false;
+	}
+
+	public void setRowCol(int row, int col) {
+		iIndex = row;
+		jIndex = col;
 	}
 	
 	public void setParentBoard(Board board){
@@ -115,5 +125,15 @@ public class Square implements Serializable {
 	
 	public int getJIndex(){
 		return this.jIndex;
+	}
+	public void fillWithRandom(){
+		//TODO Write function to fill square with random tile.
+	}
+	public void remove(){
+		if (iIndex == 0){
+			fillWithRandom();
+		}
+		//TODO Write rest of function to 
+		
 	}
 }

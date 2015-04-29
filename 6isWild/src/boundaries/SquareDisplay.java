@@ -16,11 +16,11 @@ import entities.Square;
  */
 public class SquareDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
-	
+
 	public static final int pixelSize = 62;
-	
+
 	BoardDisplay parent;
-	
+
 	AbstractDisplay display;
 	Square square;
 
@@ -29,7 +29,7 @@ public class SquareDisplay extends AbstractDisplay {
 		this.parent = parent;
 		this.square = square;
 
-	
+
 		setup();
 	}
 
@@ -43,29 +43,29 @@ public class SquareDisplay extends AbstractDisplay {
 		else if (square.isBucket()) display = new BucketDisplay(model);
 		else display = new TileDisplay(model, square.getTile());
 		if(square.isSelected()){
-			this.setBorder(BorderFactory.createBevelBorder(1, new Color(100,0,0), new Color(100,0,0))); 
+			this.setBorder(BorderFactory.createLineBorder(Color.red));
 		}
 		else{
 			this.setBorder(BorderFactory.createEmptyBorder());
 		}
-		
+
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+				groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(Alignment.TRAILING, groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(display, GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
-					.addContainerGap())
-		);
+						.addContainerGap()
+						.addComponent(display, GroupLayout.DEFAULT_SIZE, 56, Short.MAX_VALUE)
+						.addContainerGap())
+				);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+				groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addComponent(display, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
-					.addGap(12))
-		);
+						.addComponent(display, GroupLayout.DEFAULT_SIZE, 50, Short.MAX_VALUE)
+						.addGap(12))
+				);
 		setLayout(groupLayout);
 	}
-	
+
 	public Square getSquare(){
 		return this.square;
 	}

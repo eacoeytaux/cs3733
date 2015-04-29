@@ -21,6 +21,11 @@ import entities.Game;
 import entities.Square;
 import entities.Tile;
 
+/**
+ * 
+ * @author eacoeytaux
+ *
+ */
 public class BlueprintDisplay extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
@@ -36,7 +41,7 @@ public class BlueprintDisplay extends JPanel {
 	JTextField removeTextField;
 	JComboBox levelModeComboBox;
 	JComboBox tileTypeComboBox;
-	BuilderBoardDisplay panel;
+	BuilderBoardDisplay boardDisplay;
 	
 	JSlider slider_1;
 	JSlider slider_2;
@@ -65,7 +70,7 @@ public class BlueprintDisplay extends JPanel {
 
 		tileTypeComboBox = new JComboBox();
 		
-		panel = new BuilderBoardDisplay(this, this.blueprint);
+		boardDisplay = new BuilderBoardDisplay(this, this.blueprint);
 		
 		slider_1 = new JSlider();
 		slider_2 = new JSlider();
@@ -105,7 +110,7 @@ public class BlueprintDisplay extends JPanel {
 		
 		tileTypeComboBox.setModel(new DefaultComboBoxModel(new String[] {"Inert", "Bucket", "1", "2", "3", "4", "5", "6", "Random Value"}));
 		
-		JLabel lblNewLabel = new JLabel("Moves:");
+		JLabel lblNewLabel = new JLabel("Moves/Time:");
 		
 		movesTextField.setText("" + blueprint.getMovesTotal());
 		movesTextField.setColumns(10);
@@ -163,7 +168,7 @@ public class BlueprintDisplay extends JPanel {
 		JLabel lblX3 = new JLabel("x3:");
 		
 		
-		panel.setBorder(BorderFactory.createLineBorder(Color.black));
+		boardDisplay.setBorder(BorderFactory.createLineBorder(Color.black));
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 			groupLayout.createParallelGroup(Alignment.LEADING)
@@ -249,7 +254,7 @@ public class BlueprintDisplay extends JPanel {
 						.addComponent(lblTileValueFrequencies)
 						.addComponent(lblTileMultiplierFrequencies))
 					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE)
+					.addComponent(boardDisplay, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE)
 					.addContainerGap(16, Short.MAX_VALUE))
 		);
 		groupLayout.setVerticalGroup(
@@ -258,7 +263,7 @@ public class BlueprintDisplay extends JPanel {
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 						.addGroup(groupLayout.createSequentialGroup()
 							.addContainerGap()
-							.addComponent(panel, GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE))
+							.addComponent(boardDisplay, GroupLayout.DEFAULT_SIZE, 563, Short.MAX_VALUE))
 						.addGroup(groupLayout.createSequentialGroup()
 							.addGap(20)
 							.addGroup(groupLayout.createParallelGroup(Alignment.BASELINE)
@@ -395,5 +400,9 @@ public class BlueprintDisplay extends JPanel {
 	
 	public Builder getBuilder(){
 		return this.builder;
+	}
+	
+	public BuilderBoardDisplay getBoardDisplay() {
+		return boardDisplay;
 	}
 }

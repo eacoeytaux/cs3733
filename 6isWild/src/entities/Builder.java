@@ -33,6 +33,14 @@ public class Builder {
 		builderApplication.dispose();
 	}
 	
+	/**
+	 * gets builderApplication
+	 * @return
+	 */
+	public BuilderApplication getBuilderApplication() {
+		return builderApplication;
+	}
+	
 	public void setBlueprint(Blueprint newBlueprint){
 		this.blueprint = newBlueprint;
 	}
