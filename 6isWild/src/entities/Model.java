@@ -55,6 +55,10 @@ public class Model {
 		}
 		return null;
 	}
+
+	public AbstractLevel getLevel(){
+		return this.level;
+	}
 }
 
 
