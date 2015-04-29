@@ -60,12 +60,13 @@ public class SquareController implements MouseListener {
 	 * @return boolean
 	 */
 	public boolean isValid(SquareDisplay squareDisplay, Square square){
+		//if (square.getParentBoard().getNumberOfSelected() >= 6) return false; //uncomment to prevent user from selected more than 6 tiles
+		if (square.isInert() || square.isInert()) return false;
+		
 		boolean downSelected;
 		boolean upSelected;
 		boolean leftSelected;
 		boolean rightSelected;
-
-
 
 		
 		if(this.square.getIIndex() <= 0 && this.square.getJIndex() <= 0){

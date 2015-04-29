@@ -7,7 +7,8 @@ package entities;
  */
 public abstract class AbstractLevel {
 	int levelType;
-	int level; //
+	int level;
+	Blueprint blueprint;
 	Board board;
 	Stat stats;
 	Info info;
@@ -38,6 +39,11 @@ public abstract class AbstractLevel {
 	
 	public void addBoard(){
 		
+	}
+	
+	public void resetBoard() {
+		this.board = new Board(blueprint.board.clone());
+		board.fillRandom();
 	}
 	
 }

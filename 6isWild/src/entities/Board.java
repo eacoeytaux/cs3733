@@ -38,6 +38,7 @@ public class Board {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				newBoard[i][j] = board[i][j].clone();
+				newBoard[i][j].setRowCol(i, j);
 			}
 		}
 		

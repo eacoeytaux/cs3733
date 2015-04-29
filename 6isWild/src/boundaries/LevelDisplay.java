@@ -20,10 +20,10 @@ import entities.Model;
 public class LevelDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 	
-
+	AbstractLevel level;
 	Board board;
 	int gameMode;
-	int level;
+	int levelNum;
 	int score;
 	int moves;
 	int[] powerUps;
@@ -39,10 +39,11 @@ public class LevelDisplay extends AbstractDisplay {
 	public LevelDisplay(Model model, AbstractLevel level) {
 		super(model);
 		
+		this.level = level;
 		this.board = level.getBoard().clone();
 		this.board.fillRandom();
 		this.gameMode = Game.PUZZLE_ID;
-		this.level = level.getLevel();
+		this.levelNum = level.getLevel();
 		this.score = level.getInfo().getScore();
 		this.moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
 		this.powerUps = new int[]{level.getInfo().getSwaps(), level.getInfo().getShuffles(), level.getInfo().getRemoves()};
@@ -139,6 +140,8 @@ public class LevelDisplay extends AbstractDisplay {
 	}
 	
 	public void reinitBoard() {
-		//board
+		level.resetBoard();
+		this.board = level.getBoard().clone();
+		this.board.fillRandom();
 	}
 }
