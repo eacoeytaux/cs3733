@@ -35,7 +35,9 @@ public class BuilderApplication extends JFrame {
 	BlueprintDisplay display;
 
 	public BuilderApplication(Builder builder) {
-		
+		if(builder.getBlueprint() == null){
+			System.out.println("null");
+		}
 		this.blueprint = builder.getBlueprint();
 		this.builder = builder;
 		display = new BlueprintDisplay(this.blueprint, this.builder);

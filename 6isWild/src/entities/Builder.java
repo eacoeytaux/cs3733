@@ -18,7 +18,10 @@ public class Builder {
 	
 	
 	public Builder() {
-		blueprint = new Blueprint();
+		this.blueprint = new Blueprint(0, 0, 0, 0, 0, null, null, null, null);
+		if(this.blueprint == null){
+			System.out.println("null blueprint");
+		}
 		builderApplication = new BuilderApplication(this);
 	}
 

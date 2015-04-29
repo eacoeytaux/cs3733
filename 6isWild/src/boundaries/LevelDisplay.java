@@ -33,6 +33,7 @@ public class LevelDisplay extends AbstractDisplay {
 	int score;
 	int moves;
 	int[] powerUps;
+	BoardDisplay panel;
 
 	JButton btnBack;
 
@@ -48,8 +49,7 @@ public class LevelDisplay extends AbstractDisplay {
 		super(model);
 
 		this.level = level;
-		this.board = level.getBoard().clone();
-		this.board.fillRandom();
+		this.board = level.getBoard();
 		this.gameMode = Game.PUZZLE_ID;
 		this.levelNum = level.getLevel();
 		this.score = level.getInfo().getScore();
@@ -85,10 +85,13 @@ public class LevelDisplay extends AbstractDisplay {
 
 		JLabel lblNewLabel_1 = new JLabel("Game Mode/Level #");
 
-		BoardDisplay panel = new BoardDisplay(model, this.board);
+		panel = new BoardDisplay(model, this.board);
 		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 		btnMakeMove = new JButton("Make Move");
+		
+		setMakeMoveController(new MakeMoveController(model.level, this));
+		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -159,11 +162,15 @@ public class LevelDisplay extends AbstractDisplay {
 
 	public void reinitBoard() {
 		level.resetBoard();
-		this.board = level.getBoard().clone();
+		this.board = level.getBoard();
 		this.board.fillRandom();
 	}
 
 	public void setMakeMoveController(MakeMoveController c){
 		btnMakeMove.addActionListener(c);
+	}
+	
+	public BoardDisplay getBoardDisplay(){
+		return this.panel;
 	}
 }

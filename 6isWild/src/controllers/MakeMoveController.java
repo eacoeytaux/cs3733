@@ -1,5 +1,6 @@
 package controllers;
 
+import boundaries.Application;
 import boundaries.LevelDisplay;
 import entities.AbstractLevel;
 import entities.Board;
@@ -30,7 +31,7 @@ public class MakeMoveController implements ActionListener {
 		}
 		
 		this.level.getBoard().deselectAll();
-		this.levelScreen.setup();
+		this.levelScreen.getBoardDisplay().setupSquares();
 	}
 	
 	private void removeTile(){

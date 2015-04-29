@@ -46,4 +46,19 @@ public class BoardDisplay extends AbstractDisplay {
 		// TODO Auto-generated method stub
 
 	} 
+	
+	public SquareDisplay getSquareDisplay(int i, int j){
+		return squares[i][j];
+	}
+	
+	public void setupSquares(){
+		for( int i = 0; i < 9; i++){
+			for( int j = 0; j < 9; j++){
+				System.out.println("i: "+ i);
+				System.out.println("j: "+ j);
+				squares[i][j].setup();
+			}
+		}
+	}
+	
 }
