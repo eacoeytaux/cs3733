@@ -3,7 +3,7 @@ package controllers;
 import entities.Blueprint;
 import boundaries.BlueprintDisplay;
 
-public class SetPowerUps extends AbstractBuilderMove{
+public class SetPowerUps{
 	int amount;
 	Blueprint blueprint;
 	BlueprintDisplay display;

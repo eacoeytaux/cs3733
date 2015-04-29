@@ -3,7 +3,7 @@ package controllers;
 import entities.Blueprint;
 import boundaries.BlueprintDisplay;
 
-public class MakeInert extends AbstractBuilderMove {
+public class MakeInert{
 	Blueprint blueprint;
 	BlueprintDisplay display;
 	

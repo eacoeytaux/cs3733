@@ -3,7 +3,7 @@ package controllers;
 import boundaries.BlueprintDisplay;
 import entities.Blueprint;
 
-public class ChangeValueProbability extends AbstractBuilderMove{
+public class ChangeValueProbability{
 	Blueprint blueprint;
 	BlueprintDisplay display;
 	int probability;

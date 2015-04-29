@@ -3,7 +3,7 @@ package controllers;
 import entities.Blueprint;
 import boundaries.BlueprintDisplay;
 
-public class SaveLevel extends AbstractBuilderMove{
+public class SaveLevel{
 	Blueprint blueprint;
 	BlueprintDisplay display;
 	

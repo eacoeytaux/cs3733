@@ -16,18 +16,24 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import controllers.RedoButtonController;
+import controllers.UndoButtonController;
 import entities.Blueprint;
 import entities.Board;
+import entities.Builder;
 
 public class BuilderApplication extends JFrame {
 	private static final long serialVersionUID = 1L;
 
+	Builder builder;
 	Blueprint blueprint;
 	BlueprintDisplay display;
 
-	public BuilderApplication(Blueprint blueprint) {
-		this.blueprint = blueprint;
-		display = new BlueprintDisplay(this.blueprint);
+	public BuilderApplication(Builder builder) {
+		
+		this.blueprint = builder.getBlueprint();
+		this.builder = builder;
+		display = new BlueprintDisplay(this.blueprint, this.builder);
 
 		setBackground(new Color(0x006600));
 		SplashScreenDisplay splashScreenDisplay = new SplashScreenDisplay();
@@ -46,9 +52,12 @@ public class BuilderApplication extends JFrame {
 		JMenuBar menubar = new JMenuBar();
 
 		JMenu file = new JMenu("File");
+		JMenu edit = new JMenu("Edit");
 
 		JMenuItem saveMenuItem = new JMenuItem("Save");
 		JMenuItem loadMenuItem = new JMenuItem("Load");
+		JMenuItem undoMenuItem = new JMenuItem("undo");
+		JMenuItem redoMenuItem = new JMenuItem("redo");
 
 		saveMenuItem.addActionListener(new ActionListener() {
 
@@ -65,10 +74,25 @@ public class BuilderApplication extends JFrame {
 				loadBoard();
 			}
 		});
+		
+		loadMenuItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				loadBoard();
+			}
+		});
+		
+		undoMenuItem.addActionListener(new UndoButtonController(this.builder));
+		redoMenuItem.addActionListener(new RedoButtonController(this.builder));
+		
 
 		file.add(saveMenuItem);
 		file.add(loadMenuItem);
+		edit.add(undoMenuItem);
+		edit.add(redoMenuItem);
 		menubar.add(file);
+		menubar.add(edit);
 
 		setJMenuBar(menubar);
 		
@@ -117,7 +141,7 @@ public class BuilderApplication extends JFrame {
 				this.blueprint = (Blueprint)ois.readObject();
 				fis.close();
 				
-				display = new BlueprintDisplay(this.blueprint);
+				display = new BlueprintDisplay(this.blueprint, builder);
 				getContentPane().removeAll();
 				setContentPane(display);
 				pack();

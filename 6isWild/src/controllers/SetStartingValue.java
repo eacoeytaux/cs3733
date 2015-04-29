@@ -3,7 +3,7 @@ package controllers;
 import boundaries.BlueprintDisplay;
 import entities.Blueprint;
 
-public class SetStartingValue extends AbstractBuilderMove{
+public class SetStartingValue{
 	Blueprint blueprint;
 	BlueprintDisplay display;
 	int value;

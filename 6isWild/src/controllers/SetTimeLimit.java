@@ -3,7 +3,7 @@ package controllers;
 import entities.Blueprint;
 import boundaries.BlueprintDisplay;
 
-public class SetTimeLimit extends AbstractBuilderMove{
+public class SetTimeLimit{
 	int time;
 	Blueprint blueprint;
 	BlueprintDisplay display;

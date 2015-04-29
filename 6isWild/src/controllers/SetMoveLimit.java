@@ -3,7 +3,7 @@ package controllers;
 import entities.Blueprint;
 import boundaries.BlueprintDisplay;
 
-public class SetMoveLimit extends AbstractBuilderMove{
+public class SetMoveLimit{
 	int moveLimit;
 	Blueprint blueprint;
 	BlueprintDisplay display;

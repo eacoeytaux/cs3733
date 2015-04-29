@@ -6,6 +6,7 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,6 +16,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import entities.Blueprint;
 import entities.Board;
+import entities.Builder;
 import entities.Game;
 import entities.Square;
 import entities.Tile;
@@ -23,6 +25,7 @@ public class BlueprintDisplay extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	Blueprint blueprint;
+	Builder builder;
 	
 	JTextField movesTextField;
 	JTextField firstStarTextField;
@@ -46,8 +49,9 @@ public class BlueprintDisplay extends JPanel {
 	JSlider slider_x2;
 	JSlider slider_x3;
 	
-	public BlueprintDisplay(Blueprint blueprint) {
+	public BlueprintDisplay(Blueprint blueprint, Builder builder) {
 		this.blueprint = blueprint;
+		this.builder = builder;
 		
 		movesTextField = new JTextField();
 		firstStarTextField = new JTextField();
@@ -387,5 +391,9 @@ public class BlueprintDisplay extends JPanel {
 		int[] valueFrequencies = {slider_1.getValue(), slider_2.getValue(), slider_3.getValue(), slider_4.getValue(), slider_5.getValue(), slider_6.getValue()};
 		int[] multiplierFrequencies = {slider_x1.getValue(), slider_x2.getValue(), slider_x3.getValue()};
 		blueprint.setValues(levelType, shuffle, swap, remove, movesTotal, starRequirements, valueFrequencies, multiplierFrequencies);
+	}
+	
+	public Builder getBuilder(){
+		return this.builder;
 	}
 }

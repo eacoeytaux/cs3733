@@ -3,7 +3,7 @@ package controllers;
 import entities.Blueprint;
 import boundaries.BlueprintDisplay;
 
-public class MakeBucket extends AbstractBuilderMove{
+public class MakeBucket{
 	Blueprint blueprint;
 	BlueprintDisplay display;
 	
