@@ -5,6 +5,8 @@ import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
+import controllers.BuilderSquareController;
+import controllers.SquareController;
 import entities.Board;
 import entities.Model;
 
@@ -12,14 +14,14 @@ public class BoardDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 
 	Board board;
-	JPanel[][] squares;
+	SquareDisplay[][] squares;
 	JPanel panel;
 
 	public BoardDisplay(Model model, Board board) {
 		super(model);
 		this.board = board;
 
-		squares = new JPanel[9][9];
+		squares = new SquareDisplay[9][9];
 
 		setLayout(new GridLayout(1, 0, 0, 0));
 
@@ -33,6 +35,7 @@ public class BoardDisplay extends AbstractDisplay {
 				squares[i][j] = new SquareDisplay(this, model, board.getSquare(i, j));
 				squares[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
 				squares[i][j].setBounds(i*62, j*62, 62, 62);
+				squares[i][j].addMouseListener(new SquareController(squares[i][j]));
 				panel.add(squares[i][j]);
 			}
 		}

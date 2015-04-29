@@ -9,13 +9,30 @@ public class Square implements Serializable {
 	boolean inert;
 	boolean bucket;
 	boolean bucketFull;
+	boolean selected = false;
+	Board parentBoard;
+	int iIndex;
+	int jIndex;
+	
 	
 	public Square(Tile tile, boolean inert, boolean bucket) {
 		this.tile = tile;
 		this.inert = inert;
 		this.bucket = bucket;
 		this.bucketFull = false;
-		
+		this.parentBoard = null;
+		this.iIndex = -1;
+		this.jIndex = -1;
+	}
+	
+	public Square(Tile tile, boolean inert, boolean bucket, Board parentBoard, int iIndex, int jIndex) {
+		this.tile = tile;
+		this.inert = inert;
+		this.bucket = bucket;
+		this.bucketFull = false;
+		this.parentBoard = parentBoard;
+		this.iIndex = iIndex;
+		this.jIndex = jIndex;
 	}
 	
 	public Tile getTile() {
@@ -57,5 +74,45 @@ public class Square implements Serializable {
 		if (inert) return "inert";
 		else if (bucket) return "bucket";
 		else return tile.toString();
+	}
+	
+	/**
+	 * adds this square to boards selected square array.
+	 * @return boolean indicating whether successful
+	 */
+	public boolean select(){
+		if(this.parentBoard == null){
+			return false;
+		}
+		if(!this.selected){
+			parentBoard.addToSelected(this);
+			this.selected = true;
+			return true;
+		}else{
+			parentBoard.removeFromSelected(this);
+			this.selected = false;
+			return false;
+		}
+
+	}
+	
+	public void setParentBoard(Board board){
+		this.parentBoard = board;
+	}
+	
+	public Board getParentBoard(){
+		return this.parentBoard;
+	}
+	
+	public boolean isSelected(){
+		return(selected);
+	}
+	
+	public int getIIndex(){
+		return this.iIndex;
+	}
+	
+	public int getJIndex(){
+		return this.jIndex;
 	}
 }
