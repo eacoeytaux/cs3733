@@ -10,6 +10,11 @@ import entities.Blueprint;
 import entities.Board;
 import entities.Square;
 
+/**
+ * 
+ * @author Hugh Whelan
+ *
+ */
 public class BuilderBoardDisplay extends JPanel {
 	private static final long serialVersionUID = 1L;
 
@@ -44,6 +49,10 @@ public class BuilderBoardDisplay extends JPanel {
 	
 	public Square getNewSquare() {
 		return parent.getNewSquare();
+	}
+	
+	public BlueprintDisplay getParentDisplay(){
+		return this.parent;
 	}
 	
 	public BuilderSquareDisplay getSquareDisplay(int row, int col) {

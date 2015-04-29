@@ -3,7 +3,7 @@ package controllers;
 import entities.Blueprint;
 import boundaries.BlueprintDisplay;
 
-public class SetStarReq extends AbstractBuilderMove{
+public class SetStarReq{
 	int score;
 	Blueprint blueprint;
 	BlueprintDisplay display;

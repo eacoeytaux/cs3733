@@ -56,4 +56,5 @@ public class SquareDisplay extends AbstractDisplay {
 		);
 		setLayout(groupLayout);
 	}
+	
 }

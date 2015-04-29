@@ -6,6 +6,11 @@ import javax.swing.JPanel;
 
 import entities.Square;
 
+/**
+ * 
+ * @author Hugh Whelan
+ *
+ */
 public class BuilderSquareDisplay extends JPanel {
 	private static final long serialVersionUID = 1L;
 
@@ -53,9 +58,26 @@ public class BuilderSquareDisplay extends JPanel {
 	/**
 	 * updates square to values on current board
 	 */
-	public void changeSquare() {
-		square.copyValues(parent.getNewSquare());
+	public Square changeSquare() {
+		Square newSquare = parent.getNewSquare();
+		square.copyValues(newSquare);
 		setup();
+		return newSquare;
+		
+	}
+	
+	public void changeSquare(Square newSquare) {
+		square.copyValues(newSquare);
+		setup();
+	}
+	
+
+	public BuilderBoardDisplay getParentDisplay(){
+		return this.parent;
+	}
+	
+	public Square getCopySquare() {
+		return( new Square(this.square.getTile(), this.square.isInert(), this.square.isInert()) );
 	}
 	
 	/**

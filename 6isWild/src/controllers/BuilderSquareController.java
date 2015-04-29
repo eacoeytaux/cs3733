@@ -3,6 +3,7 @@ package controllers;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import entities.SquareBuilderMove;
 import boundaries.BuilderSquareDisplay;
 
 public class BuilderSquareController implements MouseListener {
@@ -14,7 +15,8 @@ public class BuilderSquareController implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		parent.changeSquare();
+		SquareBuilderMove move = new SquareBuilderMove(parent);
+		move.doMove();
 	}
 
 	@Override
