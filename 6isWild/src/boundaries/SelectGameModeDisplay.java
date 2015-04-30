@@ -118,14 +118,14 @@ public class SelectGameModeDisplay extends AbstractDisplay {
 		puzzleLevelDisplay = new SelectLevelDisplay(model, application, Game.PUZZLE_ID);
 		puzzleLevelDisplay.setBackController(new BackController(application, this));
 
-		lightningLevelDisplay = new SelectLevelDisplay(model, application, Game.LIGHTNING_ID);
-		lightningLevelDisplay.setBackController(new BackController(application, this));
+		//lightningLevelDisplay = new SelectLevelDisplay(model, application, Game.LIGHTNING_ID);
+		//lightningLevelDisplay.setBackController(new BackController(application, this));
 
-		eliminationLevelDisplay = new SelectLevelDisplay(model, application, Game.ELIMINATION_ID);
-		eliminationLevelDisplay.setBackController(new BackController(application, this));
+		//eliminationLevelDisplay = new SelectLevelDisplay(model, application, Game.ELIMINATION_ID);
+		//eliminationLevelDisplay.setBackController(new BackController(application, this));
 
-		releaseLevelDisplay = new SelectLevelDisplay(model, application, Game.RELEASE_ID);
-		releaseLevelDisplay.setBackController(new BackController(application, this));
+		//releaseLevelDisplay = new SelectLevelDisplay(model, application, Game.RELEASE_ID);
+		//releaseLevelDisplay.setBackController(new BackController(application, this));
 	}
 
 	/**

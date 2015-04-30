@@ -18,7 +18,18 @@ public class Builder {
 	
 	
 	public Builder() {
-		this.blueprint = new Blueprint(0, 0, 0, 0, 0, null, null, null, null);
+		Square[][] squareArray = new Square[9][9];
+		Board newBoard = new Board(blueprint);
+
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				squareArray[i][j] = new Square(new Tile(i+1,j+1), false, false, newBoard, i, j);
+			}
+		}
+		
+		newBoard.setSquares(squareArray);
+
+		blueprint = new Blueprint(Game.PUZZLE_ID, 5, 4, 3, 40, new int[]{2,2,2}, new int[]{20,20,20,20,20}, new int[]{30, 30, 40}, newBoard = new Board(squareArray, blueprint) );
 		if(this.blueprint == null){
 			System.out.println("null blueprint");
 		}

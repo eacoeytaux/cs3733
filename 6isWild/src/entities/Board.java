@@ -162,6 +162,8 @@ public class Board {
 			moveValue += square.getTile().getValue();
 		}
 		
+		System.out.println("&&&&&&&&   " + moveValue);
+		
 		return(moveValue == 6);
 	}
 	
@@ -196,5 +198,9 @@ public class Board {
 	
 	public void setSquare(int row, int col, Square square){
 		this.board[row][col] = square;
+	}
+	
+	public ArrayList<Square> getSelected(){
+		return this.selectedSquares;
 	}
 }
