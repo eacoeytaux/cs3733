@@ -56,6 +56,12 @@ public class Board {
 		}
 	}
 	
+	/**
+	 * 
+	 * @author Jon Sawin
+	 * 	 
+	 */
+	
 	public int getRandomTileValue()
 	{
 		Random random = new Random(System.currentTimeMillis());
@@ -74,6 +80,12 @@ public class Board {
 		if (vf[4] <= r && r < vf[5]) return 6;
 		return -1;
 	}
+	
+	/***
+	 * 
+	 *@author Jon Sawin 
+	 *
+	 */
 	
 	public int getRandomMultiplier()
 	{

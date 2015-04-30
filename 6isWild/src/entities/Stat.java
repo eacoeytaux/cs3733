@@ -1,6 +1,13 @@
 package entities;
 
+/****
+ * 
+ * @author Jon Swain
+ *
+ */
+
 public class Stat {
+
 	int score;
 	int stars;
 	
