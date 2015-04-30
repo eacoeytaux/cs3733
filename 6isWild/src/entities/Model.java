@@ -24,7 +24,7 @@ public class Model {
 
 		for(int i = 0; i < 9; i++){
 			for(int j = 0; j < 9; j++){
-				squareArray[i][j] = new Square(new Tile(j+1,j+1), false, false, newBoard, j, i);
+				squareArray[i][j] = new Square(new Tile(j % 5 +1,i % 5 +1), false, false, newBoard, j, i);
 			}
 		}
 		

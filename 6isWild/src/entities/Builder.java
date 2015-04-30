@@ -30,9 +30,6 @@ public class Builder {
 		newBoard.setSquares(squareArray);
 
 		blueprint = new Blueprint(Game.PUZZLE_ID, 5, 4, 3, 40, new int[]{2,2,2}, new int[]{20,20,20,20,20}, new int[]{30, 30, 40}, newBoard = new Board(squareArray, blueprint) );
-		if(this.blueprint == null){
-			System.out.println("null blueprint");
-		}
 		builderApplication = new BuilderApplication(this);
 	}
 

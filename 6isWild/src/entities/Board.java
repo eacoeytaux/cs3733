@@ -129,9 +129,6 @@ public class Board {
 	 */
 	public void addToSelected(Square square){
 		selectedSquares.add(square);
-		if(selectedSquares.isEmpty()){
-			System.out.println("empty");
-		}
 	}
 	
 	
@@ -150,8 +147,6 @@ public class Board {
 			moveValue += square.getTile().getValue();
 		}
 		
-		System.out.println("&&&&&&&&   " + moveValue);
-		
 		return(moveValue == 6);
 	}
 	
@@ -160,24 +155,11 @@ public class Board {
 	 */
 	public void deselectAll(){
 		
-		System.out.println("deselecting");
-		
-		if(selectedSquares.isEmpty()){
-			System.out.println("empty");
-		}
 		for(Square square : selectedSquares){
-			System.out.println("d");
 			square.deselect();
-			if(square.isSelected()){
-				System.out.println("w");
-			}
 		}
-		
-		System.out.println("about to clear");
 
 		selectedSquares.clear();
-		
-		System.out.println(""+selectedSquares.size());
 	}
 	
 	public void setSelected(ArrayList<Square> selected){
