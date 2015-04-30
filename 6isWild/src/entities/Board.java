@@ -66,18 +66,18 @@ public class Board {
 	{
 		Random random = new Random(System.currentTimeMillis());
 		int sum = 0;
+		int runningSum = 0;
 		int[] vf = bp.getValueFrequencies();
 		for(int i = 0; i<6; i++)
 		{
 			sum += vf[i];
 		}
 		int r = random.nextInt(sum);
-		if (r < vf[0]) return 1;
-		if (vf[0] <= r && r < vf[1]) return 2;
-		if (vf[1] <= r && r < vf[2]) return 3;
-		if (vf[2] <= r && r < vf[3]) return 4;
-		if (vf[3] <= r && r < vf[4]) return 5;
-		if (vf[4] <= r && r < vf[5]) return 6;
+		for(int i = 1; i<=6; i++)
+		{
+			if(runningSum < r && r < runningSum + vf[i]) return i;
+			runningSum += vf[i];
+		}
 		return -1;
 	}
 	
@@ -91,15 +91,18 @@ public class Board {
 	{
 		Random random = new Random(System.currentTimeMillis());
 		int sum = 0;
+		int runningSum = 0;
 		int[] mf = bp.getMultiplierFrequencies();
 		for(int i = 0; i<3; i++)
 		{
 			sum += mf[i];
 		}
 		int r = random.nextInt(sum);
-		if (r < mf[0]) return 1;
-		if (mf[0] <= r && r < mf[1]) return 2;
-		if (mf[1] <= r && r < mf[2]) return 3;
+		for(int i = 1; i<=3; i++)
+		{
+			if(runningSum < r && r < runningSum + mf[i]) return i;
+			runningSum += mf[i];
+		}
 		return -1;
 	}
 	
