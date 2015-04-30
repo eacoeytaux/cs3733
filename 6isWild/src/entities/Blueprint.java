@@ -53,7 +53,7 @@ public class Blueprint implements Serializable {
 				squares[i][j] = new Square(new Tile(i, j), false, false);
 			}
 		}
-		Board newBoard = new Board(squares);
+		Board newBoard = new Board(squares, this);
 		
 		this.board = newBoard;
 	}
@@ -108,7 +108,7 @@ public class Blueprint implements Serializable {
 	}
 	
 	public Board getBoardClone(){
-		Board newBoard = new Board(this.board.board);
+		Board newBoard = new Board(this.board.board, this);
 		newBoard.selectedSquares = new ArrayList<Square>();
 		return newBoard;
 	}

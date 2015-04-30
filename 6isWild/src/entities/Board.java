@@ -13,12 +13,14 @@ public class Board {
 	Blueprint bp;
 	ArrayList<Square> selectedSquares;
 	
-	public Board() {
+	public Board(Blueprint bp) {
 		selectedSquares = new ArrayList<Square>();
+		this.bp = bp;
 	}
 	
-	public Board(Square[][] board) {
+	public Board(Square[][] board, Blueprint bp) {
 		selectedSquares = new ArrayList<Square>();
+		this.bp = bp;
 		this.board = new Square[9][9];
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
@@ -59,7 +61,7 @@ public class Board {
 		Random random = new Random(System.currentTimeMillis());
 		int sum = 0;
 		int[] vf = bp.getValueFrequencies();
-		for(int i = 0; i<5; i++)
+		for(int i = 0; i<6; i++)
 		{
 			sum += vf[i];
 		}
@@ -78,7 +80,7 @@ public class Board {
 		Random random = new Random(System.currentTimeMillis());
 		int sum = 0;
 		int[] mf = bp.getMultiplierFrequencies();
-		for(int i = 0; i<5; i++)
+		for(int i = 0; i<3; i++)
 		{
 			sum += mf[i];
 		}
@@ -101,7 +103,7 @@ public class Board {
 			}
 		}
 		
-		newBoard = new Board(newBoardSquares);
+		newBoard = new Board(newBoardSquares, bp);
 		 
 		for( Square square : this.selectedSquares){
 			newBoard.addToSelected(square);

@@ -13,7 +13,7 @@ public class PuzzleLevel extends AbstractLevel {
 	public PuzzleLevel(Blueprint blueprint){
 		super();
 		
-		this.board = new Board();
+		this.board = new Board(blueprint);
 		this.blueprint = blueprint;
 		this.board = blueprint.board.clone();
 		this.info = new Info(blueprint.movesTotal, 45, blueprint.swap, blueprint.shuffle, blueprint.remove, blueprint.starRequirements, blueprint.multiplierFrequencies);
