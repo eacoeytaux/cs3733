@@ -38,20 +38,21 @@ public class SquareDisplay extends AbstractDisplay {
 	 */
 	@Override
 	public void setup() {
-
+		this.removeAll();
 		if (square.isInert()) display = new InertDisplay(model);
 		else if (square.isBucket()) display = new BucketDisplay(model);
-		else if (this.display == null) this.display = new TileDisplay(model, this.square.getTile());
+		else if (this.display == null) {
+			this.setBackground(TileDisplay.getColor(square.getTile().getValue()));
+			this.display = new TileDisplay(model, this.square.getTile());
+		}
 		else this.display.setup();
 		
 		if(square.isSelected()){
-			this.setBorder(BorderFactory.createLineBorder(Color.red));
+			this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3));
 		}
 		else{
 			this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		}
-		
-		//this.display.setup();
 
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(

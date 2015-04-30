@@ -25,20 +25,24 @@ public class MakeMoveController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("deselecting");
 	
 		if(this.level.getBoard().validMove()){
-			System.out.println("its valid");
-			for( Square square : this.level.getBoard().getSelected()){
-					square.remove(this.level);
+			
+			for( int i = 0; i < 9; i++){
+				for( int j = 0; j < 9; j++){
+					if (level.getBoard().getSquare(i, j).isSelected()) level.getBoard().getSquare(i, j).remove(this.level);
+				}
 			}
 		}
-		
-		System.out.println("---------top left tile:" + this.level.getBoard().getSquare(0, 0).getTile().getValue());
 		
 		this.level.getBoard().deselectAll();
 		//this.levelScreen.getBoardDisplay().setupSquares();
 		
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				levelScreen.getBoardDisplay().updateTile(i, j);
+			}
+		}
 	}
 	
 	
