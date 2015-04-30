@@ -85,7 +85,10 @@ public class LevelDisplay extends AbstractDisplay {
 
 		JLabel lblNewLabel_1 = new JLabel("Game Mode/Level #");
 
-		panel = new BoardDisplay(model, this.board);
+		if(panel ==null){
+			panel = new BoardDisplay(model, this.board);
+		}
+		
 		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 		btnMakeMove = new JButton("Make Move");

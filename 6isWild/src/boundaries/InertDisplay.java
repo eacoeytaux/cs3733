@@ -2,11 +2,11 @@ package boundaries;
 
 import entities.Model;
 
-public class InertDisplay extends AbstractDisplay {
+public class InertDisplay extends TileDisplay {
 	private static final long serialVersionUID = 1L;
 
 	public InertDisplay(Model model) {
-		super(model);
+		super(model, null);
 
 		setup();
 	}

@@ -32,6 +32,7 @@ public class TileDisplay extends AbstractDisplay {
 	 * sets up tile display
 	 */
 	public void setup() {
+		System.out.println("value in display found is " + tile.getValue());
 		JLabel lblNewLabel = new JLabel("" + tile.getValue());
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 

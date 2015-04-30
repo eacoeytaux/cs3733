@@ -21,7 +21,7 @@ public class SquareDisplay extends AbstractDisplay {
 
 	BoardDisplay parent;
 
-	AbstractDisplay display;
+	TileDisplay display;
 	Square square;
 
 	public SquareDisplay(BoardDisplay parent, Model model, Square square) {
@@ -41,14 +41,17 @@ public class SquareDisplay extends AbstractDisplay {
 
 		if (square.isInert()) display = new InertDisplay(model);
 		else if (square.isBucket()) display = new BucketDisplay(model);
-		else display = new TileDisplay(model, this.square.getTile());
+		else if (this.display == null) this.display = new TileDisplay(model, this.square.getTile());
+		else this.display.setup();
 		
 		if(square.isSelected()){
 			this.setBorder(BorderFactory.createLineBorder(Color.red));
 		}
 		else{
-			this.setBorder(BorderFactory.createEmptyBorder());
+			this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		}
+		
+		//this.display.setup();
 
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -69,5 +72,9 @@ public class SquareDisplay extends AbstractDisplay {
 
 	public Square getSquare(){
 		return this.square;
+	}
+	
+	public void changeTile(){
+		display.changeTile(square.getTile());
 	}
 }
