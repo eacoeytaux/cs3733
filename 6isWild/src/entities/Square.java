@@ -126,14 +126,4 @@ public class Square implements Serializable {
 	public int getJIndex(){
 		return this.jIndex;
 	}
-	public void fillWithRandom(){
-		//TODO Write function to fill square with random tile.
-	}
-	public void remove(){
-		if (iIndex == 0){
-			fillWithRandom();
-		}
-		//TODO Write rest of function to 
-		
-	}
 }

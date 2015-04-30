@@ -161,7 +161,7 @@ public class LevelDisplay extends AbstractDisplay {
 	}
 
 	public void reinitBoard() {
-		level.resetBoard();
+		//level.resetBoard();
 		this.board = level.getBoard();
 		this.board.fillRandom();
 	}

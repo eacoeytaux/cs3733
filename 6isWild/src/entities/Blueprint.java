@@ -47,15 +47,7 @@ public class Blueprint implements Serializable {
 		this.multiplierFrequencies[1] = 50;
 		this.multiplierFrequencies[2] = 50;
 		
-		Square[][] squares = new Square[9][9];
-		for(int i = 0; i < 9; i++){
-			for( int j = 0; j < 9; j++){
-				squares[i][j] = new Square(new Tile(i, j), false, false);
-			}
-		}
-		Board newBoard = new Board(squares);
-		
-		this.board = newBoard;
+		this.board = board;
 	}
 	
 	public void setValues(int levelType, int shuffle, int swap, int remove, int movesTotal, int[] starRequirements, int[] valueFrequencies, int[] multiplierFrequencies){
