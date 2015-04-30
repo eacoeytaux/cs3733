@@ -50,7 +50,7 @@ public class LevelDisplay extends AbstractDisplay {
 
 		this.level = level;
 		this.board = level.getBoard();
-		this.gameMode = Game.PUZZLE_ID;
+		this.gameMode = level.getLevelType();
 		this.levelNum = level.getLevel();
 		this.score = level.getInfo().getScore();
 		this.moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
@@ -61,6 +61,10 @@ public class LevelDisplay extends AbstractDisplay {
 
 
 		setup();
+		
+		if (level.getLevelType() == Game.LIGHTNING_ID) {
+			startCountdown();
+		}
 	}
 
 	/**
@@ -88,13 +92,13 @@ public class LevelDisplay extends AbstractDisplay {
 		if(panel ==null){
 			panel = new BoardDisplay(model, this.board);
 		}
-		
+
 		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
 		btnMakeMove = new JButton("Make Move");
-		
+
 		setMakeMoveController(new MakeMoveController(model.level, this));
-		
+
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -172,8 +176,31 @@ public class LevelDisplay extends AbstractDisplay {
 	public void setMakeMoveController(MakeMoveController c){
 		btnMakeMove.addActionListener(c);
 	}
-	
+
 	public BoardDisplay getBoardDisplay(){
 		return this.panel;
+	}
+
+	public void endCountdown() {
+		System.out.println("out of time!!!");
+	}
+
+	public void startCountdown() {
+		Thread timerThread = new Thread() {
+			@Override
+			public void run() {
+				while (moves > 0) {
+					try {
+						Thread.sleep(1000);
+						moves--;
+					} catch (InterruptedException e) {
+						e.printStackTrace();
+					}
+				}
+				endCountdown();
+			}
+		};
+
+		timerThread.start();
 	}
 }

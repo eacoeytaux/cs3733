@@ -7,7 +7,7 @@ package entities;
  */
 public abstract class AbstractLevel {
 	int levelType;
-	int level;
+	int levelNum;
 	Blueprint blueprint;
 	Board board;
 	Stat stats;
@@ -17,8 +17,12 @@ public abstract class AbstractLevel {
 	public AbstractLevel(){
 	}
 	
+	public int getLevelType() {
+		return levelType;
+	}
+	
 	public int getLevel(){
-		return this.level;
+		return this.levelNum;
 	}
 
 	public Board getBoard(){
