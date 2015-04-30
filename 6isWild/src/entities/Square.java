@@ -134,28 +134,14 @@ public class Square implements Serializable {
 	}
 	
 	public Tile remove(AbstractLevel level){
-		System.out.println("removing " + this.iIndex + " " + this.jIndex);
-		
 		Tile oldTile = this.tile;
-		boolean isLowest = true;
 		
-		for( int j = jIndex+1; j < 9; j++){
-			System.out.println("checking " + iIndex + " " + j);
-			if(parentBoard.getSquare(iIndex, j).isSelected()) isLowest = false;
-		}
+		this.selected = false;
 		
-		if(isLowest){
-			this.selected = false;
-			System.out.println("lowest");
-			if(this.jIndex == 0){
-				System.out.println("lowest1");
-				this.tile = new Tile(5,5);
-			}else{
-				System.out.println("recursively removing " + iIndex + " " + jIndex);
-				
-				this.tile = parentBoard.getSquare(iIndex, jIndex-1).remove(level);
-				
-			}
+		if(this.jIndex == 0){
+			this.tile = new Tile(5,5);
+		}else{
+			this.tile = parentBoard.getSquare(iIndex, jIndex-1).remove(level);	
 		}
 		
 		return oldTile;

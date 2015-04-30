@@ -1,5 +1,6 @@
 package boundaries;
 import java.awt.Color;
+
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
@@ -9,6 +10,7 @@ import controllers.BuilderSquareController;
 import controllers.SquareController;
 import entities.Board;
 import entities.Model;
+import boundaries.SquareDisplay;
 
 public class BoardDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
@@ -48,17 +50,11 @@ public class BoardDisplay extends AbstractDisplay {
 	} 
 	
 	public SquareDisplay getSquareDisplay(int i, int j){
-		return squares[i][j];
+		return squares[i+1][j+1];
 	}
 	
-	public void setupSquares(){
-		for( int i = 0; i < 9; i++){
-			for( int j = 0; j < 9; j++){
-				System.out.println("i: "+ i);
-				System.out.println("j: "+ j);
-				squares[i][j].setup();
-			}
-		}
+	public void updateTile(int i, int j){
+		squares[i][j].changeTile();
+		squares[i][j].setup();
 	}
-	
 }
