@@ -100,7 +100,7 @@ public class Blueprint implements Serializable {
 	}
 	
 	public Board getBoardClone(){
-		Board newBoard = new Board(this.board.board);
+		Board newBoard = new Board(this.board.board, this);
 		newBoard.selectedSquares = new ArrayList<Square>();
 		return newBoard;
 	}

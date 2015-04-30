@@ -10,14 +10,17 @@ import java.util.Random;
  */
 public class Board {
 	Square[][] board;
+	Blueprint bp;
 	ArrayList<Square> selectedSquares;
 	
-	public Board() {
+	public Board(Blueprint bp) {
 		selectedSquares = new ArrayList<Square>();
+		this.bp = bp;
 	}
 	
-	public Board(Square[][] board) {
+	public Board(Square[][] board, Blueprint bp) {
 		selectedSquares = new ArrayList<Square>();
+		this.bp = bp;
 		this.board = new Square[9][9];
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
@@ -30,6 +33,7 @@ public class Board {
 	
 	public void setSquares(Square[][] board){
 		this.board = new Square[9][9];
+		this.bp = bp;
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				this.board[i][j] = board[i][j].clone();
@@ -40,17 +44,51 @@ public class Board {
 	}
 	
 	public void fillRandom() { //TODO set tiles based off frequencies
-		Random random = new Random(System.currentTimeMillis());
 		
 		for (Square[] squares : board) {
 			for (Square square : squares) {
 				if (square.isInert() || square.isBucket()) continue;
 				
 				Tile tile = square.getTile();
-				if (tile.value == 0) tile.value = random.nextInt(5) + 1;
-				if (tile.multiplier == 0) tile.multiplier = random.nextInt(3) + 1;
+				if (tile.value == 0) tile.value = getRandomTileValue();
+				if (tile.multiplier == 0) tile.multiplier = getRandomMultiplier();
 			}
 		}
+	}
+	
+	public int getRandomTileValue()
+	{
+		Random random = new Random(System.currentTimeMillis());
+		int sum = 0;
+		int[] vf = bp.getValueFrequencies();
+		for(int i = 0; i<6; i++)
+		{
+			sum += vf[i];
+		}
+		int r = random.nextInt(sum);
+		if (r < vf[0]) return 1;
+		if (vf[0] <= r && r < vf[1]) return 2;
+		if (vf[1] <= r && r < vf[2]) return 3;
+		if (vf[2] <= r && r < vf[3]) return 4;
+		if (vf[3] <= r && r < vf[4]) return 5;
+		if (vf[4] <= r && r < vf[5]) return 6;
+		return -1;
+	}
+	
+	public int getRandomMultiplier()
+	{
+		Random random = new Random(System.currentTimeMillis());
+		int sum = 0;
+		int[] mf = bp.getMultiplierFrequencies();
+		for(int i = 0; i<3; i++)
+		{
+			sum += mf[i];
+		}
+		int r = random.nextInt(sum);
+		if (r < mf[0]) return 1;
+		if (mf[0] <= r && r < mf[1]) return 2;
+		if (mf[1] <= r && r < mf[2]) return 3;
+		return -1;
 	}
 	
 	public Board clone() {
@@ -65,7 +103,7 @@ public class Board {
 			}
 		}
 		
-		newBoard = new Board(newBoardSquares);
+		newBoard = new Board(newBoardSquares, bp);
 		 
 		for( Square square : this.selectedSquares){
 			newBoard.addToSelected(square);
