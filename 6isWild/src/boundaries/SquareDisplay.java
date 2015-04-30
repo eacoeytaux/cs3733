@@ -45,7 +45,10 @@ public class SquareDisplay extends AbstractDisplay {
 			this.setBackground(TileDisplay.getColor(square.getTile().getValue()));
 			this.display = new TileDisplay(model, this.square.getTile());
 		}
-		else this.display.setup();
+		else {
+			this.setBackground(TileDisplay.getColor(square.getTile().getValue()));
+			this.display.setup();
+		}
 		
 		if(square.isSelected()){
 			this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3));
