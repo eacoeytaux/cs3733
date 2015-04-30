@@ -1,5 +1,6 @@
 package boundaries;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.GroupLayout;
@@ -34,6 +35,8 @@ public class TileDisplay extends AbstractDisplay {
 	public void setup() {
 		this.removeAll();
 		
+		this.setBackground(getColor(tile.getValue()));
+
 		JLabel lblNewLabel = new JLabel("" + tile.getValue());
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 
@@ -67,5 +70,24 @@ public class TileDisplay extends AbstractDisplay {
 	public void changeTile(Tile tile) {
 		this.tile = tile;
 		setup();
+	}
+	
+	public static Color getColor(int value) {
+		switch (value) {
+		case 1:
+			return Color.red;
+		case 2:
+			return Color.orange;
+		case 3:
+			return Color.yellow;
+		case 4:
+			return Color.green;
+		case 5:
+			return Color.cyan;
+		case 6:
+			return Color.magenta;
+		default:
+				return Color.white;
+		}
 	}
 }
