@@ -139,10 +139,17 @@ public class Square implements Serializable {
 	 * @return
 	 */
 	public Tile remove(){
+
 		Tile oldTile = this.tile;
 		
 		this.selected = false;
 		
+		if(inert && jIndex != 0){
+			return this.tile = parentBoard.getSquare(iIndex, jIndex-1).remove();	
+		} else if(inert && jIndex == 0){
+			new Tile(parentBoard.getRandomTileValue(), parentBoard.getRandomMultiplier());
+		}
+	
 		if(this.jIndex == 0){
 			this.tile = new Tile(parentBoard.getRandomTileValue(), parentBoard.getRandomMultiplier());
 			//this.tile = new Tile(parentBoard.getRandomTileValue(), parentBoard.getRandomMultiplier());
