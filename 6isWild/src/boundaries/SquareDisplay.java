@@ -84,4 +84,8 @@ public class SquareDisplay extends AbstractDisplay {
 	public void changeTile(){
 		display.changeTile(square.getTile());
 	}
+	
+	public BoardDisplay getParentBoardDisplay(){
+		return this.parent;
+	}
 }

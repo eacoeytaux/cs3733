@@ -23,9 +23,12 @@ public class BoardDisplay extends AbstractDisplay {
 	Board board;
 	SquareDisplay[][] squares;
 	JPanel panel;
+	Model model;
+	
 
 	public BoardDisplay(Model model, Board board) {
 		super(model);
+		this.model = model;
 		this.board = board;
 
 		squares = new SquareDisplay[9][9];
@@ -42,7 +45,7 @@ public class BoardDisplay extends AbstractDisplay {
 				squares[i][j] = new SquareDisplay(this, model, board.getSquare(i, j));
 				squares[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
 				squares[i][j].setBounds(i*62, j*62, 62, 62);
-				squares[i][j].addMouseListener(new SquareController(squares[i][j]));
+				squares[i][j].addMouseListener(new SquareController(squares[i][j], model));
 				panel.add(squares[i][j]);
 			}
 		}

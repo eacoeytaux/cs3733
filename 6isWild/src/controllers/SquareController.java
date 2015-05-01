@@ -2,9 +2,14 @@ package controllers;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.logging.Level;
 
+import entities.AbstractLevel;
+import entities.Board;
 import entities.Square;
 import entities.SquareBuilderMove;
+import entities.Model;
+import boundaries.BoardDisplay;
 import boundaries.BuilderSquareDisplay;
 import boundaries.SquareDisplay;
 
@@ -16,11 +21,13 @@ import boundaries.SquareDisplay;
 public class SquareController implements MouseListener {
 	SquareDisplay squareDisplay;
 	Square square;
+	Model model;
 	
 	
-	public SquareController(SquareDisplay squareDisplay) {
+	public SquareController(SquareDisplay squareDisplay, Model model) {
 		this.squareDisplay = squareDisplay;
 		this.square = squareDisplay.getSquare();
+		this.model = model;
 	}
 
 	/**
@@ -28,29 +35,48 @@ public class SquareController implements MouseListener {
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		if(isValid(squareDisplay, square)){
-			this.square.select();
-			this.squareDisplay.setup();
-		}
-		
 		
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		if(isValid(squareDisplay, square)){
+			this.square.select();
+			this.squareDisplay.setup();
+		}
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
+		Board board = this.square.getParentBoard();
+		BoardDisplay boardDisplay = squareDisplay.getParentBoardDisplay();
+		AbstractLevel level = this.model.getLevel();
+		
+		if(board.validMove()){
+			for( int i = 0; i < 9; i++){
+				for( int j = 0; j < 9; j++){
+					if (board.getSquare(i, j).isSelected()) board.getSquare(i, j).remove(level);
+				}
+			}
+		}
+		
+		board.deselectAll();
+		//this.levelScreen.getBoardDisplay().setupSquares();
+		
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				boardDisplay.updateTile(i, j);
+			}
+		}
 		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
+		if((e.getModifiers() == MouseEvent.BUTTON1_MASK) && this.square.getParentBoard().getNumberOfSelected() != 0 && isValid(squareDisplay, square)){
+			this.square.select();
+			this.squareDisplay.setup();
+		}
 		
 	}
 
