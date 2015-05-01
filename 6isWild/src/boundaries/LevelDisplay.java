@@ -97,7 +97,7 @@ public class LevelDisplay extends AbstractDisplay {
 
 		btnMakeMove = new JButton("Make Move");
 
-		setMakeMoveController(new MakeMoveController(model.level, this));
+		setMakeMoveController(new MakeMoveController(level, this));
 
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -174,6 +174,7 @@ public class LevelDisplay extends AbstractDisplay {
 		//level.resetBoard();
 		this.board = level.getBoard();
 		this.board.fillRandom();
+		panel.setup();
 	}
 
 	/**

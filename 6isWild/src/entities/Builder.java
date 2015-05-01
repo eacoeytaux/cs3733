@@ -19,17 +19,17 @@ public class Builder {
 	
 	public Builder() {
 		Square[][] squareArray = new Square[9][9];
-		Board newBoard = new Board(blueprint);
+		Board newBoard = new Board(squareArray, new int[]{1, 1, 1, 1, 1, 1}, new int[]{1, 1, 1});
 
 		for(int i = 0; i < 9; i++){
 			for(int j = 0; j < 9; j++){
-				squareArray[i][j] = new Square(new Tile(i+1,j+1), false, false, newBoard, i, j);
+				squareArray[i][j] = new Square(new Tile(0, 0), false, false, newBoard, i, j);
 			}
 		}
 		
 		newBoard.setSquares(squareArray);
 
-		blueprint = new Blueprint(Game.PUZZLE_ID, 5, 4, 3, 40, new int[]{2,2,2}, new int[]{20,20,20,20,20}, new int[]{30, 30, 40}, newBoard = new Board(squareArray, blueprint) );
+		blueprint = new Blueprint(Game.PUZZLE_ID, 5, 4, 3, 40, new int[]{2,2,2}, new int[]{20,20,20,20,20}, new int[]{30, 30, 40}, newBoard = new Board(squareArray, new int[]{1, 1, 1, 1, 1, 1}, new int[]{1, 1, 1}) );
 		builderApplication = new BuilderApplication(this);
 	}
 

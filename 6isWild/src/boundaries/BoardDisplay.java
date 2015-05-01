@@ -53,7 +53,11 @@ public class BoardDisplay extends AbstractDisplay {
 
 	@Override
 	public void setup() {
-		// TODO Auto-generated method stub
+		for (SquareDisplay[] squares : squares) {
+			for (SquareDisplay square : squares) {
+				square.setup();
+			}
+		}
 
 	} 
 	
