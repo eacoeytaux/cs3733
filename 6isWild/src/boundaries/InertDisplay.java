@@ -1,5 +1,8 @@
 package boundaries;
 
+import javax.swing.*;
+import javax.swing.GroupLayout.Alignment;
+
 import entities.Model;
 
 public class InertDisplay extends TileDisplay {
@@ -17,8 +20,7 @@ public class InertDisplay extends TileDisplay {
 	@Override
 	public void setup() {
 
-		/*JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
+		JLabel lblNewLabel = new JLabel("");
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.LEADING)
@@ -34,7 +36,7 @@ public class InertDisplay extends TileDisplay {
 						.addComponent(lblNewLabel)
 						.addContainerGap(256, Short.MAX_VALUE))
 				);
-		setLayout(groupLayout);*/
+		setLayout(groupLayout);
 
 	}
 }

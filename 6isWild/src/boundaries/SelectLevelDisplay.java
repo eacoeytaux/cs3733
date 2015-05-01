@@ -14,6 +14,11 @@ import entities.Game;
 import entities.Model;
 import entities.PuzzleLevel;
 
+/**
+ * displays select level display menu
+ * @author 
+ *
+ */
 public class SelectLevelDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 	

@@ -7,7 +7,7 @@ import javax.swing.JPanel;
 import entities.Square;
 
 /**
- * 
+ * boundary class for a square in builder
  * @author Hugh Whelan
  *
  */
@@ -66,6 +66,9 @@ public class BuilderSquareDisplay extends JPanel {
 		
 	}
 	
+	/**
+	 * refreshes square to update value
+	 */
 	public void changeSquare(Square newSquare) {
 		square.copyValues(newSquare);
 		setup();

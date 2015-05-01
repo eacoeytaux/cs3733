@@ -23,6 +23,9 @@ public class MakeMoveController implements ActionListener {
 		this.levelScreen = levelScreen;
 	}
 
+	/**
+	 * if move is valid, update board.  deselect all squares.  update boundaries
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 	

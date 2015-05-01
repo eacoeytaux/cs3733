@@ -11,6 +11,11 @@ import controllers.StatsButtonController;
 import entities.Game;
 import entities.Model;
 
+/**
+ * The game model, which contains all displays
+ * @author
+ *
+ */
 public class Application extends JFrame {
 	private static final long serialVersionUID = 1L;
 
@@ -112,5 +117,9 @@ public class Application extends JFrame {
 	
 	public LevelStatDisplay getLSDisplay(){
 		return this.lsDisplay;
+	}
+	
+	public LevelDisplay getLevelDisplay(){
+		return this.lDisplay;
 	}
 }

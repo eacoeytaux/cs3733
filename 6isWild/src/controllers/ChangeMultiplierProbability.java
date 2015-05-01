@@ -3,6 +3,12 @@ package controllers;
 import boundaries.BlueprintDisplay;
 import entities.Blueprint;
 
+/**
+ * 
+ * @author
+ *
+ */
+
 public class ChangeMultiplierProbability{
 	Blueprint blueprint;
 	BlueprintDisplay display;

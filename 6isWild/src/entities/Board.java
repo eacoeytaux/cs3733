@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 /**
- * 
+ * The board that contains all squares
  * @author Hugh Whelan
  *
  */
@@ -31,6 +31,10 @@ public class Board {
 		}
 	}
 	
+	/**
+	 * sets all squares
+	 * @param board array of squares
+	 */
 	public void setSquares(Square[][] board){
 		this.board = new Square[9][9];
 		this.bp = bp;
@@ -43,6 +47,9 @@ public class Board {
 		}
 	}
 	
+	/**
+	 * fills a square with a tile based off the levels frequencies
+	 */
 	public void fillRandom() { //TODO set tiles based off frequencies
 		
 		for (Square[] squares : board) {
@@ -56,6 +63,9 @@ public class Board {
 		}
 	}
 	
+	/**
+	 * returns value based off of level value frequencies
+	 */
 	public int getRandomTileValue()
 	{
 		Random random = new Random(System.currentTimeMillis());
@@ -75,6 +85,9 @@ public class Board {
 		return -1;
 	}
 	
+	/**
+	 * returns value based off of level value multipliers
+	 */
 	public int getRandomMultiplier()
 	{
 		Random random = new Random(System.currentTimeMillis());
@@ -91,6 +104,9 @@ public class Board {
 		return -1;
 	}
 	
+	/**
+	 * clones the board
+	 */
 	public Board clone() {
 		Square[][] newBoardSquares = new Square[9][9];
 		Board newBoard;

@@ -133,6 +133,11 @@ public class Square implements Serializable {
 		return this.jIndex;
 	}
 	
+	/**
+	 * removes squares tile and replaces it with tile from above.  if on top row, set as random tile
+	 * @param level
+	 * @return
+	 */
 	public Tile remove(AbstractLevel level){
 		Tile oldTile = this.tile;
 		
@@ -140,6 +145,7 @@ public class Square implements Serializable {
 		
 		if(this.jIndex == 0){
 			this.tile = new Tile(5,5);
+			//this.tile = new Tile(parentBoard.getRandomTileValue(), parentBoard.getRandomMultiplier());
 		}else{
 			this.tile = parentBoard.getSquare(iIndex, jIndex-1).remove(level);	
 		}

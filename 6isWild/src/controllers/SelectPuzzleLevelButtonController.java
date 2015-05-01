@@ -7,6 +7,11 @@ import boundaries.Application;
 import boundaries.LevelDisplay;
 import entities.Model;
 
+/**
+ * 
+ * @author 
+ *
+ */
 public class SelectPuzzleLevelButtonController implements ActionListener {
 	Model model;
 	Application application;
@@ -18,6 +23,9 @@ public class SelectPuzzleLevelButtonController implements ActionListener {
 		this.lvlDisplay = lvlDisplay;
 	}
 
+	/**
+	 * on click reinitialize board and update panel
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		lvlDisplay.reinitBoard();
