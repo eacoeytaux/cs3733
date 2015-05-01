@@ -21,11 +21,29 @@ public class Model {
 	public Model() {
 
 		puzzleLevels = new ArrayList<PuzzleLevel>();
-		puzzleLevels.add(new PuzzleLevel(loadBlueprint("./levelData/puzzleLevel1.txt")));
+		//puzzleLevels.add(new PuzzleLevel(loadBlueprint("./levelData/puzzleLevel1.txt")));
 		lightningLevels = new ArrayList<LightningLevel>(); 
 		eliminationLevels = new ArrayList<EliminationLevel>(); 
 		releaseLevels = new ArrayList<ReleaseLevel>(); 
 		globalStats = new GlobalStats(0,0,0);	
+		
+		//rest is filler level
+		Square[][] fillerSquares = new Square[9][9];
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				fillerSquares[i][j] = new Square(new Tile(j % 5 +1, i % 5 + 1), false, false);
+				fillerSquares[i][j].setRowCol(j % 5 +1, i % 5 +1);
+			}
+		}
+		Board fillerBoard = new Board(fillerSquares, new int[]{3,3,3}, new int[]{3,3,3});
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				fillerSquares[i][j].setParentBoard(fillerBoard);
+			}
+		}
+		Blueprint fillerBlueprint = new Blueprint(2, 2, 2, 2, 2, new int[]{3,3,3}, new int[]{3,3,3,3,3,3}, new int[]{3,3,3}, fillerBoard);
+		PuzzleLevel fillerLevel = new PuzzleLevel(fillerBlueprint);
+		puzzleLevels.add(fillerLevel);
 	}
 
 	/**
