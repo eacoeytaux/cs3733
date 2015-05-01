@@ -10,12 +10,14 @@ import java.util.Random;
  *
  */
 public class Board implements Serializable {
+	Random random;
 	Square[][] board;
 	ArrayList<Square> selectedSquares;
 	int[] vf;
 	int[] mf;
 
 	public Board(Square[][] board, int[] vf, int[] mf) {
+		random = new Random(System.currentTimeMillis());
 		selectedSquares = new ArrayList<Square>();
 		this.vf = vf;
 		this.mf = mf;
@@ -66,19 +68,16 @@ public class Board implements Serializable {
 	 */
 	public int getRandomTileValue()
 	{
-		Random random = new Random(System.currentTimeMillis());
 		int sum = 0;
 		for(int i = 0; i<6; i++)
 		{
 			sum += vf[i];
 		}
 		int r = random.nextInt(sum);
-		if (r < vf[0]) return 1;
-		if (vf[0] <= r && r < vf[1]) return 2;
-		if (vf[1] <= r && r < vf[2]) return 3;
-		if (vf[2] <= r && r < vf[3]) return 4;
-		if (vf[3] <= r && r < vf[4]) return 5;
-		if (vf[4] <= r && r < vf[5]) return 6;
+		for (int i = 0; i < 6; i++) {
+			if (r < vf[i]) return i + 1;
+			r -= vf[i];
+		}
 		return -1;
 	}
 
@@ -87,16 +86,16 @@ public class Board implements Serializable {
 	 */
 	public int getRandomMultiplier()
 	{
-		Random random = new Random(System.currentTimeMillis());
 		int sum = 0;
 		for(int i = 0; i<3; i++)
 		{
 			sum += mf[i];
 		}
 		int r = random.nextInt(sum);
-		if (r < mf[0]) return 1;
-		if (mf[0] <= r && r < mf[1]) return 2;
-		if (mf[1] <= r && r < mf[2]) return 3;
+		for (int i = 0; i < 3; i++) {
+			if (r < mf[i]) return i + 1;
+			r -= mf[i];
+		}
 		return -1;
 	}
 	
@@ -162,7 +161,7 @@ public class Board implements Serializable {
 	}
 
 	/**
-	 * calls deselect on each square, then cleares selectedTiles
+	 * calls deselect on each square, then clears selectedTiles
 	 */
 	public void deselectAll(){
 

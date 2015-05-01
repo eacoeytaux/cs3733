@@ -144,7 +144,7 @@ public class Square implements Serializable {
 		this.selected = false;
 		
 		if(this.jIndex == 0){
-			this.tile = new Tile(5,5);
+			this.tile = new Tile(parentBoard.getRandomTileValue(), parentBoard.getRandomMultiplier());
 			//this.tile = new Tile(parentBoard.getRandomTileValue(), parentBoard.getRandomMultiplier());
 		}else{
 			this.tile = parentBoard.getSquare(iIndex, jIndex-1).remove();	

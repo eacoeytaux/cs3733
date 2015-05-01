@@ -1,7 +1,10 @@
 package boundaries;
 
-import javax.swing.*;
+import java.awt.Color;
+
+import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.JLabel;
 
 import entities.Model;
 
@@ -19,6 +22,8 @@ public class InertDisplay extends TileDisplay {
 	 */
 	@Override
 	public void setup() {
+		
+		setBackground(Color.BLACK);
 
 		JLabel lblNewLabel = new JLabel("");
 		GroupLayout groupLayout = new GroupLayout(this);

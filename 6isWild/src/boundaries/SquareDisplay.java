@@ -39,7 +39,10 @@ public class SquareDisplay extends AbstractDisplay {
 	@Override
 	public void setup() {
 		this.removeAll();
-		if (square.isInert()) display = new InertDisplay(model);
+		if (square.isInert()) {
+			display = new InertDisplay(model);
+			this.setBackground(Color.BLACK);
+		}
 		else if (square.isBucket()) display = new BucketDisplay(model);
 		else if (this.display == null) {
 			this.setBackground(TileDisplay.getColor(square.getTile().getValue()));

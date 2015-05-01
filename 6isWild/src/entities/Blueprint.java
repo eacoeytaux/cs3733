@@ -77,16 +77,6 @@ public class Blueprint implements Serializable {
 		this.valueFrequencies = valueFrequencies;
 		this.multiplierFrequencies = multiplierFrequencies;
 	}
-	
-	/**
-	 * changes a square
-	 * @param row
-	 * @param col
-	 * @param square
-	 */
-	public void changeSquare(int row, int col, Square square) {
-		this.board.setSquare(row, col, square);
-	}
 
 	/**
 	 * converts a blueprint to a String
