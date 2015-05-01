@@ -3,6 +3,12 @@ package entities;
 import java.io.Serializable;
 import java.util.ArrayList;
 
+
+/**
+ * blueprint for a level.  changed in builder, used to initialize level in game
+ * @author Hugh
+ *
+ */
 public class Blueprint implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -50,6 +56,17 @@ public class Blueprint implements Serializable {
 		this.board = board;
 	}
 	
+	/**
+	 * sets values for a blueprint
+	 * @param levelType
+	 * @param shuffle
+	 * @param swap
+	 * @param remove
+	 * @param movesTotal
+	 * @param starRequirements
+	 * @param valueFrequencies
+	 * @param multiplierFrequencies
+	 */
 	public void setValues(int levelType, int shuffle, int swap, int remove, int movesTotal, int[] starRequirements, int[] valueFrequencies, int[] multiplierFrequencies){
 		this.levelType = levelType;
 		this.shuffle = shuffle;
@@ -61,6 +78,12 @@ public class Blueprint implements Serializable {
 		this.multiplierFrequencies = multiplierFrequencies;
 	}
 	
+	/**
+	 * changes a square
+	 * @param row
+	 * @param col
+	 * @param square
+	 */
 	public void changeSquare(int row, int col, Square square) {
 		this.board.setSquare(row, col, square);
 	}

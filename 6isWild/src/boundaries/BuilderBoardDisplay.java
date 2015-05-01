@@ -11,7 +11,7 @@ import entities.Board;
 import entities.Square;
 
 /**
- * 
+ * displays the board for the builder
  * @author Hugh Whelan
  *
  */

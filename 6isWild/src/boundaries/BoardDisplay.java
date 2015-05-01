@@ -12,6 +12,11 @@ import entities.Board;
 import entities.Model;
 import boundaries.SquareDisplay;
 
+/**
+ * displays the game board, which contains a Board and an array of Squares
+ * @author
+ *
+ */
 public class BoardDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 
@@ -57,6 +62,11 @@ public class BoardDisplay extends AbstractDisplay {
 		return squares[i+1][j+1];
 	}
 	
+	/**
+	 * refreshes the tile display of given index
+	 * @param i index
+	 * @param j index
+	 */
 	public void updateTile(int i, int j){
 		squares[i][j].changeTile();
 		squares[i][j].setup();

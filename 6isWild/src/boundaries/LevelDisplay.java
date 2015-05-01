@@ -19,7 +19,7 @@ import entities.Game;
 import entities.Model;
 
 /**
- * 
+ * displays a level, which contains all other display needed for playing a level
  * @author Hugh Whelan
  *
  */
@@ -167,6 +167,9 @@ public class LevelDisplay extends AbstractDisplay {
 		btnBack.addActionListener(c);
 	}
 
+	/**
+	 * reinitializes the board from the corresponding blueprint
+	 */
 	public void reinitBoard() {
 		//level.resetBoard();
 		this.board = level.getBoard();
@@ -174,6 +177,10 @@ public class LevelDisplay extends AbstractDisplay {
 		panel.setup();
 	}
 
+	/**
+	 * adds an action listener to make move button
+	 * @param c controller for back button
+	 */
 	public void setMakeMoveController(MakeMoveController c){
 		btnMakeMove.addActionListener(c);
 	}
@@ -182,10 +189,16 @@ public class LevelDisplay extends AbstractDisplay {
 		return this.panel;
 	}
 
+	/**
+	 * displays message to indicate time is up
+	 */
 	public void endCountdown() {
 		System.out.println("out of time!!!");
 	}
 
+	/**
+	 * begins timer for lightening levels
+	 */
 	public void startCountdown() {
 		Thread timerThread = new Thread() {
 			@Override

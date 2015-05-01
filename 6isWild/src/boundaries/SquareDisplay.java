@@ -78,6 +78,9 @@ public class SquareDisplay extends AbstractDisplay {
 		return this.square;
 	}
 	
+	/**
+	 * updates the tile display of the tile the square contains
+	 */
 	public void changeTile(){
 		display.changeTile(square.getTile());
 	}

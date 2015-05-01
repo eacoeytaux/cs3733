@@ -8,6 +8,11 @@ import javax.swing.JLabel;
 
 import entities.Model;
 
+/**
+ * Display of a bucket
+ * @author 
+ *
+ */
 public class BucketDisplay extends TileDisplay {
 	private static final long serialVersionUID = 1L;
 

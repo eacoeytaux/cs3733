@@ -4,6 +4,11 @@ import javax.swing.JPanel;
 
 import entities.Model;
 
+/**
+ * The abstract class for all displays. all display have a parent model
+ * @author
+ *
+ */
 public abstract class AbstractDisplay extends JPanel {
 	protected static final long serialVersionUID = 1L;
 	

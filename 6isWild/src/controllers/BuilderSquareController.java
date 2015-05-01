@@ -6,6 +6,11 @@ import java.awt.event.MouseListener;
 import entities.SquareBuilderMove;
 import boundaries.BuilderSquareDisplay;
 
+/**
+ * handles mouse events on squares in the builder
+ * @author
+ *
+ */
 public class BuilderSquareController implements MouseListener {
 	BuilderSquareDisplay parent;
 	
@@ -13,6 +18,9 @@ public class BuilderSquareController implements MouseListener {
 		this.parent = parent;
 	}
 
+	/**
+	 * changes clicked square to match that of indicated type
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		SquareBuilderMove move = new SquareBuilderMove(parent);

@@ -23,7 +23,7 @@ import entities.Board;
 import entities.Builder;
 
 /**
- * 
+ * Application boundary class for the builder
  * @author Hugh Whelan
  * @author Ethan Coeytaux
  */
@@ -106,6 +106,9 @@ public class BuilderApplication extends JFrame {
 		pack();
 	}
 
+	/**
+	 * saves a board to disk
+	 */
 	public void saveBoard() {
 		display.setValues();
 
@@ -127,6 +130,9 @@ public class BuilderApplication extends JFrame {
 		}
 	}
 
+	/**
+	 * loads a board from disk
+	 */
 	public void loadBoard() {
 		JFileChooser chooser = new JFileChooser();
 		chooser.setSelectedFile(new File("level.txt"));

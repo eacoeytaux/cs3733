@@ -1,17 +1,22 @@
 package entities;
 
 import java.io.File;
+
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
+/**
+ * the model contains all levels and stats for the game
+ * @author
+ *
+ */
 public class Model {
 	ArrayList<PuzzleLevel> puzzleLevels;
 	ArrayList<LightningLevel> lightningLevels;
 	ArrayList<EliminationLevel> eliminationLevels;
 	ArrayList<ReleaseLevel> releaseLevels;
 	GlobalStats globalStats;
-
 
 	public Model() {
 
@@ -23,6 +28,11 @@ public class Model {
 		globalStats = new GlobalStats(0,0,0);	
 	}
 
+	/**
+	 * loads a blueprint from a file location
+	 * @param fileLoc location of the file
+	 * @return Blueprint loaded
+	 */
 	public Blueprint loadBlueprint(String fileLoc) {
 		try {
 			File file = new File(fileLoc);

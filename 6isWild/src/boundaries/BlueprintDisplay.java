@@ -22,7 +22,7 @@ import entities.Square;
 import entities.Tile;
 
 /**
- * 
+ * Displays the blueprint of a level, as well as options to modify the blueprint
  * @author eacoeytaux
  *
  */
@@ -350,6 +350,10 @@ public class BlueprintDisplay extends JPanel {
 		setLayout(groupLayout);
 	}
 	
+	/**
+	 * gets a new square that corresponds to the tile type in the tile type combo box
+	 * @return Tile to be placed in selected square
+	 */
 	public Square getNewSquare() {
 		int type = tileTypeComboBox.getSelectedIndex();
 		switch (type) {

@@ -8,6 +8,11 @@ import entities.SquareBuilderMove;
 import boundaries.BuilderSquareDisplay;
 import boundaries.SquareDisplay;
 
+/**
+ * handles mouse events on a square
+ * @author Hugh Whelan
+ *
+ */
 public class SquareController implements MouseListener {
 	SquareDisplay squareDisplay;
 	Square square;
@@ -18,6 +23,9 @@ public class SquareController implements MouseListener {
 		this.square = squareDisplay.getSquare();
 	}
 
+	/**
+	 * try to select on mouse click
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if(isValid(squareDisplay, square)){
