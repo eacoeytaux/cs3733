@@ -33,7 +33,7 @@ public class MakeMoveController implements ActionListener {
 			
 			for( int i = 0; i < 9; i++){
 				for( int j = 0; j < 9; j++){
-					if (level.getBoard().getSquare(i, j).isSelected()) level.getBoard().getSquare(i, j).remove(this.level);
+					//if (level.getBoard().getSquare(i, j).isSelected()) level.getBoard().getSquare(i, j).remove(this.level);
 				}
 			}
 		}

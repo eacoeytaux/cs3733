@@ -138,7 +138,7 @@ public class Square implements Serializable {
 	 * @param level
 	 * @return
 	 */
-	public Tile remove(AbstractLevel level){
+	public Tile remove(){
 		Tile oldTile = this.tile;
 		
 		this.selected = false;
@@ -147,7 +147,7 @@ public class Square implements Serializable {
 			this.tile = new Tile(5,5);
 			//this.tile = new Tile(parentBoard.getRandomTileValue(), parentBoard.getRandomMultiplier());
 		}else{
-			this.tile = parentBoard.getSquare(iIndex, jIndex-1).remove(level);	
+			this.tile = parentBoard.getSquare(iIndex, jIndex-1).remove();	
 		}
 		
 		return oldTile;

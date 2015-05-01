@@ -51,6 +51,7 @@ public class Model {
 	public AbstractLevel getLevel(int gameMode, int levelNum) {
 		return puzzleLevels.get(0); //TODO
 	}
+	
 }
 
 

@@ -50,12 +50,11 @@ public class SquareController implements MouseListener {
 	public void mouseReleased(MouseEvent e) {
 		Board board = this.square.getParentBoard();
 		BoardDisplay boardDisplay = squareDisplay.getParentBoardDisplay();
-		AbstractLevel level = this.model.getLevel();
 		
 		if(board.validMove()){
 			for( int i = 0; i < 9; i++){
 				for( int j = 0; j < 9; j++){
-					if (board.getSquare(i, j).isSelected()) board.getSquare(i, j).remove(level);
+					if (board.getSquare(i, j).isSelected()) board.getSquare(i, j).remove();
 				}
 			}
 		}
