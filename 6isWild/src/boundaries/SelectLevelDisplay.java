@@ -8,7 +8,6 @@ import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controllers.BackController;
-import controllers.MakeMoveController;
 import controllers.SelectPuzzleLevelButtonController;
 import entities.Game;
 import entities.Model;

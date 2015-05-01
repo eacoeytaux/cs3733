@@ -12,7 +12,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
 import controllers.BackController;
-import controllers.MakeMoveController;
 import entities.AbstractLevel;
 import entities.Board;
 import entities.Game;
@@ -37,8 +36,6 @@ public class LevelDisplay extends AbstractDisplay {
 
 	JButton btnBack;
 
-	JButton btnMakeMove;
-
 	JButton btnSwap;
 	JButton btnRemove;
 	JButton btnShuffle;
@@ -57,7 +54,6 @@ public class LevelDisplay extends AbstractDisplay {
 		this.powerUps = new int[]{level.getInfo().getSwaps(), level.getInfo().getShuffles(), level.getInfo().getRemoves()};
 
 		btnBack = new JButton("Back");
-		btnMakeMove = new JButton("Make Move");
 
 
 		setup();
@@ -95,10 +91,6 @@ public class LevelDisplay extends AbstractDisplay {
 
 		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 
-		btnMakeMove = new JButton("Make Move");
-
-		setMakeMoveController(new MakeMoveController(level, this));
-
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
 				groupLayout.createParallelGroup(Alignment.TRAILING)
@@ -120,8 +112,7 @@ public class LevelDisplay extends AbstractDisplay {
 																		.addComponent(btnShuffle, GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
 																		.addGroup(groupLayout.createSequentialGroup()
 																				.addComponent(lblMovesTimeLeft)
-																				.addGap(5))
-																				.addComponent(btnMakeMove)))
+																				.addGap(5))))
 
 																				.addComponent(lblNewLabel_1)))
 																				.addGroup(groupLayout.createSequentialGroup()
@@ -150,8 +141,6 @@ public class LevelDisplay extends AbstractDisplay {
 										.addComponent(btnShuffle)
 										.addPreferredGap(ComponentPlacement.RELATED)
 										.addComponent(btnRemove)
-										.addGap(133)
-										.addComponent(btnMakeMove)
 										.addPreferredGap(ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
 										.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
 										.addGap(15))
@@ -181,9 +170,6 @@ public class LevelDisplay extends AbstractDisplay {
 	 * adds an action listener to make move button
 	 * @param c controller for back button
 	 */
-	public void setMakeMoveController(MakeMoveController c){
-		btnMakeMove.addActionListener(c);
-	}
 
 	public BoardDisplay getBoardDisplay(){
 		return this.panel;
