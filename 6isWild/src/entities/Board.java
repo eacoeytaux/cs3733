@@ -1,5 +1,6 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,32 +9,30 @@ import java.util.Random;
  * @author Hugh Whelan
  *
  */
-public class Board {
+public class Board implements Serializable {
 	Square[][] board;
-	Blueprint bp;
 	ArrayList<Square> selectedSquares;
-	
-	public Board(Blueprint bp) {
+	int[] vf;
+	int[] mf;
+
+	public Board(Square[][] board, int[] vf, int[] mf) {
 		selectedSquares = new ArrayList<Square>();
-		this.bp = bp;
-	}
-	
-	public Board(Square[][] board, Blueprint bp) {
-		selectedSquares = new ArrayList<Square>();
-		this.bp = bp;
+		this.vf = vf;
+		this.mf = mf;
 		this.board = new Square[9][9];
-		for (int i = 0; i < 9; i++) {
-			for (int j = 0; j < 9; j++) {
-				this.board[i][j] = board[i][j].clone();
-				this.board[i][j].setRowCol(i, j);
-				this.board[i][j].setParentBoard(this);
+		if (board[0][0] != null) {
+			for (int i = 0; i < 9; i++) {
+				for (int j = 0; j < 9; j++) {
+					this.board[i][j] = board[i][j].clone();
+					this.board[i][j].setRowCol(i, j);
+					this.board[i][j].setParentBoard(this);
+				}
 			}
 		}
 	}
-	
+
 	public void setSquares(Square[][] board){
 		this.board = new Square[9][9];
-		this.bp = bp;
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				this.board[i][j] = board[i][j].clone();
@@ -42,25 +41,23 @@ public class Board {
 			}
 		}
 	}
-	
+
 	public void fillRandom() { //TODO set tiles based off frequencies
-		
 		for (Square[] squares : board) {
 			for (Square square : squares) {
 				if (square.isInert() || square.isBucket()) continue;
-				
+
 				Tile tile = square.getTile();
 				if (tile.value == 0) tile.value = getRandomTileValue();
 				if (tile.multiplier == 0) tile.multiplier = getRandomMultiplier();
 			}
 		}
 	}
-	
+
 	public int getRandomTileValue()
 	{
 		Random random = new Random(System.currentTimeMillis());
 		int sum = 0;
-		int[] vf = bp.getValueFrequencies();
 		for(int i = 0; i<6; i++)
 		{
 			sum += vf[i];
@@ -74,12 +71,11 @@ public class Board {
 		if (vf[4] <= r && r < vf[5]) return 6;
 		return -1;
 	}
-	
+
 	public int getRandomMultiplier()
 	{
 		Random random = new Random(System.currentTimeMillis());
 		int sum = 0;
-		int[] mf = bp.getMultiplierFrequencies();
 		for(int i = 0; i<3; i++)
 		{
 			sum += mf[i];
@@ -90,25 +86,24 @@ public class Board {
 		if (mf[1] <= r && r < mf[2]) return 3;
 		return -1;
 	}
-	
+
 	public Board clone() {
 		Square[][] newBoardSquares = new Square[9][9];
 		Board newBoard;
-		ArrayList<Square> selected;
-		
+
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				newBoardSquares[i][j] = this.board[i][j].clone();
 				newBoardSquares[i][j].setRowCol(i, j);
 			}
 		}
-		
-		newBoard = new Board(newBoardSquares, bp);
-		 
+
+		newBoard = new Board(newBoardSquares, vf, mf);
+
 		for( Square square : this.selectedSquares){
 			newBoard.addToSelected(square);
 		}
-		 
+
 		return newBoard;
 	}
 
@@ -122,7 +117,7 @@ public class Board {
 		if (board != null) return board[row][col];
 		else return new Square(new Tile(-1, -1), false, false, null, -1, -1);
 	}
-	
+
 	/**
 	 * adds a square to the list of selected squares
 	 * @param square to add to list
@@ -130,46 +125,46 @@ public class Board {
 	public void addToSelected(Square square){
 		selectedSquares.add(square);
 	}
-	
-	
+
+
 	public int getNumberOfSelected(){
 		return selectedSquares.size();
 	}
-	
+
 	/**
 	 * checks to see if sum of all values of tiles in selected squares equals six
 	 * @return boolean indicating whether move is valid
 	 */
 	public boolean validMove(){
 		int moveValue = 0;
-		
+
 		for(Square square : selectedSquares){
 			moveValue += square.getTile().getValue();
 		}
-		
+
 		return(moveValue == 6);
 	}
-	
+
 	/**
 	 * calls deselect on each square, then cleares selectedTiles
 	 */
 	public void deselectAll(){
-		
+
 		for(Square square : selectedSquares){
 			square.deselect();
 		}
 
 		selectedSquares.clear();
 	}
-	
+
 	public void setSelected(ArrayList<Square> selected){
 		this.selectedSquares = selected;
 	}
-	
+
 	public void setSquare(int row, int col, Square square){
 		this.board[row][col] = square;
 	}
-	
+
 	public ArrayList<Square> getSelected(){
 		return this.selectedSquares;
 	}

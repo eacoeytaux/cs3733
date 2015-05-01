@@ -12,30 +12,11 @@ public class Model {
 	ArrayList<ReleaseLevel> releaseLevels;
 	GlobalStats globalStats;
 
-	//TODO delete these values, for debugging only
-	Blueprint blueprint;
-	public PuzzleLevel level;
-
 
 	public Model() {
-		
-		Square[][] squareArray = new Square[9][9];
-		Board newBoard = new Board(blueprint);
-
-		for(int i = 0; i < 9; i++){
-			for(int j = 0; j < 9; j++){
-				squareArray[i][j] = new Square(new Tile(j % 5 +1,i % 5 +1), false, false, newBoard, j, i);
-			}
-		}
-		
-		newBoard.setSquares(squareArray);
-
-		blueprint = new Blueprint(Game.PUZZLE_ID, 5, 4, 3, 40, new int[]{2,2,2}, new int[]{20,20,20,20,20}, new int[]{30, 30, 40}, newBoard = new Board(squareArray, blueprint) );
-		
-		level = new PuzzleLevel(blueprint);
 
 		puzzleLevels = new ArrayList<PuzzleLevel>();
-		puzzleLevels.add(0, level);
+		puzzleLevels.add(new PuzzleLevel(loadBlueprint("./levelData/puzzleLevel1.txt")));
 		lightningLevels = new ArrayList<LightningLevel>(); 
 		eliminationLevels = new ArrayList<EliminationLevel>(); 
 		releaseLevels = new ArrayList<ReleaseLevel>(); 
@@ -56,9 +37,9 @@ public class Model {
 		}
 		return null;
 	}
-
-	public AbstractLevel getLevel(){
-		return this.level;
+	
+	public AbstractLevel getLevel(int gameMode, int levelNum) {
+		return puzzleLevels.get(0); //TODO
 	}
 }
 
