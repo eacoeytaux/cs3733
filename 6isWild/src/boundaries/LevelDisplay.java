@@ -71,7 +71,7 @@ public class LevelDisplay extends AbstractDisplay {
 	@Override
 	public void setup() {
 		this.removeAll();
-		int score = level.getStats().getScore();
+		int score = level.getInfo().getScore();
 
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setMaximum(200);

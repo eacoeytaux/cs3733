@@ -17,8 +17,8 @@ public abstract class AbstractLevel {
 	public AbstractLevel(){
 	}
 	
-	public void setScore(int score){
-		stats.setScore(score);
+	public void increaseScore(int score){
+		info.increaseScore(score);
 	}
 	
 	public int getLevelType() {

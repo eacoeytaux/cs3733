@@ -48,11 +48,12 @@ public class SquareController implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
+		
 		Board board = this.square.getParentBoard();
 		BoardDisplay boardDisplay = squareDisplay.getParentBoardDisplay();
 		
 		if(board.validMove()){
-			this.model.getLevel(0, 0).setScore(this.square.getParentBoard().getMoveScore());
+			this.model.getCurrentLevel().increaseScore(this.square.getParentBoard().getMoveScore());
 			
 			for( int i = 0; i < 9; i++){
 				for( int j = 0; j < 9; j++){
@@ -70,6 +71,8 @@ public class SquareController implements MouseListener {
 			}
 		}
 		squareDisplay.getParentBoardDisplay().getParentLevelDisplay().setup();
+		
+		hasWon();
 		
 	}
 
@@ -159,5 +162,39 @@ public class SquareController implements MouseListener {
 
 			return ((this.square.getParentBoard().getNumberOfSelected() == 0) || rightSelected || leftSelected || downSelected || upSelected);
 		}
+		
+	}
+	
+	public boolean hasWon(){
+		
+		System.out.println("checking won.  winning score: " +  this.model.getCurrentLevel().getInfo().getStarRequirements()[2]);
+		System.out.println("current score: " + this.model.getCurrentLevel().getInfo().getScore());
+		
+		int gameMode = model.getCurrentLevel().getLevelType();
+		
+		boolean hasWon = false;
+		
+		switch(gameMode){
+			case 0:
+				System.out.println("case 0");
+				if ( this.model.getCurrentLevel().getInfo().getScore() > this.model.getCurrentLevel().getInfo().getStarRequirements()[2]){
+					hasWon = true;
+					System.out.println("won");
+				}
+				break;
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			default:
+		}
+		
+		if(hasWon == true){
+			System.out.println("Won");
+		}
+		
+		return hasWon;
 	}
 }

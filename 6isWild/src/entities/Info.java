@@ -58,4 +58,9 @@ public class Info {
 	public int getRemoves(){
 		return this.removes;
 	}
+	
+	public void increaseScore(int newScore){
+		this.score += newScore;
+	}
+
 }
