@@ -219,6 +219,7 @@ public class LevelDisplay extends AbstractDisplay {
 	}
 	
 	public void initControllers() {
+		System.out.println("making controllers");
 		btnSwap.addActionListener(new SwapButtonController(level));
 		btnRemove.addActionListener(new RemoveButtonController(level));
 		btnShuffle.addActionListener(new ShuffleButtonController(this));

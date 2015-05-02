@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 
 import controllers.BuilderSquareController;
 import controllers.MoveController;
+import controllers.SquareController;
 import entities.Board;
 import entities.Model;
 import boundaries.SquareDisplay;
@@ -46,7 +47,7 @@ public class BoardDisplay extends AbstractDisplay {
 				squares[i][j] = new SquareDisplay(this, model, board.getSquare(i, j));
 				squares[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
 				squares[i][j].setBounds(i*62, j*62, 62, 62);
-				squares[i][j].addMouseListener(new MoveController(squares[i][j], model));
+				squares[i][j].addMouseListener(new SquareController(squares[i][j], model));
 				panel.add(squares[i][j]);
 			}
 		}

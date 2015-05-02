@@ -171,17 +171,12 @@ public class MoveController implements MouseListener {
 		
 		switch(gameMode){
 			case 0:
-				System.out.println("score in has won: " + level.getInfo().getScore());
 				if(level.getInfo().getScore() > level.getInfo().getStarRequirements()[2]) hasWon = true;
 				break;
 			case 1:
 			case 2:
 			case 3:
 			default:
-		}
-			
-		if(hasWon == true){
-			System.out.println("won");
 		}
 		
 		return hasWon;

@@ -23,6 +23,7 @@ public class RemoveController implements MouseListener {
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
+		System.out.println("remove");
 		
 		BoardDisplay boardDisplay = squareDisplay.getParentBoardDisplay();
 		LevelDisplay levelDisplay = boardDisplay.getParentLevelDisplay();

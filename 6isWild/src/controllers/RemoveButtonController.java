@@ -14,6 +14,7 @@ public class RemoveButtonController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		System.out.println("remove clicked");
 		level.getBoard().removeMove = true;
 	}
 }
