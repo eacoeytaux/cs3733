@@ -58,8 +58,6 @@ public class SquareController implements MouseListener {
 	public void mouseReleased(MouseEvent e) {
 		if (board.swapMove) swapControl.mouseReleased(e);
 		else moveControl.mouseReleased(e);
-
-
 	}
 
 	@Override

@@ -170,6 +170,20 @@ public class Board implements Serializable {
 
 		return(moveValue == 6);
 	}
+	
+	/**
+	 * gets the score value of the current move
+	 * @return int score
+	 */
+	public int getMoveScore(){
+		int score = 0;
+		
+		for(Square square : selectedSquares){
+			score += (square.getTile().getValue() * square.getTile().getMultiplier());
+		}
+		
+		return score;
+	}
 
 	/**
 	 * calls deselect on each square, then clears selectedTiles

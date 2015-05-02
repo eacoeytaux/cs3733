@@ -1,8 +1,7 @@
 package boundaries;
 
 import java.awt.Color;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.Font;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
@@ -14,6 +13,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
 import controllers.BackController;
+import controllers.SwapButtonController;
 import entities.AbstractLevel;
 import entities.Board;
 import entities.Game;
@@ -31,7 +31,6 @@ public class LevelDisplay extends AbstractDisplay {
 	Board board;
 	int gameMode;
 	int levelNum;
-	int score;
 	int moves;
 	int[] powerUps;
 	BoardDisplay panel;
@@ -43,6 +42,9 @@ public class LevelDisplay extends AbstractDisplay {
 	JButton btnShuffle;
 
 	JLabel lblMovesTimeLeft;
+	JLabel lblScore;
+
+	JLabel lblGameMode;
 
 	public LevelDisplay(Model model, AbstractLevel level) {
 		super(model);
@@ -51,31 +53,21 @@ public class LevelDisplay extends AbstractDisplay {
 		this.board = level.getBoard();
 		this.gameMode = level.getLevelType();
 		this.levelNum = level.getLevel();
-		this.score = level.getInfo().getScore();
 		this.moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
 		this.powerUps = new int[]{level.getInfo().getSwaps(), level.getInfo().getShuffles(), level.getInfo().getRemoves()};
 
 		btnBack = new JButton("Back");
-
-
+		lblMovesTimeLeft = new JLabel("moves/time left: ");
 		btnSwap = new JButton("" + powerUps[0]);
-
 		btnShuffle = new JButton("" + powerUps[1]);
-
 		btnRemove = new JButton("" + powerUps[2]);
-		
-		btnSwap.addActionListener(new ActionListener() {
+		lblGameMode = new JLabel("Game Mode/Level #");
+		int score = level.getStats().getScore();
+		lblScore = new JLabel("Score: " + score);
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				board.swapMove = true;
-			}
-			
-		});
-
-
+		initControllers();
 		setup();
-		
+
 		if (level.getLevelType() == Game.LIGHTNING_ID) {
 			startCountdown();
 		}
@@ -86,22 +78,22 @@ public class LevelDisplay extends AbstractDisplay {
 	 */
 	@Override
 	public void setup() {
+		this.removeAll();
 
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setMaximum(200);
 		progressBar.setOrientation(SwingConstants.VERTICAL);
 
-		lblMovesTimeLeft = new JLabel("moves/time left: ");
-
-
-
-		JLabel lblNewLabel_1 = new JLabel("Game Mode/Level #");
+		
 
 		if(panel ==null){
-			panel = new BoardDisplay(model, this.board);
+			panel = new BoardDisplay(model, this.board, this);
 		}
 
 		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+
+
+		lblScore.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -118,19 +110,20 @@ public class LevelDisplay extends AbstractDisplay {
 												.addGroup(groupLayout.createSequentialGroup()
 														.addGap(34)
 														.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-																.addComponent(btnRemove, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
 																.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 																		.addComponent(btnSwap, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 																		.addComponent(btnShuffle, GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
+																		.addComponent(btnRemove, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
 																		.addGroup(groupLayout.createSequentialGroup()
-																				.addComponent(lblMovesTimeLeft)
-																				.addGap(5))))
-
-																				.addComponent(lblNewLabel_1)))
-																				.addGroup(groupLayout.createSequentialGroup()
-																						.addGap(106)
-																						.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)))
-																						.addGap(755))
+																				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+																						.addComponent(lblScore)
+																						.addComponent(lblMovesTimeLeft))
+																						.addGap(5))))
+																						.addComponent(lblGameMode)))
+																						.addGroup(groupLayout.createSequentialGroup()
+																								.addGap(106)
+																								.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)))
+																								.addGap(755))
 				);
 		groupLayout.setVerticalGroup(
 				groupLayout.createParallelGroup(Alignment.LEADING)
@@ -139,12 +132,10 @@ public class LevelDisplay extends AbstractDisplay {
 						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
 								.addComponent(progressBar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 								.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE))
-
 								.addContainerGap(29, Short.MAX_VALUE))
-
 								.addGroup(groupLayout.createSequentialGroup()
 										.addContainerGap()
-										.addComponent(lblNewLabel_1)
+										.addComponent(lblGameMode)
 										.addPreferredGap(ComponentPlacement.RELATED)
 										.addComponent(lblMovesTimeLeft)
 										.addPreferredGap(ComponentPlacement.RELATED)
@@ -153,7 +144,9 @@ public class LevelDisplay extends AbstractDisplay {
 										.addComponent(btnShuffle)
 										.addPreferredGap(ComponentPlacement.RELATED)
 										.addComponent(btnRemove)
-										.addPreferredGap(ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
+										.addGap(130)
+										.addComponent(lblScore)
+										.addPreferredGap(ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
 										.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
 										.addGap(15))
 				);
@@ -187,6 +180,10 @@ public class LevelDisplay extends AbstractDisplay {
 		return this.panel;
 	}
 
+	public AbstractLevel getLevel(){
+		return this.level;
+	}
+
 	/**
 	 * displays message to indicate time is up
 	 */
@@ -214,5 +211,9 @@ public class LevelDisplay extends AbstractDisplay {
 		};
 
 		timerThread.start();
+	}
+	
+	public void initControllers() {
+		btnSwap.addActionListener(new SwapButtonController(level));
 	}
 }

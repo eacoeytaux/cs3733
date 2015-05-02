@@ -30,6 +30,7 @@ public class SelectPuzzleLevelButtonController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		lvlDisplay.reinitBoard();
 		application.changePanel(lvlDisplay);
+		model.setCurrentLevel(lvlDisplay.getLevel());
 	}
 
 }

@@ -25,6 +25,7 @@ public class PuzzleLevel extends AbstractLevel {
 		this.info.starRequirements = blueprint.getStarRequirements();
 		this.info.valueFrequencies = blueprint.getValueFrequencies();
 		this.info.multiplierFrequencies = blueprint.getMultiplierFrequencies();
+		this.stats = new Stat(0,0);
 		
 	}
 	

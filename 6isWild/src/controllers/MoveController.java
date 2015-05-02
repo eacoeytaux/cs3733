@@ -52,6 +52,8 @@ public class MoveController implements MouseListener {
 		BoardDisplay boardDisplay = squareDisplay.getParentBoardDisplay();
 		
 		if(board.validMove()){
+			this.model.getLevel(0, 0).setScore(this.square.getParentBoard().getMoveScore());
+			
 			for( int i = 0; i < 9; i++){
 				for( int j = 0; j < 9; j++){
 					if (board.getSquare(i, j).isSelected()) board.getSquare(i, j).remove();
@@ -67,6 +69,7 @@ public class MoveController implements MouseListener {
 				boardDisplay.updateTile(i, j);
 			}
 		}
+		squareDisplay.getParentBoardDisplay().getParentLevelDisplay().setup();
 		
 	}
 
