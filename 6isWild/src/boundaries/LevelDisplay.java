@@ -16,6 +16,7 @@ import entities.AbstractLevel;
 import entities.Board;
 import entities.Game;
 import entities.Model;
+import java.awt.Font;
 
 /**
  * displays a level, which contains all other display needed for playing a level
@@ -29,7 +30,6 @@ public class LevelDisplay extends AbstractDisplay {
 	Board board;
 	int gameMode;
 	int levelNum;
-	int score;
 	int moves;
 	int[] powerUps;
 	BoardDisplay panel;
@@ -41,6 +41,9 @@ public class LevelDisplay extends AbstractDisplay {
 	JButton btnShuffle;
 
 	JLabel lblMovesTimeLeft;
+	JLabel lblScore;
+	
+	JLabel lblGameMode;
 
 	public LevelDisplay(Model model, AbstractLevel level) {
 		super(model);
@@ -49,7 +52,6 @@ public class LevelDisplay extends AbstractDisplay {
 		this.board = level.getBoard();
 		this.gameMode = level.getLevelType();
 		this.levelNum = level.getLevel();
-		this.score = level.getInfo().getScore();
 		this.moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
 		this.powerUps = new int[]{level.getInfo().getSwaps(), level.getInfo().getShuffles(), level.getInfo().getRemoves()};
 
@@ -68,83 +70,84 @@ public class LevelDisplay extends AbstractDisplay {
 	 */
 	@Override
 	public void setup() {
+		this.removeAll();
+		int score = level.getStats().getScore();
 
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setMaximum(200);
 		progressBar.setOrientation(SwingConstants.VERTICAL);
 
 		lblMovesTimeLeft = new JLabel("moves/time left: ");
-
-		JButton btnNewButton = new JButton("" + powerUps[0]);
-
-		JButton btnShuffle = new JButton("" + powerUps[1]);
-
-		JButton btnRemove = new JButton("" + powerUps[2]);
-
-
-
-		JLabel lblNewLabel_1 = new JLabel("Game Mode/Level #");
+		btnSwap = new JButton("" + powerUps[0]);
+		btnShuffle = new JButton("" + powerUps[1]);
+		btnRemove = new JButton("" + powerUps[2]);
+		lblGameMode = new JLabel("Game Mode/Level #");
+		lblScore = new JLabel("Score: " + score);
 
 		if(panel ==null){
-			panel = new BoardDisplay(model, this.board);
+			panel = new BoardDisplay(model, this.board, this);
 		}
 
 		panel.setBorder(BorderFactory.createLineBorder(Color.BLACK));
+		
+		
+		lblScore.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-				groupLayout.createParallelGroup(Alignment.TRAILING)
+			groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-						.addContainerGap()
-						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE)
-						.addGap(18)
-						.addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+					.addContainerGap()
+					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE)
+					.addGap(18)
+					.addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addGroup(groupLayout.createSequentialGroup()
+							.addPreferredGap(ComponentPlacement.RELATED)
+							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-												.addGroup(groupLayout.createSequentialGroup()
-														.addGap(34)
-														.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-																.addComponent(btnRemove, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-																.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-																		.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-																		.addComponent(btnShuffle, GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
-																		.addGroup(groupLayout.createSequentialGroup()
-																				.addComponent(lblMovesTimeLeft)
-																				.addGap(5))))
-
-																				.addComponent(lblNewLabel_1)))
-																				.addGroup(groupLayout.createSequentialGroup()
-																						.addGap(106)
-																						.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)))
-																						.addGap(755))
-				);
+									.addGap(34)
+									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+											.addComponent(btnSwap, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+											.addComponent(btnShuffle, GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
+										.addComponent(btnRemove, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+										.addGroup(groupLayout.createSequentialGroup()
+											.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+												.addComponent(lblScore)
+												.addComponent(lblMovesTimeLeft))
+											.addGap(5))))
+								.addComponent(lblGameMode)))
+						.addGroup(groupLayout.createSequentialGroup()
+							.addGap(106)
+							.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)))
+					.addGap(755))
+		);
 		groupLayout.setVerticalGroup(
-				groupLayout.createParallelGroup(Alignment.LEADING)
+			groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-						.addGap(12)
-						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-								.addComponent(progressBar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-								.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE))
-
-								.addContainerGap(29, Short.MAX_VALUE))
-
-								.addGroup(groupLayout.createSequentialGroup()
-										.addContainerGap()
-										.addComponent(lblNewLabel_1)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(lblMovesTimeLeft)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(btnNewButton)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(btnShuffle)
-										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(btnRemove)
-										.addPreferredGap(ComponentPlacement.RELATED, 233, Short.MAX_VALUE)
-										.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-										.addGap(15))
-				);
+					.addGap(12)
+					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+						.addComponent(progressBar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE))
+					.addContainerGap(29, Short.MAX_VALUE))
+				.addGroup(groupLayout.createSequentialGroup()
+					.addContainerGap()
+					.addComponent(lblGameMode)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(lblMovesTimeLeft)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnSwap)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnShuffle)
+					.addPreferredGap(ComponentPlacement.RELATED)
+					.addComponent(btnRemove)
+					.addGap(130)
+					.addComponent(lblScore)
+					.addPreferredGap(ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
+					.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+					.addGap(15))
+		);
 		setLayout(groupLayout);
 	}
 
@@ -173,6 +176,10 @@ public class LevelDisplay extends AbstractDisplay {
 
 	public BoardDisplay getBoardDisplay(){
 		return this.panel;
+	}
+	
+	public AbstractLevel getLevel(){
+		return this.level;
 	}
 
 	/**

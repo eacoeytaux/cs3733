@@ -14,7 +14,7 @@ public class Stat {
 	}
 	
 	public void setScore(int newScore){
-		this.score = newScore;
+		this.score += newScore;
 	}
 	
 	public int getStars(){

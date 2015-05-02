@@ -24,12 +24,14 @@ public class BoardDisplay extends AbstractDisplay {
 	SquareDisplay[][] squares;
 	JPanel panel;
 	Model model;
+	LevelDisplay parentLevelDisplay;
 	
 
-	public BoardDisplay(Model model, Board board) {
+	public BoardDisplay(Model model, Board board, LevelDisplay parentLevelDisplay) {
 		super(model);
 		this.model = model;
 		this.board = board;
+		this.parentLevelDisplay = parentLevelDisplay;
 
 		squares = new SquareDisplay[9][9];
 
@@ -73,5 +75,9 @@ public class BoardDisplay extends AbstractDisplay {
 	public void updateTile(int i, int j){
 		squares[i][j].changeTile();
 		squares[i][j].setup();
+	}
+	
+	public LevelDisplay getParentLevelDisplay(){
+		return this.parentLevelDisplay;
 	}
 }
