@@ -1,13 +1,12 @@
 package boundaries;
 import java.awt.Color;
-
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import controllers.BuilderSquareController;
-import controllers.SquareController;
+import controllers.MoveController;
 import entities.Board;
 import entities.Model;
 import boundaries.SquareDisplay;
@@ -47,7 +46,7 @@ public class BoardDisplay extends AbstractDisplay {
 				squares[i][j] = new SquareDisplay(this, model, board.getSquare(i, j));
 				squares[i][j].setBorder(BorderFactory.createLineBorder(Color.black));
 				squares[i][j].setBounds(i*62, j*62, 62, 62);
-				squares[i][j].addMouseListener(new SquareController(squares[i][j], model));
+				squares[i][j].addMouseListener(new MoveController(squares[i][j], model));
 				panel.add(squares[i][j]);
 			}
 		}
@@ -64,7 +63,7 @@ public class BoardDisplay extends AbstractDisplay {
 	} 
 	
 	public SquareDisplay getSquareDisplay(int i, int j){
-		return squares[i+1][j+1];
+		return squares[i][j];
 	}
 	
 	/**
@@ -75,6 +74,10 @@ public class BoardDisplay extends AbstractDisplay {
 	public void updateTile(int i, int j){
 		squares[i][j].changeTile();
 		squares[i][j].setup();
+	}
+	
+	public Board getBoard() {
+		return board;
 	}
 	
 	public LevelDisplay getParentLevelDisplay(){

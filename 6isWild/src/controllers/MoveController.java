@@ -18,13 +18,13 @@ import boundaries.SquareDisplay;
  * @author Hugh Whelan
  *
  */
-public class SquareController implements MouseListener {
+public class MoveController implements MouseListener {
 	SquareDisplay squareDisplay;
 	Square square;
 	Model model;
 	
 	
-	public SquareController(SquareDisplay squareDisplay, Model model) {
+	public MoveController(SquareDisplay squareDisplay, Model model) {
 		this.squareDisplay = squareDisplay;
 		this.square = squareDisplay.getSquare();
 		this.model = model;
@@ -40,7 +40,7 @@ public class SquareController implements MouseListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		if(isValid(squareDisplay, square)){
+		if(isValid()){
 			this.square.select();
 			this.squareDisplay.setup();
 		}
@@ -48,7 +48,6 @@ public class SquareController implements MouseListener {
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		
 		Board board = this.square.getParentBoard();
 		BoardDisplay boardDisplay = squareDisplay.getParentBoardDisplay();
 		
@@ -60,6 +59,9 @@ public class SquareController implements MouseListener {
 					if (board.getSquare(i, j).isSelected()) board.getSquare(i, j).remove();
 				}
 			}
+			
+
+			hasWon();
 		}
 		
 		board.deselectAll();
@@ -72,13 +74,11 @@ public class SquareController implements MouseListener {
 		}
 		squareDisplay.getParentBoardDisplay().getParentLevelDisplay().setup();
 		
-		hasWon();
-		
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		if((e.getModifiers() == MouseEvent.BUTTON1_MASK) && this.square.getParentBoard().getNumberOfSelected() != 0 && isValid(squareDisplay, square)){
+		if((e.getModifiers() == MouseEvent.BUTTON1_MASK) && this.square.getParentBoard().getNumberOfSelected() != 0 && isValid()){
 			this.square.select();
 			this.squareDisplay.setup();
 		}
@@ -97,7 +97,7 @@ public class SquareController implements MouseListener {
 	 * @param square
 	 * @return boolean
 	 */
-	public boolean isValid(SquareDisplay squareDisplay, Square square){
+	public boolean isValid(){
 		//if (square.getParentBoard().getNumberOfSelected() >= 6) return false; //uncomment to prevent user from selected more than 6 tiles
 		if (square.isInert() || square.isBucket()) return false;
 		
@@ -106,7 +106,7 @@ public class SquareController implements MouseListener {
 		boolean leftSelected;
 		boolean rightSelected;
 
-		
+		 
 		if(this.square.getIIndex() <= 0 && this.square.getJIndex() <= 0){
 			downSelected = this.square.getParentBoard().getSquare(this.square.getIIndex()+1, this.square.getJIndex()).isSelected();
 			rightSelected = this.square.getParentBoard().getSquare(this.square.getIIndex(), this.square.getJIndex()+1).isSelected();
@@ -162,37 +162,26 @@ public class SquareController implements MouseListener {
 
 			return ((this.square.getParentBoard().getNumberOfSelected() == 0) || rightSelected || leftSelected || downSelected || upSelected);
 		}
-		
 	}
 	
 	public boolean hasWon(){
-		
-		System.out.println("checking won.  winning score: " +  this.model.getCurrentLevel().getInfo().getStarRequirements()[2]);
-		System.out.println("current score: " + this.model.getCurrentLevel().getInfo().getScore());
-		
-		int gameMode = model.getCurrentLevel().getLevelType();
-		
 		boolean hasWon = false;
+		AbstractLevel level = squareDisplay.getParentBoardDisplay().getParentLevelDisplay().getLevel();
+		int gameMode = level.getLevelType();
 		
 		switch(gameMode){
 			case 0:
-				System.out.println("case 0");
-				if ( this.model.getCurrentLevel().getInfo().getScore() > this.model.getCurrentLevel().getInfo().getStarRequirements()[2]){
-					hasWon = true;
-					System.out.println("won");
-				}
+				System.out.println("score in has won: " + level.getInfo().getScore());
+				if(level.getInfo().getScore() > level.getInfo().getStarRequirements()[2]) hasWon = true;
 				break;
 			case 1:
-				break;
 			case 2:
-				break;
 			case 3:
-				break;
 			default:
 		}
-		
+			
 		if(hasWon == true){
-			System.out.println("Won");
+			System.out.println("won");
 		}
 		
 		return hasWon;

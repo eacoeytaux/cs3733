@@ -36,6 +36,7 @@ public class Info {
 	}
 	
 	public int getScore(){
+		System.out.println("score is: " + score);
 		return this.score;
 	}
 	
@@ -61,6 +62,7 @@ public class Info {
 	
 	public void increaseScore(int newScore){
 		this.score += newScore;
+		System.out.println("score is now: " + score);
 	}
 
 }

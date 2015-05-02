@@ -13,12 +13,21 @@ public class Board implements Serializable {
 	Random random;
 	Square[][] board;
 	ArrayList<Square> selectedSquares;
+
+	//these are public because changes these booleans at any time does not result in an error
+	public boolean swapMove;
+	public boolean removeMove;
+	public boolean shuffleMove;
+
 	int[] vf;
 	int[] mf;
 
 	public Board(Square[][] board, int[] vf, int[] mf) {
 		random = new Random(System.currentTimeMillis());
 		selectedSquares = new ArrayList<Square>();
+		swapMove = false;
+		removeMove = false;
+		shuffleMove = false;
 		this.vf = vf;
 		this.mf = mf;
 		this.board = new Square[9][9];
@@ -32,7 +41,7 @@ public class Board implements Serializable {
 			}
 		}
 	}
-	
+
 	/**
 	 * sets all squares
 	 * @param board array of squares
@@ -47,7 +56,7 @@ public class Board implements Serializable {
 			}
 		}
 	}
-	
+
 	/**
 	 * fills a square with a tile based off the levels frequencies
 	 */
@@ -62,7 +71,7 @@ public class Board implements Serializable {
 			}
 		}
 	}
-	
+
 	/**
 	 * returns value based off of level value frequencies
 	 */
@@ -98,7 +107,7 @@ public class Board implements Serializable {
 		}
 		return -1;
 	}
-	
+
 	/**
 	 * clones the board
 	 */
@@ -151,6 +160,8 @@ public class Board implements Serializable {
 	 * @return boolean indicating whether move is valid
 	 */
 	public boolean validMove(){
+		if (selectedSquares.size() <= 1) return false;
+
 		int moveValue = 0;
 
 		for(Square square : selectedSquares){
@@ -159,18 +170,18 @@ public class Board implements Serializable {
 
 		return(moveValue == 6);
 	}
-	
+
 	/**
 	 * gets the score value of the current move
 	 * @return int score
 	 */
 	public int getMoveScore(){
 		int score = 0;
-		
+
 		for(Square square : selectedSquares){
 			score += (square.getTile().getValue() * square.getTile().getMultiplier());
 		}
-		
+
 		return score;
 	}
 
@@ -196,5 +207,34 @@ public class Board implements Serializable {
 
 	public ArrayList<Square> getSelected(){
 		return this.selectedSquares;
+	}
+
+	public void shuffleBoard() {
+		for (int i = 0; i < 9; i++) {
+			for (int j = 0; j < 9; j++) {
+				Square square = board[i][j];
+				if (square.isInert() || square.isBucket()) continue;
+
+				int i2, j2;
+
+				do {
+					i2 = random.nextInt(9);
+					j2 = random.nextInt(9);
+				} while (board[i2][j2].isInert() || board[i2][j2].isBucket());
+				
+				swapSquares(i, j, i2, j2);
+			}
+		}
+	}
+
+	public void swapSquares(int iIndex, int jIndex, int iIndex2, int jIndex2) {
+		if ((iIndex == iIndex2) && (jIndex == jIndex2)) return;
+
+		Square square = board[iIndex][jIndex];
+		Square otherSquare = board[iIndex2][jIndex2];
+		Square tempSquare = otherSquare.clone();
+
+		otherSquare.copyValues(square);
+		square.copyValues(tempSquare);
 	}
 }
