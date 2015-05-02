@@ -62,7 +62,7 @@ public class BoardDisplay extends AbstractDisplay {
 	} 
 	
 	public SquareDisplay getSquareDisplay(int i, int j){
-		return squares[i+1][j+1];
+		return squares[i][j];
 	}
 	
 	/**
@@ -73,5 +73,9 @@ public class BoardDisplay extends AbstractDisplay {
 	public void updateTile(int i, int j){
 		squares[i][j].changeTile();
 		squares[i][j].setup();
+	}
+	
+	public Board getBoard() {
+		return board;
 	}
 }

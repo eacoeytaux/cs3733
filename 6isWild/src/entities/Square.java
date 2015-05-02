@@ -70,10 +70,12 @@ public class Square implements Serializable {
 		inert = other.inert;
 		bucket = other.bucket;
 		bucketFull = other.bucketFull;
+		
 	}
 	
 	public Square clone() {
-		return new Square((tile == null) ? null : tile.clone(), inert, bucket);
+		Tile tile = (this.tile == null) ? null : this.tile.clone();
+		return new Square(tile, inert, bucket, parentBoard, iIndex, jIndex);
 	}
 	
 	/**

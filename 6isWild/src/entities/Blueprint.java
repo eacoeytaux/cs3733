@@ -76,6 +76,8 @@ public class Blueprint implements Serializable {
 		this.starRequirements = starRequirements;
 		this.valueFrequencies = valueFrequencies;
 		this.multiplierFrequencies = multiplierFrequencies;
+		board.vf = valueFrequencies;
+		board.mf = multiplierFrequencies;
 	}
 
 	/**

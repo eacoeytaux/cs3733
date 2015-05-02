@@ -13,12 +13,21 @@ public class Board implements Serializable {
 	Random random;
 	Square[][] board;
 	ArrayList<Square> selectedSquares;
+	
+	//these are public because changes these booleans at any time does not result in an error
+	public boolean swapMove;
+	public boolean removeMove;
+	public boolean shuffleMove;
+	
 	int[] vf;
 	int[] mf;
 
 	public Board(Square[][] board, int[] vf, int[] mf) {
 		random = new Random(System.currentTimeMillis());
 		selectedSquares = new ArrayList<Square>();
+		swapMove = false;
+		removeMove = false;
+		shuffleMove = false;
 		this.vf = vf;
 		this.mf = mf;
 		this.board = new Square[9][9];
@@ -151,6 +160,8 @@ public class Board implements Serializable {
 	 * @return boolean indicating whether move is valid
 	 */
 	public boolean validMove(){
+		if (selectedSquares.size() <= 1) return false;
+		
 		int moveValue = 0;
 
 		for(Square square : selectedSquares){

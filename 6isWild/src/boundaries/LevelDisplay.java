@@ -1,6 +1,8 @@
 package boundaries;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
@@ -56,6 +58,22 @@ public class LevelDisplay extends AbstractDisplay {
 		btnBack = new JButton("Back");
 
 
+		btnSwap = new JButton("" + powerUps[0]);
+
+		btnShuffle = new JButton("" + powerUps[1]);
+
+		btnRemove = new JButton("" + powerUps[2]);
+		
+		btnSwap.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				board.swapMove = true;
+			}
+			
+		});
+
+
 		setup();
 		
 		if (level.getLevelType() == Game.LIGHTNING_ID) {
@@ -74,12 +92,6 @@ public class LevelDisplay extends AbstractDisplay {
 		progressBar.setOrientation(SwingConstants.VERTICAL);
 
 		lblMovesTimeLeft = new JLabel("moves/time left: ");
-
-		JButton btnNewButton = new JButton("" + powerUps[0]);
-
-		JButton btnShuffle = new JButton("" + powerUps[1]);
-
-		JButton btnRemove = new JButton("" + powerUps[2]);
 
 
 
@@ -108,7 +120,7 @@ public class LevelDisplay extends AbstractDisplay {
 														.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 																.addComponent(btnRemove, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
 																.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-																		.addComponent(btnNewButton, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+																		.addComponent(btnSwap, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
 																		.addComponent(btnShuffle, GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
 																		.addGroup(groupLayout.createSequentialGroup()
 																				.addComponent(lblMovesTimeLeft)
@@ -136,7 +148,7 @@ public class LevelDisplay extends AbstractDisplay {
 										.addPreferredGap(ComponentPlacement.RELATED)
 										.addComponent(lblMovesTimeLeft)
 										.addPreferredGap(ComponentPlacement.RELATED)
-										.addComponent(btnNewButton)
+										.addComponent(btnSwap)
 										.addPreferredGap(ComponentPlacement.RELATED)
 										.addComponent(btnShuffle)
 										.addPreferredGap(ComponentPlacement.RELATED)
