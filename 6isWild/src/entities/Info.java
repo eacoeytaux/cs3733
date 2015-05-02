@@ -52,12 +52,24 @@ public class Info {
 		return this.swaps;
 	}
 	
+	public void decrementSwaps(){
+		swaps--;
+	}
+	
 	public int getShuffles(){
 		return this.shuffles;
 	}
 	
+	public void decrementShuffles(){
+		shuffles--;
+	}
+	
 	public int getRemoves(){
 		return this.removes;
+	}
+	
+	public void decrementRemoves(){
+		removes--;
 	}
 	
 	public void increaseScore(int newScore){

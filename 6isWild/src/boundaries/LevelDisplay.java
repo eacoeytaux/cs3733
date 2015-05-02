@@ -82,8 +82,14 @@ public class LevelDisplay extends AbstractDisplay {
 	public void setup() {
 		this.removeAll();
 		
+		this.powerUps = new int[]{level.getInfo().getSwaps(), level.getInfo().getShuffles(), level.getInfo().getRemoves()};
+		
 		score = level.getInfo().getScore();
 		lblScore = new JLabel("Score: " + score);
+		btnRemove.setText("Removes:" + powerUps[2]);
+		btnSwap.setText("Swaps:" + powerUps[0]);
+		btnShuffle.setText("Shuffles:" + powerUps[1]);
+		
 
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setMaximum(200);
