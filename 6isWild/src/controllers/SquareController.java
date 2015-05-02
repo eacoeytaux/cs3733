@@ -26,6 +26,7 @@ public class SquareController implements MouseListener {
 
 	MoveController moveControl;
 	SwapController swapControl;
+	RemoveController removeControl;
 
 
 	public SquareController(SquareDisplay squareDisplay, Model model) {
@@ -36,6 +37,7 @@ public class SquareController implements MouseListener {
 
 		moveControl = new MoveController(squareDisplay, model);
 		swapControl = new SwapController(squareDisplay, model);
+		removeControl = new RemoveController(squareDisplay, model);
 	}
 
 	/**
@@ -44,12 +46,14 @@ public class SquareController implements MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		if (board.swapMove) swapControl.mouseClicked(e);
+		else if (board.removeMove) removeControl.mouseClicked(e);
 		else moveControl.mouseClicked(e);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if (board.swapMove) swapControl.mousePressed(e);
+		else if (board.removeMove) removeControl.mousePressed(e);
 		else moveControl.mousePressed(e);
 
 	}
@@ -57,12 +61,14 @@ public class SquareController implements MouseListener {
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		if (board.swapMove) swapControl.mouseReleased(e);
+		else if (board.removeMove) removeControl.mouseReleased(e);
 		else moveControl.mouseReleased(e);
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		if (board.swapMove) swapControl.mouseEntered(e);
+		else if (board.removeMove) removeControl.mouseEntered(e);
 		else moveControl.mouseEntered(e);
 
 	}
@@ -70,6 +76,7 @@ public class SquareController implements MouseListener {
 	@Override
 	public void mouseExited(MouseEvent e) {
 		if (board.swapMove) swapControl.mouseExited(e);
+		else if (board.removeMove) removeControl.mouseExited(e);
 		else moveControl.mouseExited(e);
 
 	}

@@ -1,19 +1,37 @@
 package controllers;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import boundaries.BoardDisplay;
 import boundaries.LevelDisplay;
 import entities.AbstractLevel;
-import entities.Square;
 
-public class ShuffleButtonController {
-	AbstractLevel level;
+public class ShuffleButtonController implements ActionListener {
 	LevelDisplay levelDisplay;
-	Square square1;
-	Square square2;
-	
-	public ShuffleButtonController(AbstractLevel level, LevelDisplay levelDisplay, Square square1, Square square2) {
-		this.level = level;
+
+	public ShuffleButtonController(LevelDisplay levelDisplay) {
 		this.levelDisplay = levelDisplay;
-		this.square1 = square1;
-		this.square2 = square2;
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		if (!isValid()) return;
+
+		levelDisplay.getLevel().getBoard().shuffleBoard();
+
+		BoardDisplay boardDisplay = levelDisplay.getBoardDisplay();
+
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				boardDisplay.updateTile(i, j);
+			}
+		}
+
+		levelDisplay.setup();
+	}
+
+	public boolean isValid() {
+		return true; //TODO check to make sure there are shuffle moves left
 	}
 }

@@ -13,6 +13,8 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
 import controllers.BackController;
+import controllers.RemoveButtonController;
+import controllers.ShuffleButtonController;
 import controllers.SwapButtonController;
 import entities.AbstractLevel;
 import entities.Board;
@@ -58,9 +60,9 @@ public class LevelDisplay extends AbstractDisplay {
 
 		btnBack = new JButton("Back");
 		lblMovesTimeLeft = new JLabel("moves/time left: ");
-		btnSwap = new JButton("" + powerUps[0]);
-		btnShuffle = new JButton("" + powerUps[1]);
-		btnRemove = new JButton("" + powerUps[2]);
+		btnSwap = new JButton("Swaps: " + powerUps[0]);
+		btnShuffle = new JButton("Shuffles: " + powerUps[1]);
+		btnRemove = new JButton("Removes: " + powerUps[2]);
 		lblGameMode = new JLabel("Game Mode/Level #");
 		int score = level.getStats().getScore();
 		lblScore = new JLabel("Score: " + score);
@@ -215,5 +217,7 @@ public class LevelDisplay extends AbstractDisplay {
 	
 	public void initControllers() {
 		btnSwap.addActionListener(new SwapButtonController(level));
+		btnRemove.addActionListener(new RemoveButtonController(level));
+		btnShuffle.addActionListener(new ShuffleButtonController(this));
 	}
 }

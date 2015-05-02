@@ -39,12 +39,10 @@ public class SwapController implements MouseListener {
 				Square otherSquare = square.getParentBoard().getSelected().get(0);
 				SquareDisplay otherDisplay = squareDisplay.getParentBoardDisplay().getSquareDisplay(otherSquare.getIIndex(), otherSquare.getJIndex());
 
-				Square tempSquare = otherSquare.clone();
-
-				otherSquare.copyValues(square);
-				square.copyValues(tempSquare);
+				square.getParentBoard().swapSquares(square.getIIndex(), square.getJIndex(), otherSquare.getIIndex(), otherSquare.getJIndex());
 
 				square.getParentBoard().deselectAll();
+				
 				otherDisplay.changeTile();
 				otherDisplay.setup();
 				squareDisplay.changeTile();
