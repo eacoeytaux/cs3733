@@ -71,11 +71,11 @@ public class LevelDisplay extends AbstractDisplay {
 		this.moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
 
 		btnBack = new JButton("Back");
-		lblMovesTimeLeft = new JLabel("moves/time left: ");
+		lblMovesTimeLeft = new JLabel("");
 		btnSwap = new JButton("Swaps: " + powerUps[0]);
 		btnShuffle = new JButton("Shuffles: " + powerUps[1]);
 		btnRemove = new JButton("Removes: " + powerUps[2]);
-		lblGameMode = new JLabel("Game Mode/Level #");
+		lblGameMode = new JLabel("");
 		lblScore = new JLabel("Score: " + score);
 
 		initControllers();
