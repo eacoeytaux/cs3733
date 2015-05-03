@@ -13,7 +13,7 @@ public class CompletePuzzle {
 	PuzzleLevel level;
 	Application app;
 	
-	public CompletePuzzle(PuzzleLevel level, Application app){
+	public CompletePuzzle(PuzzleLevel level){
 		System.out.println("called Puzzlelvl");
 		this.level = level;
 		this.app = app;
