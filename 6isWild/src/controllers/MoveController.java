@@ -72,8 +72,6 @@ public class MoveController implements MouseListener {
 			if (squareDisplay.getParentBoardDisplay().getParentLevelDisplay().getLevel().getLevelType() == Game.RELEASE_ID) board.checkBoard();
 		}
 		
-		if(outOfMoves() && requirementsMet()) squareDisplay.getParentBoardDisplay().getParentLevelDisplay().gameOver();
-
 		
 		board.deselectAll();
 		//this.levelScreen.getBoardDisplay().setupSquares();
@@ -85,8 +83,6 @@ public class MoveController implements MouseListener {
 		}
 		squareDisplay.getParentBoardDisplay().getParentLevelDisplay().setup();
 		
-		
-		System.out.println("Checking");
 		if(outOfMoves() && requirementsMet()) squareDisplay.getParentBoardDisplay().getParentLevelDisplay().gameOver();
 	}
 
