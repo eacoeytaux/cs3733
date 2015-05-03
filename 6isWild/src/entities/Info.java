@@ -48,6 +48,11 @@ public class Info {
 		return this.movesPlayed;
 	}
 	
+	public void incrementMoves(){
+		this.movesPlayed++;
+		System.out.println("moves: " + movesPlayed);
+	}
+	
 	public int getSwaps(){
 		return this.swaps;
 	}

@@ -51,6 +51,9 @@ public class MoveController implements MouseListener {
 		Board board = this.square.getParentBoard();
 		BoardDisplay boardDisplay = squareDisplay.getParentBoardDisplay();
 		
+		this.model.getCurrentLevel().getInfo().incrementMoves();
+		
+		
 		if(board.validMove()){
 			this.model.getCurrentLevel().increaseScore(this.square.getParentBoard().getMoveScore());
 			
@@ -59,10 +62,9 @@ public class MoveController implements MouseListener {
 					if (board.getSquare(i, j).isSelected()) board.getSquare(i, j).remove();
 				}
 			}
-			
-
-			hasWon();
 		}
+		
+		if(hasWon()) System.out.println("won");
 		
 		board.deselectAll();
 		//this.levelScreen.getBoardDisplay().setupSquares();
@@ -165,20 +167,7 @@ public class MoveController implements MouseListener {
 	}
 	
 	public boolean hasWon(){
-		boolean hasWon = false;
-		AbstractLevel level = squareDisplay.getParentBoardDisplay().getParentLevelDisplay().getLevel();
-		int gameMode = level.getLevelType();
-		
-		switch(gameMode){
-			case 0:
-				if(level.getInfo().getScore() > level.getInfo().getStarRequirements()[2]) hasWon = true;
-				break;
-			case 1:
-			case 2:
-			case 3:
-			default:
-		}
-		
-		return hasWon;
+		if(model.getCurrentLevel().getInfo().getMovesTotal() - model.getCurrentLevel().getInfo().getMovesPlayed() <= 0) return true;
+		else return false;
 	}
 }
