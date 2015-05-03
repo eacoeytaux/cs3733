@@ -18,6 +18,12 @@ public class Builder {
 	
 	
 	public Builder() {
+		makeNewBlueprint();
+		
+		builderApplication = new BuilderApplication(this);
+	}
+	
+	public void makeNewBlueprint() {
 		Square[][] squareArray = new Square[9][9];
 		Board newBoard = new Board(squareArray, new int[]{1, 1, 1, 1, 1, 1}, new int[]{1, 1, 1});
 
@@ -29,8 +35,7 @@ public class Builder {
 		
 		newBoard.setSquares(squareArray);
 
-		blueprint = new Blueprint(Game.PUZZLE_ID, 5, 4, 3, 40, new int[]{2,2,2}, new int[]{20,20,20,20,20}, new int[]{30, 30, 40}, newBoard = new Board(squareArray, new int[]{1, 1, 1, 1, 1, 1}, new int[]{1, 1, 1}) );
-		builderApplication = new BuilderApplication(this);
+		blueprint = new Blueprint(newBoard);
 	}
 
 	public static void main(String[] args) {

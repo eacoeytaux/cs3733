@@ -2,6 +2,8 @@ package boundaries;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
@@ -31,6 +33,9 @@ import entities.Model;
 public class LevelDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 
+	Thread timerThread;
+	boolean timerRunning;
+	
 	AbstractLevel level;
 	Board board;
 	int gameMode;
@@ -111,7 +116,7 @@ public class LevelDisplay extends AbstractDisplay {
 
 
 
-		if(panel ==null){
+		if (panel == null){
 			panel = new BoardDisplay(model, this.board, this);
 		}
 
@@ -189,15 +194,23 @@ public class LevelDisplay extends AbstractDisplay {
 	 */
 	public void setBackController(BackController c) {
 		btnBack.addActionListener(c);
+		btnBack.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				timerRunning = false;
+			}
+		});
 	}
 
 	/**
 	 * reinitializes the board from the corresponding blueprint
 	 */
 	public void reinitBoard() {
-		//level.resetBoard();
+		level.resetBoard();
 		this.board = level.getBoard();
 		this.board.fillRandom();
+		refreshBoardDisplay();
 		panel.setup();
 	}
 
@@ -217,29 +230,30 @@ public class LevelDisplay extends AbstractDisplay {
 	/**
 	 * displays message to indicate time is up
 	 */
-	public void endCountdown() {
-		gameOver();
+	public void endCountdown(boolean showDisplay) {
+		timerRunning = false;
+		if (showDisplay) gameOver();
 	}
 
 	/**
 	 * begins timer for lightening levels
 	 */
 	public void startCountdown() {
-		Thread timerThread = new Thread() {
+		timerRunning = true;
+		timerThread = new Thread() {
 			@Override
 			public void run() {
-				while (moves > 0) {
+				while (timerRunning && (moves > 0)) {
 					try {
 						Thread.sleep(1000);
 						level.getInfo().incrementMoves();
 						moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
-						System.out.println("time remaining: " + moves);
-						setup();
+						lblMoves.setText("Time: " + moves);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
 				}
-				endCountdown();
+				if (moves <= 0) endCountdown(true);
 			}
 		};
 
@@ -255,6 +269,10 @@ public class LevelDisplay extends AbstractDisplay {
 
 	public void startLevel() {
 		if (gameMode == Game.LIGHTNING_ID) startCountdown();
+	}
+	
+	public void refreshBoardDisplay() {
+		panel = new BoardDisplay(model, this.board, this);
 	}
 
 	public void gameOver() {

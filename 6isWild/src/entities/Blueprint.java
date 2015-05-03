@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 /**
  * blueprint for a level.  changed in builder, used to initialize level in game
- * @author Hugh
+ * @author Ethan Coeytaux
+ * @author Hugh Whelan
  *
  */
 public class Blueprint implements Serializable {
@@ -29,7 +30,7 @@ public class Blueprint implements Serializable {
 	
 	Board board;
 
-	public Blueprint(int levelType, int shuffle, int swap, int remove, int movesTotal, int[] starRequirements, int[] valueFrequencies, int[] multiplierFrequencies, Board board) {
+	public Blueprint(Board board) {
 		this.levelType = Game.PUZZLE_ID;
 		this.shuffle = 5;
 		this.swap = 5;

@@ -21,6 +21,8 @@ import controllers.UndoButtonController;
 import entities.Blueprint;
 import entities.Board;
 import entities.Builder;
+import entities.Square;
+import entities.Tile;
 
 /**
  * Application boundary class for the builder
@@ -31,13 +33,11 @@ public class BuilderApplication extends JFrame {
 	private static final long serialVersionUID = 1L;
 
 	Builder builder;
-	Blueprint blueprint;
 	BlueprintDisplay display;
 
-	public BuilderApplication(Builder builder) {
-		this.blueprint = builder.getBlueprint();
+	public BuilderApplication(final Builder builder) {
 		this.builder = builder;
-		display = new BlueprintDisplay(this.blueprint, this.builder);
+		display = new BlueprintDisplay(this.builder);
 
 		setBackground(new Color(0x006600));
 		SplashScreenDisplay splashScreenDisplay = new SplashScreenDisplay();
@@ -49,7 +49,7 @@ public class BuilderApplication extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 
-		
+
 
 		splashScreenDisplay.setSplashScreen();
 		getContentPane().removeAll();
@@ -64,6 +64,17 @@ public class BuilderApplication extends JFrame {
 		JMenuItem undoMenuItem = new JMenuItem("undo");
 		JMenuItem redoMenuItem = new JMenuItem("redo");
 
+		newMenuItem.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				builder.makeNewBlueprint();
+				display = new BlueprintDisplay(builder);
+				getContentPane().removeAll();
+				setContentPane(display);
+			}
+		});
+
 		saveMenuItem.addActionListener(new ActionListener() {
 
 			@Override
@@ -71,7 +82,7 @@ public class BuilderApplication extends JFrame {
 				saveBoard();
 			}
 		});
-		
+
 		loadMenuItem.addActionListener(new ActionListener() {
 
 			@Override
@@ -79,18 +90,10 @@ public class BuilderApplication extends JFrame {
 				loadBoard();
 			}
 		});
-		
-		loadMenuItem.addActionListener(new ActionListener() {
 
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				loadBoard();
-			}
-		});
-		
 		undoMenuItem.addActionListener(new UndoButtonController(this.builder));
 		redoMenuItem.addActionListener(new RedoButtonController(this.builder));
-		
+
 
 		file.add(newMenuItem);
 		file.add(saveMenuItem);
@@ -101,7 +104,7 @@ public class BuilderApplication extends JFrame {
 		menubar.add(edit);
 
 		setJMenuBar(menubar);
-		
+
 		setContentPane(display);
 		pack();
 	}
@@ -122,7 +125,7 @@ public class BuilderApplication extends JFrame {
 			if (returnVal == JFileChooser.APPROVE_OPTION) {
 				FileOutputStream fos = new FileOutputStream(chooser.getSelectedFile());
 				ObjectOutputStream oos = new ObjectOutputStream(fos);
-				oos.writeObject(blueprint);
+				oos.writeObject(builder.getBlueprint());
 				fos.close();
 			}
 		} catch (Exception e) {
@@ -136,7 +139,7 @@ public class BuilderApplication extends JFrame {
 	public void loadBoard() {
 		JFileChooser chooser = new JFileChooser();
 		chooser.setSelectedFile(new File("level.txt"));
-		
+
 		try {
 			int returnVal = chooser.showOpenDialog(null);
 			if (returnVal == JFileChooser.APPROVE_OPTION) {
@@ -144,10 +147,11 @@ public class BuilderApplication extends JFrame {
 				FileInputStream fis = new FileInputStream(file);
 				//InputStreamReader in = new InputStreamReader();
 				ObjectInputStream ois = new ObjectInputStream(fis);
-				this.blueprint = (Blueprint)ois.readObject();
+				Blueprint newBlueprint = (Blueprint)ois.readObject();
 				fis.close();
-				
-				display = new BlueprintDisplay(this.blueprint, builder);
+
+				builder.setBlueprint(newBlueprint);
+				display = new BlueprintDisplay(builder);
 				getContentPane().removeAll();
 				setContentPane(display);
 				pack();
@@ -156,7 +160,7 @@ public class BuilderApplication extends JFrame {
 			e.printStackTrace();
 		}
 	}
-	
+
 	public BlueprintDisplay getDisplay() {
 		return display;
 	}

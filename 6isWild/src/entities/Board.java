@@ -31,12 +31,14 @@ public class Board implements Serializable {
 		this.vf = vf;
 		this.mf = mf;
 		this.board = new Square[9][9];
-		if (board[0][0] != null) {
-			for (int i = 0; i < 9; i++) {
-				for (int j = 0; j < 9; j++) {
-					this.board[i][j] = board[i][j].clone();
-					this.board[i][j].setRowCol(i, j);
-					this.board[i][j].setParentBoard(this);
+		if (board != null) {
+			if (board[0][0] != null) {
+				for (int i = 0; i < 9; i++) {
+					for (int j = 0; j < 9; j++) {
+						this.board[i][j] = board[i][j].clone(this);
+						this.board[i][j].setRowCol(i, j);
+						this.board[i][j].setParentBoard(this);
+					}
 				}
 			}
 		}
@@ -50,7 +52,7 @@ public class Board implements Serializable {
 		this.board = new Square[9][9];
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				this.board[i][j] = board[i][j].clone();
+				this.board[i][j] = board[i][j].clone(this);
 				this.board[i][j].setRowCol(i, j);
 				this.board[i][j].setParentBoard(this);
 			}
@@ -113,20 +115,20 @@ public class Board implements Serializable {
 	 */
 	public Board clone() {
 		Square[][] newBoardSquares = new Square[9][9];
-		Board newBoard;
+		Board newBoard = new Board(newBoardSquares, vf, mf);
 
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				newBoardSquares[i][j] = this.board[i][j].clone();
+				newBoardSquares[i][j] = this.board[i][j].clone(newBoard);
 				newBoardSquares[i][j].setRowCol(i, j);
 			}
 		}
 
-		newBoard = new Board(newBoardSquares, vf, mf);
+		newBoard.setSquares(newBoardSquares);
 
-		for( Square square : this.selectedSquares){
+		/*for( Square square : this.selectedSquares){
 			newBoard.addToSelected(square);
-		}
+		}*/
 
 		return newBoard;
 	}
@@ -221,7 +223,7 @@ public class Board implements Serializable {
 					i2 = random.nextInt(9);
 					j2 = random.nextInt(9);
 				} while (board[i2][j2].isInert() || board[i2][j2].isBucket());
-				
+
 				swapSquares(i, j, i2, j2);
 			}
 		}
@@ -232,7 +234,7 @@ public class Board implements Serializable {
 
 		Square square = board[iIndex][jIndex];
 		Square otherSquare = board[iIndex2][jIndex2];
-		Square tempSquare = otherSquare.clone();
+		Square tempSquare = otherSquare.clone(this);
 
 		otherSquare.copyValues(square);
 		square.copyValues(tempSquare);
