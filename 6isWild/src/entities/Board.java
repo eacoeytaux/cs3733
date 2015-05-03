@@ -179,10 +179,15 @@ public class Board implements Serializable {
 	 */
 	public int getMoveScore(){
 		int score = 0;
+		int totalMultiplier = 1;
+		int moveValue = 0;
 
 		for(Square square : selectedSquares){
-			score += (square.getTile().getValue() * square.getTile().getMultiplier());
+			moveValue += 10;
+			totalMultiplier *= square.getTile().getMultiplier();
 		}
+		
+		score = moveValue * totalMultiplier;
 
 		return score;
 	}
