@@ -24,6 +24,7 @@ import entities.Model;
 /**
  * displays a level, which contains all other display needed for playing a level
  * @author Hugh Whelan
+ * @author Ethan Coeytaux
  *
  */
 public class LevelDisplay extends AbstractDisplay {
@@ -64,15 +65,11 @@ public class LevelDisplay extends AbstractDisplay {
 		btnShuffle = new JButton("Shuffles: " + powerUps[1]);
 		btnRemove = new JButton("Removes: " + powerUps[2]);
 		lblGameMode = new JLabel("Game Mode/Level #");
-		int score = level.getStats().getScore();
+		int score = 0;//level.getStats().getScore(); //TODO uncomment and change back
 		lblScore = new JLabel("Score: " + score);
 
 		initControllers();
 		setup();
-
-		if (level.getLevelType() == Game.LIGHTNING_ID) {
-			startCountdown();
-		}
 	}
 
 	/**
@@ -204,6 +201,7 @@ public class LevelDisplay extends AbstractDisplay {
 					try {
 						Thread.sleep(1000);
 						moves--;
+						System.out.println("time remaining: " + moves);
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -219,5 +217,9 @@ public class LevelDisplay extends AbstractDisplay {
 		btnSwap.addActionListener(new SwapButtonController(level));
 		btnRemove.addActionListener(new RemoveButtonController(level));
 		btnShuffle.addActionListener(new ShuffleButtonController(this));
+	}
+	
+	public void startLevel() {
+		if (gameMode == Game.LIGHTNING_ID) startCountdown();
 	}
 }

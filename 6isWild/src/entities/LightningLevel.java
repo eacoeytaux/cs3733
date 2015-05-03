@@ -18,6 +18,4 @@ public class LightningLevel extends AbstractLevel {
 		this.info.valueFrequencies = blueprint.valueFrequencies;
 		this.info.multiplierFrequencies = blueprint.multiplierFrequencies;
 	}
-		
-	
 }

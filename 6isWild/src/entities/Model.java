@@ -25,6 +25,7 @@ public class Model {
 		puzzleLevels = new ArrayList<PuzzleLevel>();
 		//puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/smileyLevel.txt")));
 		lightningLevels = new ArrayList<LightningLevel>(); 
+		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt")));
 		eliminationLevels = new ArrayList<EliminationLevel>(); 
 		releaseLevels = new ArrayList<ReleaseLevel>(); 
 		globalStats = new GlobalStats(0,0,0);	
@@ -70,7 +71,7 @@ public class Model {
 	}
 	
 	public AbstractLevel getLevel(int gameMode, int levelNum) {
-		return puzzleLevels.get(0); //TODO
+		return lightningLevels.get(0); //TODO
 	}
 	
 	public void setCurrentLevel(AbstractLevel currentLevel){
