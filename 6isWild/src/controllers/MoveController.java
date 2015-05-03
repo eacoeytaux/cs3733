@@ -178,12 +178,12 @@ public class MoveController implements MouseListener {
 		}
 	}
 	
-	public boolean outOfMoves(){
+	public boolean outOfMoves() {
 		if(model.getCurrentLevel().getInfo().getMovesTotal() - model.getCurrentLevel().getInfo().getMovesPlayed() <= 0) return true;
 		else return false;
 	}
 	
-	public boolean requirementsMet(){
+	public boolean requirementsMet() {
 		int gameMode = model.getCurrentLevel().getLevelType();
 		Board board = this.square.getParentBoard();
 		
