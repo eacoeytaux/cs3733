@@ -68,6 +68,7 @@ public class MoveController implements MouseListener {
 					if (board.getSquare(i, j).isSelected()) board.getSquare(i, j).remove();
 				}
 			}
+			board.checkBoard();
 		}
 		
 		if(outOfMoves()) squareDisplay.getParentBoardDisplay().getParentLevelDisplay().gameOver();

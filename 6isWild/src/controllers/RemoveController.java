@@ -37,6 +37,7 @@ public class RemoveController implements MouseListener {
 			}
 		}
 
+		square.getParentBoard().checkBoard();
 		levelDisplay.setup();
 	}
 

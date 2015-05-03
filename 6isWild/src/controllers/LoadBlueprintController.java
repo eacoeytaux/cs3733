@@ -12,6 +12,11 @@ import boundaries.BlueprintDisplay;
 import boundaries.BuilderApplication;
 import entities.Blueprint;
 
+/**
+ * loads a selected blueprint into the builder to edit
+ * @author Ethan Coeytaux
+ *
+ */
 public class LoadBlueprintController implements ActionListener {
 	
 	BuilderApplication application;

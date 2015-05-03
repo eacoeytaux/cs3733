@@ -6,6 +6,11 @@ import java.awt.event.ActionListener;
 import boundaries.BlueprintDisplay;
 import boundaries.BuilderApplication;
 
+/**
+ * resets the blueprint in builder to start a new board
+ * @author Ethan Coeytaux
+ *
+ */
 public class NewBlueprintController implements ActionListener {
 	BuilderApplication application;
 	

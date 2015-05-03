@@ -7,14 +7,15 @@ import boundaries.BuilderApplication;
 
 /**
  * 
+ * @author Ethan Coeytaux
  * @author Hugh Whelan
  *
  */
 public class Builder {
 	Blueprint blueprint;
 	BuilderApplication builderApplication;
-	Stack<AbstractBuilderMove> moveStack = new Stack(); //stack of moves performed
-	Stack<AbstractBuilderMove> redoStack = new Stack(); //stack of moves undone.  used for redo
+	Stack<AbstractBuilderMove> moveStack = new Stack<AbstractBuilderMove>(); //stack of moves performed
+	Stack<AbstractBuilderMove> redoStack = new Stack<AbstractBuilderMove>(); //stack of moves undone.  used for redo
 	
 	
 	public Builder() {
@@ -36,8 +37,6 @@ public class Builder {
 		newBoard.setSquares(squareArray);
 
 		blueprint = new Blueprint(newBoard);
-				
-		builderApplication = new BuilderApplication(this);
 
 	}
 

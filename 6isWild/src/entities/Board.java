@@ -9,6 +9,8 @@ import java.util.Random;
  * @author Hugh Whelan
  *
  */
+
+@SuppressWarnings("serial")
 public class Board implements Serializable {
 	Random random;
 	Square[][] board;
@@ -265,4 +267,9 @@ public class Board implements Serializable {
 	public ArrayList<Square> getEliminated(){
 		return this.eliminatedSquares;
 	}
+	
+	public void checkBoard() {
+		return;
+	}
+	
 }

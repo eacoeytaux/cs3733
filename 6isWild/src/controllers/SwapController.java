@@ -46,7 +46,8 @@ public class SwapController implements MouseListener {
 			otherDisplay.setup();
 			squareDisplay.changeTile();
 			squareDisplay.setup();
-			
+
+			square.getParentBoard().checkBoard();
 			squareDisplay.getParentBoardDisplay().getParentLevelDisplay().setup();
 		} else {
 			//TODO print warning

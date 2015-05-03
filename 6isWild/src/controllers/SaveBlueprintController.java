@@ -10,6 +10,11 @@ import javax.swing.JFileChooser;
 
 import boundaries.BuilderApplication;
 
+/**
+ * saves the current blueprint in builder
+ * @author Ethan Coeytaux
+ *
+ */
 public class SaveBlueprintController implements ActionListener {
 	BuilderApplication application;
 
