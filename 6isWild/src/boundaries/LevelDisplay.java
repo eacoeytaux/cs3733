@@ -8,6 +8,7 @@ import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JProgressBar;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
@@ -37,6 +38,7 @@ public class LevelDisplay extends AbstractDisplay {
 	int moves;
 	int[] powerUps;
 	BoardDisplay panel;
+	int score;
 
 	JButton btnBack;
 
@@ -48,6 +50,7 @@ public class LevelDisplay extends AbstractDisplay {
 	JLabel lblScore;
 
 	JLabel lblGameMode;
+	JLabel lblMoves;
 
 	public LevelDisplay(Model model, AbstractLevel level) {
 		super(model);
@@ -58,6 +61,7 @@ public class LevelDisplay extends AbstractDisplay {
 		this.levelNum = level.getLevel();
 		this.moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
 		this.powerUps = new int[]{level.getInfo().getSwaps(), level.getInfo().getShuffles(), level.getInfo().getRemoves()};
+		this.moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
 
 		btnBack = new JButton("Back");
 		lblMovesTimeLeft = new JLabel("moves/time left: ");
@@ -65,7 +69,6 @@ public class LevelDisplay extends AbstractDisplay {
 		btnShuffle = new JButton("Shuffles: " + powerUps[1]);
 		btnRemove = new JButton("Removes: " + powerUps[2]);
 		lblGameMode = new JLabel("Game Mode/Level #");
-		int score = 0;//level.getStats().getScore(); //TODO uncomment and change back
 		lblScore = new JLabel("Score: " + score);
 
 		initControllers();
@@ -79,11 +82,34 @@ public class LevelDisplay extends AbstractDisplay {
 	public void setup() {
 		this.removeAll();
 
+		this.moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
+		this.powerUps = new int[]{level.getInfo().getSwaps(), level.getInfo().getShuffles(), level.getInfo().getRemoves()};
+
+		score = level.getInfo().getScore();	
+		lblScore = new JLabel("Score: " + score);
+		btnRemove.setText("Removes:" + powerUps[2]);
+		btnSwap.setText("Swaps:" + powerUps[0]);
+		btnShuffle.setText("Shuffles:" + powerUps[1]);
+		if (gameMode == Game.LIGHTNING_ID) {
+			lblMoves = new JLabel("Time: " + moves);
+		} else {
+			lblMoves = new JLabel("Moves: " + moves);
+		}
+
+
 		JProgressBar progressBar = new JProgressBar();
 		progressBar.setMaximum(200);
 		progressBar.setOrientation(SwingConstants.VERTICAL);
+		int[] starReqs = level.getStarRequirements();
+		if (score < starReqs[0]) {
+			progressBar.setValue((int)((float)score/(float)starReqs[0] * 200));
+		} else if (score < starReqs[1]) {
+			progressBar.setValue((int)((float)(score - starReqs[0])/(float)starReqs[1] * 200));
+		} else if (score < starReqs[2]) {
+			progressBar.setValue((int)((float)(score - starReqs[1] - starReqs[0])/(float)starReqs[2] * 200));
+		} else progressBar.setValue(200);
 
-		
+
 
 		if(panel ==null){
 			panel = new BoardDisplay(model, this.board, this);
@@ -93,6 +119,8 @@ public class LevelDisplay extends AbstractDisplay {
 
 
 		lblScore.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
+
+		lblMoves.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -111,12 +139,13 @@ public class LevelDisplay extends AbstractDisplay {
 														.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
 																.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
 																		.addComponent(btnSwap, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-																		.addComponent(btnShuffle, GroupLayout.DEFAULT_SIZE, 96, Short.MAX_VALUE))
+																		.addComponent(btnShuffle, GroupLayout.PREFERRED_SIZE, 96, Short.MAX_VALUE))
 																		.addComponent(btnRemove, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
 																		.addGroup(groupLayout.createSequentialGroup()
 																				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 																						.addComponent(lblScore)
-																						.addComponent(lblMovesTimeLeft))
+																						.addComponent(lblMovesTimeLeft)
+																						.addComponent(lblMoves))
 																						.addGap(5))))
 																						.addComponent(lblGameMode)))
 																						.addGroup(groupLayout.createSequentialGroup()
@@ -145,7 +174,9 @@ public class LevelDisplay extends AbstractDisplay {
 										.addComponent(btnRemove)
 										.addGap(130)
 										.addComponent(lblScore)
-										.addPreferredGap(ComponentPlacement.RELATED, 240, Short.MAX_VALUE)
+										.addPreferredGap(ComponentPlacement.UNRELATED)
+										.addComponent(lblMoves)
+										.addPreferredGap(ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
 										.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
 										.addGap(15))
 				);
@@ -187,7 +218,7 @@ public class LevelDisplay extends AbstractDisplay {
 	 * displays message to indicate time is up
 	 */
 	public void endCountdown() {
-		System.out.println("out of time!!!");
+		gameOver();
 	}
 
 	/**
@@ -200,8 +231,10 @@ public class LevelDisplay extends AbstractDisplay {
 				while (moves > 0) {
 					try {
 						Thread.sleep(1000);
-						moves--;
+						level.getInfo().incrementMoves();
+						moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
 						System.out.println("time remaining: " + moves);
+						setup();
 					} catch (InterruptedException e) {
 						e.printStackTrace();
 					}
@@ -212,14 +245,35 @@ public class LevelDisplay extends AbstractDisplay {
 
 		timerThread.start();
 	}
-	
+
 	public void initControllers() {
+		System.out.println("making controllers");
 		btnSwap.addActionListener(new SwapButtonController(level));
 		btnRemove.addActionListener(new RemoveButtonController(level));
 		btnShuffle.addActionListener(new ShuffleButtonController(this));
 	}
-	
+
 	public void startLevel() {
 		if (gameMode == Game.LIGHTNING_ID) startCountdown();
+	}
+
+	public void gameOver() {
+		boolean won = true;
+		String message;
+		if (score < level.getStarRequirements()[0]) {
+			won = false;
+			message = "You didn't get any stars.";
+		} else if (score < level.getStarRequirements()[1]) {
+			message = "You got 1 star!";
+		} else if (score < level.getStarRequirements()[2]) {
+			message = "You got 2 starts!!";
+		} else message = "You got 3 stars!!!";
+
+		JOptionPane.showMessageDialog(null, message, "Game Over", JOptionPane.PLAIN_MESSAGE);
+
+		if (won) {
+			//TODO unlock next level
+		}
+		btnBack.doClick();
 	}
 }

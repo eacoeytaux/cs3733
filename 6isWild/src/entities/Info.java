@@ -36,6 +36,7 @@ public class Info {
 	}
 	
 	public int getScore(){
+		System.out.println("score is: " + score);
 		return this.score;
 	}
 	
@@ -47,15 +48,38 @@ public class Info {
 		return this.movesPlayed;
 	}
 	
+	public void incrementMoves(){
+		this.movesPlayed++;
+		System.out.println("moves: " + movesPlayed);
+	}
+	
 	public int getSwaps(){
 		return this.swaps;
+	}
+	
+	public void decrementSwaps(){
+		swaps--;
 	}
 	
 	public int getShuffles(){
 		return this.shuffles;
 	}
 	
+	public void decrementShuffles(){
+		shuffles--;
+	}
+	
 	public int getRemoves(){
 		return this.removes;
 	}
+	
+	public void decrementRemoves(){
+		removes--;
+	}
+	
+	public void increaseScore(int newScore){
+		this.score += newScore;
+		System.out.println("score is now: " + score);
+	}
+
 }

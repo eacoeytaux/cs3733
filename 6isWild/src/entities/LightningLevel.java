@@ -3,7 +3,7 @@ package entities;
 public class LightningLevel extends AbstractLevel {
 
 	public LightningLevel(Blueprint blueprint){
-		super();
+		super(blueprint);
 		
 		this.levelType = blueprint.levelType;
 		
@@ -17,5 +17,10 @@ public class LightningLevel extends AbstractLevel {
 		this.info.starRequirements = blueprint.starRequirements;
 		this.info.valueFrequencies = blueprint.valueFrequencies;
 		this.info.multiplierFrequencies = blueprint.multiplierFrequencies;
+	}
+	
+	@Override
+	public void incrementMoves() {
+		return;
 	}
 }

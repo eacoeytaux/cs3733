@@ -9,14 +9,16 @@ import entities.AbstractLevel;
 
 public class ShuffleButtonController implements ActionListener {
 	LevelDisplay levelDisplay;
+	AbstractLevel level;
 
 	public ShuffleButtonController(LevelDisplay levelDisplay) {
 		this.levelDisplay = levelDisplay;
+		this.level = levelDisplay.getLevel();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (!isValid()) return;
+		if (level.getInfo().getShuffles() <= 0) return;
 
 		levelDisplay.getLevel().getBoard().shuffleBoard();
 
@@ -27,6 +29,8 @@ public class ShuffleButtonController implements ActionListener {
 				boardDisplay.updateTile(i, j);
 			}
 		}
+		
+		level.getInfo().decrementShuffles();
 
 		levelDisplay.setup();
 	}

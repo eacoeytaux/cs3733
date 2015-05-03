@@ -14,6 +14,9 @@ public class RemoveButtonController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if (level.getInfo().getRemoves() <= 0) return;
+			
 		level.getBoard().removeMove = true;
+		level.getInfo().decrementRemoves();
 	}
 }

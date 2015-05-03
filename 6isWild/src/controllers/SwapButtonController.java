@@ -14,7 +14,10 @@ public class SwapButtonController implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		if(level.getInfo().getSwaps() <= 0) return;
+			
 		level.getBoard().swapMove = true;
+		level.getInfo().decrementSwaps();
 	}
 
 }

@@ -1,12 +1,12 @@
 package boundaries;
 import java.awt.Color;
-
 import java.awt.GridLayout;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
 import controllers.BuilderSquareController;
+import controllers.MoveController;
 import controllers.SquareController;
 import entities.Board;
 import entities.Model;

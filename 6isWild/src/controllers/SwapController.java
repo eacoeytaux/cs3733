@@ -32,22 +32,22 @@ public class SwapController implements MouseListener {
 			this.square.select();
 			this.squareDisplay.setup();
 		} else if (numSquaresSelected == 1) {
-			if (isValid()) {
-				square.getParentBoard().swapMove = false;
+			square.getParentBoard().swapMove = false;
 
-				//swap squares;
-				Square otherSquare = square.getParentBoard().getSelected().get(0);
-				SquareDisplay otherDisplay = squareDisplay.getParentBoardDisplay().getSquareDisplay(otherSquare.getIIndex(), otherSquare.getJIndex());
+			//swap squares;
+			Square otherSquare = square.getParentBoard().getSelected().get(0);
+			SquareDisplay otherDisplay = squareDisplay.getParentBoardDisplay().getSquareDisplay(otherSquare.getIIndex(), otherSquare.getJIndex());
 
-				square.getParentBoard().swapSquares(square.getIIndex(), square.getJIndex(), otherSquare.getIIndex(), otherSquare.getJIndex());
+			square.getParentBoard().swapSquares(square.getIIndex(), square.getJIndex(), otherSquare.getIIndex(), otherSquare.getJIndex());
 
-				square.getParentBoard().deselectAll();
+			square.getParentBoard().deselectAll();
 				
-				otherDisplay.changeTile();
-				otherDisplay.setup();
-				squareDisplay.changeTile();
-				squareDisplay.setup();
-			}
+			otherDisplay.changeTile();
+			otherDisplay.setup();
+			squareDisplay.changeTile();
+			squareDisplay.setup();
+			
+			squareDisplay.getParentBoardDisplay().getParentLevelDisplay().setup();
 		} else {
 			//TODO print warning
 		}
