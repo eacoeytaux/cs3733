@@ -9,6 +9,8 @@ import java.util.Random;
  * @author Hugh Whelan
  *
  */
+
+@SuppressWarnings("serial")
 public class EliminationBoard extends Board {
 	Random random;
 	Square[][] board;

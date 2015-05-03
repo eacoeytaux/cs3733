@@ -29,6 +29,8 @@ public class ShuffleButtonController implements ActionListener {
 				boardDisplay.updateTile(i, j);
 			}
 		}
+
+		level.getBoard().checkBoard();
 		
 		level.getInfo().decrementShuffles();
 
