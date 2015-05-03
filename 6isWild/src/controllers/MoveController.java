@@ -70,7 +70,8 @@ public class MoveController implements MouseListener {
 			}
 		}
 		
-		if(outOfMoves()) squareDisplay.getParentBoardDisplay().getParentLevelDisplay().gameOver();
+		System.out.println("Checking");
+		if(outOfMoves() && requirementsMet()) squareDisplay.getParentBoardDisplay().getParentLevelDisplay().gameOver();
 		
 		board.deselectAll();
 		//this.levelScreen.getBoardDisplay().setupSquares();
@@ -175,5 +176,31 @@ public class MoveController implements MouseListener {
 	public boolean outOfMoves(){
 		if(model.getCurrentLevel().getInfo().getMovesTotal() - model.getCurrentLevel().getInfo().getMovesPlayed() <= 0) return true;
 		else return false;
+	}
+	
+	public boolean requirementsMet(){
+		int gameMode = model.getCurrentLevel().getLevelType();
+		Board board = this.square.getParentBoard();
+		
+		boolean met = false;
+		
+		switch (gameMode){
+			case 0:
+				met = true;
+				break;
+			case 1:
+				met = true;
+				break;
+			case 2:
+				if(board.getEliminated().size() >= 81) met = true;
+				break;
+			case 3:
+				met = true;
+				break;
+			default:
+				met = true;
+		}
+		
+		return met;
 	}
 }

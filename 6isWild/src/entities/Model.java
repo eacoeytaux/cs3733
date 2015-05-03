@@ -25,9 +25,10 @@ public class Model {
 		puzzleLevels = new ArrayList<PuzzleLevel>();
 		//puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/smileyLevel.txt")));
 		lightningLevels = new ArrayList<LightningLevel>(); 
+		releaseLevels = new ArrayList<ReleaseLevel>();
+		eliminationLevels = new ArrayList<EliminationLevel>();
 		//lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt")));
-		eliminationLevels = new ArrayList<EliminationLevel>(); 
-		releaseLevels = new ArrayList<ReleaseLevel>(); 
+		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/levelre.txt"))); 
 		globalStats = new GlobalStats(0,0,0);	
 		
 		//rest is filler level
@@ -112,14 +113,14 @@ public class Model {
 	
 	public AbstractLevel getLevel(int gameMode, int levelNum) {
 		switch ( gameMode ){
-			case 0:
+			case Game.PUZZLE_ID:
 				return puzzleLevels.get(levelNum);
-			case 1:
+			case Game.LIGHTNING_ID:
 				return lightningLevels.get(levelNum);
-			case 2: 
+			case Game.ELIMINATION_ID: 
 				return eliminationLevels.get(levelNum);
-			case 3:
-				//return releaseLevels.get(levelNum);
+			case Game.RELEASE_ID:
+				return releaseLevels.get(levelNum);
 			default:
 				return null;
 		}
