@@ -6,6 +6,7 @@ public class EliminationLevel extends AbstractLevel {
 		super();
 		
 		this.board = blueprint.getBoardClone();
+		this.levelType = 2;
 		this.info = new Info(blueprint.movesTotal, 45, blueprint.swap, blueprint.shuffle, blueprint.remove, blueprint.starRequirements, blueprint.multiplierFrequencies);
 		this.info.shuffles = blueprint.shuffle;
 		this.info.swaps = blueprint.swap;

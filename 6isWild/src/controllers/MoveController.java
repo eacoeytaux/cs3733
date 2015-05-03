@@ -57,6 +57,10 @@ public class MoveController implements MouseListener {
 		if(board.validMove()){
 			this.model.getCurrentLevel().increaseScore(this.square.getParentBoard().getMoveScore());
 			
+			if(model.getCurrentLevel().getLevelType() == 2){
+				board.eliminateMoved();
+			}
+			
 			for( int i = 0; i < 9; i++){
 				for( int j = 0; j < 9; j++){
 					if (board.getSquare(i, j).isSelected()) board.getSquare(i, j).remove();
