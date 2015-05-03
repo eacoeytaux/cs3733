@@ -11,11 +11,9 @@ import boundaries.Application;
 
 public class CompleteRelease {
 	ReleaseLevel level;
-	Application app;
 	
-	public CompleteRelease(ReleaseLevel level, Application app){
+	public CompleteRelease(ReleaseLevel level){
 		this.level = level;
-		this.app = app;
-		new SaveScore(level, app);
+		new SaveScore(level);
 	}
 }

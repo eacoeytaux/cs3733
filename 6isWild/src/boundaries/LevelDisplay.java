@@ -16,12 +16,14 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
 import controllers.BackController;
+import controllers.CompleteLightning;
 import controllers.RemoveButtonController;
 import controllers.ShuffleButtonController;
 import controllers.SwapButtonController;
 import entities.AbstractLevel;
 import entities.Board;
 import entities.Game;
+import entities.LightningLevel;
 import entities.Model;
 
 /**
@@ -69,11 +71,11 @@ public class LevelDisplay extends AbstractDisplay {
 		this.moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
 
 		btnBack = new JButton("Back");
-		lblMovesTimeLeft = new JLabel("moves/time left: ");
+		lblMovesTimeLeft = new JLabel("");
 		btnSwap = new JButton("Swaps: " + powerUps[0]);
 		btnShuffle = new JButton("Shuffles: " + powerUps[1]);
 		btnRemove = new JButton("Removes: " + powerUps[2]);
-		lblGameMode = new JLabel("Game Mode/Level #");
+		lblGameMode = new JLabel("");
 		lblScore = new JLabel("Score: " + score);
 
 		initControllers();
@@ -232,7 +234,10 @@ public class LevelDisplay extends AbstractDisplay {
 	 */
 	public void endCountdown(boolean showDisplay) {
 		timerRunning = false;
-		if (showDisplay) gameOver();
+		if (showDisplay){ 
+			gameOver();
+			new CompleteLightning( (LightningLevel) level);
+		}
 	}
 
 	/**

@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controllers.BackController;
+import entities.Game;
 import entities.Model;
 
 /**
@@ -28,12 +29,16 @@ public class LevelStatDisplay extends AbstractDisplay {
 
 		btnBack = new JButton("Back");
 	}
+	
+
+
 
 	/**
 	 * setup for Level Stat Display
 	 */
 	@Override
 	public void setup() {
+	
 		
 		JLabel lblStats = new JLabel("LEVEL SCORES!");
 		lblStats.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
@@ -46,7 +51,7 @@ public class LevelStatDisplay extends AbstractDisplay {
 		
 		JLabel lblLightning = new JLabel("Lightning");
 		
-		JLabel lblScoreHere = new JLabel(model.getLevel(0,0).getStats().getScore() + ", " + model.getLevel(0,0).getStats().getStars() + " Stars");
+		JLabel lblScoreHere = new JLabel(model.getLevel(Game.PUZZLE_ID,0).getStats().getScore() + ", " + model.getLevel(Game.PUZZLE_ID,0).getStats().getStars() + " Stars");
 		
 		JLabel label = new JLabel("score here");
 		
@@ -70,7 +75,7 @@ public class LevelStatDisplay extends AbstractDisplay {
 		
 		JLabel label_10 = new JLabel("score here");
 		
-		JLabel label_11 = new JLabel("score here");
+		JLabel label_11 = new JLabel(model.getLevel(Game.LIGHTNING_ID,0).getStats().getScore() + ", " + model.getLevel(Game.LIGHTNING_ID,0).getStats().getStars() + " Stars");
 		
 		JLabel label_12 = new JLabel("score here");
 		

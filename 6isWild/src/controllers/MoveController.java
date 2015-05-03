@@ -8,6 +8,7 @@ import entities.AbstractLevel;
 import entities.Board;
 import entities.EliminationBoard;
 import entities.Game;
+import entities.LightningLevel;
 import entities.PuzzleLevel;
 import entities.Square;
 import entities.SquareBuilderMove;
@@ -72,8 +73,6 @@ public class MoveController implements MouseListener {
 			if (squareDisplay.getParentBoardDisplay().getParentLevelDisplay().getLevel().getLevelType() == Game.RELEASE_ID) board.checkBoard();
 		}
 		
-		if(outOfMoves() && requirementsMet()) squareDisplay.getParentBoardDisplay().getParentLevelDisplay().gameOver();
-
 		
 		board.deselectAll();
 		//this.levelScreen.getBoardDisplay().setupSquares();
@@ -85,8 +84,6 @@ public class MoveController implements MouseListener {
 		}
 		squareDisplay.getParentBoardDisplay().getParentLevelDisplay().setup();
 		
-		
-		System.out.println("Checking");
 		if(outOfMoves() && requirementsMet()) squareDisplay.getParentBoardDisplay().getParentLevelDisplay().gameOver();
 	}
 
@@ -197,6 +194,7 @@ public class MoveController implements MouseListener {
 				
 			case 1:
 				met = true;
+				new CompleteLightning((LightningLevel) model.getCurrentLevel());
 				break;
 			case 2:
 				if(board.getEliminated().size() >= 81) met = true;

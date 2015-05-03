@@ -1,5 +1,8 @@
 package entities;
 
+import java.io.File;
+import java.util.Scanner;
+
 /**
  * Abstract class for all levels
  * @author Hugh Whelan
@@ -15,12 +18,36 @@ public abstract class AbstractLevel {
 	boolean[][] emptyTiles;
 	
 	public AbstractLevel(Blueprint blueprint) {
+		this.levelType = blueprint.getLevelType();
+		
 		this.blueprint = blueprint;
 
 		this.board = blueprint.getBoardClone();
 		this.info = new Info(blueprint.movesTotal, blueprint.swap, blueprint.shuffle, blueprint.remove, blueprint.starRequirements, blueprint.valueFrequencies, blueprint.multiplierFrequencies);
 		
 		this.stats = new Stat(0, 0);
+		initializeStats();
+	}
+	
+	public void initializeStats(){
+		File file = new File("res/Scores.txt");
+
+		try
+		{
+			System.out.println("aylmao");
+			Scanner s = new Scanner(file);
+			System.out.println("initialized scanner");
+			while(s.hasNextLine())
+			{
+				if(s.nextInt() == this.getLevelType() && s.nextInt() == this.getLevel()) this.stats = new Stat(s.nextInt(), s.nextInt());
+				s.nextLine();
+			}
+			s.close();
+		}
+		catch (Exception e)
+		{
+			System.out.println("problem reading save file");
+		}
 	}
 	
 	public void increaseScore(int score){
