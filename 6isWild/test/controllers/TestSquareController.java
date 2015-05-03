@@ -5,7 +5,7 @@ import java.awt.event.MouseEvent;
 import entities.Game;
 import junit.framework.TestCase;
 
-public class testSquareController extends TestCase {
+public class TestSquareController extends TestCase {
 	
 	Game game;
 	

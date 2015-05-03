@@ -1,6 +1,5 @@
 package entities;
 
-import boundaries.BlueprintDisplay;
 
 /**
  * abstract class for all moves in builder

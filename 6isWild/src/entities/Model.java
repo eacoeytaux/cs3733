@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 /**
  * the model contains all levels and stats for the game
- * @author
+ * @author Ethan Coeytaux
+ * @author Hugh Whelan
  *
  */
 public class Model {
@@ -30,7 +31,7 @@ public class Model {
 		eliminationLevels = new ArrayList<EliminationLevel>();
 		//lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt")));
 		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/levelre.txt"))); 
-		globalStats = new GlobalStats(0,0,0);	
+		globalStats = new GlobalStats();	
 		
 		//rest is filler level
 		Square[][] fillerSquares = new Square[9][9];

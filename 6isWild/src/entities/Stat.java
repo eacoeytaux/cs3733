@@ -1,13 +1,17 @@
 package entities;
 
-/****
+import java.io.Serializable;
+
+/**
  * 
  * @author Jon Swain
+ * @author Ethan Coeytaux
  *
  */
 
-public class Stat {
-
+public class Stat implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	int score;
 	int stars;
 	
@@ -31,6 +35,16 @@ public class Stat {
 	
 	public void setStars(int newStars){
 		this.stars = newStars;
+	}
+	
+	/**
+	 * updates score and stars if new score is higher than stored values
+	 * @param score
+	 * @param stars
+	 */
+	public void update(int score, int stars) {
+		if (score > this.score) this.score = score;
+		if (stars > this.stars) this.stars = stars;
 	}
 	
 }

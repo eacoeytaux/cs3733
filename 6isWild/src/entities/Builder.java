@@ -2,7 +2,6 @@ package entities;
 
 import java.util.Stack;
 
-import boundaries.Application;
 import boundaries.BuilderApplication;
 
 /**

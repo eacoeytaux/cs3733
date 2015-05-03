@@ -3,8 +3,6 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import boundaries.AbstractDisplay;
-import boundaries.Application;
 import entities.AbstractBuilderMove;
 import entities.Builder;
 

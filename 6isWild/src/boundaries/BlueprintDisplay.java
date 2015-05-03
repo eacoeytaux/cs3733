@@ -6,7 +6,6 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
-import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -15,7 +14,6 @@ import javax.swing.JTextField;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import entities.Blueprint;
-import entities.Board;
 import entities.Builder;
 import entities.Game;
 import entities.Square;
@@ -39,7 +37,9 @@ public class BlueprintDisplay extends JPanel {
 	JTextField shuffleTextField;
 	JTextField swapTextField;
 	JTextField removeTextField;
+	@SuppressWarnings("rawtypes")
 	JComboBox levelModeComboBox;
+	@SuppressWarnings("rawtypes")
 	JComboBox tileTypeComboBox;
 	BuilderBoardDisplay boardDisplay;
 	
@@ -54,6 +54,7 @@ public class BlueprintDisplay extends JPanel {
 	JSlider slider_x2;
 	JSlider slider_x3;
 	
+	@SuppressWarnings("rawtypes")
 	public BlueprintDisplay(Builder builder) {
 		this.blueprint = builder.getBlueprint();
 		this.builder = builder;
@@ -103,6 +104,7 @@ public class BlueprintDisplay extends JPanel {
 	/**
 	 * sets up display of the blueprint
 	 */
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public void setup() {
 		
 		JLabel lblLevelModeSelect = new JLabel("Level Mode:");
