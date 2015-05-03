@@ -16,12 +16,14 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
 import controllers.BackController;
+import controllers.CompleteLightning;
 import controllers.RemoveButtonController;
 import controllers.ShuffleButtonController;
 import controllers.SwapButtonController;
 import entities.AbstractLevel;
 import entities.Board;
 import entities.Game;
+import entities.LightningLevel;
 import entities.Model;
 
 /**
@@ -232,7 +234,10 @@ public class LevelDisplay extends AbstractDisplay {
 	 */
 	public void endCountdown(boolean showDisplay) {
 		timerRunning = false;
-		if (showDisplay) gameOver();
+		if (showDisplay){ 
+			gameOver();
+			new CompleteLightning( (LightningLevel) level);
+		}
 	}
 
 	/**

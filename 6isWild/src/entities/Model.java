@@ -47,9 +47,9 @@ public class Model {
 			}
 		}
 		
-		Blueprint fillerBlueprint = new Blueprint(fillerBoard);
-		fillerBlueprint.setValues(2, 2, 2, 2, 2, new int[]{3,3,3}, new int[]{3,3,3,3,3,3}, new int[]{3,3,3});
-		PuzzleLevel fillerLevel = new PuzzleLevel(fillerBlueprint);
+		Blueprint fillerPuzzleBlueprint = new Blueprint(fillerBoard);
+		fillerPuzzleBlueprint.setValues(0, 2, 2, 2, 2, new int[]{3,3,3}, new int[]{3,3,3,3,3,3}, new int[]{3,3,3});
+		PuzzleLevel fillerLevel = new PuzzleLevel(fillerPuzzleBlueprint);
 		puzzleLevels.add(fillerLevel);
 		////////////////////////////////////////////////
 		
@@ -67,8 +67,11 @@ public class Model {
 				fillerSquares[i][j].setParentBoard(fillerBoard);
 			}
 		}
-		fillerBlueprint = new Blueprint(fillerBoard);
-		EliminationLevel fillerEliminationLevel = new EliminationLevel(fillerBlueprint);
+		Blueprint fillerLightningBlueprint = new Blueprint(fillerBoard);
+		fillerLightningBlueprint.setValues(1, 2, 2, 2, 10, new int[]{3,3,3}, new int[]{3,3,3,3,3,3}, new int[]{3,3,3});
+		LightningLevel fillerLightningLevel = new LightningLevel(fillerLightningBlueprint);
+		lightningLevels.add(fillerLightningLevel);
+		EliminationLevel fillerEliminationLevel = new EliminationLevel(fillerPuzzleBlueprint);
 		eliminationLevels.add(fillerEliminationLevel);
 		
 		
@@ -85,9 +88,8 @@ public class Model {
 				fillerSquares[i][j].setParentBoard(fillerBoard);
 			}
 		}
-		LightningLevel fillerLightningLevel = new LightningLevel(fillerBlueprint);
-		lightningLevels.add(fillerLightningLevel);
-		ReleaseLevel fillerReleaseLevel = new ReleaseLevel(fillerBlueprint);
+
+		ReleaseLevel fillerReleaseLevel = new ReleaseLevel(fillerPuzzleBlueprint);
 		releaseLevels.add(fillerReleaseLevel);
 		
 		

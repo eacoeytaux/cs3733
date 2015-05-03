@@ -8,6 +8,7 @@ import entities.AbstractLevel;
 import entities.Board;
 import entities.EliminationBoard;
 import entities.Game;
+import entities.LightningLevel;
 import entities.PuzzleLevel;
 import entities.Square;
 import entities.SquareBuilderMove;
@@ -193,6 +194,7 @@ public class MoveController implements MouseListener {
 				
 			case 1:
 				met = true;
+				new CompleteLightning((LightningLevel) model.getCurrentLevel());
 				break;
 			case 2:
 				if(board.getEliminated().size() >= 81) met = true;

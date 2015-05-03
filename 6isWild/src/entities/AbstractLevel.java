@@ -18,6 +18,8 @@ public abstract class AbstractLevel {
 	boolean[][] emptyTiles;
 	
 	public AbstractLevel(Blueprint blueprint) {
+		this.levelType = blueprint.getLevelType();
+		
 		this.blueprint = blueprint;
 
 		this.board = blueprint.getBoardClone();

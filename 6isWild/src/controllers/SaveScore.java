@@ -28,6 +28,7 @@ public class SaveScore {
 	 * @param application
 	 */
 	public SaveScore(AbstractLevel level){
+		System.out.println("called savescore");
 		this.level = level;
 		Info info = level.getInfo();
 		Stat stat = level.getStats();
@@ -54,6 +55,7 @@ public class SaveScore {
 				return;
 			}
 	        try {
+	        	System.out.println("writing high score");
 				BufferedReader file = new BufferedReader(new FileReader("res/Scores.txt"));
 				String input = "";
 				String line;
