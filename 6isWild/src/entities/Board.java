@@ -16,6 +16,7 @@ public class Board implements Serializable {
 	Square[][] board;
 	ArrayList<Square> selectedSquares;
 	ArrayList<Square> eliminatedSquares;
+	ArrayList<Square> buckets;
 
 	//these are public because changes these booleans at any time does not result in an error
 	public boolean swapMove;
