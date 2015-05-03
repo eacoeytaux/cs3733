@@ -49,8 +49,43 @@ public class Model {
 		fillerBlueprint.setValues(2, 2, 2, 2, 2, new int[]{3,3,3}, new int[]{3,3,3,3,3,3}, new int[]{3,3,3});
 		PuzzleLevel fillerLevel = new PuzzleLevel(fillerBlueprint);
 		puzzleLevels.add(fillerLevel);
-		LightningLevel fillerLevelL = new LightningLevel(fillerBlueprint);   //TODO temporary lightning level, will be removed
-		lightningLevels.add(fillerLevelL);
+		////////////////////////////////////////////////
+		
+		//rest is filler level
+		fillerSquares = new Square[9][9];
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				fillerSquares[i][j] = new Square(new Tile(j % 5 +1, i % 5 + 1), false, false);
+				fillerSquares[i][j].setRowCol(j % 5 +1, i % 5 +1);
+			}
+		}
+		fillerBoard = new Board(fillerSquares, new int[]{3,3,3,3,3,3}, new int[]{3,3,3});
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				fillerSquares[i][j].setParentBoard(fillerBoard);
+			}
+		}
+		fillerBlueprint = new Blueprint(fillerBoard);
+		EliminationLevel fillerEliminationLevel = new EliminationLevel(fillerBlueprint);
+		eliminationLevels.add(fillerEliminationLevel);
+		
+		
+		fillerSquares = new Square[9][9];
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				fillerSquares[i][j] = new Square(new Tile(j % 5 +1, i % 5 + 1), false, false);
+				fillerSquares[i][j].setRowCol(j % 5 +1, i % 5 +1);
+			}
+		}
+		fillerBoard = new Board(fillerSquares, new int[]{3,3,3,3,3,3}, new int[]{3,3,3});
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				fillerSquares[i][j].setParentBoard(fillerBoard);
+			}
+		}
+		LightningLevel fillerLightningLevel = new LightningLevel(fillerBlueprint);
+		lightningLevels.add(fillerLightningLevel);
+		
 		
 	}
 
@@ -76,7 +111,18 @@ public class Model {
 	}
 	
 	public AbstractLevel getLevel(int gameMode, int levelNum) {
-		return lightningLevels.get(0); //TODO
+		switch ( gameMode ){
+			case 0:
+				return puzzleLevels.get(levelNum);
+			case 1:
+				return lightningLevels.get(levelNum);
+			case 2: 
+				return eliminationLevels.get(levelNum);
+			case 3:
+				//return releaseLevels.get(levelNum);
+			default:
+				return null;
+		}
 	}
 	
 	public void setCurrentLevel(AbstractLevel currentLevel){

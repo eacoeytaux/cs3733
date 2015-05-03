@@ -6,6 +6,8 @@ import java.util.logging.Level;
 
 import entities.AbstractLevel;
 import entities.Board;
+import entities.EliminationBoard;
+import entities.Game;
 import entities.Square;
 import entities.SquareBuilderMove;
 import entities.Model;
@@ -56,6 +58,10 @@ public class MoveController implements MouseListener {
 		
 		if(board.validMove()){
 			this.model.getCurrentLevel().increaseScore(this.square.getParentBoard().getMoveScore());
+			
+			if(model.getCurrentLevel().getLevelType() == Game.ELIMINATION_ID){
+				board.eliminateMoved();
+			}
 			
 			for( int i = 0; i < 9; i++){
 				for( int j = 0; j < 9; j++){

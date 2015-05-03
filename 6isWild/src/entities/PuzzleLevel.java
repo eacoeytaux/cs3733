@@ -12,7 +12,6 @@ public class PuzzleLevel extends AbstractLevel {
 	
 	public PuzzleLevel(Blueprint blueprint){
 		super(blueprint);
-		
 	}
 	
 	

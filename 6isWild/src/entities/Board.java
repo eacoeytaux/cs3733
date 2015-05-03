@@ -13,6 +13,7 @@ public class Board implements Serializable {
 	Random random;
 	Square[][] board;
 	ArrayList<Square> selectedSquares;
+	ArrayList<Square> eliminatedSquares;
 
 	//these are public because changes these booleans at any time does not result in an error
 	public boolean swapMove;
@@ -42,6 +43,8 @@ public class Board implements Serializable {
 				}
 			}
 		}
+		eliminatedSquares = new ArrayList<Square>();
+		
 	}
 
 	/**
@@ -243,5 +246,23 @@ public class Board implements Serializable {
 
 		otherSquare.copyValues(square);
 		square.copyValues(tempSquare);
+	}
+	
+	public void eliminateSquare(int i, int j){
+		Square square = getSquare(i,j);
+		
+		square.setEliminated();
+		eliminatedSquares.add(square);
+	}
+	
+	public void eliminateMoved(){
+		for(Square square : selectedSquares){
+			if(!eliminatedSquares.contains(square)) eliminatedSquares.add(square);
+			square.setEliminated();
+		}
+	}
+	
+	public ArrayList<Square> getEliminated(){
+		return this.eliminatedSquares;
 	}
 }

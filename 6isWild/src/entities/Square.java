@@ -15,6 +15,7 @@ public class Square implements Serializable {
 	boolean inert;
 	boolean bucket;
 	boolean bucketFull;
+	boolean eliminated;
 	boolean selected = false;
 	Board parentBoard;
 	int iIndex; // row
@@ -26,6 +27,7 @@ public class Square implements Serializable {
 		this.inert = inert;
 		this.bucket = bucket;
 		this.bucketFull = false;
+		this.eliminated = false;
 		this.parentBoard = null;
 		this.iIndex = -1;
 		this.jIndex = -1;
@@ -36,6 +38,7 @@ public class Square implements Serializable {
 		this.inert = inert;
 		this.bucket = bucket;
 		this.bucketFull = false;
+		this.eliminated = false;
 		this.parentBoard = parentBoard;
 		this.iIndex = iIndex;
 		this.jIndex = jIndex;
@@ -61,6 +64,14 @@ public class Square implements Serializable {
 		return bucket;
 	}
 	
+	public boolean isEliminated(){
+		return this.eliminated;
+	}
+	
+	public void setEliminated(){
+		this.eliminated = true;
+	}
+	
 	/**
 	 * changes all attributes of this to match other square
 	 * @param other square to be copied
@@ -72,6 +83,7 @@ public class Square implements Serializable {
 		bucketFull = other.bucketFull;
 		
 	}
+	
 	
 	public Square clone(Board cloningBoard) {
 		Tile tile = (this.tile == null) ? null : this.tile.clone();

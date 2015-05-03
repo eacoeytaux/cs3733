@@ -36,6 +36,9 @@ public class Builder {
 		newBoard.setSquares(squareArray);
 
 		blueprint = new Blueprint(newBoard);
+				
+		builderApplication = new BuilderApplication(this);
+
 	}
 
 	public static void main(String[] args) {
