@@ -26,7 +26,6 @@ public class Board implements Serializable {
 	public Board(Square[][] board, int[] vf, int[] mf) {
 		random = new Random(System.currentTimeMillis());
 		selectedSquares = new ArrayList<Square>();
-		eliminatedSquares = new ArrayList<Square>();
 		swapMove = false;
 		removeMove = false;
 		shuffleMove = false;
@@ -34,6 +33,7 @@ public class Board implements Serializable {
 		this.mf = mf;
 		this.board = new Square[9][9];
 		if (board[0][0] != null) {
+			System.out.println("doing it");
 			for (int i = 0; i < 9; i++) {
 				for (int j = 0; j < 9; j++) {
 					this.board[i][j] = board[i][j].clone();
@@ -42,6 +42,8 @@ public class Board implements Serializable {
 				}
 			}
 		}
+		eliminatedSquares = new ArrayList<Square>();
+		
 	}
 
 	/**
@@ -119,6 +121,7 @@ public class Board implements Serializable {
 
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
+				
 				newBoardSquares[i][j] = this.board[i][j].clone();
 				newBoardSquares[i][j].setRowCol(i, j);
 			}
@@ -248,6 +251,7 @@ public class Board implements Serializable {
 	}
 	
 	public void eliminateMoved(){
+		System.out.println("eliminating");
 		for(Square square : selectedSquares){
 			if(!eliminatedSquares.contains(square)) eliminatedSquares.add(square);
 			square.setEliminated();

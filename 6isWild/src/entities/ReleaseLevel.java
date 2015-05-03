@@ -3,7 +3,7 @@ package entities;
 public class ReleaseLevel extends AbstractLevel {
 	
 	public ReleaseLevel(Blueprint blueprint){
-		super();
+		super(blueprint);
 		
 		this.board = blueprint.board.clone();
 		this.info = new Info(blueprint.movesTotal, 45, blueprint.swap, blueprint.shuffle, blueprint.remove, blueprint.starRequirements, blueprint.multiplierFrequencies);

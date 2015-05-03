@@ -14,7 +14,9 @@ public abstract class AbstractLevel {
 	Info info;
 	boolean[][] emptyTiles;
 	
-	public AbstractLevel(){
+	public AbstractLevel(Blueprint blueprint) {
+		this.blueprint = blueprint;
+		levelType = blueprint.levelType;
 	}
 	
 	public void increaseScore(int score){
@@ -52,6 +54,14 @@ public abstract class AbstractLevel {
 	public void resetBoard() {
 		this.board = blueprint.board.clone();
 		//board.fillRandom();
+	}
+	
+	public void incrementMoves() {
+		info.incrementMoves();
+	}
+	
+	public int[] getStarRequirements() {
+		return blueprint.starRequirements;
 	}
 	
 }

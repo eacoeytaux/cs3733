@@ -25,6 +25,7 @@ public class Model {
 		puzzleLevels = new ArrayList<PuzzleLevel>();
 		//puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/smileyLevel.txt")));
 		lightningLevels = new ArrayList<LightningLevel>(); 
+		//lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt")));
 		eliminationLevels = new ArrayList<EliminationLevel>(); 
 		releaseLevels = new ArrayList<ReleaseLevel>(); 
 		globalStats = new GlobalStats(0,0,0);	
@@ -67,6 +68,23 @@ public class Model {
 		eliminationLevels.add(fillerEliminationLevel);
 		
 		
+		fillerSquares = new Square[9][9];
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				fillerSquares[i][j] = new Square(new Tile(j % 5 +1, i % 5 + 1), false, false);
+				fillerSquares[i][j].setRowCol(j % 5 +1, i % 5 +1);
+			}
+		}
+		fillerBoard = new Board(fillerSquares, new int[]{3,3,3,3,3,3}, new int[]{3,3,3});
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				fillerSquares[i][j].setParentBoard(fillerBoard);
+			}
+		}
+		fillerBlueprint = new Blueprint(2, 2, 2, 2, 2, new int[]{3,3,3}, new int[]{3,3,3,3,3,3}, new int[]{3,3,3}, fillerBoard);
+		LightningLevel fillerLightningLevel = new LightningLevel(fillerBlueprint);
+		lightningLevels.add(fillerLightningLevel);
+		
 		
 	}
 
@@ -96,7 +114,7 @@ public class Model {
 			case 0:
 				return puzzleLevels.get(levelNum);
 			case 1:
-				//return lightningLevels.get(levelNum);
+				return lightningLevels.get(levelNum);
 			case 2: 
 				return eliminationLevels.get(levelNum);
 			case 3:
@@ -104,8 +122,6 @@ public class Model {
 			default:
 				return null;
 		}
-		
-		
 	}
 	
 	public void setCurrentLevel(AbstractLevel currentLevel){

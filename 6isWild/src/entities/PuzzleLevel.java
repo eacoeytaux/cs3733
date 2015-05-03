@@ -11,7 +11,7 @@ public class PuzzleLevel extends AbstractLevel {
 	
 	
 	public PuzzleLevel(Blueprint blueprint){
-		super();
+		super(blueprint);
 		
 		this.board = blueprint.board.clone();
 		this.blueprint = blueprint;

@@ -31,6 +31,7 @@ public class SelectLevelButtonController implements ActionListener {
 		lvlDisplay.reinitBoard();
 		application.changePanel(lvlDisplay);
 		model.setCurrentLevel(lvlDisplay.getLevel());
+		lvlDisplay.startLevel();
 	}
 
 }

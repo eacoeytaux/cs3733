@@ -6,6 +6,8 @@ import java.util.logging.Level;
 
 import entities.AbstractLevel;
 import entities.Board;
+import entities.EliminationBoard;
+import entities.Game;
 import entities.Square;
 import entities.SquareBuilderMove;
 import entities.Model;
@@ -51,13 +53,13 @@ public class MoveController implements MouseListener {
 		Board board = this.square.getParentBoard();
 		BoardDisplay boardDisplay = squareDisplay.getParentBoardDisplay();
 		
-		this.model.getCurrentLevel().getInfo().incrementMoves();
+		this.model.getCurrentLevel().incrementMoves();
 		
 		
 		if(board.validMove()){
 			this.model.getCurrentLevel().increaseScore(this.square.getParentBoard().getMoveScore());
 			
-			if(model.getCurrentLevel().getLevelType() == 2){
+			if(model.getCurrentLevel().getLevelType() == Game.ELIMINATION_ID){
 				board.eliminateMoved();
 			}
 			
@@ -68,7 +70,7 @@ public class MoveController implements MouseListener {
 			}
 		}
 		
-		if(hasWon()) System.out.println("won");
+		if(outOfMoves()) squareDisplay.getParentBoardDisplay().getParentLevelDisplay().gameOver();
 		
 		board.deselectAll();
 		//this.levelScreen.getBoardDisplay().setupSquares();
@@ -170,7 +172,7 @@ public class MoveController implements MouseListener {
 		}
 	}
 	
-	public boolean hasWon(){
+	public boolean outOfMoves(){
 		if(model.getCurrentLevel().getInfo().getMovesTotal() - model.getCurrentLevel().getInfo().getMovesPlayed() <= 0) return true;
 		else return false;
 	}
