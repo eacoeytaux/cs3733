@@ -28,12 +28,16 @@ public class LevelStatDisplay extends AbstractDisplay {
 
 		btnBack = new JButton("Back");
 	}
+	
+
+
 
 	/**
 	 * setup for Level Stat Display
 	 */
 	@Override
 	public void setup() {
+	
 		
 		JLabel lblStats = new JLabel("LEVEL SCORES!");
 		lblStats.setFont(new Font("Lucida Grande", Font.PLAIN, 45));

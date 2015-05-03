@@ -9,7 +9,10 @@ package controllers;
 import entities.AbstractLevel;
 import entities.Stat;
 import entities.Info;
-import boundaries.Application;
+
+import java.io.BufferedReader;
+import java.io.FileOutputStream;
+import java.io.FileReader;
 
 /**
  * saves score when level is complete
@@ -17,7 +20,6 @@ import boundaries.Application;
  *
  */
 public class SaveScore {
-	Application application;
 	AbstractLevel level;
 	
 	/**
@@ -25,11 +27,12 @@ public class SaveScore {
 	 * @param level
 	 * @param application
 	 */
-	public SaveScore(AbstractLevel level, Application application){
-		this.application = application;
+	public SaveScore(AbstractLevel level){
 		this.level = level;
 		Info info = level.getInfo();
 		Stat stat = level.getStats();
+		int oldHighScore = stat.getScore();
+		int oldHighStars = stat.getStars();
 		if(info.getScore() > stat.getScore())  //if the score from the completed level is higher than the recorded high score
 		{
 			System.out.println("New High score");
@@ -49,6 +52,29 @@ public class SaveScore {
 			}
 			else{
 				return;
+			}
+	        try {
+				BufferedReader file = new BufferedReader(new FileReader("res/Scores.txt"));
+				String input = "";
+				String line;
+				
+		        while ((line = file.readLine()) != null) input += line + '\n';
+		        
+		        file.close();
+		        
+		        System.out.println(input);
+		        
+		        input = input.replace(level.getLevelType() + " " + level.getLevel() + " " + oldHighScore + " " + oldHighStars, level.getLevelType() + " " + level.getLevel() + " " + stat.getScore() + " " + stat.getStars());
+		        
+		        System.out.println("----------------------------------"  + '\n' + input);
+		        
+		        FileOutputStream fileOut = new FileOutputStream("res/Scores.txt");
+		        fileOut.write(input.getBytes());
+		        fileOut.close();
+		        
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
 			}
 		}
 	}	
