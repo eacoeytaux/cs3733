@@ -25,7 +25,7 @@ public class Model {
 		puzzleLevels = new ArrayList<PuzzleLevel>();
 		//puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/smileyLevel.txt")));
 		lightningLevels = new ArrayList<LightningLevel>(); 
-		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt")));
+		//lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt")));
 		eliminationLevels = new ArrayList<EliminationLevel>(); 
 		releaseLevels = new ArrayList<ReleaseLevel>(); 
 		globalStats = new GlobalStats(0,0,0);	
@@ -47,6 +47,9 @@ public class Model {
 		Blueprint fillerBlueprint = new Blueprint(2, 2, 2, 2, 2, new int[]{3,3,3}, new int[]{3,3,3,3,3,3}, new int[]{3,3,3}, fillerBoard);
 		PuzzleLevel fillerLevel = new PuzzleLevel(fillerBlueprint);
 		puzzleLevels.add(fillerLevel);
+		LightningLevel fillerLevelL = new LightningLevel(fillerBlueprint);   //TODO temporary lightning level, will be removed
+		lightningLevels.add(fillerLevelL);
+		
 	}
 
 	/**
