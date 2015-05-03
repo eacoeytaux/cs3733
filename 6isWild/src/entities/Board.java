@@ -6,6 +6,7 @@ import java.util.Random;
 
 /**
  * The board that contains all squares
+ * @author Ethan Coeytaux
  * @author Hugh Whelan
  *
  */
@@ -16,7 +17,7 @@ public class Board implements Serializable {
 	Square[][] board;
 	ArrayList<Square> selectedSquares;
 	ArrayList<Square> eliminatedSquares;
-	ArrayList<Square> buckets;
+	int bucketsLeft;
 
 	//these are public because changes these booleans at any time does not result in an error
 	public boolean swapMove;
@@ -34,6 +35,9 @@ public class Board implements Serializable {
 		shuffleMove = false;
 		this.vf = vf;
 		this.mf = mf;
+
+		bucketsLeft = 0;
+		
 		this.board = new Square[9][9];
 		if (board != null) {
 			if (board[0][0] != null) {
@@ -42,6 +46,7 @@ public class Board implements Serializable {
 						this.board[i][j] = board[i][j].clone(this);
 						this.board[i][j].setRowCol(i, j);
 						this.board[i][j].setParentBoard(this);
+						if (this.board[i][j].isBucket()) bucketsLeft++;
 					}
 				}
 			}
@@ -270,7 +275,40 @@ public class Board implements Serializable {
 	}
 	
 	public void checkBoard() {
-		return;
+		while (checkSix());
+	}
+	
+	/**
+	 * finds any 6 any checks for a bucket below
+	 * @return true is 6 is moved to bucket and check must start over as board has changed
+	 */
+	public boolean checkSix() {
+		for (Square[] squares : board) {
+			for (Square square : squares) {
+				if (!square.isBucket() && !square.isInert()) {
+					if (square.getTile().getValue() == 6) {
+						int i = square.getIIndex();
+						int j = square.getJIndex() + 1;
+						
+						while (j < 9) {
+							if (board[i][j].isInert() || (board[i][j].isBucket() && board[i][j].bucketFull)) {
+								j++;
+								continue;
+							}
+							if (board[i][j].isBucket()) {
+								square.remove();
+								board[i][j].bucketFull = true;
+								bucketsLeft--;
+								System.out.println("bucket filled!");
+								return true;
+							}
+							break;
+						}
+					}
+				}
+			}
+		}
+		return false;
 	}
 	
 }
