@@ -29,7 +29,7 @@ public class Blueprint implements Serializable {
 	
 	Board board;
 
-	public Blueprint(int levelType, int shuffle, int swap, int remove, int movesTotal, int[] starRequirements, int[] valueFrequencies, int[] multiplierFrequencies, Board board) {
+	public Blueprint(Board board) {
 		this.levelType = Game.PUZZLE_ID;
 		this.shuffle = 5;
 		this.swap = 5;

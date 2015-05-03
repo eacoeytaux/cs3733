@@ -29,7 +29,7 @@ public class Builder {
 		
 		newBoard.setSquares(squareArray);
 
-		blueprint = new Blueprint(Game.PUZZLE_ID, 5, 4, 3, 40, new int[]{2,2,2}, new int[]{20,20,20,20,20}, new int[]{30, 30, 40}, newBoard = new Board(squareArray, new int[]{1, 1, 1, 1, 1, 1}, new int[]{1, 1, 1}) );
+		blueprint = new Blueprint(newBoard);
 		builderApplication = new BuilderApplication(this);
 	}
 

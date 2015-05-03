@@ -251,7 +251,6 @@ public class Board implements Serializable {
 	}
 	
 	public void eliminateMoved(){
-		System.out.println("eliminating");
 		for(Square square : selectedSquares){
 			if(!eliminatedSquares.contains(square)) eliminatedSquares.add(square);
 			square.setEliminated();
