@@ -32,6 +32,7 @@ public class SaveScore {
 		Stat stat = level.getStats();
 		if(info.getScore() > stat.getScore())  //if the score from the completed level is higher than the recorded high score
 		{
+			System.out.println("New High score");
 			stat.setScore(info.getScore());   //assign the level's score as the new high score
 			
 			/*

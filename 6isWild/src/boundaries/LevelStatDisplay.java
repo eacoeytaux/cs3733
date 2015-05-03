@@ -46,7 +46,7 @@ public class LevelStatDisplay extends AbstractDisplay {
 		
 		JLabel lblLightning = new JLabel("Lightning");
 		
-		JLabel lblScoreHere = new JLabel("score here");
+		JLabel lblScoreHere = new JLabel(model.getLevel(0,0).getStats().getScore() + ", " + model.getLevel(0,0).getStats().getStars() + " Stars");
 		
 		JLabel label = new JLabel("score here");
 		
