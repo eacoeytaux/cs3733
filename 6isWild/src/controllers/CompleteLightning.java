@@ -1,5 +1,11 @@
 package controllers;
 
+/*******
+ * 
+ * @author Jon Sawin
+ * 
+ */
+
 import entities.LightningLevel;
 import boundaries.Application;
 

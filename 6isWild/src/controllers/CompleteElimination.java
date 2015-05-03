@@ -1,5 +1,11 @@
 package controllers;
 
+/*******
+ * 
+ * @author Jon Sawin
+ * 
+ */
+
 import entities.EliminationLevel;
 import boundaries.Application;
 import controllers.SaveScore;

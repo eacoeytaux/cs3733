@@ -16,7 +16,11 @@ public abstract class AbstractLevel {
 	
 	public AbstractLevel(Blueprint blueprint) {
 		this.blueprint = blueprint;
-		levelType = blueprint.levelType;
+
+		this.board = blueprint.getBoardClone();
+		this.info = new Info(blueprint.movesTotal, blueprint.swap, blueprint.shuffle, blueprint.remove, blueprint.starRequirements, blueprint.valueFrequencies, blueprint.multiplierFrequencies);
+		
+		this.stats = new Stat(0, 0);
 	}
 	
 	public void increaseScore(int score){
@@ -53,7 +57,10 @@ public abstract class AbstractLevel {
 	
 	public void resetBoard() {
 		this.board = blueprint.board.clone();
+		this.info = new Info(blueprint.movesTotal, blueprint.swap, blueprint.shuffle, blueprint.remove, blueprint.starRequirements, blueprint.valueFrequencies, blueprint.multiplierFrequencies);
+		
 		//board.fillRandom();
+		
 	}
 	
 	public void incrementMoves() {
@@ -62,6 +69,10 @@ public abstract class AbstractLevel {
 	
 	public int[] getStarRequirements() {
 		return blueprint.starRequirements;
+	}
+	
+	public void handleWrongBlueprint() {
+		//TODO print error
 	}
 	
 }

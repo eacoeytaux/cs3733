@@ -39,7 +39,7 @@ public class EliminationBoard extends Board {
 		this.board = new Square[9][9];
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				this.board[i][j] = board[i][j].clone();
+				this.board[i][j] = board[i][j].clone(this);
 				this.board[i][j].setRowCol(i, j);
 				this.board[i][j].setParentBoard(this);
 			}
@@ -107,7 +107,7 @@ public class EliminationBoard extends Board {
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				
-				newBoardSquares[i][j] = this.board[i][j].clone();
+				newBoardSquares[i][j] = this.board[i][j].clone(this);
 				newBoardSquares[i][j].setRowCol(i, j);
 			}
 		}
@@ -222,7 +222,7 @@ public class EliminationBoard extends Board {
 
 		Square square = board[iIndex][jIndex];
 		Square otherSquare = board[iIndex2][jIndex2];
-		Square tempSquare = otherSquare.clone();
+		Square tempSquare = otherSquare.clone(this);
 
 		otherSquare.copyValues(square);
 		square.copyValues(tempSquare);

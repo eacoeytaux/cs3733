@@ -6,7 +6,8 @@ import java.util.ArrayList;
 
 /**
  * blueprint for a level.  changed in builder, used to initialize level in game
- * @author Hugh
+ * @author Ethan Coeytaux
+ * @author Hugh Whelan
  *
  */
 public class Blueprint implements Serializable {

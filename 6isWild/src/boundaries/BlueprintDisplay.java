@@ -54,8 +54,8 @@ public class BlueprintDisplay extends JPanel {
 	JSlider slider_x2;
 	JSlider slider_x3;
 	
-	public BlueprintDisplay(Blueprint blueprint, Builder builder) {
-		this.blueprint = blueprint;
+	public BlueprintDisplay(Builder builder) {
+		this.blueprint = builder.getBlueprint();
 		this.builder = builder;
 		
 		movesTextField = new JTextField();

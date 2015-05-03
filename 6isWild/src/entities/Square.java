@@ -84,9 +84,10 @@ public class Square implements Serializable {
 		
 	}
 	
-	public Square clone() {
+	
+	public Square clone(Board cloningBoard) {
 		Tile tile = (this.tile == null) ? null : this.tile.clone();
-		return new Square(tile, inert, bucket, parentBoard, iIndex, jIndex);
+		return new Square(tile, inert, bucket, cloningBoard, iIndex, jIndex);
 	}
 	
 	/**

@@ -18,6 +18,12 @@ public class Builder {
 	
 	
 	public Builder() {
+		makeNewBlueprint();
+		
+		builderApplication = new BuilderApplication(this);
+	}
+	
+	public void makeNewBlueprint() {
 		Square[][] squareArray = new Square[9][9];
 		Board newBoard = new Board(squareArray, new int[]{1, 1, 1, 1, 1, 1}, new int[]{1, 1, 1});
 
@@ -30,7 +36,9 @@ public class Builder {
 		newBoard.setSquares(squareArray);
 
 		blueprint = new Blueprint(newBoard);
+				
 		builderApplication = new BuilderApplication(this);
+
 	}
 
 	public static void main(String[] args) {

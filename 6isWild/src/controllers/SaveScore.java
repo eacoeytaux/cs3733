@@ -1,5 +1,11 @@
 package controllers;
 
+/*******
+ * 
+ * @author Jon Sawin
+ * 
+ */
+
 import entities.AbstractLevel;
 import entities.Stat;
 import entities.Info;

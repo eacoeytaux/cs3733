@@ -8,8 +8,6 @@ package entities;
 public class Info {
 	int movesPlayed;
 	int movesTotal;
-	int timeTotal;
-	int timeLeft;
 	int swaps;
 	int shuffles;
 	int removes;
@@ -18,16 +16,16 @@ public class Info {
 	int[] valueFrequencies;
 	int[] multiplierFrequencies;
 	
-	public Info(int movesTotal, int timeTotal, int swaps, int shuffles, int removes, int[] starRequirements, int[] multiplierFrequencies){
+	public Info(int movesTotal, int swaps, int shuffles, int removes, int[] starRequirements, int[] valueFrequencies, int[] multiplierFrequencies){
 		this.movesPlayed = 0;
 		this.movesTotal = movesTotal;
-		this.timeLeft = 0;
-		this.timeTotal = timeTotal;
 		this.swaps = swaps;
 		this.shuffles = shuffles;
 		this.removes = removes;
 		this.starRequirements = starRequirements;
+		this.valueFrequencies = valueFrequencies;
 		this.multiplierFrequencies = multiplierFrequencies;
+		score = 0;
 		
 	}
 	
