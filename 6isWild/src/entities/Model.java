@@ -26,9 +26,10 @@ public class Model {
 		//puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/smileyLevel.txt")));
 		lightningLevels = new ArrayList<LightningLevel>(); 
 		releaseLevels = new ArrayList<ReleaseLevel>();
+		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevelTest.txt")));
 		eliminationLevels = new ArrayList<EliminationLevel>();
 		//lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt")));
-		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/levelre.txt"))); 
+		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/levelre.txt"))); 
 		globalStats = new GlobalStats(0,0,0);	
 		
 		//rest is filler level

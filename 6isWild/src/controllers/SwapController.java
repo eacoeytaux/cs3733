@@ -3,8 +3,10 @@ package controllers;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import boundaries.BoardDisplay;
 import boundaries.LevelDisplay;
 import boundaries.SquareDisplay;
+import entities.Game;
 import entities.Model;
 import entities.Square;
 
@@ -41,14 +43,15 @@ public class SwapController implements MouseListener {
 			square.getParentBoard().swapSquares(square.getIIndex(), square.getJIndex(), otherSquare.getIIndex(), otherSquare.getJIndex());
 
 			square.getParentBoard().deselectAll();
-				
-			otherDisplay.changeTile();
-			otherDisplay.setup();
-			squareDisplay.changeTile();
-			squareDisplay.setup();
+			
+			if (squareDisplay.getParentBoardDisplay().getParentLevelDisplay().getLevel().getLevelType() == Game.RELEASE_ID) square.getParentBoard().checkBoard();
 
-			square.getParentBoard().checkBoard();
-			squareDisplay.getParentBoardDisplay().getParentLevelDisplay().setup();
+			BoardDisplay boardDisplay = squareDisplay.getParentBoardDisplay();
+			for(int i = 0; i < 9; i++){
+				for(int j = 0; j < 9; j++){
+					boardDisplay.updateTile(i, j);
+				}
+			}
 		} else {
 			//TODO print warning
 		}

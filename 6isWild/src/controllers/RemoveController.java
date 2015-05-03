@@ -6,6 +6,7 @@ import java.awt.event.MouseListener;
 import boundaries.BoardDisplay;
 import boundaries.LevelDisplay;
 import boundaries.SquareDisplay;
+import entities.Game;
 import entities.Model;
 import entities.Square;
 
@@ -31,13 +32,15 @@ public class RemoveController implements MouseListener {
 		square.getParentBoard().removeMove = false;
 		
 		square.remove();
+
+		if (squareDisplay.getParentBoardDisplay().getParentLevelDisplay().getLevel().getLevelType() == Game.RELEASE_ID) square.getParentBoard().checkBoard();
+
 		for(int i = 0; i < 9; i++){
 			for(int j = 0; j < 9; j++){
 				boardDisplay.updateTile(i, j);
 			}
 		}
 
-		square.getParentBoard().checkBoard();
 		levelDisplay.setup();
 	}
 

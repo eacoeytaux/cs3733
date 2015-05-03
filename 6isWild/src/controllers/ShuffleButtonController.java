@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import boundaries.BoardDisplay;
 import boundaries.LevelDisplay;
 import entities.AbstractLevel;
+import entities.Game;
 
 public class ShuffleButtonController implements ActionListener {
 	LevelDisplay levelDisplay;
@@ -24,13 +25,13 @@ public class ShuffleButtonController implements ActionListener {
 
 		BoardDisplay boardDisplay = levelDisplay.getBoardDisplay();
 
+		if (level.getLevelType() == Game.RELEASE_ID) level.getBoard().checkBoard();
+		
 		for(int i = 0; i < 9; i++){
 			for(int j = 0; j < 9; j++){
 				boardDisplay.updateTile(i, j);
 			}
 		}
-
-		level.getBoard().checkBoard();
 		
 		level.getInfo().decrementShuffles();
 
