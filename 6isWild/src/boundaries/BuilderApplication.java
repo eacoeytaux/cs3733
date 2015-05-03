@@ -16,13 +16,13 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 
+import controllers.LoadBlueprintController;
+import controllers.NewBlueprintController;
 import controllers.RedoButtonController;
+import controllers.SaveBlueprintController;
 import controllers.UndoButtonController;
 import entities.Blueprint;
-import entities.Board;
 import entities.Builder;
-import entities.Square;
-import entities.Tile;
 
 /**
  * Application boundary class for the builder
@@ -64,32 +64,9 @@ public class BuilderApplication extends JFrame {
 		JMenuItem undoMenuItem = new JMenuItem("undo");
 		JMenuItem redoMenuItem = new JMenuItem("redo");
 
-		newMenuItem.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				builder.makeNewBlueprint();
-				display = new BlueprintDisplay(builder);
-				getContentPane().removeAll();
-				setContentPane(display);
-			}
-		});
-
-		saveMenuItem.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				saveBoard();
-			}
-		});
-
-		loadMenuItem.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				loadBoard();
-			}
-		});
+		newMenuItem.addActionListener(new NewBlueprintController(this));
+		saveMenuItem.addActionListener(new SaveBlueprintController(this));
+		loadMenuItem.addActionListener(new LoadBlueprintController(this));
 
 		undoMenuItem.addActionListener(new UndoButtonController(this.builder));
 		redoMenuItem.addActionListener(new RedoButtonController(this.builder));
@@ -104,7 +81,7 @@ public class BuilderApplication extends JFrame {
 		menubar.add(edit);
 
 		setJMenuBar(menubar);
-
+		
 		setContentPane(display);
 		pack();
 	}
@@ -133,35 +110,15 @@ public class BuilderApplication extends JFrame {
 		}
 	}
 
-	/**
-	 * loads a board from disk
-	 */
-	public void loadBoard() {
-		JFileChooser chooser = new JFileChooser();
-		chooser.setSelectedFile(new File("level.txt"));
-
-		try {
-			int returnVal = chooser.showOpenDialog(null);
-			if (returnVal == JFileChooser.APPROVE_OPTION) {
-				File file = chooser.getSelectedFile();
-				FileInputStream fis = new FileInputStream(file);
-				//InputStreamReader in = new InputStreamReader();
-				ObjectInputStream ois = new ObjectInputStream(fis);
-				Blueprint newBlueprint = (Blueprint)ois.readObject();
-				fis.close();
-
-				builder.setBlueprint(newBlueprint);
-				display = new BlueprintDisplay(builder);
-				getContentPane().removeAll();
-				setContentPane(display);
-				pack();
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
 	public BlueprintDisplay getDisplay() {
 		return display;
+	}
+	
+	public void setDisplay(BlueprintDisplay display) {
+		this.display = display;
+	}
+	
+	public Builder getParentBuilder() {
+		return builder;
 	}
 }
