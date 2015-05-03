@@ -6,6 +6,11 @@ import java.awt.event.ActionListener;
 import boundaries.AbstractDisplay;
 import boundaries.Application;
 
+/**
+ * handles clicks on back button
+ * @author
+ *
+ */
 public class BackController implements ActionListener {
 	Application application;
 	AbstractDisplay previousDisplay;
@@ -15,6 +20,9 @@ public class BackController implements ActionListener {
 		this.previousDisplay = previousPanel;
 	}
 
+	/**
+	 * when clicked, return to previous display
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		application.changePanel(previousDisplay);

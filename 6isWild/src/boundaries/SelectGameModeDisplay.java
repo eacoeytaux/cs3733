@@ -16,6 +16,11 @@ import controllers.SelectGameModeButtonController;
 import entities.Game;
 import entities.Model;
 
+/**
+ * displays game mode selection menu
+ * @author Hugh
+ *
+ */
 public class SelectGameModeDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 

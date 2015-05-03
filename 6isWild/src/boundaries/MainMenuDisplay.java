@@ -13,6 +13,12 @@ import controllers.PlayGameButtonController;
 import controllers.StatsButtonController;
 import entities.Model;
 
+/**
+ * displays the main menu
+ *
+ * @author 
+ *
+ */
 public class MainMenuDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 	

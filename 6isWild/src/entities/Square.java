@@ -70,10 +70,12 @@ public class Square implements Serializable {
 		inert = other.inert;
 		bucket = other.bucket;
 		bucketFull = other.bucketFull;
+		
 	}
 	
 	public Square clone() {
-		return new Square((tile == null) ? null : tile.clone(), inert, bucket);
+		Tile tile = (this.tile == null) ? null : this.tile.clone();
+		return new Square(tile, inert, bucket, parentBoard, iIndex, jIndex);
 	}
 	
 	/**
@@ -133,15 +135,28 @@ public class Square implements Serializable {
 		return this.jIndex;
 	}
 	
-	public Tile remove(AbstractLevel level){
+	/**
+	 * removes squares tile and replaces it with tile from above.  if on top row, set as random tile
+	 * @param level
+	 * @return
+	 */
+	public Tile remove(){
+
 		Tile oldTile = this.tile;
 		
 		this.selected = false;
 		
+		if(inert && jIndex != 0){
+			return this.tile = parentBoard.getSquare(iIndex, jIndex-1).remove();	
+		} else if(inert && jIndex == 0){
+			new Tile(parentBoard.getRandomTileValue(), parentBoard.getRandomMultiplier());
+		}
+	
 		if(this.jIndex == 0){
-			this.tile = new Tile(5,5);
+			this.tile = new Tile(parentBoard.getRandomTileValue(), parentBoard.getRandomMultiplier());
+			//this.tile = new Tile(parentBoard.getRandomTileValue(), parentBoard.getRandomMultiplier());
 		}else{
-			this.tile = parentBoard.getSquare(iIndex, jIndex-1).remove(level);	
+			this.tile = parentBoard.getSquare(iIndex, jIndex-1).remove();	
 		}
 		
 		return oldTile;

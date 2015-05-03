@@ -11,10 +11,20 @@ import entities.Stat;
 import entities.Info;
 import boundaries.Application;
 
+/**
+ * saves score when level is complete
+ * @author 
+ *
+ */
 public class SaveScore {
 	Application application;
 	AbstractLevel level;
 	
+	/**
+	 * saves scores and updates stars
+	 * @param level
+	 * @param application
+	 */
 	public SaveScore(AbstractLevel level, Application application){
 		this.application = application;
 		this.level = level;

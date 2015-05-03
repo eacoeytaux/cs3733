@@ -20,8 +20,9 @@ public class Stat {
 		return score;
 	}
 	
-	public void setScore(int newScore){
-		this.score = newScore;
+
+	public void setScore(int score){
+		this.score = score;
 	}
 	
 	public int getStars(){
@@ -31,4 +32,5 @@ public class Stat {
 	public void setStars(int newStars){
 		this.stars = newStars;
 	}
+	
 }

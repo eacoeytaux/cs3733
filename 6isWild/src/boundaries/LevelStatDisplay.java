@@ -10,6 +10,11 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import controllers.BackController;
 import entities.Model;
 
+/**
+ * displays the statistics of a level
+ * @author 
+ *
+ */
 public class LevelStatDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 

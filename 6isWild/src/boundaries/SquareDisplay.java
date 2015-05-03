@@ -39,13 +39,19 @@ public class SquareDisplay extends AbstractDisplay {
 	@Override
 	public void setup() {
 		this.removeAll();
-		if (square.isInert()) display = new InertDisplay(model);
+		if (square.isInert()) {
+			display = new InertDisplay(model);
+			this.setBackground(Color.BLACK);
+		}
 		else if (square.isBucket()) display = new BucketDisplay(model);
 		else if (this.display == null) {
 			this.setBackground(TileDisplay.getColor(square.getTile().getValue()));
 			this.display = new TileDisplay(model, this.square.getTile());
 		}
-		else this.display.setup();
+		else {
+			this.setBackground(TileDisplay.getColor(square.getTile().getValue()));
+			this.display.setup();
+		}
 		
 		if(square.isSelected()){
 			this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3));
@@ -75,7 +81,14 @@ public class SquareDisplay extends AbstractDisplay {
 		return this.square;
 	}
 	
+	/**
+	 * updates the tile display of the tile the square contains
+	 */
 	public void changeTile(){
 		display.changeTile(square.getTile());
+	}
+	
+	public BoardDisplay getParentBoardDisplay(){
+		return this.parent;
 	}
 }

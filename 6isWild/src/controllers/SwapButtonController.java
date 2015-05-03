@@ -5,18 +5,19 @@ import java.awt.event.ActionListener;
 
 import entities.AbstractLevel;
 
-public class RemoveButtonController implements ActionListener {
+public class SwapButtonController implements ActionListener {
 	AbstractLevel level;
 	
-	public RemoveButtonController(AbstractLevel level) {
+	public SwapButtonController(AbstractLevel level) {
 		this.level = level;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (level.getInfo().getRemoves() <= 0) return;
+		if(level.getInfo().getSwaps() <= 0) return;
 			
-		level.getBoard().removeMove = true;
-		level.getInfo().decrementRemoves();
+		level.getBoard().swapMove = true;
+		level.getInfo().decrementSwaps();
 	}
+
 }

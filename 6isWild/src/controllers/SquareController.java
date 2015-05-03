@@ -2,130 +2,83 @@ package controllers;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.logging.Level;
 
+import entities.AbstractLevel;
+import entities.Board;
 import entities.Square;
 import entities.SquareBuilderMove;
+import entities.Model;
+import boundaries.BoardDisplay;
 import boundaries.BuilderSquareDisplay;
 import boundaries.SquareDisplay;
 
+/**
+ * handles mouse events on a square
+ * @author Hugh Whelan
+ *
+ */
 public class SquareController implements MouseListener {
+	Board board;
 	SquareDisplay squareDisplay;
 	Square square;
-	
-	
-	public SquareController(SquareDisplay squareDisplay) {
+	Model model;
+
+	MoveController moveControl;
+	SwapController swapControl;
+	RemoveController removeControl;
+
+
+	public SquareController(SquareDisplay squareDisplay, Model model) {
+		this.board = squareDisplay.getParentBoardDisplay().getBoard();
 		this.squareDisplay = squareDisplay;
 		this.square = squareDisplay.getSquare();
+		this.model = model;
+
+		moveControl = new MoveController(squareDisplay, model);
+		swapControl = new SwapController(squareDisplay, model);
+		removeControl = new RemoveController(squareDisplay, model);
 	}
 
+	/**
+	 * try to select on mouse click
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("clicked");
-		if(isValid(squareDisplay, square)){
-			System.out.println("Valid");
-			this.square.select();
-			this.squareDisplay.setup();
-		}
-		
-		
+		if (board.swapMove) swapControl.mouseClicked(e);
+		else if (board.removeMove) removeControl.mouseClicked(e);
+		else moveControl.mouseClicked(e);
 	}
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		if (board.swapMove) swapControl.mousePressed(e);
+		else if (board.removeMove) removeControl.mousePressed(e);
+		else moveControl.mousePressed(e);
+
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		if (board.swapMove) swapControl.mouseReleased(e);
+		else if (board.removeMove) removeControl.mouseReleased(e);
+		else moveControl.mouseReleased(e);
 	}
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
+		if (board.swapMove) swapControl.mouseEntered(e);
+		else if (board.removeMove) removeControl.mouseEntered(e);
+		else moveControl.mouseEntered(e);
+
 	}
 
 	@Override
 	public void mouseExited(MouseEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
-	
-	/**
-	 * if there are none selected or the selected square is adjacent to a selected square, return true
-	 * @param squareDisplay
-	 * @param square
-	 * @return boolean
-	 */
-	public boolean isValid(SquareDisplay squareDisplay, Square square){
-		//if (square.getParentBoard().getNumberOfSelected() >= 6) return false; //uncomment to prevent user from selected more than 6 tiles
-		if (square.isInert() || square.isBucket()) return false;
-		
-		boolean downSelected;
-		boolean upSelected;
-		boolean leftSelected;
-		boolean rightSelected;
-		
-		System.out.println("" + this.square.getParentBoard().getNumberOfSelected());
+		if (board.swapMove) swapControl.mouseExited(e);
+		else if (board.removeMove) removeControl.mouseExited(e);
+		else moveControl.mouseExited(e);
 
-		
-		if(this.square.getIIndex() <= 0 && this.square.getJIndex() <= 0){
-			downSelected = this.square.getParentBoard().getSquare(this.square.getIIndex()+1, this.square.getJIndex()).isSelected();
-			rightSelected = this.square.getParentBoard().getSquare(this.square.getIIndex(), this.square.getJIndex()+1).isSelected();
-			
-			return ((this.square.getParentBoard().getNumberOfSelected() == 0) || rightSelected || downSelected);
-		}else if(this.square.getIIndex() >= 8 && this.square.getJIndex() >= 8){
-			upSelected = this.square.getParentBoard().getSquare(this.square.getIIndex()-1, this.square.getJIndex()).isSelected();
-			leftSelected = this.square.getParentBoard().getSquare(this.square.getIIndex(), this.square.getJIndex()-1).isSelected();
-			
-			return ((this.square.getParentBoard().getNumberOfSelected() == 0) || leftSelected || upSelected);
-		}else if(this.square.getIIndex() <= 0 && this.square.getJIndex() >= 8){
-			downSelected = this.square.getParentBoard().getSquare(this.square.getIIndex()+1, this.square.getJIndex()).isSelected();
-			leftSelected = this.square.getParentBoard().getSquare(this.square.getIIndex(), this.square.getJIndex()-1).isSelected();
-			
-			return ((this.square.getParentBoard().getNumberOfSelected() == 0) || leftSelected || downSelected);
-		
-		}else if(this.square.getIIndex() >= 8 && this.square.getJIndex() <= 0){
-			upSelected = this.square.getParentBoard().getSquare(this.square.getIIndex()-1, this.square.getJIndex()).isSelected();
-			rightSelected = this.square.getParentBoard().getSquare(this.square.getIIndex(), this.square.getJIndex()+1).isSelected();
-			
-			return ((this.square.getParentBoard().getNumberOfSelected() == 0) || rightSelected || upSelected);
-		
-		}else if( this.square.getIIndex() <= 0){
-			downSelected = this.square.getParentBoard().getSquare(this.square.getIIndex()+1, this.square.getJIndex()).isSelected();
-			leftSelected = this.square.getParentBoard().getSquare(this.square.getIIndex(), this.square.getJIndex()-1).isSelected();
-			rightSelected = this.square.getParentBoard().getSquare(this.square.getIIndex(), this.square.getJIndex()+1).isSelected();
-			
-			return ((this.square.getParentBoard().getNumberOfSelected() == 0) || rightSelected || leftSelected || downSelected);
-		}else if(this.square.getJIndex() <= 0){
-			downSelected = this.square.getParentBoard().getSquare(this.square.getIIndex()+1, this.square.getJIndex()).isSelected();
-			upSelected = this.square.getParentBoard().getSquare(this.square.getIIndex()-1, this.square.getJIndex()).isSelected();
-			rightSelected = this.square.getParentBoard().getSquare(this.square.getIIndex(), this.square.getJIndex()+1).isSelected();
-			
-			return ((this.square.getParentBoard().getNumberOfSelected() == 0) || rightSelected || downSelected || upSelected);
-			
-		}else if(this.square.getIIndex() >= 8){
-			upSelected = this.square.getParentBoard().getSquare(this.square.getIIndex()-1, this.square.getJIndex()).isSelected();
-			leftSelected = this.square.getParentBoard().getSquare(this.square.getIIndex(), this.square.getJIndex()-1).isSelected();
-			rightSelected = this.square.getParentBoard().getSquare(this.square.getIIndex(), this.square.getJIndex()+1).isSelected();
-			
-			return ((this.square.getParentBoard().getNumberOfSelected() == 0) || rightSelected || leftSelected || upSelected);
-		}else if(this.square.getJIndex() >= 8){
-			downSelected = this.square.getParentBoard().getSquare(this.square.getIIndex()+1, this.square.getJIndex()).isSelected();
-			upSelected = this.square.getParentBoard().getSquare(this.square.getIIndex()-1, this.square.getJIndex()).isSelected();
-			leftSelected = this.square.getParentBoard().getSquare(this.square.getIIndex(), this.square.getJIndex()-1).isSelected();
-			
-			return ((this.square.getParentBoard().getNumberOfSelected() == 0) || leftSelected || downSelected || upSelected);
-		}else{
-			downSelected = this.square.getParentBoard().getSquare(this.square.getIIndex()+1, this.square.getJIndex()).isSelected();
-			upSelected = this.square.getParentBoard().getSquare(this.square.getIIndex()-1, this.square.getJIndex()).isSelected();
-			leftSelected = this.square.getParentBoard().getSquare(this.square.getIIndex(), this.square.getJIndex()-1).isSelected();
-			rightSelected = this.square.getParentBoard().getSquare(this.square.getIIndex(), this.square.getJIndex()+1).isSelected();
-
-			return ((this.square.getParentBoard().getNumberOfSelected() == 0) || rightSelected || leftSelected || downSelected || upSelected);
-		}
 	}
 }
+
