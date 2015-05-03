@@ -69,7 +69,7 @@ public class LevelDisplay extends AbstractDisplay {
 		this.moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
 
 		btnBack = new JButton("Back");
-		lblMovesTimeLeft = new JLabel("");
+		lblMovesTimeLeft = new JLabel("1");
 		btnSwap = new JButton("Swaps: " + powerUps[0]);
 		btnShuffle = new JButton("Shuffles: " + powerUps[1]);
 		btnRemove = new JButton("Removes: " + powerUps[2]);
