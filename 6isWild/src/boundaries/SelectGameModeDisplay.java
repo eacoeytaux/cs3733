@@ -129,8 +129,8 @@ public class SelectGameModeDisplay extends AbstractDisplay {
 		eliminationLevelDisplay = new SelectLevelDisplay(model, application, Game.ELIMINATION_ID);
 		eliminationLevelDisplay.setBackController(new BackController(application, this));
 
-		releaseLevelDisplay = new SelectLevelDisplay(model, application, Game.RELEASE_ID);
-		releaseLevelDisplay.setBackController(new BackController(application, this));
+		//releaseLevelDisplay = new SelectLevelDisplay(model, application, Game.RELEASE_ID);
+		//releaseLevelDisplay.setBackController(new BackController(application, this));
 	}
 
 	/**

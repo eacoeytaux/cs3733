@@ -8,6 +8,7 @@ import entities.AbstractLevel;
 import entities.Board;
 import entities.EliminationBoard;
 import entities.Game;
+import entities.PuzzleLevel;
 import entities.Square;
 import entities.SquareBuilderMove;
 import entities.Model;
@@ -72,6 +73,7 @@ public class MoveController implements MouseListener {
 		}
 		
 		if(outOfMoves() && requirementsMet()) squareDisplay.getParentBoardDisplay().getParentLevelDisplay().gameOver();
+
 		
 		board.deselectAll();
 		//this.levelScreen.getBoardDisplay().setupSquares();
@@ -83,6 +85,9 @@ public class MoveController implements MouseListener {
 		}
 		squareDisplay.getParentBoardDisplay().getParentLevelDisplay().setup();
 		
+		
+		System.out.println("Checking");
+		if(outOfMoves() && requirementsMet()) squareDisplay.getParentBoardDisplay().getParentLevelDisplay().gameOver();
 	}
 
 	@Override
@@ -187,7 +192,9 @@ public class MoveController implements MouseListener {
 		switch (gameMode){
 			case 0:
 				met = true;
+				new CompletePuzzle((PuzzleLevel) model.getCurrentLevel());
 				break;
+				
 			case 1:
 				met = true;
 				break;
