@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 import controllers.BackController;
 import controllers.CompleteLightning;
 import controllers.RemoveButtonController;
+import controllers.SaveScore;
 import controllers.ShuffleButtonController;
 import controllers.SwapButtonController;
 import entities.AbstractLevel;
@@ -245,7 +246,7 @@ public class LevelDisplay extends AbstractDisplay {
 		timerRunning = false;
 		if (showDisplay){ 
 			gameOver(true);
-			new CompleteLightning( (LightningLevel) level);
+			new SaveScore(model.getCurrentLevel(), model);
 		}
 	}
 

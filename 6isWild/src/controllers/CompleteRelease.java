@@ -13,6 +13,6 @@ public class CompleteRelease {
 	
 	public CompleteRelease(ReleaseLevel level){
 		this.level = level;
-		new SaveScore(level);
+		//new SaveScore(level);
 	}
 }

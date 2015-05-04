@@ -33,7 +33,7 @@ public class GlobalStats implements Serializable {
 		}
 	}
 	
-	public void recordStats(Stat stats, int type, int id)
+	public void setStats(Stat stats, int type, int id)
 	{
 		if (type == Game.PUZZLE_ID) puzzleLevels[id].update(stats.score, stats.stars);
 		if (type == Game.LIGHTNING_ID) lightningLevels[id].update(stats.score, stats.stars);
