@@ -53,13 +53,13 @@ public class LevelStatDisplay extends AbstractDisplay {
 		
 		JLabel lblLightning = new JLabel("Lightning");
 		
-		JLabel lblScoreHere = new JLabel(globalStats.getStats(Game.PUZZLE_ID, 1).getScore() + ", " + globalStats.getStats(Game.PUZZLE_ID, 1).getStars() + " Stars");
+		JLabel lblScoreHere = new JLabel(globalStats.getStats(Game.PUZZLE_ID, 0).getScore() + ", " + globalStats.getStats(Game.PUZZLE_ID, 1).getStars() + " Stars");
 		
-		JLabel label = new JLabel(globalStats.getStats(Game.PUZZLE_ID, 2).getScore() + ", " + globalStats.getStats(Game.PUZZLE_ID, 2).getStars() + " Stars");
+		JLabel label = new JLabel(globalStats.getStats(Game.PUZZLE_ID, 1).getScore() + ", " + globalStats.getStats(Game.PUZZLE_ID, 2).getStars() + " Stars");
 		
-		JLabel label_1 = new JLabel(globalStats.getStats(Game.PUZZLE_ID, 3).getScore() + ", " + globalStats.getStats(Game.PUZZLE_ID, 3).getStars() + " Stars");
+		JLabel label_1 = new JLabel(globalStats.getStats(Game.PUZZLE_ID, 2).getScore() + ", " + globalStats.getStats(Game.PUZZLE_ID, 3).getStars() + " Stars");
 		
-		JLabel label_2 = new JLabel(globalStats.getStats(Game.PUZZLE_ID, 4).getScore() + ", " + globalStats.getStats(Game.PUZZLE_ID, 4).getStars() + " Stars");
+		JLabel label_2 = new JLabel(globalStats.getStats(Game.PUZZLE_ID, 3).getScore() + ", " + globalStats.getStats(Game.PUZZLE_ID, 4).getStars() + " Stars");
 		
 		JLabel label_3 = new JLabel(globalStats.getStats(Game.LIGHTNING_ID, 0).getScore() + ", " + globalStats.getStats(Game.LIGHTNING_ID, 0).getStars() + " Stars");
 		

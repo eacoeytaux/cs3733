@@ -18,6 +18,8 @@ public class Board implements Serializable {
 	Square[][] board;
 	ArrayList<Square> selectedSquares;
 	ArrayList<Square> eliminatedSquares;
+	int inertCount;
+	int bucketCount;
 	int bucketsLeft;
 
 	//these are public because changes these booleans at any time does not result in an error
@@ -37,7 +39,8 @@ public class Board implements Serializable {
 		this.vf = vf;
 		this.mf = mf;
 
-		bucketsLeft = 0;
+		inertCount = 0;
+		bucketCount = 0;
 		
 		this.board = new Square[9][9];
 		if (board != null) {
@@ -47,11 +50,15 @@ public class Board implements Serializable {
 						this.board[i][j] = board[i][j].clone(this);
 						this.board[i][j].setRowCol(i, j);
 						this.board[i][j].setParentBoard(this);
-						if (this.board[i][j].isBucket()) bucketsLeft++;
+						if (this.board[i][j].isInert()) inertCount++;
+						if (this.board[i][j].isBucket()) bucketCount++;
 					}
 				}
 			}
 		}
+		
+		bucketsLeft = bucketCount;
+		
 		eliminatedSquares = new ArrayList<Square>();
 		
 	}
@@ -317,6 +324,14 @@ public class Board implements Serializable {
 
 	public int getBucketsLeft() {
 		return bucketsLeft;
+	}
+	
+	public int getBucketCount() {
+		return bucketCount;
+	}
+	
+	public int getInertCount() {
+		return inertCount;
 	}
 	
 }

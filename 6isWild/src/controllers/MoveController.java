@@ -192,7 +192,7 @@ public class MoveController implements MouseListener {
 				new CompleteLightning((LightningLevel) model.getCurrentLevel());
 				break;
 			case Game.ELIMINATION_ID:
-				if(board.getEliminated().size() >= 81) met = true;
+				if(board.getEliminated().size() >= 81 - board.getInertCount() - board.getBucketCount()) met = true;
 				break;
 			case Game.RELEASE_ID:
 				if (board.getBucketsLeft() <= 0) met = true;
