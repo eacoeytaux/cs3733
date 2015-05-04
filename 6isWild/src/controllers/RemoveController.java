@@ -10,6 +10,11 @@ import entities.Game;
 import entities.Model;
 import entities.Square;
 
+/**
+ * Handles remove move
+ * @author Ethan Coeytaux
+ *
+ */
 public class RemoveController implements MouseListener {
 	SquareDisplay squareDisplay;
 	Square square;

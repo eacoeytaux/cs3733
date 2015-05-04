@@ -2,6 +2,11 @@ package entities;
 
 import boundaries.Application;
 
+/**
+ * top level class for Game
+ * @author Ethan Coeytaux
+ *
+ */
 public class Game {
 	public static final int PUZZLE_ID = 0;
 	public static final int LIGHTNING_ID = 1;

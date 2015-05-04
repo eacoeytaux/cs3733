@@ -8,8 +8,8 @@ import boundaries.LevelDisplay;
 import entities.Model;
 
 /**
- * 
- * @author 
+ * selects level from level select screen
+ * @author Ethan Coeytaux
  *
  */
 public class SelectLevelButtonController implements ActionListener {

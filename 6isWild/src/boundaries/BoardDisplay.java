@@ -11,7 +11,7 @@ import entities.Model;
 
 /**
  * displays the game board, which contains a Board and an array of Squares
- * @author
+ * @author Hugh Whelan
  *
  */
 public class BoardDisplay extends AbstractDisplay {

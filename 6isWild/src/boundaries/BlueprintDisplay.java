@@ -21,7 +21,7 @@ import entities.Tile;
 
 /**
  * Displays the blueprint of a level, as well as options to modify the blueprint
- * @author eacoeytaux
+ * @author Ethan Coeytaux
  *
  */
 public class BlueprintDisplay extends JPanel {

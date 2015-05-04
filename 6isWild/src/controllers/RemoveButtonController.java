@@ -5,6 +5,11 @@ import java.awt.event.ActionListener;
 
 import entities.AbstractLevel;
 
+/**
+ * Lets board know to look for a remove move
+ * @author Ethan Coeytaux
+ * 
+ */
 public class RemoveButtonController implements ActionListener {
 	AbstractLevel level;
 	

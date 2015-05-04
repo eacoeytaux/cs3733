@@ -5,6 +5,11 @@ import java.awt.event.ActionListener;
 
 import entities.AbstractLevel;
 
+/**
+ * lets board know to look for swap move
+ * @author Ethan Coeytaux
+ *
+ */
 public class SwapButtonController implements ActionListener {
 	AbstractLevel level;
 	

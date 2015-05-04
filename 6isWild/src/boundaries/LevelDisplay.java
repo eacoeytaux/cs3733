@@ -98,6 +98,9 @@ public class LevelDisplay extends AbstractDisplay {
 		btnRemove.setText("Removes:" + powerUps[2]);
 		btnSwap.setText("Swaps:" + powerUps[0]);
 		btnShuffle.setText("Shuffles:" + powerUps[1]);
+		
+		moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
+		
 		if (gameMode == Game.LIGHTNING_ID) {
 			lblMoves = new JLabel("Time: " + moves);
 		} else {

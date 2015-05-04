@@ -13,7 +13,7 @@ import entities.Model;
 
 /**
  * The game model, which contains all displays
- * @author
+ * @author Ethan Coeytaux
  *
  */
 public class Application extends JFrame {

@@ -14,7 +14,7 @@ import entities.Model;
 
 /**
  * displays select level display menu
- * @author 
+ * @author Ethan Coeytaux
  *
  */
 public class SelectLevelDisplay extends AbstractDisplay {

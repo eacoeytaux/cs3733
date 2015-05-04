@@ -11,6 +11,7 @@ import entities.Square;
 
 /**
  * displays the board for the builder
+ * @author Ethan Coeytaux
  * @author Hugh Whelan
  *
  */

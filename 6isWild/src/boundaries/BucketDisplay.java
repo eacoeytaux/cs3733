@@ -10,7 +10,7 @@ import entities.Model;
 
 /**
  * Display of a bucket
- * @author 
+ * @author Ethan Coeytaux
  *
  */
 public class BucketDisplay extends TileDisplay {

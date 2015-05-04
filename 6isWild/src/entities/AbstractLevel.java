@@ -6,6 +6,7 @@ import java.util.Scanner;
 /**
  * Abstract class for all levels
  * @author Hugh Whelan
+ * @author Ethan Coeytaux
  *
  */
 public abstract class AbstractLevel {
@@ -34,7 +35,6 @@ public abstract class AbstractLevel {
 
 		try
 		{
-			System.out.println("aylmao");
 			Scanner s = new Scanner(file);
 			System.out.println("initialized scanner");
 			while(s.hasNextLine())
@@ -85,9 +85,6 @@ public abstract class AbstractLevel {
 	public void resetBoard() {
 		this.board = blueprint.board.clone();
 		this.info = new Info(blueprint.movesTotal, blueprint.swap, blueprint.shuffle, blueprint.remove, blueprint.starRequirements, blueprint.valueFrequencies, blueprint.multiplierFrequencies);
-		
-		//board.fillRandom();
-		
 	}
 	
 	public void incrementMoves() {

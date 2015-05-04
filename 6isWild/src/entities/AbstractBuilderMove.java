@@ -6,25 +6,21 @@ package entities;
  * @author Hugh Whelan
  *
  */
-public class AbstractBuilderMove {
+public abstract class AbstractBuilderMove {
 	
 	/**
 	 * performs the move
 	 */
-	public void doMove(){
-	}
+	public abstract void doMove();
 	
 	/**
 	 * undoes last move done or redone
 	 */
-	public void undo(){
-	}
+	public abstract void undo();
 	
 	/**
 	 * redoes the last move done or undone
 	 */
-	public void redo(){
-		
-	}
+	public abstract void redo();
 
 }

@@ -5,7 +5,7 @@ import java.util.Stack;
 import boundaries.BuilderApplication;
 
 /**
- * 
+ * top level builder class
  * @author Ethan Coeytaux
  * @author Hugh Whelan
  *

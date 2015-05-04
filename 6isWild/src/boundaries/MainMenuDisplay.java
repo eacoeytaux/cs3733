@@ -16,7 +16,7 @@ import entities.Model;
 /**
  * displays the main menu
  *
- * @author 
+ * @author Ethan Coeytaux
  *
  */
 public class MainMenuDisplay extends AbstractDisplay {

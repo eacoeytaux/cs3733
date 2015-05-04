@@ -8,7 +8,7 @@ import boundaries.Application;
 
 /**
  * handles clicks on back button
- * @author
+ * @author Ethan Coeytaux
  *
  */
 public class BackController implements ActionListener {

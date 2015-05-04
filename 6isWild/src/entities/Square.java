@@ -3,8 +3,9 @@ package entities;
 import java.io.Serializable;
 
 /**
- * 
+ * Square contains tile, or is inert or bucket
  * @author Hugh Whelan
+ * @author Ethan Coeytaux
  *
  */
 

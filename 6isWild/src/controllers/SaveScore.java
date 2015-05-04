@@ -16,7 +16,7 @@ import java.io.FileReader;
 
 /**
  * saves score when level is complete
- * @author 
+ * @author Ethan Coeytaux
  *
  */
 public class SaveScore {
