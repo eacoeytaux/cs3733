@@ -1,5 +1,6 @@
 package entities;
 
+import sun.applet.Main;
 import boundaries.Application;
 
 /**

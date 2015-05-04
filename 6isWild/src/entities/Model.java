@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
+import com.sun.org.apache.bcel.internal.generic.NEW;
+
 /**
  * the model contains all levels and stats for the game
  * @author Ethan Coeytaux
@@ -23,20 +25,59 @@ public class Model {
 
 	public Model() {
 
-		//puzzleLevels = new ArrayList<PuzzleLevel>();
-		//puzzleLevels.add(new PuzzleLevel(loadBlueprint("res/levels/puzzleLevel1.txt"), 1));
+		System.out.println("puzzpack");
+
+		puzzleLevels = new ArrayList<PuzzleLevel>();
+		puzzleLevels.add(new PuzzleLevel(loadBlueprint("bin/levels/puzzleLevel1.txt"), 1));
+		puzzleLevels.add(new PuzzleLevel(loadBlueprint("bin/levels/puzzleLevel1.txt"), 2));
+		puzzleLevels.add(new PuzzleLevel(loadBlueprint("bin/levels/puzzleLevel1.txt"), 3));
+		puzzleLevels.add(new PuzzleLevel(loadBlueprint("bin/levels/puzzleLevel1.txt"), 4));
+
 		
+		System.out.println("lightning");
 		lightningLevels = new ArrayList<LightningLevel>(); 
-		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 1));
+		lightningLevels.add(new LightningLevel(loadBlueprint("bin/levels/lightningLevel1.txt"), 1));
+		System.out.println(lightningLevels.get(0).getLevelType());
+		lightningLevels.add(new LightningLevel(loadBlueprint("bin/levels/lightningLevel1.txt"), 2));
+		lightningLevels.add(new LightningLevel(loadBlueprint("bin/levels/lightningLevel1.txt"), 3));
+		lightningLevels.add(new LightningLevel(loadBlueprint("bin/levels/lightningLevel1.txt"), 4));
 		
-		releaseLevels = new ArrayList<ReleaseLevel>();
-		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel1.txt"), 1));
-		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevelTest.txt")));
+		System.out.println("liminaterion");
 		
 		eliminationLevels = new ArrayList<EliminationLevel>();
-		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt"), 1));
+		eliminationLevels.add(new EliminationLevel(loadBlueprint("bin/levels/eliminationLevel1.txt"), 1));
+		eliminationLevels.add(new EliminationLevel(loadBlueprint("bin/levels/eliminationLevel1.txt"), 2));
+		eliminationLevels.add(new EliminationLevel(loadBlueprint("bin/levels/eliminationLevel1.txt"), 3));
+		eliminationLevels.add(new EliminationLevel(loadBlueprint("bin/levels/eliminationLevel1.txt"), 4));
+
+		System.out.println("relees");
+		
+		releaseLevels = new ArrayList<ReleaseLevel>();
+		releaseLevels.add(new ReleaseLevel(loadBlueprint("bin/levels/releaseLevel1.txt"), 1));
+		releaseLevels.add(new ReleaseLevel(loadBlueprint("bin/levels/releaseLevel1.txt"), 2));
+		releaseLevels.add(new ReleaseLevel(loadBlueprint("bin/levels/releaseLevel1.txt"), 3));
+		releaseLevels.add(new ReleaseLevel(loadBlueprint("bin/levels/releaseLevel1.txt"), 4));
+
+		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevelTest.txt")));
+
 		
 		globalStats = new GlobalStats();	
+		for(int i = 0; i < puzzleLevels.size(); i++)
+		{
+			globalStats.recordStats(puzzleLevels.get(i).getStats(), Game.PUZZLE_ID, puzzleLevels.get(i).getLevel());
+		}
+		for(int i = 0; i < lightningLevels.size(); i++)
+		{
+			globalStats.recordStats(lightningLevels.get(i).getStats(), Game.LIGHTNING_ID, lightningLevels.get(i).getLevel());
+		}
+		for(int i = 0; i < eliminationLevels.size(); i++)
+		{
+			globalStats.recordStats(eliminationLevels.get(i).getStats(), Game.ELIMINATION_ID, eliminationLevels.get(i).getLevel());
+		}
+		for(int i = 0; i < releaseLevels.size(); i++)
+		{
+			globalStats.recordStats(releaseLevels.get(i).getStats(), Game.RELEASE_ID, releaseLevels.get(i).getLevel());
+		}
 	}
 		
 		/*
@@ -98,22 +139,7 @@ public class Model {
 		releaseLevels.add(fillerReleaseLevel3);
 		releaseLevels.add(fillerReleaseLevel4);
 		
-		for(int i = 0; i < puzzleLevels.size(); i++)
-		{
-			globalStats.recordStats(puzzleLevels.get(i).getStats(), Game.PUZZLE_ID, i);
-		}
-		for(int i = 0; i < lightningLevels.size(); i++)
-		{
-			globalStats.recordStats(lightningLevels.get(i).getStats(), Game.LIGHTNING_ID, i);
-		}
-		for(int i = 0; i < eliminationLevels.size(); i++)
-		{
-			globalStats.recordStats(eliminationLevels.get(i).getStats(), Game.ELIMINATION_ID, i);
-		}
-		for(int i = 0; i < releaseLevels.size(); i++)
-		{
-			globalStats.recordStats(releaseLevels.get(i).getStats(), Game.RELEASE_ID, i);
-		}
+		
 		////////////////////////////////////////////////
 		
 		//rest is filler level
@@ -163,20 +189,24 @@ public class Model {
 	 */
 	public Blueprint loadBlueprint(String fileLoc) {
 		try {
-			ClassLoader classLoader = getClass().getClassLoader();
-			System.out.println("attempting to open file name " + fileLoc);
-			File file = new File(classLoader.getResource(fileLoc).getFile());
-			System.out.println("opened File");
-			FileInputStream fis = new FileInputStream(file);
-			System.out.println("created fis");
+			//System.out.println(System.getProperty("os.name"));
+			//ClassLoader classLoader = getClass().getClassLoader();
+			//System.out.println("attempting to open file name " + fileLoc);
+			//File file = new File(fileLoc);
+			//System.out.println("opened File");
+			fileLoc = new File("").getAbsolutePath() + "/" + fileLoc;
+			//System.out.println(fileLoc);
+			FileInputStream fis = new FileInputStream(fileLoc);
+			//System.out.println("created fis");
 			//InputStreamReader in = new InputStreamReader();
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			System.out.println("trying to read blueprint");
+			//System.out.println("trying to read blueprint");
 			Blueprint blueprint = (Blueprint)ois.readObject();
-			System.out.println("" + blueprint.getLevelType());
+			//System.out.println("" + blueprint.getLevelType());
 			fis.close();
 			return blueprint;
 		} catch (Exception e) {
+			System.out.println("failed to read file");
 			e.printStackTrace(); //TODO print error
 		}
 		return null;

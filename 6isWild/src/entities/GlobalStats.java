@@ -35,10 +35,10 @@ public class GlobalStats implements Serializable {
 	
 	public void recordStats(Stat stats, int type, int id)
 	{
-		if (type == Game.PUZZLE_ID) puzzleLevels[id-1] = stats;
-		if (type == Game.LIGHTNING_ID) lightningLevels[id-1] = stats;
-		if (type == Game.ELIMINATION_ID) eliminationLevels[id-1] = stats;
-		if (type == Game.RELEASE_ID) releaseLevels[id-1] = stats;
+		if (type == Game.PUZZLE_ID) puzzleLevels[id] = stats;
+		if (type == Game.LIGHTNING_ID) lightningLevels[id] = stats;
+		if (type == Game.ELIMINATION_ID) eliminationLevels[id] = stats;
+		if (type == Game.RELEASE_ID) releaseLevels[id] = stats;
 	}
 	
 	public boolean levelCompleted(int type, int id) {
@@ -47,5 +47,15 @@ public class GlobalStats implements Serializable {
 		if (type == Game.ELIMINATION_ID) return eliminationLevels[id].completed();
 		if (type == Game.RELEASE_ID) return releaseLevels[id].completed();
 		else return false;
+	}
+	
+	public Stat getStats(int type, int id)
+	{
+		if (type == Game.PUZZLE_ID) return puzzleLevels[id];
+		if (type == Game.LIGHTNING_ID) return lightningLevels[id];
+		if (type == Game.ELIMINATION_ID) return eliminationLevels[id];
+		if (type == Game.RELEASE_ID) return releaseLevels[id];
+		return new Stat(0,0);
+
 	}
 }
