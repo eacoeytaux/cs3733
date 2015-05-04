@@ -28,32 +28,32 @@ public class Model {
 		System.out.println("puzzpack");
 
 		puzzleLevels = new ArrayList<PuzzleLevel>();
+		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 0));
 		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 1));
 		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 2));
 		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 3));
-		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 4));
 
 
 		System.out.println("lightning");
 		lightningLevels = new ArrayList<LightningLevel>(); 
+		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 0));
 		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 1));
 		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 2));
 		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 3));
-		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 4));
 		
 		System.out.println("liminaterion");
 		
 		eliminationLevels = new ArrayList<EliminationLevel>();
+		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt"), 0));
 		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt"), 1));
 		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt"), 2));
 		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt"), 3));
-		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt"), 4));
 
 		releaseLevels = new ArrayList<ReleaseLevel>();
+		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel1.txt"), 0));
 		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel1.txt"), 1));
 		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel1.txt"), 2));
 		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel1.txt"), 3));
-		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel1.txt"), 4));
 
 		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevelTest.txt")));
 
