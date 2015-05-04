@@ -79,7 +79,7 @@ public class MoveController implements MouseListener {
 		}
 		squareDisplay.getParentBoardDisplay().getParentLevelDisplay().setup();
 		
-		if(outOfMoves() && requirementsMet()) squareDisplay.getParentBoardDisplay().getParentLevelDisplay().gameOver();
+		if(outOfMoves()) squareDisplay.getParentBoardDisplay().getParentLevelDisplay().gameOver(requirementsMet());
 	}
 
 	@Override
@@ -195,7 +195,7 @@ public class MoveController implements MouseListener {
 				if(board.getEliminated().size() >= 81) met = true;
 				break;
 			case Game.RELEASE_ID:
-				met = true;
+				if (board.getBucketsLeft() <= 0) met = true;
 				break;
 			default:
 				met = true;

@@ -2,7 +2,6 @@ package entities;
 
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
@@ -115,6 +114,11 @@ public class Model {
 		else return loadBlueprintMac(fileLoc);
 	}
 	
+	/**
+	 * loads a blueprint on a mac operating system
+	 * @param fileLoc
+	 * @return
+	 */
 	public Blueprint loadBlueprintMac(String fileLoc) {
 		try {
 			ClassLoader classLoader = getClass().getClassLoader();
@@ -131,6 +135,11 @@ public class Model {
 		return null;
 	}
 
+	/**
+	 * loads a blueprint on a window operating system
+	 * @param fileLoc
+	 * @return
+	 */
 	public Blueprint loadBlueprintWindows(String fileLoc) {
 		try {
 			fileLoc = new File("").getAbsolutePath() + "/bin/" + fileLoc;
