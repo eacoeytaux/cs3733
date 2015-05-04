@@ -31,6 +31,8 @@ public class RemoveController implements MouseListener {
 	public void mouseClicked(MouseEvent e) {
 		System.out.println("remove");
 		
+		if (square.isInert() || square.isBucket()) return;
+		
 		BoardDisplay boardDisplay = squareDisplay.getParentBoardDisplay();
 		LevelDisplay levelDisplay = boardDisplay.getParentLevelDisplay();
 		
