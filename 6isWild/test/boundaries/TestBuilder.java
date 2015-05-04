@@ -1,7 +1,5 @@
 package boundaries;
 
-import java.awt.event.MouseEvent;
-
 import junit.framework.TestCase;
 import entities.Builder;
 

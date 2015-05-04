@@ -114,12 +114,12 @@ public class LevelDisplay extends AbstractDisplay {
 		progressBar.setOrientation(SwingConstants.VERTICAL);
 		int[] starReqs = level.getStarRequirements();
 		if (score < starReqs[0]) {
-			progressBar.setValue((int)((float)score/(float)starReqs[0] * 200));
+			progressBar.setValue((int)((((float)score/(float)starReqs[0]) * 200f)));
 		} else if (score < starReqs[1]) {
-			progressBar.setValue((int)((float)(score - starReqs[0])/(float)starReqs[1] * 200));
+			progressBar.setValue((int)((((float)score - (float)starReqs[0])/((float)starReqs[1] - (float)starReqs[0]) * 200f)));
 			stars = 1;
 		} else if (score < starReqs[2]) {
-			progressBar.setValue((int)((float)(score - starReqs[1] - starReqs[0])/(float)starReqs[2] * 200));
+			progressBar.setValue((int)((((float)score - (float)starReqs[1])/((float)starReqs[2] - (float)starReqs[1]) * 200f)));
 			stars = 2;
 		} else {
 			progressBar.setValue(200);

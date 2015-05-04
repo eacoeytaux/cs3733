@@ -1,9 +1,7 @@
 package controllers;
 
-import java.awt.event.MouseEvent;
-
-import entities.Game;
 import junit.framework.TestCase;
+import entities.Game;
 
 public class TestSquareController extends TestCase {
 	

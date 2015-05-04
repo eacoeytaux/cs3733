@@ -1,6 +1,5 @@
 package entities;
 
-import entities.Game;
 import junit.framework.TestCase;
 
 public class TestBuilder extends TestCase {

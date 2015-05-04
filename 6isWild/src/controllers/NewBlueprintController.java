@@ -26,5 +26,4 @@ public class NewBlueprintController implements ActionListener {
 		application.setContentPane(application.getDisplay());
 		application.pack();
 	}
-
 }

@@ -36,7 +36,7 @@ public class BuilderSquareDisplay extends JPanel {
 		if (square.isInert()) {
 			display = new InertDisplay(null);
 		} else if (square.isBucket()) {
-			display = new BucketDisplay(null);
+			display = new BucketDisplay(null, false);
 		} else {
 			display = new TileDisplay(null, square.getTile());
 			setBackground(TileDisplay.getColor(square.getTile().getValue()));

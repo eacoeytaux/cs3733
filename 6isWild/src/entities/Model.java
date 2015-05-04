@@ -24,15 +24,21 @@ public class Model {
 	public Model() {
 
 		puzzleLevels = new ArrayList<PuzzleLevel>();
-		//puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/smileyLevel.txt")));
+		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt")));
+		
 		lightningLevels = new ArrayList<LightningLevel>(); 
+		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt")));
+		
 		releaseLevels = new ArrayList<ReleaseLevel>();
+		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel1.txt")));
 		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevelTest.txt")));
+		
 		eliminationLevels = new ArrayList<EliminationLevel>();
-		//lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt")));
-		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/levelre.txt"))); 
+		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt")));
+		
 		globalStats = new GlobalStats();	
 		
+		/*
 		//rest is filler level
 		Square[][] fillerSquares = new Square[9][9];
 		for(int i = 0; i < 9; i++){
@@ -91,7 +97,7 @@ public class Model {
 		}
 
 		ReleaseLevel fillerReleaseLevel = new ReleaseLevel(fillerPuzzleBlueprint);
-		releaseLevels.add(fillerReleaseLevel);
+		releaseLevels.add(fillerReleaseLevel);*/
 		
 		
 	}

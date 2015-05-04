@@ -1,14 +1,10 @@
 package boundaries;
 
 
-import java.awt.Window;
-import java.awt.event.MouseEvent;
-
 import javax.swing.JButton;
 
-import boundaries.LevelStatDisplay;
-import entities.Game;
 import junit.framework.TestCase;
+import entities.Game;
 
 public class TestBackButton extends TestCase {
 

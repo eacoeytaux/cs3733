@@ -65,6 +65,10 @@ public class Square implements Serializable {
 		return bucket;
 	}
 	
+	public boolean isBucketFull() {
+		return bucketFull;
+	}
+	
 	public boolean isEliminated(){
 		return this.eliminated;
 	}
