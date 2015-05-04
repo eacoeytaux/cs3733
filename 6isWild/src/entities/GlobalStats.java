@@ -2,35 +2,50 @@ package entities;
 
 import java.util.ArrayList;
 
-/*******
+import java.io.Serializable;
+
+/**
  * 
  * @author Jon Swain
+ * @author Ethan Coeytaux
  *
  */
 
-public class GlobalStats {
-	int timePlayed;
-	int totalMoves;
-	int powerUpsUsed;
+public class GlobalStats implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	Stat puzzleLevels[];
 	Stat lightningLevels[];
 	Stat eliminationLevels[];
 	Stat releaseLevels[];
 	
-	public GlobalStats(int timePlayed, int totalMoves, int powerUpsUsed){
-		puzzleLevels = new Stat[4];
-		lightningLevels = new Stat[4];
-		eliminationLevels = new Stat[4];
-		releaseLevels = new Stat[4];
+	public GlobalStats() {
+		puzzleLevels = new Stat[20];
+		lightningLevels = new Stat[20];
+		eliminationLevels = new Stat[20];
+		releaseLevels = new Stat[20];
 
+		for (int i = 0; i < 20; i++) {
+			puzzleLevels[i] = new Stat(0, 0);
+			lightningLevels[i] = new Stat(0, 0);
+			eliminationLevels[i] = new Stat(0, 0);
+			releaseLevels[i] = new Stat(0, 0);
+		}
 	}
 	
 	public void recordStats(Stat stats, int type, int id)
 	{
-		if (type == Game.PUZZLE_ID) puzzleLevels[id] = stats;     //type 1 = puzzle, id 1 -> index 0
-		if (type == Game.LIGHTNING_ID) lightningLevels[id] = stats;   //type 2 = lightning "..."
-		if (type == Game.ELIMINATION_ID) eliminationLevels[id] = stats;   //type 3 = elimination "..."
-		if (type == Game.RELEASE_ID) releaseLevels[id] = stats;     //type 4 = releaseLvls "..."
+		if (type == Game.PUZZLE_ID) puzzleLevels[id-1] = stats;
+		if (type == Game.LIGHTNING_ID) lightningLevels[id-1] = stats;
+		if (type == Game.ELIMINATION_ID) eliminationLevels[id-1] = stats;
+		if (type == Game.RELEASE_ID) releaseLevels[id-1] = stats;
 	}
 	
+	public boolean levelCompleted(int type, int id) {
+		if (type == Game.PUZZLE_ID) return puzzleLevels[id].completed();
+		if (type == Game.LIGHTNING_ID) return lightningLevels[id].completed();
+		if (type == Game.ELIMINATION_ID) return eliminationLevels[id].completed();
+		if (type == Game.RELEASE_ID) return releaseLevels[id].completed();
+		else return false;
+	}
 }

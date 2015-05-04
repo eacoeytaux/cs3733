@@ -7,7 +7,8 @@ import java.util.ArrayList;
 
 /**
  * the model contains all levels and stats for the game
- * @author
+ * @author Ethan Coeytaux
+ * @author Hugh Whelan
  *
  */
 public class Model {
@@ -22,16 +23,23 @@ public class Model {
 
 	public Model() {
 
-		puzzleLevels = new ArrayList<PuzzleLevel>();
-		//puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/smileyLevel.txt")));
-		lightningLevels = new ArrayList<LightningLevel>(); 
-		releaseLevels = new ArrayList<ReleaseLevel>();
-		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevelTest.txt")));
-		eliminationLevels = new ArrayList<EliminationLevel>();
-		//lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt")));
-		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/levelre.txt"))); 
-		globalStats = new GlobalStats(0,0,0);	
+		//puzzleLevels = new ArrayList<PuzzleLevel>();
+		//puzzleLevels.add(new PuzzleLevel(loadBlueprint("res/levels/puzzleLevel1.txt"), 1));
 		
+		lightningLevels = new ArrayList<LightningLevel>(); 
+		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 1));
+		
+		releaseLevels = new ArrayList<ReleaseLevel>();
+		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel1.txt"), 1));
+		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevelTest.txt")));
+		
+		eliminationLevels = new ArrayList<EliminationLevel>();
+		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt"), 1));
+		
+		globalStats = new GlobalStats();	
+	}
+		
+		/*
 		//rest is filler level
 		Square[][] fillerSquares = new Square[9][9];
 		for(int i = 0; i < 9; i++){
@@ -156,11 +164,16 @@ public class Model {
 	public Blueprint loadBlueprint(String fileLoc) {
 		try {
 			ClassLoader classLoader = getClass().getClassLoader();
+			System.out.println("attempting to open file name " + fileLoc);
 			File file = new File(classLoader.getResource(fileLoc).getFile());
+			System.out.println("opened File");
 			FileInputStream fis = new FileInputStream(file);
+			System.out.println("created fis");
 			//InputStreamReader in = new InputStreamReader();
 			ObjectInputStream ois = new ObjectInputStream(fis);
+			System.out.println("trying to read blueprint");
 			Blueprint blueprint = (Blueprint)ois.readObject();
+			System.out.println("" + blueprint.getLevelType());
 			fis.close();
 			return blueprint;
 		} catch (Exception e) {
@@ -190,6 +203,10 @@ public class Model {
 	
 	public AbstractLevel getCurrentLevel(){
 		return this.currentLevel;
+	}
+	
+	public GlobalStats getGlobalStats() {
+		return globalStats;
 	}
 	
 }

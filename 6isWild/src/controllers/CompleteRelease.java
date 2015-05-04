@@ -1,13 +1,12 @@
 package controllers;
 
-/*******
+/**
  * 
  * @author Jon Sawin
  * 
  */
 
 import entities.ReleaseLevel;
-import boundaries.Application;
 
 public class CompleteRelease {
 	ReleaseLevel level;

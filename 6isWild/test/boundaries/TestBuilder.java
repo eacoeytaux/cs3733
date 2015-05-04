@@ -1,7 +1,5 @@
 package boundaries;
 
-import java.awt.event.MouseEvent;
-
 import junit.framework.TestCase;
 import entities.Builder;
 
@@ -10,7 +8,7 @@ public class TestBuilder extends TestCase {
 	
 	@Override
 	public void setUp() {
-		builder = new Builder();
+		builder = new Builder(true);
 	}
 	
 	@Override

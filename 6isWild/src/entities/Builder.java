@@ -2,11 +2,10 @@ package entities;
 
 import java.util.Stack;
 
-import boundaries.Application;
 import boundaries.BuilderApplication;
 
 /**
- * 
+ * top level builder class
  * @author Ethan Coeytaux
  * @author Hugh Whelan
  *
@@ -18,10 +17,10 @@ public class Builder {
 	Stack<AbstractBuilderMove> redoStack = new Stack<AbstractBuilderMove>(); //stack of moves undone.  used for redo
 	
 	
-	public Builder() {
+	public Builder(boolean skipSplashScreen) {
 		makeNewBlueprint();
 		
-		builderApplication = new BuilderApplication(this);
+		builderApplication = new BuilderApplication(this, skipSplashScreen);
 	}
 	
 	public void makeNewBlueprint() {
@@ -41,7 +40,7 @@ public class Builder {
 	}
 
 	public static void main(String[] args) {
-		new Builder();
+		new Builder(false);
 	}
 	
 	/**

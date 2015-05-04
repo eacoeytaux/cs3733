@@ -8,7 +8,7 @@ import boundaries.BuilderSquareDisplay;
 
 /**
  * handles mouse events on squares in the builder
- * @author
+ * @author Ethan Coeytaux
  *
  */
 public class BuilderSquareController implements MouseListener {

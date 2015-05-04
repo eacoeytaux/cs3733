@@ -7,11 +7,11 @@ import javax.swing.JPanel;
 
 import controllers.BuilderSquareController;
 import entities.Blueprint;
-import entities.Board;
 import entities.Square;
 
 /**
  * displays the board for the builder
+ * @author Ethan Coeytaux
  * @author Hugh Whelan
  *
  */

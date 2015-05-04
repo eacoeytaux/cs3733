@@ -2,6 +2,11 @@ package entities;
 
 import boundaries.Application;
 
+/**
+ * top level class for Game
+ * @author Ethan Coeytaux
+ *
+ */
 public class Game {
 	public static final int PUZZLE_ID = 0;
 	public static final int LIGHTNING_ID = 1;
@@ -11,20 +16,20 @@ public class Game {
 	Model model;
 	Application application;
 
-	public Game() {
-		init();
+	public Game(boolean skipSplashScreen) {
+		init(skipSplashScreen);
 	}
 
 	public static void main(String[] args) {
-		new Game();
+		new Game(false);
 	}
 	
 	/**
 	 * Call all initialize functions
 	 */
-	private void init() {
+	private void init(boolean skipSplashScreen) {
 		initializeEntities();
-		initializeBoundaries();
+		initializeBoundaries(skipSplashScreen);
 		initializeControllers();
 	}
 	
@@ -38,8 +43,8 @@ public class Game {
 	/**
 	 * create new application boundary
 	 */
-	private void initializeBoundaries(){
-		application = new Application(model);
+	private void initializeBoundaries(boolean skipSplashScreen){
+		application = new Application(model, skipSplashScreen);
 	}
 	
 	/**
@@ -62,5 +67,9 @@ public class Game {
 	 */
 	public Application getApplication() {
 		return this.application;
+	}
+	
+	public Model getModel() {
+		return model;
 	}
 }

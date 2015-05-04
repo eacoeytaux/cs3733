@@ -11,6 +11,7 @@ import javax.swing.JPanel;
 
 /**
  * displays splash screen
+ * @author Ethan Coeytaux
  *
  */
 public class SplashScreenDisplay extends JPanel {

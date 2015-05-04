@@ -1,11 +1,5 @@
 package controllers;
 
-/*******
- * 
- * @author Jon Sawin
- * 
- */
-
 import entities.AbstractLevel;
 import entities.Stat;
 import entities.Info;
@@ -16,7 +10,7 @@ import java.io.FileReader;
 
 /**
  * saves score when level is complete
- * @author 
+ * @author Jon Sawin
  *
  */
 public class SaveScore {

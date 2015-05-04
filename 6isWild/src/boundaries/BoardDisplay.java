@@ -5,16 +5,13 @@ import java.awt.GridLayout;
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
 
-import controllers.BuilderSquareController;
-import controllers.MoveController;
 import controllers.SquareController;
 import entities.Board;
 import entities.Model;
-import boundaries.SquareDisplay;
 
 /**
  * displays the game board, which contains a Board and an array of Squares
- * @author
+ * @author Hugh Whelan
  *
  */
 public class BoardDisplay extends AbstractDisplay {

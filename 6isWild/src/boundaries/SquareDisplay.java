@@ -43,8 +43,10 @@ public class SquareDisplay extends AbstractDisplay {
 			display = new InertDisplay(model);
 			this.setBackground(Color.BLACK);
 		}
-		else if (square.isBucket()) display = new BucketDisplay(model);
-		else if (this.display == null) {
+		else if (square.isBucket()) {
+			this.setBackground(square.isBucketFull() ? Color.MAGENTA : Color.LIGHT_GRAY);
+			display = new BucketDisplay(model, square.isBucketFull());
+		} else if (this.display == null) {
 			this.setBackground(TileDisplay.getColor(square.getTile().getValue()));
 			this.display = new TileDisplay(model, this.square.getTile());
 		} else if(square.isEliminated()){

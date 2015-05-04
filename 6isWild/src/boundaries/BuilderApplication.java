@@ -2,12 +2,8 @@ package boundaries;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.io.File;
-import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 import javax.swing.JFileChooser;
@@ -21,7 +17,6 @@ import controllers.NewBlueprintController;
 import controllers.RedoButtonController;
 import controllers.SaveBlueprintController;
 import controllers.UndoButtonController;
-import entities.Blueprint;
 import entities.Builder;
 
 /**
@@ -35,7 +30,7 @@ public class BuilderApplication extends JFrame {
 	Builder builder;
 	BlueprintDisplay display;
 
-	public BuilderApplication(final Builder builder) {
+	public BuilderApplication(final Builder builder, boolean skipSplashScreen) {
 		this.builder = builder;
 		display = new BlueprintDisplay(this.builder);
 
@@ -51,7 +46,7 @@ public class BuilderApplication extends JFrame {
 
 
 
-		splashScreenDisplay.setSplashScreen();
+		if (!skipSplashScreen) splashScreenDisplay.setSplashScreen();
 		getContentPane().removeAll();
 		JMenuBar menubar = new JMenuBar();
 

@@ -8,6 +8,11 @@ import boundaries.LevelDisplay;
 import entities.AbstractLevel;
 import entities.Game;
 
+/**
+ * shuffles board when called upon
+ * @author Ethan Coeytaux
+ *
+ */
 public class ShuffleButtonController implements ActionListener {
 	LevelDisplay levelDisplay;
 	AbstractLevel level;

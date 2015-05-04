@@ -1,5 +1,6 @@
 package boundaries;
 
+import java.awt.Color;
 import java.awt.Font;
 
 import javax.swing.GroupLayout;
@@ -10,14 +11,18 @@ import entities.Model;
 
 /**
  * Display of a bucket
- * @author 
+ * @author Ethan Coeytaux
  *
  */
 public class BucketDisplay extends TileDisplay {
 	private static final long serialVersionUID = 1L;
+	
+	boolean full;
 
-	public BucketDisplay(Model model) {
+	public BucketDisplay(Model model, boolean full) {
 		super(model, null);
+		
+		this.full = full;
 
 		setup();
 	}
@@ -27,7 +32,8 @@ public class BucketDisplay extends TileDisplay {
 	 */
 	@Override
 	public void setup() {
-
+		setBackground(full ? Color.MAGENTA : Color.LIGHT_GRAY);
+		
 		JLabel lblNewLabel = new JLabel("B");
 		lblNewLabel.setFont(new Font("Lucida Grande", Font.PLAIN, 24));
 		GroupLayout groupLayout = new GroupLayout(this);

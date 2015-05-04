@@ -2,22 +2,17 @@ package controllers;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.logging.Level;
 
-import entities.AbstractLevel;
+import boundaries.BoardDisplay;
+import boundaries.SquareDisplay;
 import entities.Board;
-import entities.EliminationBoard;
 import entities.EliminationLevel;
 import entities.Game;
 import entities.LightningLevel;
+import entities.Model;
 import entities.PuzzleLevel;
 import entities.ReleaseLevel;
 import entities.Square;
-import entities.SquareBuilderMove;
-import entities.Model;
-import boundaries.BoardDisplay;
-import boundaries.BuilderSquareDisplay;
-import boundaries.SquareDisplay;
 
 /**
  * handles mouse events on a square
@@ -91,7 +86,7 @@ public class MoveController implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		if((e.getModifiers() == MouseEvent.BUTTON1_MASK) && this.square.getParentBoard().getNumberOfSelected() != 0 && isValid()){
+		if(this.square.getParentBoard().getNumberOfSelected() != 0 && isValid()){
 			this.square.select();
 			this.squareDisplay.setup();
 		}
@@ -177,12 +172,12 @@ public class MoveController implements MouseListener {
 		}
 	}
 	
-	public boolean outOfMoves(){
+	public boolean outOfMoves() {
 		if(model.getCurrentLevel().getInfo().getMovesTotal() - model.getCurrentLevel().getInfo().getMovesPlayed() <= 0) return true;
 		else return false;
 	}
 	
-	public boolean requirementsMet(){
+	public boolean requirementsMet() {
 		int gameMode = model.getCurrentLevel().getLevelType();
 		Board board = this.square.getParentBoard();
 		

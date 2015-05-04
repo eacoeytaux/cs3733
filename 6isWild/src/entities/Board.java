@@ -274,6 +274,9 @@ public class Board implements Serializable {
 		return this.eliminatedSquares;
 	}
 	
+	/**
+	 * for release, checks if any 6s should fall into buckets
+	 */
 	public void checkBoard() {
 		while (checkSix());
 	}

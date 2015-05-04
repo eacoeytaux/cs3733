@@ -3,8 +3,9 @@ package entities;
 import java.io.Serializable;
 
 /**
- * 
+ * Square contains tile, or is inert or bucket
  * @author Hugh Whelan
+ * @author Ethan Coeytaux
  *
  */
 
@@ -62,6 +63,10 @@ public class Square implements Serializable {
 	 */
 	public boolean isBucket() {
 		return bucket;
+	}
+	
+	public boolean isBucketFull() {
+		return bucketFull;
 	}
 	
 	public boolean isEliminated(){

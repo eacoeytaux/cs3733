@@ -6,6 +6,11 @@ import java.awt.event.ActionListener;
 import boundaries.Application;
 import boundaries.SelectGameModeDisplay;
 
+/**
+ * 
+ * @author Ethan Coeytaux
+ *
+ */
 public class PlayGameButtonController implements ActionListener {
 	Application application;
 	SelectGameModeDisplay sgmDisplay;

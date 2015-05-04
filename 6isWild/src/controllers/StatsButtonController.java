@@ -8,7 +8,7 @@ import boundaries.LevelStatDisplay;
 
 /**
  * handles click on stats button in main menu
- * @author 
+ * @author Ethan Coeytaux
  *
  */
 public class StatsButtonController implements ActionListener {

@@ -2,16 +2,11 @@ package controllers;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.util.logging.Level;
 
-import entities.AbstractLevel;
-import entities.Board;
-import entities.Square;
-import entities.SquareBuilderMove;
-import entities.Model;
-import boundaries.BoardDisplay;
-import boundaries.BuilderSquareDisplay;
 import boundaries.SquareDisplay;
+import entities.Board;
+import entities.Model;
+import entities.Square;
 
 /**
  * handles mouse events on a square

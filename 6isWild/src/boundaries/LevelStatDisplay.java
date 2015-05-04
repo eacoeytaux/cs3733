@@ -13,7 +13,7 @@ import entities.Model;
 
 /**
  * displays the statistics of a level
- * @author 
+ * @author
  *
  */
 public class LevelStatDisplay extends AbstractDisplay {

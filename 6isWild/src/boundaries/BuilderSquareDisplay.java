@@ -8,6 +8,7 @@ import entities.Square;
 
 /**
  * boundary class for a square in builder
+ * @author Ethan Coeytaux
  * @author Hugh Whelan
  *
  */
@@ -32,9 +33,14 @@ public class BuilderSquareDisplay extends JPanel {
 	 * sets up display of Builder Square
 	 */
 	public void setup() {
-		if (square.isInert()) display = new InertDisplay(null);
-		else if (square.isBucket()) display = new BucketDisplay(null);
-		else display = new TileDisplay(null, square.getTile());
+		if (square.isInert()) {
+			display = new InertDisplay(null);
+		} else if (square.isBucket()) {
+			display = new BucketDisplay(null, false);
+		} else {
+			display = new TileDisplay(null, square.getTile());
+			setBackground(TileDisplay.getColor(square.getTile().getValue()));
+		}
 
 		this.removeAll();
 		

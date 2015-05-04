@@ -8,6 +8,11 @@ import javax.swing.JLabel;
 
 import entities.Model;
 
+/**
+ * Display of an inert tile
+ * @author Ethan Coeytaux
+ *
+ */
 public class InertDisplay extends TileDisplay {
 	private static final long serialVersionUID = 1L;
 

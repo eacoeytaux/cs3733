@@ -8,7 +8,7 @@ import boundaries.SelectLevelDisplay;
 
 /**
  * selects the game mode
- * @author 
+ * @author Ethan Coeytaux
  *
  */
 public class SelectGameModeButtonController implements ActionListener {

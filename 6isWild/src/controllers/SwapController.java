@@ -4,7 +4,6 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
 import boundaries.BoardDisplay;
-import boundaries.LevelDisplay;
 import boundaries.SquareDisplay;
 import entities.Game;
 import entities.Model;
@@ -38,8 +37,7 @@ public class SwapController implements MouseListener {
 
 			//swap squares;
 			Square otherSquare = square.getParentBoard().getSelected().get(0);
-			SquareDisplay otherDisplay = squareDisplay.getParentBoardDisplay().getSquareDisplay(otherSquare.getIIndex(), otherSquare.getJIndex());
-
+			
 			square.getParentBoard().swapSquares(square.getIIndex(), square.getJIndex(), otherSquare.getIIndex(), otherSquare.getJIndex());
 
 			square.getParentBoard().deselectAll();

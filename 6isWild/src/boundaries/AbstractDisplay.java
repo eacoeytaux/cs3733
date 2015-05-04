@@ -6,7 +6,7 @@ import entities.Model;
 
 /**
  * The abstract class for all displays. all display have a parent model
- * @author
+ * @author Ethan Coeytaux
  *
  */
 public abstract class AbstractDisplay extends JPanel {
