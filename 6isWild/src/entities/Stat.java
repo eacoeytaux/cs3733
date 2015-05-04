@@ -47,4 +47,8 @@ public class Stat implements Serializable {
 		if (stars > this.stars) this.stars = stars;
 	}
 	
+	public boolean completed() {
+		return stars > 0;
+	}
+	
 }

@@ -146,6 +146,10 @@ public class Model {
 		return this.currentLevel;
 	}
 	
+	public GlobalStats getGlobalStats() {
+		return globalStats;
+	}
+	
 }
 
 
