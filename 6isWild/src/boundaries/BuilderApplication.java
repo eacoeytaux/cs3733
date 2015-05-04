@@ -29,6 +29,9 @@ public class BuilderApplication extends JFrame {
 
 	Builder builder;
 	BlueprintDisplay display;
+	
+	JMenuItem undoMenuItem;
+	JMenuItem redoMenuItem;
 
 	public BuilderApplication(final Builder builder, boolean skipSplashScreen) {
 		this.builder = builder;
@@ -56,8 +59,8 @@ public class BuilderApplication extends JFrame {
 		JMenuItem newMenuItem = new JMenuItem("New");
 		JMenuItem saveMenuItem = new JMenuItem("Save");
 		JMenuItem loadMenuItem = new JMenuItem("Load");
-		JMenuItem undoMenuItem = new JMenuItem("undo");
-		JMenuItem redoMenuItem = new JMenuItem("redo");
+		undoMenuItem = new JMenuItem("undo");
+		redoMenuItem = new JMenuItem("redo");
 
 		newMenuItem.addActionListener(new NewBlueprintController(this));
 		saveMenuItem.addActionListener(new SaveBlueprintController(this));
@@ -66,7 +69,9 @@ public class BuilderApplication extends JFrame {
 		undoMenuItem.addActionListener(new UndoButtonController(this.builder));
 		redoMenuItem.addActionListener(new RedoButtonController(this.builder));
 
-
+		undoMenuItem.setEnabled(false);
+		redoMenuItem.setEnabled(false);
+		
 		file.add(newMenuItem);
 		file.add(saveMenuItem);
 		file.add(loadMenuItem);
@@ -115,5 +120,13 @@ public class BuilderApplication extends JFrame {
 	
 	public Builder getParentBuilder() {
 		return builder;
+	}
+	
+	public void setUndoEnabled(boolean b) {
+		undoMenuItem.setEnabled(b);
+	}
+	
+	public void setRedoEnabled(boolean b) {
+		redoMenuItem.setEnabled(b);
 	}
 }

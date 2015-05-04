@@ -68,6 +68,9 @@ public class Builder {
 	 */
 	public void pushMove(AbstractBuilderMove move){
 		moveStack.push(move);
+		redoStack.clear();
+		builderApplication.setUndoEnabled(true);
+		builderApplication.setRedoEnabled(false);
 	}
 	
 	/**
@@ -75,6 +78,8 @@ public class Builder {
 	 * @return AbstractBuilderMove from top of stack
 	 */
 	public AbstractBuilderMove popMove(){
+		builderApplication.setRedoEnabled(true);
+		if (moveStack.size() <= 1) builderApplication.setUndoEnabled(false);
 		return moveStack.pop();
 	}
 	
@@ -83,6 +88,7 @@ public class Builder {
 	 * @return AbstractBuilderMove added to stack
 	 */
 	public AbstractBuilderMove pushRedo(AbstractBuilderMove move){
+		if (redoStack.size() <= 1) builderApplication.setRedoEnabled(true);
 		return redoStack.push(move);
 	}
 	

@@ -1,5 +1,7 @@
 package boundaries;
 
+import java.awt.Color;
+
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.JPanel;
@@ -35,8 +37,10 @@ public class BuilderSquareDisplay extends JPanel {
 	public void setup() {
 		if (square.isInert()) {
 			display = new InertDisplay(null);
+			setBackground(Color.BLACK);
 		} else if (square.isBucket()) {
 			display = new BucketDisplay(null, false);
+			setBackground(Color.LIGHT_GRAY);
 		} else {
 			display = new TileDisplay(null, square.getTile());
 			setBackground(TileDisplay.getColor(square.getTile().getValue()));
