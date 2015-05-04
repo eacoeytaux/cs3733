@@ -84,7 +84,7 @@ public class MoveController implements MouseListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		if((e.getModifiers() == MouseEvent.BUTTON1_MASK) && this.square.getParentBoard().getNumberOfSelected() != 0 && isValid()){
+		if(this.square.getParentBoard().getNumberOfSelected() != 0 && isValid()){
 			this.square.select();
 			this.squareDisplay.setup();
 		}

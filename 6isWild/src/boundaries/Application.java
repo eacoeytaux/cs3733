@@ -26,14 +26,10 @@ public class Application extends JFrame {
 	MainMenuDisplay mmDisplay;
 	LevelStatDisplay lsDisplay;
 	SelectGameModeDisplay sgmDisplay;
-	SelectLevelDisplay puzzle_slDisplay;
-	SelectLevelDisplay lightning_slDisplay;
-	SelectLevelDisplay elimination_slDisplay;
-	SelectLevelDisplay release_slDisplay;
 	LevelDisplay lDisplay;
 	StatsDisplay sDisplay;
 
-	public Application(Model model) {
+	public Application(Model model, boolean skipSplashScreen) {
 		super();
 		this.model = model;
 		init();
@@ -46,7 +42,7 @@ public class Application extends JFrame {
 		setLocationRelativeTo(null);
 		setVisible(true);
 
-		splashScreenDisplay.setSplashScreen();
+		if (!skipSplashScreen) splashScreenDisplay.setSplashScreen();
 		changePanel(mmDisplay);
 	}
 
@@ -93,27 +89,6 @@ public class Application extends JFrame {
 			//TODO print error
 		}
 	}
-
-	/**
-	 * changes the display to selectLevelDisplay corresponding to the game mode chosen
-	 * @param gameType game mode chosen
-	 */
-	public void switchToLevelSelect(int gameType) {
-		switch (gameType) {
-		case Game.PUZZLE_ID:
-			changePanel(puzzle_slDisplay);
-			break;
-		case Game.LIGHTNING_ID:
-			changePanel(lightning_slDisplay);
-			break;
-		case Game.ELIMINATION_ID:
-			changePanel(elimination_slDisplay);
-			break;
-		case Game.RELEASE_ID:
-			changePanel(release_slDisplay);
-			break;
-		}
-	}
 	
 	public LevelStatDisplay getLSDisplay(){
 		return this.lsDisplay;
@@ -121,5 +96,13 @@ public class Application extends JFrame {
 	
 	public LevelDisplay getLevelDisplay(){
 		return this.lDisplay;
+	}
+	
+	public AbstractDisplay getCurrentDisplay() {
+		return currentDisplay;
+	}
+	
+	public SelectGameModeDisplay getSGMDisplay() {
+		return sgmDisplay;
 	}
 }

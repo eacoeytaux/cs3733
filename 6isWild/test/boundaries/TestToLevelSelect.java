@@ -10,7 +10,7 @@ public class TestToLevelSelect extends TestCase {
 
 	@Override
 	public void setUp(){
-		game = new Game();
+		game = new Game(true);
 	}
 	
 	@Override

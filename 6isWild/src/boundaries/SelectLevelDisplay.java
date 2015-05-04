@@ -218,4 +218,13 @@ public class SelectLevelDisplay extends AbstractDisplay {
 
 	public void setButtonControllers() {
 	}
+	
+	/**
+	 * 
+	 * @param index
+	 * @return button for selected level
+	 */
+	public JButton getBtnLvl(int index) {
+		return btnLvl[index];
+	}
 }

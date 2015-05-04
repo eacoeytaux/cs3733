@@ -46,5 +46,4 @@ public class GlobalStats implements Serializable {
 		if (type == Game.RELEASE_ID) return releaseLvls[id].completed();
 		else return false;
 	}
-	
 }

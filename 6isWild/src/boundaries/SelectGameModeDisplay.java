@@ -177,4 +177,8 @@ public class SelectGameModeDisplay extends AbstractDisplay {
 		c.setNextDisplay(releaseLevelDisplay);
 		btnRelease.addActionListener(c);
 	}
+	
+	public JButton getBtnPuzzle() {
+		return btnPuzzle;
+	}
 }

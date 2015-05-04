@@ -30,7 +30,7 @@ public class BuilderApplication extends JFrame {
 	Builder builder;
 	BlueprintDisplay display;
 
-	public BuilderApplication(final Builder builder) {
+	public BuilderApplication(final Builder builder, boolean skipSplashScreen) {
 		this.builder = builder;
 		display = new BlueprintDisplay(this.builder);
 
@@ -46,7 +46,7 @@ public class BuilderApplication extends JFrame {
 
 
 
-		splashScreenDisplay.setSplashScreen();
+		if (!skipSplashScreen) splashScreenDisplay.setSplashScreen();
 		getContentPane().removeAll();
 		JMenuBar menubar = new JMenuBar();
 
