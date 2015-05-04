@@ -29,5 +29,7 @@ public class RemoveButtonController implements ActionListener {
 		removeButton.setText("Removes: " + level.getInfo().getRemoves());
 		
 		level.getBoard().removeMove = true;
+		level.getBoard().swapMove = false;
+		
 	}
 }

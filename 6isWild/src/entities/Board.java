@@ -11,8 +11,9 @@ import java.util.Random;
  *
  */
 
-@SuppressWarnings("serial")
 public class Board implements Serializable {
+	private static final long serialVersionUID = 1L;
+	
 	Random random;
 	Square[][] board;
 	ArrayList<Square> selectedSquares;
@@ -312,6 +313,10 @@ public class Board implements Serializable {
 			}
 		}
 		return false;
+	}
+
+	public int getBucketsLeft() {
+		return bucketsLeft;
 	}
 	
 }

@@ -244,7 +244,7 @@ public class LevelDisplay extends AbstractDisplay {
 	public void endCountdown(boolean showDisplay) {
 		timerRunning = false;
 		if (showDisplay){ 
-			gameOver();
+			gameOver(true);
 			new CompleteLightning( (LightningLevel) level);
 		}
 	}
@@ -288,10 +288,13 @@ public class LevelDisplay extends AbstractDisplay {
 		panel = new BoardDisplay(model, this.board, this);
 	}
 
-	public void gameOver() {
+	public void gameOver(boolean validWin) {
 		boolean won = true;
 		String message;
-		if (score < level.getStarRequirements()[0]) {
+		
+		if (!validWin) {
+			message = "You failed to meet the level requirements";
+		} else if (score < level.getStarRequirements()[0]) {
 			won = false;
 			message = "You didn't get any stars.";
 		} else if (score < level.getStarRequirements()[1]) {

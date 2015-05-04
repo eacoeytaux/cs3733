@@ -6,12 +6,10 @@ import java.awt.event.MouseListener;
 import boundaries.BoardDisplay;
 import boundaries.SquareDisplay;
 import entities.Board;
-import entities.EliminationLevel;
 import entities.Game;
 import entities.LightningLevel;
 import entities.Model;
 import entities.PuzzleLevel;
-import entities.ReleaseLevel;
 import entities.Square;
 
 /**
@@ -81,7 +79,7 @@ public class MoveController implements MouseListener {
 		}
 		squareDisplay.getParentBoardDisplay().getParentLevelDisplay().setup();
 		
-		if(outOfMoves() && requirementsMet()) squareDisplay.getParentBoardDisplay().getParentLevelDisplay().gameOver();
+		if(outOfMoves()) squareDisplay.getParentBoardDisplay().getParentLevelDisplay().gameOver(requirementsMet());
 	}
 
 	@Override
@@ -194,14 +192,10 @@ public class MoveController implements MouseListener {
 				new CompleteLightning((LightningLevel) model.getCurrentLevel());
 				break;
 			case Game.ELIMINATION_ID:
-				if(board.getEliminated().size() >= 81){
-					met = true;
-					new CompleteElimination((EliminationLevel) model.getCurrentLevel());
-				}
+				if(board.getEliminated().size() >= 81) met = true;
 				break;
 			case Game.RELEASE_ID:
-				met = true;
-				new CompleteRelease((ReleaseLevel) model.getCurrentLevel());
+				if (board.getBucketsLeft() <= 0) met = true;
 				break;
 			default:
 				met = true;

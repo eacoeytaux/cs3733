@@ -29,6 +29,7 @@ public class SwapButtonController implements ActionListener {
 		swapButton.setText("Swaps: " + level.getInfo().getSwaps());
 		
 		level.getBoard().swapMove = true;
+		level.getBoard().removeMove = false;
 	}
 
 }
