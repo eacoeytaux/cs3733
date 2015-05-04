@@ -13,6 +13,6 @@ public class CompleteLightning {
 	
 	public CompleteLightning(LightningLevel level){
 		this.level = level;
-		new SaveScore(level);
+		//new SaveScore(level);
 	}
 }

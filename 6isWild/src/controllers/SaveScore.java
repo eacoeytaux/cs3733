@@ -1,6 +1,7 @@
 package controllers;
 
 import entities.AbstractLevel;
+import entities.Model;
 import entities.Stat;
 import entities.Info;
 
@@ -15,13 +16,15 @@ import java.io.FileReader;
  */
 public class SaveScore {
 	AbstractLevel level;
+	Model model;
 	
 	/**
 	 * saves scores and updates stars
 	 * @param level
 	 * @param application
 	 */
-	public SaveScore(AbstractLevel level){
+	public SaveScore(AbstractLevel level, Model model){
+		this.model = model;
 		System.out.println("called savescore");
 		this.level = level;
 		Info info = level.getInfo();
@@ -72,6 +75,8 @@ public class SaveScore {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+	        model.getGlobalStats().setStats(stat, level.getLevelType(), level.getLevel());
+	        
 		}
 	}	
 }
