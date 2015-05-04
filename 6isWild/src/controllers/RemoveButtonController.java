@@ -3,6 +3,8 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+
 import entities.AbstractLevel;
 
 /**
@@ -11,9 +13,11 @@ import entities.AbstractLevel;
  * 
  */
 public class RemoveButtonController implements ActionListener {
+	JButton removeButton;
 	AbstractLevel level;
 	
-	public RemoveButtonController(AbstractLevel level) {
+	public RemoveButtonController(JButton removeButton, AbstractLevel level) {
+		this.removeButton = removeButton;
 		this.level = level;
 	}
 
@@ -21,7 +25,9 @@ public class RemoveButtonController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		if (level.getInfo().getRemoves() <= 0) return;
 			
-		level.getBoard().removeMove = true;
 		level.getInfo().decrementRemoves();
+		removeButton.setText("Removes: " + level.getInfo().getRemoves());
+		
+		level.getBoard().removeMove = true;
 	}
 }

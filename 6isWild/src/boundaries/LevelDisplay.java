@@ -43,7 +43,6 @@ public class LevelDisplay extends AbstractDisplay {
 	int gameMode;
 	int levelNum;
 	int moves;
-	int[] powerUps;
 	BoardDisplay panel;
 	int score;
 
@@ -68,14 +67,13 @@ public class LevelDisplay extends AbstractDisplay {
 		this.gameMode = level.getLevelType();
 		this.levelNum = level.getLevel();
 		this.moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
-		this.powerUps = new int[]{level.getInfo().getSwaps(), level.getInfo().getShuffles(), level.getInfo().getRemoves()};
 		this.moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
 
 		btnBack = new JButton("Back");
 		lblMovesTimeLeft = new JLabel("");
-		btnSwap = new JButton("Swaps: " + powerUps[0]);
-		btnShuffle = new JButton("Shuffles: " + powerUps[1]);
-		btnRemove = new JButton("Removes: " + powerUps[2]);
+		btnSwap = new JButton("Swaps: " + level.getInfo().getSwaps());
+		btnShuffle = new JButton("Shuffles: " + level.getInfo().getShuffles());
+		btnRemove = new JButton("Removes: " + level.getInfo().getRemoves());
 		lblGameMode = new JLabel("");
 		lblScore = new JLabel("Score: " + score);
 
@@ -95,9 +93,6 @@ public class LevelDisplay extends AbstractDisplay {
 
 		score = level.getInfo().getScore();	
 		lblScore = new JLabel("Score: " + score);
-		btnRemove.setText("Removes:" + powerUps[2]);
-		btnSwap.setText("Swaps:" + powerUps[0]);
-		btnShuffle.setText("Shuffles:" + powerUps[1]);
 		
 		moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
 		
@@ -280,9 +275,9 @@ public class LevelDisplay extends AbstractDisplay {
 	}
 
 	public void initControllers() {
-		btnSwap.addActionListener(new SwapButtonController(level));
-		btnRemove.addActionListener(new RemoveButtonController(level));
-		btnShuffle.addActionListener(new ShuffleButtonController(this));
+		btnSwap.addActionListener(new SwapButtonController(btnSwap, level));
+		btnRemove.addActionListener(new RemoveButtonController(btnRemove, level));
+		btnShuffle.addActionListener(new ShuffleButtonController(btnShuffle, this));
 	}
 
 	public void startLevel() {
@@ -311,5 +306,17 @@ public class LevelDisplay extends AbstractDisplay {
 			//TODO unlock next level
 		}
 		btnBack.doClick();
+	}
+	
+	public JButton getBtnRemove() {
+		return btnRemove;
+	}
+	
+	public JButton getBtnShuffle() {
+		return btnShuffle;
+	}
+	
+	public JButton getBtnSwap() {
+		return btnSwap;
 	}
 }
