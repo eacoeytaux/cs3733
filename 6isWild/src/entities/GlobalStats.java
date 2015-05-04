@@ -33,10 +33,10 @@ public class GlobalStats implements Serializable {
 	
 	public void RecordStats(int score, int stars, int type, int id)
 	{
-		if (type == Game.PUZZLE_ID) puzzleLvls[id-1].update(score, stars);
-		if (type == Game.LIGHTNING_ID) lightningLvls[id-1].update(score, stars);
-		if (type == Game.ELIMINATION_ID) eliminationLvls[id-1].update(score, stars);
-		if (type == Game.RELEASE_ID) releaseLvls[id-1].update(score, stars);
+		if (type == Game.PUZZLE_ID) puzzleLvls[id].update(score, stars);
+		if (type == Game.LIGHTNING_ID) lightningLvls[id].update(score, stars);
+		if (type == Game.ELIMINATION_ID) eliminationLvls[id].update(score, stars);
+		if (type == Game.RELEASE_ID) releaseLvls[id].update(score, stars);
 	}
 	
 	public boolean levelCompleted(int type, int id) {

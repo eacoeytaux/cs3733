@@ -38,6 +38,9 @@ public class SwapController implements MouseListener {
 			//swap squares;
 			Square otherSquare = square.getParentBoard().getSelected().get(0);
 			
+			if (square.isInert() || square.isBucket()) return;
+			if (otherSquare.isInert() || otherSquare.isBucket()) return;
+			
 			square.getParentBoard().swapSquares(square.getIIndex(), square.getJIndex(), otherSquare.getIIndex(), otherSquare.getJIndex());
 
 			square.getParentBoard().deselectAll();
