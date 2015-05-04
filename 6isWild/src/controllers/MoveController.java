@@ -184,22 +184,22 @@ public class MoveController implements MouseListener {
 		boolean met = false;
 		
 		switch (gameMode){
-			case 0:
+			case Game.PUZZLE_ID:
 				met = true;
 				new CompletePuzzle((PuzzleLevel) model.getCurrentLevel());
 				break;
 				
-			case 1:
+			case Game.LIGHTNING_ID:
 				met = true;
 				new CompleteLightning((LightningLevel) model.getCurrentLevel());
 				break;
-			case 2:
+			case Game.ELIMINATION_ID:
 				if(board.getEliminated().size() >= 81){
 					met = true;
 					new CompleteElimination((EliminationLevel) model.getCurrentLevel());
 				}
 				break;
-			case 3:
+			case Game.RELEASE_ID:
 				met = true;
 				new CompleteRelease((ReleaseLevel) model.getCurrentLevel());
 				break;

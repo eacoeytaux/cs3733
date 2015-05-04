@@ -3,6 +3,8 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+
 import boundaries.BoardDisplay;
 import boundaries.LevelDisplay;
 import entities.AbstractLevel;
@@ -14,10 +16,12 @@ import entities.Game;
  *
  */
 public class ShuffleButtonController implements ActionListener {
+	JButton shuffleButton;
 	LevelDisplay levelDisplay;
 	AbstractLevel level;
 
-	public ShuffleButtonController(LevelDisplay levelDisplay) {
+	public ShuffleButtonController(JButton shuffleButton, LevelDisplay levelDisplay) {
+		this.shuffleButton = shuffleButton;
 		this.levelDisplay = levelDisplay;
 		this.level = levelDisplay.getLevel();
 	}
@@ -25,7 +29,9 @@ public class ShuffleButtonController implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (level.getInfo().getShuffles() <= 0) return;
-
+		
+		levelDisplay.getLevel().getInfo().decrementShuffles();
+		shuffleButton.setText("Shuffles: " + levelDisplay.getLevel().getInfo().getShuffles());
 		levelDisplay.getLevel().getBoard().shuffleBoard();
 
 		BoardDisplay boardDisplay = levelDisplay.getBoardDisplay();

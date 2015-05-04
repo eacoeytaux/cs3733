@@ -3,6 +3,8 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JButton;
+
 import entities.AbstractLevel;
 
 /**
@@ -11,18 +13,22 @@ import entities.AbstractLevel;
  *
  */
 public class SwapButtonController implements ActionListener {
+	JButton swapButton;
 	AbstractLevel level;
 	
-	public SwapButtonController(AbstractLevel level) {
+	public SwapButtonController(JButton swapButton, AbstractLevel level) {
+		this.swapButton = swapButton;
 		this.level = level;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(level.getInfo().getSwaps() <= 0) return;
-			
-		level.getBoard().swapMove = true;
+		
 		level.getInfo().decrementSwaps();
+		swapButton.setText("Swaps: " + level.getInfo().getSwaps());
+		
+		level.getBoard().swapMove = true;
 	}
 
 }

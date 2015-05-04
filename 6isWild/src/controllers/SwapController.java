@@ -50,6 +50,8 @@ public class SwapController implements MouseListener {
 					boardDisplay.updateTile(i, j);
 				}
 			}
+			
+			squareDisplay.getParentBoardDisplay().setup();
 		} else {
 			//TODO print warning
 		}
