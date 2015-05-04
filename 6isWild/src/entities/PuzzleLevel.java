@@ -9,8 +9,8 @@ package entities;
 public class PuzzleLevel extends AbstractLevel {
 	
 	
-	public PuzzleLevel(Blueprint blueprint){
-		super(blueprint);
+	public PuzzleLevel(Blueprint blueprint, int id){
+		super(blueprint, id);
 		
 		this.levelType = Game.PUZZLE_ID;
 		if (blueprint.levelType != levelType) super.handleWrongBlueprint();

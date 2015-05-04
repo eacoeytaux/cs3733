@@ -1,5 +1,7 @@
 package entities;
 
+import java.util.ArrayList;
+
 import java.io.Serializable;
 
 /**
@@ -12,38 +14,48 @@ import java.io.Serializable;
 public class GlobalStats implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
-	Stat puzzleLvls[];
-	Stat lightningLvls[];
-	Stat eliminationLvls[];
-	Stat releaseLvls[];
+	Stat puzzleLevels[];
+	Stat lightningLevels[];
+	Stat eliminationLevels[];
+	Stat releaseLevels[];
 	
 	public GlobalStats() {
-		puzzleLvls = new Stat[20];
-		lightningLvls = new Stat[20];
-		eliminationLvls = new Stat[20];
-		releaseLvls = new Stat[20];
-		
+		puzzleLevels = new Stat[20];
+		lightningLevels = new Stat[20];
+		eliminationLevels = new Stat[20];
+		releaseLevels = new Stat[20];
+
 		for (int i = 0; i < 20; i++) {
-			puzzleLvls[i] = new Stat(0, 0);
-			lightningLvls[i] = new Stat(0, 0);
-			eliminationLvls[i] = new Stat(0, 0);
-			releaseLvls[i] = new Stat(0, 0);
+			puzzleLevels[i] = new Stat(0, 0);
+			lightningLevels[i] = new Stat(0, 0);
+			eliminationLevels[i] = new Stat(0, 0);
+			releaseLevels[i] = new Stat(0, 0);
 		}
 	}
 	
-	public void RecordStats(int score, int stars, int type, int id)
+	public void recordStats(Stat stats, int type, int id)
 	{
-		if (type == Game.PUZZLE_ID) puzzleLvls[id].update(score, stars);
-		if (type == Game.LIGHTNING_ID) lightningLvls[id].update(score, stars);
-		if (type == Game.ELIMINATION_ID) eliminationLvls[id].update(score, stars);
-		if (type == Game.RELEASE_ID) releaseLvls[id].update(score, stars);
+		if (type == Game.PUZZLE_ID) puzzleLevels[id].update(stats.score, stats.stars);
+		if (type == Game.LIGHTNING_ID) lightningLevels[id].update(stats.score, stats.stars);
+		if (type == Game.ELIMINATION_ID) eliminationLevels[id].update(stats.score, stats.stars);
+		if (type == Game.RELEASE_ID) releaseLevels[id].update(stats.score, stats.stars);
 	}
 	
 	public boolean levelCompleted(int type, int id) {
-		if (type == Game.PUZZLE_ID) return puzzleLvls[id].completed();
-		if (type == Game.LIGHTNING_ID) return lightningLvls[id].completed();
-		if (type == Game.ELIMINATION_ID) return eliminationLvls[id].completed();
-		if (type == Game.RELEASE_ID) return releaseLvls[id].completed();
+		if (type == Game.PUZZLE_ID) return puzzleLevels[id].completed();
+		if (type == Game.LIGHTNING_ID) return lightningLevels[id].completed();
+		if (type == Game.ELIMINATION_ID) return eliminationLevels[id].completed();
+		if (type == Game.RELEASE_ID) return releaseLevels[id].completed();
 		else return false;
+	}
+	
+	public Stat getStats(int type, int id)
+	{
+		if (type == Game.PUZZLE_ID) return puzzleLevels[id];
+		if (type == Game.LIGHTNING_ID) return lightningLevels[id];
+		if (type == Game.ELIMINATION_ID) return eliminationLevels[id];
+		if (type == Game.RELEASE_ID) return releaseLevels[id];
+		return new Stat(0,0);
+
 	}
 }

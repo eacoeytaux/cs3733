@@ -9,6 +9,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controllers.BackController;
 import entities.Game;
+import entities.GlobalStats;
 import entities.Model;
 
 /**
@@ -20,12 +21,13 @@ public class LevelStatDisplay extends AbstractDisplay {
 	private static final long serialVersionUID = 1L;
 
 	Application application;
-	
+	GlobalStats globalStats;
 	JButton btnBack;
 	
 	public LevelStatDisplay(Model model, Application application) {
 		super(model);
 		this.application = application;
+		this.globalStats = model.getGlobalStats();
 
 		btnBack = new JButton("Back");
 	}
@@ -51,37 +53,37 @@ public class LevelStatDisplay extends AbstractDisplay {
 		
 		JLabel lblLightning = new JLabel("Lightning");
 		
-		JLabel lblScoreHere = new JLabel(model.getLevel(Game.PUZZLE_ID,0).getStats().getScore() + ", " + model.getLevel(Game.PUZZLE_ID,0).getStats().getStars() + " Stars");
+		JLabel lblScoreHere = new JLabel(globalStats.getStats(Game.PUZZLE_ID, 1).getScore() + ", " + globalStats.getStats(Game.PUZZLE_ID, 1).getStars() + " Stars");
 		
-		JLabel label = new JLabel("score here");
+		JLabel label = new JLabel(globalStats.getStats(Game.PUZZLE_ID, 2).getScore() + ", " + globalStats.getStats(Game.PUZZLE_ID, 2).getStars() + " Stars");
 		
-		JLabel label_1 = new JLabel("score here");
+		JLabel label_1 = new JLabel(globalStats.getStats(Game.PUZZLE_ID, 3).getScore() + ", " + globalStats.getStats(Game.PUZZLE_ID, 3).getStars() + " Stars");
 		
-		JLabel label_2 = new JLabel("score here");
+		JLabel label_2 = new JLabel(globalStats.getStats(Game.PUZZLE_ID, 4).getScore() + ", " + globalStats.getStats(Game.PUZZLE_ID, 4).getStars() + " Stars");
 		
-		JLabel label_3 = new JLabel("score here");
+		JLabel label_3 = new JLabel(globalStats.getStats(Game.LIGHTNING_ID, 0).getScore() + ", " + globalStats.getStats(Game.LIGHTNING_ID, 0).getStars() + " Stars");
 		
-		JLabel label_4 = new JLabel("score here");
+		JLabel label_4 = new JLabel(globalStats.getStats(Game.LIGHTNING_ID, 1).getScore() + ", " + globalStats.getStats(Game.LIGHTNING_ID, 1).getStars() + " Stars");
 		
-		JLabel label_5 = new JLabel("score here");
+		JLabel label_5 = new JLabel(globalStats.getStats(Game.LIGHTNING_ID, 2).getScore() + ", " + globalStats.getStats(Game.LIGHTNING_ID, 2).getStars() + " Stars");
 		
-		JLabel label_6 = new JLabel("score here");
+		JLabel label_6 = new JLabel(globalStats.getStats(Game.LIGHTNING_ID, 3).getScore() + ", " + globalStats.getStats(Game.LIGHTNING_ID, 3).getStars() + " Stars");
 		
-		JLabel label_7 = new JLabel("score here");
+		JLabel label_7 = new JLabel(globalStats.getStats(Game.RELEASE_ID, 0).getScore() + ", " + globalStats.getStats(Game.RELEASE_ID, 0).getStars() + " Stars");
 		
-		JLabel label_8 = new JLabel("score here");
+		JLabel label_8 = new JLabel(globalStats.getStats(Game.RELEASE_ID, 1).getScore() + ", " + globalStats.getStats(Game.RELEASE_ID, 1).getStars() + " Stars");
 		
-		JLabel label_9 = new JLabel("score here");
+		JLabel label_9 = new JLabel(globalStats.getStats(Game.RELEASE_ID, 2).getScore() + ", " + globalStats.getStats(Game.RELEASE_ID, 2).getStars() + " Stars");
 		
-		JLabel label_10 = new JLabel("score here");
+		JLabel label_10 = new JLabel(globalStats.getStats(Game.RELEASE_ID, 3).getScore() + ", " + globalStats.getStats(Game.RELEASE_ID, 3).getStars() + " Stars");
 		
-		JLabel label_11 = new JLabel(model.getLevel(Game.LIGHTNING_ID,0).getStats().getScore() + ", " + model.getLevel(Game.LIGHTNING_ID,0).getStats().getStars() + " Stars");
+		JLabel label_11 = new JLabel(globalStats.getStats(Game.ELIMINATION_ID, 0).getScore() + ", " + globalStats.getStats(Game.ELIMINATION_ID, 0).getStars() + " Stars");
 		
-		JLabel label_12 = new JLabel("score here");
+		JLabel label_12 = new JLabel(globalStats.getStats(Game.ELIMINATION_ID, 1).getScore() + ", " + globalStats.getStats(Game.ELIMINATION_ID, 1).getStars() + " Stars");
 		
-		JLabel label_13 = new JLabel("score here");
+		JLabel label_13 = new JLabel(globalStats.getStats(Game.ELIMINATION_ID, 2).getScore() + ", " + globalStats.getStats(Game.ELIMINATION_ID, 2).getStars() + " Stars");
 		
-		JLabel label_14 = new JLabel("score here");
+		JLabel label_14 = new JLabel(globalStats.getStats(Game.ELIMINATION_ID, 3).getScore() + ", " + globalStats.getStats(Game.ELIMINATION_ID, 3).getStars() + " Stars");
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(

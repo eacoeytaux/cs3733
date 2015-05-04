@@ -18,8 +18,9 @@ public abstract class AbstractLevel {
 	Info info;
 	boolean[][] emptyTiles;
 	
-	public AbstractLevel(Blueprint blueprint) {
+	public AbstractLevel(Blueprint blueprint, int levelNum) {
 		this.levelType = blueprint.getLevelType();
+		this.levelNum = levelNum;
 		
 		this.blueprint = blueprint;
 
@@ -39,7 +40,11 @@ public abstract class AbstractLevel {
 			System.out.println("initialized scanner");
 			while(s.hasNextLine())
 			{
-				if(s.nextInt() == this.getLevelType() && s.nextInt() == this.getLevel()) this.stats = new Stat(s.nextInt(), s.nextInt());
+				if(s.nextInt() == this.getLevelType() && s.nextInt() == this.getLevel()){
+					this.stats = new Stat(s.nextInt(), s.nextInt());
+					System.out.println("found match " + this.getLevelType() + " " + this.getLevel());
+					
+				}
 				s.nextLine();
 			}
 			s.close();
