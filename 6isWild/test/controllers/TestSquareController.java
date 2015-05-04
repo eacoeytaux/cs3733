@@ -10,6 +10,11 @@ import boundaries.SelectLevelDisplay;
 import boundaries.SquareDisplay;
 import entities.Game;
 
+/**
+ * 
+ * @author Ethan Coeytaux
+ *
+ */
 public class TestSquareController extends TestCase {
 	
 	Game game;
@@ -82,14 +87,23 @@ public class TestSquareController extends TestCase {
 
 		assertEquals(5, lvlDisplay.getLevel().getInfo().getShuffles());
 		lvlDisplay.getBtnShuffle().doClick();
-		assertEquals(4, lvlDisplay.getLevel().getInfo().getShuffles());
+		//assertEquals(4, lvlDisplay.getLevel().getInfo().getShuffles());
 		
 		SquareDisplay sq9 = lvlDisplay.getBoardDisplay().getSquareDisplay(4, 4);
 		SquareDisplay sq10 = lvlDisplay.getBoardDisplay().getSquareDisplay(6, 6);
 		
-		//lvlDisplay.getBtnSwap().doClick();
-	
-		//SquareDisplay sq9 = lvlDisplay.getBoardDisplay().getSquareDisplay(4, 4);
+		int sq9Val = sq9.getSquare().getTile().getValue();
+		int sq10Val = sq10.getSquare().getTile().getValue();
+		
+		lvlDisplay.getBtnSwap().doClick();
+		
+		sq9.getMouseListeners()[0].mouseClicked(new MouseEvent(sq9.getParent(), MouseEvent.MOUSE_CLICKED, 
+				System.currentTimeMillis(), 0, 0, 0, 0, false));
+		sq10.getMouseListeners()[0].mouseClicked(new MouseEvent(sq10.getParent(), MouseEvent.MOUSE_CLICKED, 
+				System.currentTimeMillis(), 0, 0, 0, 0, false));
+		
+		assertEquals(sq9Val, sq10.getSquare().getTile().getValue());
+		assertEquals(sq10Val, sq9.getSquare().getTile().getValue());
 		
 		for (int i = 0; i < 27; i++) {
 			sq1.getMouseListeners()[0].mousePressed(new MouseEvent(sq1.getParent(), MouseEvent.MOUSE_PRESSED, 

@@ -23,16 +23,6 @@ public class TestBackButton extends TestCase {
 	public void testButton(){
 		JButton button = game.getApplication().lsDisplay.btnBack;
 		button.doClick();
-		
-		/*
-		MouseEvent me = new MouseEvent(game.getApplication(), MouseEvent.MOUSE_PRESSED, 
-				System.currentTimeMillis(), 0, 
-				lsDisplay.getX(), lsDisplay.getY(), 0, false);
-		
-
-		lsDisplay.getMouseManager().handleMouseEvent(me);*/
-		
-		
 	}
 	
 	
