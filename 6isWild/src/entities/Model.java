@@ -2,6 +2,7 @@ package entities;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.InputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
@@ -16,28 +17,28 @@ public class Model {
 	ArrayList<LightningLevel> lightningLevels;
 	ArrayList<EliminationLevel> eliminationLevels;
 	ArrayList<ReleaseLevel> releaseLevels;
-	
+
 	AbstractLevel currentLevel;
-	
+
 	GlobalStats globalStats;
 
 	public Model() {
 
 		puzzleLevels = new ArrayList<PuzzleLevel>();
 		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt")));
-		
+
 		lightningLevels = new ArrayList<LightningLevel>(); 
 		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt")));
-		
+
 		releaseLevels = new ArrayList<ReleaseLevel>();
 		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel1.txt")));
 		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevelTest.txt")));
-		
+
 		eliminationLevels = new ArrayList<EliminationLevel>();
 		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt")));
-		
+
 		globalStats = new GlobalStats();	
-		
+
 		/*
 		//rest is filler level
 		Square[][] fillerSquares = new Square[9][9];
@@ -53,13 +54,13 @@ public class Model {
 				fillerSquares[i][j].setParentBoard(fillerBoard);
 			}
 		}
-		
+
 		Blueprint fillerPuzzleBlueprint = new Blueprint(fillerBoard);
 		fillerPuzzleBlueprint.setValues(0, 2, 2, 2, 2, new int[]{3,3,3}, new int[]{3,3,3,3,3,3}, new int[]{3,3,3});
 		PuzzleLevel fillerLevel = new PuzzleLevel(fillerPuzzleBlueprint);
 		puzzleLevels.add(fillerLevel);
 		////////////////////////////////////////////////
-		
+
 		//rest is filler level
 		fillerSquares = new Square[9][9];
 		for(int i = 0; i < 9; i++){
@@ -80,8 +81,8 @@ public class Model {
 		lightningLevels.add(fillerLightningLevel);
 		EliminationLevel fillerEliminationLevel = new EliminationLevel(fillerPuzzleBlueprint);
 		eliminationLevels.add(fillerEliminationLevel);
-		
-		
+
+
 		fillerSquares = new Square[9][9];
 		for(int i = 0; i < 9; i++){
 			for(int j = 0; j < 9; j++){
@@ -98,9 +99,10 @@ public class Model {
 
 		ReleaseLevel fillerReleaseLevel = new ReleaseLevel(fillerPuzzleBlueprint);
 		releaseLevels.add(fillerReleaseLevel);*/
-		
-		
+
+
 	}
+
 
 	/**
 	 * loads a blueprint from a file location
@@ -108,6 +110,12 @@ public class Model {
 	 * @return Blueprint loaded
 	 */
 	public Blueprint loadBlueprint(String fileLoc) {
+		String os = System.getProperty("os.name");
+		if (os.charAt(0) == 'W') return loadBlueprintMac(fileLoc);
+		else return loadBlueprintMac(fileLoc);
+	}
+	
+	public Blueprint loadBlueprintMac(String fileLoc) {
 		try {
 			ClassLoader classLoader = getClass().getClassLoader();
 			File file = new File(classLoader.getResource(fileLoc).getFile());
@@ -122,34 +130,48 @@ public class Model {
 		}
 		return null;
 	}
-	
+
+	public Blueprint loadBlueprintWindows(String fileLoc) {
+		try {
+			fileLoc = new File("").getAbsolutePath() + "/bin/" + fileLoc;
+			FileInputStream fis = new FileInputStream(fileLoc);
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			Blueprint blueprint = (Blueprint)ois.readObject();
+			fis.close();
+			return blueprint;
+		} catch (Exception e) {
+			e.printStackTrace(); //TODO print error
+		}
+		return null;
+	}
+
 	public AbstractLevel getLevel(int gameMode, int levelNum) {
 		switch ( gameMode ){
-			case Game.PUZZLE_ID:
-				return puzzleLevels.get(levelNum);
-			case Game.LIGHTNING_ID:
-				return lightningLevels.get(levelNum);
-			case Game.ELIMINATION_ID: 
-				return eliminationLevels.get(levelNum);
-			case Game.RELEASE_ID:
-				return releaseLevels.get(levelNum);
-			default:
-				return null;
+		case Game.PUZZLE_ID:
+			return puzzleLevels.get(levelNum);
+		case Game.LIGHTNING_ID:
+			return lightningLevels.get(levelNum);
+		case Game.ELIMINATION_ID: 
+			return eliminationLevels.get(levelNum);
+		case Game.RELEASE_ID:
+			return releaseLevels.get(levelNum);
+		default:
+			return null;
 		}
 	}
-	
+
 	public void setCurrentLevel(AbstractLevel currentLevel){
 		this.currentLevel =currentLevel;
 	}
-	
+
 	public AbstractLevel getCurrentLevel(){
 		return this.currentLevel;
 	}
-	
+
 	public GlobalStats getGlobalStats() {
 		return globalStats;
 	}
-	
+
 }
 
 
