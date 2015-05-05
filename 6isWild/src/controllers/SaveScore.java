@@ -29,10 +29,14 @@ public class SaveScore {
 		this.level = level;
 		recordScore();        
 	}
+	
+	/**
+	 * @author Jon Sawin
+	 * checks if high score was achieved, if so writes to scores.txt
+	 */
 
 	public void recordScore()
 	{
-		Boolean hasSetScore = false;
 		Info info = level.getInfo();
 		Stat stat = level.getStats();
 		int oldHighScore = stat.getScore();

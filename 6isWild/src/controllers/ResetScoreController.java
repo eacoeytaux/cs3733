@@ -12,6 +12,11 @@ import entities.AbstractLevel;
 import entities.Model;
 import entities.Stat;
 
+/**
+ * Resets the players save file to make all levels 0 points and zero stars
+ * @author Jon Sawin 
+ */
+
 public class ResetScoreController implements ActionListener{
 	Model model;
 	LevelStatDisplay display;

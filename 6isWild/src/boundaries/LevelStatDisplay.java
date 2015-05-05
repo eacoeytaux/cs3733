@@ -16,7 +16,7 @@ import entities.Model;
 /**
  * displays the statistics of a level
  * @author Jon Sawin
- * Ethan Coeytaux
+ * @author Ethan Coeytaux
  *
  */
 public class LevelStatDisplay extends AbstractDisplay {

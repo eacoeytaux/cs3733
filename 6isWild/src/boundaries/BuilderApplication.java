@@ -23,6 +23,7 @@ import entities.Builder;
  * Application boundary class for the builder
  * @author Hugh Whelan
  * @author Ethan Coeytaux
+ * @author Jon Sawin
  */
 public class BuilderApplication extends JFrame {
 	private static final long serialVersionUID = 1L;
