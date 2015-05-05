@@ -26,7 +26,6 @@ public class Application extends JFrame {
 	LevelStatDisplay lsDisplay;
 	SelectGameModeDisplay sgmDisplay;
 	LevelDisplay lDisplay;
-	StatsDisplay sDisplay;
 
 	public Application(Model model, boolean skipSplashScreen) {
 		super();
@@ -84,8 +83,7 @@ public class Application extends JFrame {
 			currentDisplay = nextDisplay;
 			pack();
 		} else {
-			System.out.println("ERROR: attempted to change to null display");
-			//TODO print error
+			System.err.println("ERROR: attempted to change to null display");
 		}
 	}
 	

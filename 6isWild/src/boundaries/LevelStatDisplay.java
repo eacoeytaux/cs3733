@@ -31,7 +31,7 @@ public class LevelStatDisplay extends AbstractDisplay {
 
 		btnBack = new JButton("Back");
 		
-		//setup();
+		setup();
 	}
 	
 
