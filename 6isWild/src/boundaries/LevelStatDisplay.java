@@ -14,7 +14,8 @@ import entities.Model;
 
 /**
  * displays the statistics of a level
- * @author
+ * @author Jon Sawin
+ * Ethan Coeytaux
  *
  */
 public class LevelStatDisplay extends AbstractDisplay {
@@ -31,7 +32,7 @@ public class LevelStatDisplay extends AbstractDisplay {
 
 		btnBack = new JButton("Back");
 		
-		setup();
+		//setup();
 	}
 	
 

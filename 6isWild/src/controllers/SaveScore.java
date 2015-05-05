@@ -27,6 +27,11 @@ public class SaveScore {
 		this.model = model;
 		System.out.println("called savescore");
 		this.level = level;
+		recordScore();        
+		}
+	
+	public void recordScore()
+	{
 		Info info = level.getInfo();
 		Stat stat = level.getStats();
 		int oldHighScore = stat.getScore();
@@ -76,7 +81,6 @@ public class SaveScore {
 				e.printStackTrace();
 			}
 	        model.getGlobalStats().setStats(stat, level.getLevelType(), level.getLevel());
-	        
 		}
 	}	
 }

@@ -2,6 +2,7 @@ package entities;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
@@ -22,7 +23,7 @@ public class Model {
 	GlobalStats globalStats;
 
 	public Model() {
-
+		
 		System.out.println("puzzpack");
 
 		puzzleLevels = new ArrayList<PuzzleLevel>();
@@ -56,6 +57,8 @@ public class Model {
 
 		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevelTest.txt")));
 
+		
+		loadScores();
 
 		globalStats = new GlobalStats();	
 		for(int i = 0; i < puzzleLevels.size(); i++)
@@ -149,6 +152,30 @@ public class Model {
 			return null;
 		}
 	}
+	
+	public void loadScores(){
+		try
+		{
+			File file = new File("res/Scores.txt");
+			if (!file.exists())
+			{
+				System.out.println("Writing Save File");
+				ArrayList<AbstractLevel> levels= this.getLevels();
+				FileOutputStream fileOut = new FileOutputStream("res/Scores.txt");
+				for(AbstractLevel level : levels)
+				{
+			        fileOut.write((level.getLevelType() + " " + level.getLevel() + " " + 0 + " " + 0 +"\n").getBytes());
+				}
+		        fileOut.close();
+
+			}
+		}
+		catch (Exception e)
+		{
+			System.out.println("error in trying to load scores");
+			e.printStackTrace();
+		}
+	}
 
 	public void setCurrentLevel(AbstractLevel currentLevel){
 		this.currentLevel =currentLevel;
@@ -160,6 +187,37 @@ public class Model {
 
 	public GlobalStats getGlobalStats() {
 		return globalStats;
+	}
+	
+	public ArrayList<AbstractLevel> getLevels(){
+		ArrayList<AbstractLevel> levels = new ArrayList<AbstractLevel>();
+		for(AbstractLevel abs : puzzleLevels)
+		{
+			System.out.println("getting level: " + abs.getLevelType() + " " + abs.getLevel());
+			levels.add(abs);
+		}
+		for(AbstractLevel abs : lightningLevels)
+		{			
+			System.out.println("getting level: " + abs.getLevelType() + " " + abs.getLevel());
+			levels.add(abs);
+		}
+		for(AbstractLevel abs : eliminationLevels)
+		{
+			System.out.println("getting level: " + abs.getLevelType() + " " + abs.getLevel());
+			levels.add(abs);
+		}
+		for(AbstractLevel abs : releaseLevels)
+		{			
+			System.out.println("getting level: " + abs.getLevelType() + " " + abs.getLevel());
+			levels.add(abs);
+		}
+		for(AbstractLevel abs : levels)
+		{			
+			System.out.println("getLevels returns: " + abs.getLevelType() + " " + abs.getLevel());
+		}
+		
+		
+		return levels;
 	}
 
 }
