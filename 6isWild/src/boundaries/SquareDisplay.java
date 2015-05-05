@@ -5,6 +5,7 @@ import java.awt.Color;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
+import javax.swing.border.CompoundBorder;
 
 import entities.Model;
 import entities.Square;
@@ -49,18 +50,23 @@ public class SquareDisplay extends AbstractDisplay {
 		} else if (this.display == null) {
 			this.setBackground(TileDisplay.getColor(square.getTile().getValue()));
 			this.display = new TileDisplay(model, this.square.getTile());
-		} else if(square.isEliminated()){
-			this.setBackground(Color.GRAY);
-			this.display.setup();
 		} else {
 			this.setBackground(TileDisplay.getColor(square.getTile().getValue()));
 			this.display.setup();
 		}
 		
+		
+		
 		if(square.isSelected()){
 			this.setBorder(BorderFactory.createLineBorder(Color.WHITE, 3));
-		}
-		else{
+		} else if(square.isEliminated()){
+			System.out.println("eliminated");
+			this.setBorder(new CompoundBorder( 
+					BorderFactory.createLineBorder(Color.WHITE, 1),
+					BorderFactory.createLineBorder(Color.BLACK, 4)));
+			
+			this.display.setup();
+		}else{
 			this.setBorder(BorderFactory.createLineBorder(Color.BLACK));
 		}
 
