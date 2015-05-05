@@ -9,6 +9,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controllers.BackController;
 import controllers.SelectLevelButtonController;
+import controllers.SelectNullLevelButtonController;
 import entities.Game;
 import entities.Model;
 
@@ -91,7 +92,9 @@ public class SelectLevelDisplay extends AbstractDisplay {
 			LevelDisplay lvlDisplay = new LevelDisplay(model, model.getLevel(gameMode, i));
 			lvlDisplay.setBackController(new BackController(application, this));
 			btnLvl[i].addActionListener(new SelectLevelButtonController(model, application, lvlDisplay));
-
+		}
+		for (int i = 19; i >= count; i--) {
+			btnLvl[i].addActionListener(new SelectNullLevelButtonController());
 		}
 	}
 
