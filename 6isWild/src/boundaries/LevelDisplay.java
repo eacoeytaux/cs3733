@@ -38,7 +38,7 @@ public class LevelDisplay extends AbstractDisplay {
 
 	Thread timerThread;
 	boolean timerRunning;
-	
+
 	AbstractLevel level;
 	Board board;
 	int gameMode;
@@ -94,9 +94,9 @@ public class LevelDisplay extends AbstractDisplay {
 
 		score = level.getInfo().getScore();	
 		lblScore = new JLabel("Score: " + score);
-		
+
 		moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
-		
+
 		if (gameMode == Game.LIGHTNING_ID) {
 			lblMoves = new JLabel("Time: " + moves);
 		} else {
@@ -132,71 +132,71 @@ public class LevelDisplay extends AbstractDisplay {
 		lblScore.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 
 		lblMoves.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
-		
+
 		lblStars = new JLabel("Stars: " + stars);
 		lblStars.setFont(new Font("Lucida Grande", Font.PLAIN, 20));
 
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
-			groupLayout.createParallelGroup(Alignment.TRAILING)
+				groupLayout.createParallelGroup(Alignment.TRAILING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(panel, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE)
-					.addGap(18)
-					.addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
-					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-						.addGroup(groupLayout.createSequentialGroup()
-							.addPreferredGap(ComponentPlacement.RELATED)
-							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+						.addContainerGap()
+						.addComponent(panel, GroupLayout.PREFERRED_SIZE, 560, GroupLayout.PREFERRED_SIZE)
+						.addGap(18)
+						.addComponent(progressBar, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE, GroupLayout.PREFERRED_SIZE)
+						.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
 								.addGroup(groupLayout.createSequentialGroup()
-									.addGap(34)
-									.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
-										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
-											.addComponent(btnSwap, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-											.addComponent(btnShuffle, GroupLayout.PREFERRED_SIZE, 96, Short.MAX_VALUE))
-										.addComponent(btnRemove, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
-										.addGroup(groupLayout.createSequentialGroup()
-											.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-												.addComponent(lblScore)
-												.addComponent(lblMovesTimeLeft)
-												.addComponent(lblMoves)
-												.addComponent(lblStars, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE))
-											.addGap(5))))
-								.addComponent(lblGameMode)))
-						.addGroup(groupLayout.createSequentialGroup()
-							.addGap(106)
-							.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)))
-					.addGap(755))
-		);
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+												.addGroup(groupLayout.createSequentialGroup()
+														.addGap(34)
+														.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING)
+																.addGroup(groupLayout.createParallelGroup(Alignment.LEADING, false)
+																		.addComponent(btnSwap, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+																		.addComponent(btnShuffle, GroupLayout.PREFERRED_SIZE, 96, Short.MAX_VALUE))
+																		.addComponent(btnRemove, GroupLayout.PREFERRED_SIZE, 96, GroupLayout.PREFERRED_SIZE)
+																		.addGroup(groupLayout.createSequentialGroup()
+																				.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
+																						.addComponent(lblScore)
+																						.addComponent(lblMovesTimeLeft)
+																						.addComponent(lblMoves)
+																						.addComponent(lblStars, GroupLayout.PREFERRED_SIZE, 77, GroupLayout.PREFERRED_SIZE))
+																						.addGap(5))))
+																						.addComponent(lblGameMode)))
+																						.addGroup(groupLayout.createSequentialGroup()
+																								.addGap(106)
+																								.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 75, GroupLayout.PREFERRED_SIZE)))
+																								.addGap(755))
+				);
 		groupLayout.setVerticalGroup(
-			groupLayout.createParallelGroup(Alignment.LEADING)
+				groupLayout.createParallelGroup(Alignment.LEADING)
 				.addGroup(groupLayout.createSequentialGroup()
-					.addGap(12)
-					.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
-						.addComponent(progressBar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-						.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE))
-					.addContainerGap(28, Short.MAX_VALUE))
-				.addGroup(groupLayout.createSequentialGroup()
-					.addContainerGap()
-					.addComponent(lblGameMode)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(lblMovesTimeLeft)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnSwap)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnShuffle)
-					.addPreferredGap(ComponentPlacement.RELATED)
-					.addComponent(btnRemove)
-					.addGap(93)
-					.addComponent(lblStars, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblScore)
-					.addPreferredGap(ComponentPlacement.UNRELATED)
-					.addComponent(lblMoves)
-					.addPreferredGap(ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
-					.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
-					.addGap(15))
-		);
+						.addGap(12)
+						.addGroup(groupLayout.createParallelGroup(Alignment.TRAILING, false)
+								.addComponent(progressBar, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+								.addComponent(panel, Alignment.LEADING, GroupLayout.DEFAULT_SIZE, 560, Short.MAX_VALUE))
+								.addContainerGap(28, Short.MAX_VALUE))
+								.addGroup(groupLayout.createSequentialGroup()
+										.addContainerGap()
+										.addComponent(lblGameMode)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(lblMovesTimeLeft)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(btnSwap)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(btnShuffle)
+										.addPreferredGap(ComponentPlacement.RELATED)
+										.addComponent(btnRemove)
+										.addGap(93)
+										.addComponent(lblStars, GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
+										.addPreferredGap(ComponentPlacement.UNRELATED)
+										.addComponent(lblScore)
+										.addPreferredGap(ComponentPlacement.UNRELATED)
+										.addComponent(lblMoves)
+										.addPreferredGap(ComponentPlacement.RELATED, 234, Short.MAX_VALUE)
+										.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE)
+										.addGap(15))
+				);
 		setLayout(groupLayout);
 	}
 
@@ -246,7 +246,6 @@ public class LevelDisplay extends AbstractDisplay {
 		timerRunning = false;
 		if (showDisplay){ 
 			gameOver(true);
-			new SaveScore(model.getCurrentLevel(), model);
 		}
 	}
 
@@ -284,25 +283,30 @@ public class LevelDisplay extends AbstractDisplay {
 	public void startLevel() {
 		if (gameMode == Game.LIGHTNING_ID) startCountdown();
 	}
-	
+
 	public void refreshBoardDisplay() {
 		panel = new BoardDisplay(model, this.board, this);
 	}
 
-	public void gameOver(boolean validWin) {
+	public void gameOver(boolean requirementsMet) {
 		boolean won = true;
 		String message;
-		
-		if (!validWin) {
+
+		if (!requirementsMet) {
+			won = false;
 			message = "You failed to meet the level requirements";
 		} else if (score < level.getStarRequirements()[0]) {
 			won = false;
 			message = "You didn't get any stars.";
-		} else if (score < level.getStarRequirements()[1]) {
-			message = "You got 1 star!";
-		} else if (score < level.getStarRequirements()[2]) {
-			message = "You got 2 starts!!";
-		} else message = "You got 3 stars!!!";
+		} else {
+			new SaveScore(model.getCurrentLevel(), model);
+
+			if (score < level.getStarRequirements()[1]) {
+				message = "You got 1 star!";
+			} else if (score < level.getStarRequirements()[2]) {
+				message = "You got 2 starts!!";
+			} else message = "You got 3 stars!!!";
+		}
 
 		JOptionPane.showMessageDialog(null, message, "Game Over", JOptionPane.PLAIN_MESSAGE);
 
@@ -311,15 +315,15 @@ public class LevelDisplay extends AbstractDisplay {
 		}
 		btnBack.doClick();
 	}
-	
+
 	public JButton getBtnRemove() {
 		return btnRemove;
 	}
-	
+
 	public JButton getBtnShuffle() {
 		return btnShuffle;
 	}
-	
+
 	public JButton getBtnSwap() {
 		return btnSwap;
 	}
