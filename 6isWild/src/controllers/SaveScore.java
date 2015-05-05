@@ -17,7 +17,7 @@ import java.io.FileReader;
 public class SaveScore {
 	AbstractLevel level;
 	Model model;
-	
+
 	/**
 	 * saves scores and updates stars
 	 * @param level
@@ -28,10 +28,11 @@ public class SaveScore {
 		System.out.println("called savescore");
 		this.level = level;
 		recordScore();        
-		}
-	
+	}
+
 	public void recordScore()
 	{
+		Boolean hasSetScore = false;
 		Info info = level.getInfo();
 		Stat stat = level.getStats();
 		int oldHighScore = stat.getScore();
@@ -40,7 +41,7 @@ public class SaveScore {
 		{
 			System.out.println("New High score");
 			stat.setScore(info.getScore());   //assign the level's score as the new high score
-			
+
 			/*
 			 * Check how many stars the player has earned, and assign that in the stats
 			 */
@@ -56,31 +57,40 @@ public class SaveScore {
 			else{
 				return;
 			}
-	        try {
-	        	System.out.println("writing high score");
+			try {
+				System.out.println("writing high score");
 				BufferedReader file = new BufferedReader(new FileReader("res/Scores.txt"));
 				String input = "";
 				String line;
+
+				while ((line = file.readLine()) != null) input += line + '\n';
+
+				file.close();
+
+				System.out.println(input);
 				
-		        while ((line = file.readLine()) != null) input += line + '\n';
-		        
-		        file.close();
-		        
-		        System.out.println(input);
-		        
-		        input = input.replace(level.getLevelType() + " " + level.getLevel() + " " + oldHighScore + " " + oldHighStars, level.getLevelType() + " " + level.getLevel() + " " + stat.getScore() + " " + stat.getStars());
-		        
-		        System.out.println("----------------------------------"  + '\n' + input);
-		        
-		        FileOutputStream fileOut = new FileOutputStream("res/Scores.txt");
-		        fileOut.write(input.getBytes());
-		        fileOut.close();
-		        
+
+
+				if(input.contains(level.getLevelType() + " " + level.getLevel())) 
+				{
+					input = input.replace(level.getLevelType() + " " + level.getLevel() + " " + oldHighScore + " " + oldHighStars, level.getLevelType() + " " + level.getLevel() + " " + stat.getScore() + " " + stat.getStars());
+				}
+
+				System.out.println("----------------------------------"  + '\n' + input);
+				
+				FileOutputStream fileOut = new FileOutputStream("res/Scores.txt");
+				fileOut.write(input.getBytes());
+				if(!input.contains(level.getLevelType() + " " + level.getLevel())) 
+				{
+					fileOut.write((level.getLevelType() + " " + level.getLevel() + " " + stat.getScore() + " " + stat.getStars() + "\n").getBytes());
+				}
+				fileOut.close();
+
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	        model.getGlobalStats().setStats(stat, level.getLevelType(), level.getLevel(), false);
+			model.getGlobalStats().setStats(stat, level.getLevelType(), level.getLevel(), false);
 		}
 	}	
 }

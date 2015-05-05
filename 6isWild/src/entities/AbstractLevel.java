@@ -40,7 +40,6 @@ public abstract class AbstractLevel {
 		try
 		{
 			Scanner s = new Scanner(file);
-			System.out.println("initialized scanner");
 			while(s.hasNextLine())
 			{
 				if(s.nextInt() == this.getLevelType() && s.nextInt() == this.getLevel()){
