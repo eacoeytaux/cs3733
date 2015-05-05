@@ -5,17 +5,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
-import entities.AbstractBuilderMove;
-import entities.Blueprint;
-import entities.Builder;
-import entities.Model;
-import entities.SquareBuilderMove;
 import junit.framework.TestCase;
 import boundaries.BlueprintDisplay;
 import boundaries.BuilderApplication;
 import boundaries.BuilderBoardDisplay;
 import boundaries.BuilderSquareDisplay;
-import boundaries.SquareDisplay;
 
 public class TestBuilder extends TestCase {
 
@@ -64,7 +58,7 @@ public class TestBuilder extends TestCase {
 			builder.setBlueprint(null);
 		//	assertEquals(builder.getBlueprint(), bp);
 			
-			AbstractBuilderMove move = new SquareBuilderMove(bsq1);
+			IBuilderMove move = new SquareBuilderMove(bsq1);
 			move.doMove();
 		//	assertTrue(builder.moveStack.contains(move));
 			
