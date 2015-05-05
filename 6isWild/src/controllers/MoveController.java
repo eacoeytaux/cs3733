@@ -7,9 +7,7 @@ import boundaries.BoardDisplay;
 import boundaries.SquareDisplay;
 import entities.Board;
 import entities.Game;
-import entities.LightningLevel;
 import entities.Model;
-import entities.PuzzleLevel;
 import entities.Square;
 
 /**

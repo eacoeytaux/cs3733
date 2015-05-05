@@ -16,7 +16,6 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
 
 import controllers.BackController;
-import controllers.CompleteLightning;
 import controllers.RemoveButtonController;
 import controllers.SaveScore;
 import controllers.ShuffleButtonController;
@@ -24,7 +23,6 @@ import controllers.SwapButtonController;
 import entities.AbstractLevel;
 import entities.Board;
 import entities.Game;
-import entities.LightningLevel;
 import entities.Model;
 
 /**
