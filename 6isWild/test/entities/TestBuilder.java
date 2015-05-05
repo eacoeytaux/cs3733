@@ -5,6 +5,11 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
+import entities.IBuilderMove;
+import entities.Blueprint;
+import entities.Builder;
+import entities.Model;
+import entities.SquareBuilderMove;
 import junit.framework.TestCase;
 import boundaries.BlueprintDisplay;
 import boundaries.BuilderApplication;
