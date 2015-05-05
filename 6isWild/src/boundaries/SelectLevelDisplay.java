@@ -76,9 +76,7 @@ public class SelectLevelDisplay extends AbstractDisplay {
 		btnLvl[18] = new JButton("19");
 		btnLvl[19] = new JButton("20");
 
-		for (int i = 1; i < 20; i++) {
-			if (!model.getGlobalStats().levelCompleted(gameMode, i - 1)) btnLvl[i].setEnabled(false);
-		}
+		
 
 		initControllers();
 
@@ -101,6 +99,10 @@ public class SelectLevelDisplay extends AbstractDisplay {
 	 */
 	@Override
 	public void setup() {
+		for (int i = 1; i < 20; i++) {
+			if (!model.getGlobalStats().levelCompleted(gameMode, i - 1)) btnLvl[i].setEnabled(false);
+		}
+		
 		JLabel lblSelectALevel = new JLabel("SELECT A LEVEL!");
 		lblSelectALevel.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
 
