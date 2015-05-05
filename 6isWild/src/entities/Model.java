@@ -71,17 +71,17 @@ public class Model {
 		{
 			globalStats.setStats(releaseLevels.get(i).getStats(), Game.RELEASE_ID, releaseLevels.get(i).getLevel());
 		}
-		
+
 	}
 
 	public void loadLevels(String fileLoc) {
 		int[] index = {0, 0, 0, 0};
-		
+
 		File folder;
-		
+
 		String os = System.getProperty("os.name");
 		boolean isWindows = (os.charAt(0) == 'W');
-		
+
 		//reading file is different for windows vs mac
 		if (isWindows) {
 			fileLoc = new File("").getAbsolutePath() + "/bin/" + fileLoc;
@@ -90,8 +90,8 @@ public class Model {
 			ClassLoader classLoader = getClass().getClassLoader();
 			folder = new File(classLoader.getResource(fileLoc).getFile());
 		}
-		
-		
+
+
 		for (File file : folder.listFiles()) {
 			if (!file.isDirectory()) {
 				if (file.getName().equals(".DS_Store")) continue;
@@ -247,6 +247,21 @@ public class Model {
 		
 		
 		return levels;
+	}
+
+	public int getLevelCount(int gameMode) {
+		switch (gameMode) {
+		case Game.PUZZLE_ID:
+			return puzzleLevels.size();
+		case Game.LIGHTNING_ID:
+			return lightningLevels.size();
+		case Game.ELIMINATION_ID:
+			return eliminationLevels.size();
+		case Game.RELEASE_ID:
+			return releaseLevels.size();
+		default:
+			return 0;
+		}
 	}
 
 }

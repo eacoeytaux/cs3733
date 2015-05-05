@@ -86,7 +86,8 @@ public class SelectLevelDisplay extends AbstractDisplay {
 	 * initialize level display, then adds a back button and  adds action listener to that back button
 	 */
 	public void initControllers() {
-		for (int i = 0; i < 1; i++) {
+		int count = model.getLevelCount(gameMode);
+		for (int i = 0; i < count; i++) {
 			LevelDisplay lvlDisplay = new LevelDisplay(model, model.getLevel(gameMode, i));
 			lvlDisplay.setBackController(new BackController(application, this));
 			btnLvl[i].addActionListener(new SelectLevelButtonController(model, application, lvlDisplay));
@@ -100,7 +101,8 @@ public class SelectLevelDisplay extends AbstractDisplay {
 	@Override
 	public void setup() {
 		for (int i = 1; i < 20; i++) {
-			if (!model.getGlobalStats().levelCompleted(gameMode, i - 1)) btnLvl[i].setEnabled(false);
+			if (model.getGlobalStats().levelCompleted(gameMode, i - 1)) btnLvl[i].setEnabled(true);
+			else btnLvl[i].setEnabled(false);
 		}
 		
 		JLabel lblSelectALevel = new JLabel("SELECT A LEVEL!");
