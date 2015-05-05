@@ -8,6 +8,7 @@ import javax.swing.JLabel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 
 import controllers.BackController;
+import controllers.ResetScoreController;
 import entities.Game;
 import entities.GlobalStats;
 import entities.Model;
@@ -24,6 +25,7 @@ public class LevelStatDisplay extends AbstractDisplay {
 	Application application;
 	GlobalStats globalStats;
 	JButton btnBack;
+	JButton btnReset;
 	
 	public LevelStatDisplay(Model model, Application application) {
 		super(model);
@@ -31,8 +33,10 @@ public class LevelStatDisplay extends AbstractDisplay {
 		this.globalStats = model.getGlobalStats();
 
 		btnBack = new JButton("Back");
+		btnReset = new JButton("Reset Progess");
+		btnReset.addActionListener(new ResetScoreController(model, this));
 		
-		setup();
+		//setup();
 	}
 	
 
@@ -43,7 +47,7 @@ public class LevelStatDisplay extends AbstractDisplay {
 	 */
 	@Override
 	public void setup() {
-	
+		this.removeAll();
 		
 		JLabel lblStats = new JLabel("LEVEL SCORES!");
 		lblStats.setFont(new Font("Lucida Grande", Font.PLAIN, 45));
@@ -139,8 +143,6 @@ public class LevelStatDisplay extends AbstractDisplay {
 		JLabel label_77 = new JLabel(globalStats.getStats(Game.RELEASE_ID, 17).getScore() + ", " + globalStats.getStats(Game.RELEASE_ID, 17).getStars() + " Stars");
 		JLabel label_78 = new JLabel(globalStats.getStats(Game.RELEASE_ID, 18).getScore() + ", " + globalStats.getStats(Game.RELEASE_ID, 18).getStars() + " Stars");
 		JLabel label_79 = new JLabel(globalStats.getStats(Game.RELEASE_ID, 19).getScore() + ", " + globalStats.getStats(Game.RELEASE_ID, 19).getStars() + " Stars");
-		
-		JButton btnNewButton = new JButton("New button");
 		
 		GroupLayout groupLayout = new GroupLayout(this);
 		groupLayout.setHorizontalGroup(
@@ -251,7 +253,7 @@ public class LevelStatDisplay extends AbstractDisplay {
 								.addComponent(label_60, GroupLayout.PREFERRED_SIZE, 116, GroupLayout.PREFERRED_SIZE))
 							.addGap(32))
 						.addGroup(groupLayout.createSequentialGroup()
-							.addComponent(btnNewButton)
+							.addComponent(btnReset)
 							.addContainerGap())))
 		);
 		groupLayout.setVerticalGroup(
@@ -265,7 +267,7 @@ public class LevelStatDisplay extends AbstractDisplay {
 						.addGroup(groupLayout.createSequentialGroup()
 							.addPreferredGap(ComponentPlacement.RELATED)
 							.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)
-								.addComponent(btnNewButton, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
+								.addComponent(btnReset, GroupLayout.PREFERRED_SIZE, 33, GroupLayout.PREFERRED_SIZE)
 								.addComponent(btnBack, GroupLayout.PREFERRED_SIZE, 42, GroupLayout.PREFERRED_SIZE))))
 					.addGap(18)
 					.addGroup(groupLayout.createParallelGroup(Alignment.LEADING)

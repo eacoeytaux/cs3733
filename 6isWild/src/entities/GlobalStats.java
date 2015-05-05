@@ -11,12 +11,12 @@ import java.io.Serializable;
 
 public class GlobalStats implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	Stat puzzleLevels[];
 	Stat lightningLevels[];
 	Stat eliminationLevels[];
 	Stat releaseLevels[];
-	
+
 	public GlobalStats() {
 		puzzleLevels = new Stat[20];
 		lightningLevels = new Stat[20];
@@ -30,15 +30,22 @@ public class GlobalStats implements Serializable {
 			releaseLevels[i] = new Stat(0, 0);
 		}
 	}
-	
-	public void setStats(Stat stats, int type, int id)
+
+	public void setStats(Stat stats, int type, int id, boolean override)
 	{
-		if (type == Game.PUZZLE_ID) puzzleLevels[id].update(stats.score, stats.stars);
-		if (type == Game.LIGHTNING_ID) lightningLevels[id].update(stats.score, stats.stars);
-		if (type == Game.ELIMINATION_ID) eliminationLevels[id].update(stats.score, stats.stars);
-		if (type == Game.RELEASE_ID) releaseLevels[id].update(stats.score, stats.stars);
+		if (!override) {
+			if (type == Game.PUZZLE_ID) puzzleLevels[id].update(stats.score, stats.stars);
+			if (type == Game.LIGHTNING_ID) lightningLevels[id].update(stats.score, stats.stars);
+			if (type == Game.ELIMINATION_ID) eliminationLevels[id].update(stats.score, stats.stars);
+			if (type == Game.RELEASE_ID) releaseLevels[id].update(stats.score, stats.stars);
+		} else {
+			if (type == Game.PUZZLE_ID) puzzleLevels[id] = new Stat(stats.score, stats.stars);
+			if (type == Game.LIGHTNING_ID) lightningLevels[id] = new Stat(stats.score, stats.stars);
+			if (type == Game.ELIMINATION_ID) eliminationLevels[id] = new Stat(stats.score, stats.stars);
+			if (type == Game.RELEASE_ID) releaseLevels[id] = new Stat(stats.score, stats.stars);
+		}
 	}
-	
+
 	public boolean levelCompleted(int type, int id) {
 		if (type == Game.PUZZLE_ID) return puzzleLevels[id].completed();
 		if (type == Game.LIGHTNING_ID) return lightningLevels[id].completed();
@@ -46,7 +53,7 @@ public class GlobalStats implements Serializable {
 		if (type == Game.RELEASE_ID) return releaseLevels[id].completed();
 		else return false;
 	}
-	
+
 	public Stat getStats(int type, int id)
 	{
 		if (type == Game.PUZZLE_ID) return puzzleLevels[id];

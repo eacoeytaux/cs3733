@@ -80,7 +80,7 @@ public class SaveScore {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	        model.getGlobalStats().setStats(stat, level.getLevelType(), level.getLevel());
+	        model.getGlobalStats().setStats(stat, level.getLevelType(), level.getLevel(), false);
 		}
 	}	
 }

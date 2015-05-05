@@ -57,19 +57,19 @@ public class Model {
 		globalStats = new GlobalStats();	
 		for(int i = 0; i < puzzleLevels.size(); i++)
 		{
-			globalStats.setStats(puzzleLevels.get(i).getStats(), Game.PUZZLE_ID, puzzleLevels.get(i).getLevel());
+			globalStats.setStats(puzzleLevels.get(i).getStats(), Game.PUZZLE_ID, puzzleLevels.get(i).getLevel(), false);
 		}
 		for(int i = 0; i < lightningLevels.size(); i++)
 		{
-			globalStats.setStats(lightningLevels.get(i).getStats(), Game.LIGHTNING_ID, lightningLevels.get(i).getLevel());
+			globalStats.setStats(lightningLevels.get(i).getStats(), Game.LIGHTNING_ID, lightningLevels.get(i).getLevel(), false);
 		}
 		for(int i = 0; i < eliminationLevels.size(); i++)
 		{
-			globalStats.setStats(eliminationLevels.get(i).getStats(), Game.ELIMINATION_ID, eliminationLevels.get(i).getLevel());
+			globalStats.setStats(eliminationLevels.get(i).getStats(), Game.ELIMINATION_ID, eliminationLevels.get(i).getLevel(), false);
 		}
 		for(int i = 0; i < releaseLevels.size(); i++)
 		{
-			globalStats.setStats(releaseLevels.get(i).getStats(), Game.RELEASE_ID, releaseLevels.get(i).getLevel());
+			globalStats.setStats(releaseLevels.get(i).getStats(), Game.RELEASE_ID, releaseLevels.get(i).getLevel(), false);
 		}
 
 	}
