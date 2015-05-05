@@ -5,11 +5,12 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
+import entities.AbstractBuilderMove;
 import entities.Blueprint;
 import entities.Builder;
 import entities.Model;
+import entities.SquareBuilderMove;
 import junit.framework.TestCase;
-
 import boundaries.BlueprintDisplay;
 import boundaries.BuilderApplication;
 import boundaries.BuilderBoardDisplay;
@@ -35,24 +36,43 @@ public class TestBuilder extends TestCase {
 			BuilderApplication bapp = builder.getBuilderApplication();
 			BlueprintDisplay bd = bapp.getDisplay();	
 			BuilderBoardDisplay bbd = bd.getBoardDisplay();
-			Model m = new Model();
+//			Model m = new Model();
 						
-			assertTrue(builder.getBlueprint() == null);
+			assertTrue(builder.getBlueprint() != null);
+			
+			//Tests if a move can be pushed to the builder
 			BuilderSquareDisplay bsq1 = bbd.getSquareDisplay(0, 0);
 			BuilderSquareDisplay bsq2 = bbd.getSquareDisplay(1, 0);
 			BuilderSquareDisplay bsq3 = bbd.getSquareDisplay(2, 0);
 			
-			bsq1.getMouseListeners()[0].mousePressed(new MouseEvent(bsq1.getParent(), MouseEvent.MOUSE_PRESSED,
+			bsq1.getMouseListeners()[0].mouseClicked(new MouseEvent(bsq1.getParent(), MouseEvent.MOUSE_CLICKED,
 					System.currentTimeMillis(), 0, 0, 0, 0, false));
-			bsq2.getMouseListeners()[0].mousePressed(new MouseEvent(bsq2.getParent(), MouseEvent.MOUSE_PRESSED,
+			bsq2.getMouseListeners()[0].mouseClicked(new MouseEvent(bsq2.getParent(), MouseEvent.MOUSE_CLICKED,
 					System.currentTimeMillis(), 0, 0, 0, 0, false));
-			bsq3.getMouseListeners()[0].mousePressed(new MouseEvent(bsq3.getParent(), MouseEvent.MOUSE_PRESSED,
+			bsq3.getMouseListeners()[0].mouseClicked(new MouseEvent(bsq3.getParent(), MouseEvent.MOUSE_CLICKED,
 					System.currentTimeMillis(), 0, 0, 0, 0, false));
 			
 			Blueprint bp = builder.getBlueprint();
 			Blueprint test = loadTestBp();
 			assertTrue(bp == test);
 			
+			builder.setBlueprint(bp);
+			assertEquals(builder.getBlueprint(), bp);
+			
+			//Makes sure the builder can't receive a null blueprint
+			builder.setBlueprint(null);
+			assertEquals(builder.getBlueprint(), bp);
+			
+			AbstractBuilderMove move = new SquareBuilderMove(bsq1);
+			move.doMove();
+			assertTrue(builder.moveStack.contains(move));
+			
+			assertEquals(builder.popMove(), move);
+			
+			builder.pushRedo(move);
+			assertTrue(builder.redoStack.contains(move));
+//			assertTrue(builder.setRedoEnabled;)
+			assertEquals(builder.popRedo(), move);			
 						
 		}
 		

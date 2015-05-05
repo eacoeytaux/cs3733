@@ -11,10 +11,10 @@ import boundaries.BuilderApplication;
  *
  */
 public class Builder {
-	Blueprint blueprint;
-	BuilderApplication builderApplication;
-	Stack<AbstractBuilderMove> moveStack = new Stack<AbstractBuilderMove>(); //stack of moves performed
-	Stack<AbstractBuilderMove> redoStack = new Stack<AbstractBuilderMove>(); //stack of moves undone.  used for redo
+	public Blueprint blueprint;
+	public BuilderApplication builderApplication;
+	public Stack<AbstractBuilderMove> moveStack = new Stack<AbstractBuilderMove>(); //stack of moves performed
+	public Stack<AbstractBuilderMove> redoStack = new Stack<AbstractBuilderMove>(); //stack of moves undone.  used for redo
 	
 	
 	public Builder(boolean skipSplashScreen) {
@@ -59,6 +59,10 @@ public class Builder {
 	}
 	
 	public void setBlueprint(Blueprint newBlueprint){
+		if(newBlueprint == null){
+			System.out.println("Builder::setBlueprint - Cannot accept null input");
+			return;
+		}
 		this.blueprint = newBlueprint;
 	}
 	
