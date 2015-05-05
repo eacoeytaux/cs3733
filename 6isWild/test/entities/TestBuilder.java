@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
-import entities.AbstractBuilderMove;
+import entities.IBuilderMove;
 import entities.Blueprint;
 import entities.Builder;
 import entities.Model;
@@ -64,7 +64,7 @@ public class TestBuilder extends TestCase {
 			builder.setBlueprint(null);
 		//	assertEquals(builder.getBlueprint(), bp);
 			
-			AbstractBuilderMove move = new SquareBuilderMove(bsq1);
+			IBuilderMove move = new SquareBuilderMove(bsq1);
 			move.doMove();
 		//	assertTrue(builder.moveStack.contains(move));
 			
