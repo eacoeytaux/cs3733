@@ -74,7 +74,6 @@ public class LevelDisplay extends AbstractDisplay {
 		btnShuffle = new JButton("Shuffles: " + level.getInfo().getShuffles());
 		btnRemove = new JButton("Removes: " + level.getInfo().getRemoves());
 		lblGameMode = new JLabel("");
-		lblScore = new JLabel("Score: " + score);
 
 		initControllers();
 		setup();
@@ -90,6 +89,11 @@ public class LevelDisplay extends AbstractDisplay {
 		//this.moves = level.getInfo().getMovesTotal() - level.getInfo().getMovesPlayed();
 		//this.powerUps = new int[]{level.getInfo().getSwaps(), level.getInfo().getShuffles(), level.getInfo().getRemoves()};
 
+
+		btnSwap.setText("Swaps: " + level.getInfo().getSwaps());
+		btnShuffle.setText("Shuffles: " + level.getInfo().getShuffles());
+		btnRemove.setText("Removes: " + level.getInfo().getRemoves());
+		
 		score = level.getInfo().getScore();	
 		lblScore = new JLabel("Score: " + score);
 		
@@ -221,7 +225,7 @@ public class LevelDisplay extends AbstractDisplay {
 		this.board = level.getBoard();
 		this.board.fillRandom();
 		refreshBoardDisplay();
-		panel.setup();
+		setup();
 	}
 
 	/**
@@ -288,13 +292,11 @@ public class LevelDisplay extends AbstractDisplay {
 	}
 
 	public void gameOver(boolean validWin) {
-		boolean won = true;
 		String message;
 		
 		if (!validWin) {
 			message = "You failed to meet the level requirements";
 		} else if (score < level.getStarRequirements()[0]) {
-			won = false;
 			message = "You didn't get any stars.";
 		} else if (score < level.getStarRequirements()[1]) {
 			message = "You got 1 star!";
@@ -304,9 +306,6 @@ public class LevelDisplay extends AbstractDisplay {
 
 		JOptionPane.showMessageDialog(null, message, "Game Over", JOptionPane.PLAIN_MESSAGE);
 
-		if (won) {
-			//TODO unlock next level
-		}
 		btnBack.doClick();
 	}
 	
