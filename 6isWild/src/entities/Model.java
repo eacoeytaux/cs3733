@@ -27,11 +27,12 @@ public class Model {
 
 		puzzleLevels = new ArrayList<PuzzleLevel>();
 		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 0));
-		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 1));
-		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 2));
-		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 3));
+		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel2.txt"), 1));
+		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel3.txt"), 2));
+		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel4.txt"), 3));
 
 
+		
 		System.out.println("lightning");
 		lightningLevels = new ArrayList<LightningLevel>(); 
 		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 0));
@@ -183,7 +184,7 @@ public class Model {
 	 * @param fileLoc location of the file
 	 * @return Blueprint loaded
 	 */
-	public Blueprint loadBlueprint(String fileLoc) {
+	public  Blueprint loadBlueprint(String fileLoc) {
 		String os = System.getProperty("os.name");
 		if (os.charAt(0) == 'W') return loadBlueprintWindows(fileLoc);
 		else return loadBlueprintMac(fileLoc);
