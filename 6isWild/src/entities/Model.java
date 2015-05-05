@@ -23,20 +23,23 @@ public class Model {
 
 	public Model() {
 
+		System.out.println("puzzpack");
 
 		puzzleLevels = new ArrayList<PuzzleLevel>();
 		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 0));
-		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel2.txt"), 1));
+		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 1));
 		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 2));
 		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 3));
 
 
+		System.out.println("lightning");
 		lightningLevels = new ArrayList<LightningLevel>(); 
 		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 0));
 		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 1));
 		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 2));
 		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 3));
 		
+		System.out.println("liminaterion");
 		
 		eliminationLevels = new ArrayList<EliminationLevel>();
 		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt"), 0));
@@ -72,6 +75,108 @@ public class Model {
 		}
 	}
 
+		/*
+		//rest is filler level
+		Square[][] fillerSquares = new Square[9][9];
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				fillerSquares[i][j] = new Square(new Tile(j % 5 +1, i % 5 + 1), false, false);
+				fillerSquares[i][j].setRowCol(j % 5 +1, i % 5 +1);
+			}
+		}
+		Board fillerBoard = new Board(fillerSquares, new int[]{3,3,3,3,3,3}, new int[]{3,3,3});
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				fillerSquares[i][j].setParentBoard(fillerBoard);
+			}
+		}
+
+		Blueprint fillerPuzzleBlueprint = new Blueprint(fillerBoard);
+		fillerPuzzleBlueprint.setValues(Game.PUZZLE_ID, 2, 2, 2, 2, new int[]{3,3,3}, new int[]{3,3,3,3,3,3}, new int[]{3,3,3});
+		Blueprint fillerLightningBlueprint = new Blueprint(fillerBoard);
+		fillerLightningBlueprint.setValues(Game.LIGHTNING_ID, 2, 2, 2, 10, new int[]{3,3,3}, new int[]{3,3,3,3,3,3}, new int[]{3,3,3});
+		Blueprint fillerEliminationBlueprint = new Blueprint(fillerBoard);
+		fillerEliminationBlueprint.setValues(Game.ELIMINATION_ID, 2, 2, 2, 10, new int[]{3,3,3}, new int[]{3,3,3,3,3,3}, new int[]{3,3,3});
+		Blueprint fillerReleaseBlueprint = new Blueprint(fillerBoard);
+		fillerReleaseBlueprint.setValues(Game.RELEASE_ID, 2, 2, 2, 10, new int[]{3,3,3}, new int[]{3,3,3,3,3,3}, new int[]{3,3,3});
+		PuzzleLevel fillerPuzzleLevel1 = new PuzzleLevel(fillerPuzzleBlueprint, 0);
+		PuzzleLevel fillerPuzzleLevel2 = new PuzzleLevel(fillerPuzzleBlueprint, 1);
+		PuzzleLevel fillerPuzzleLevel3 = new PuzzleLevel(fillerPuzzleBlueprint, 2);
+		PuzzleLevel fillerPuzzleLevel4 = new PuzzleLevel(fillerPuzzleBlueprint, 3);
+		LightningLevel fillerLightningLevel1 = new LightningLevel(fillerLightningBlueprint, 0);
+		LightningLevel fillerLightningLevel2 = new LightningLevel(fillerLightningBlueprint, 1);
+		LightningLevel fillerLightningLevel3 = new LightningLevel(fillerLightningBlueprint, 2);
+		LightningLevel fillerLightningLevel4 = new LightningLevel(fillerLightningBlueprint, 3);
+		EliminationLevel fillerEliminationLevel1 = new EliminationLevel(fillerEliminationBlueprint, 0);
+		EliminationLevel fillerEliminationLevel2 = new EliminationLevel(fillerEliminationBlueprint, 1);
+		EliminationLevel fillerEliminationLevel3 = new EliminationLevel(fillerEliminationBlueprint, 2);
+		EliminationLevel fillerEliminationLevel4 = new EliminationLevel(fillerEliminationBlueprint, 3);
+		ReleaseLevel fillerReleaseLevel1 = new ReleaseLevel(fillerReleaseBlueprint, 0);
+		ReleaseLevel fillerReleaseLevel2 = new ReleaseLevel(fillerReleaseBlueprint, 1);
+		ReleaseLevel fillerReleaseLevel3 = new ReleaseLevel(fillerReleaseBlueprint, 2);
+		ReleaseLevel fillerReleaseLevel4 = new ReleaseLevel(fillerReleaseBlueprint, 3);
+
+
+		puzzleLevels.add(fillerPuzzleLevel1);
+		puzzleLevels.add(fillerPuzzleLevel2);
+		puzzleLevels.add(fillerPuzzleLevel3);
+		puzzleLevels.add(fillerPuzzleLevel4);
+		lightningLevels.add(fillerLightningLevel1);
+		lightningLevels.add(fillerLightningLevel2);
+		lightningLevels.add(fillerLightningLevel3);
+		lightningLevels.add(fillerLightningLevel4);
+		eliminationLevels.add(fillerEliminationLevel1);
+		eliminationLevels.add(fillerEliminationLevel2);
+		eliminationLevels.add(fillerEliminationLevel3);
+		eliminationLevels.add(fillerEliminationLevel4);
+		releaseLevels.add(fillerReleaseLevel1);
+		releaseLevels.add(fillerReleaseLevel2);
+		releaseLevels.add(fillerReleaseLevel3);
+		releaseLevels.add(fillerReleaseLevel4);
+		
+		
+		////////////////////////////////////////////////
+
+		//rest is filler level
+		fillerSquares = new Square[9][9];
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				fillerSquares[i][j] = new Square(new Tile(j % 5 +1, i % 5 + 1), false, false);
+				fillerSquares[i][j].setRowCol(j % 5 +1, i % 5 +1);
+			}
+		}
+		fillerBoard = new Board(fillerSquares, new int[]{3,3,3,3,3,3}, new int[]{3,3,3});
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				fillerSquares[i][j].setParentBoard(fillerBoard);
+			}
+		}
+
+		
+		//EliminationLevel fillerEliminationLevel = new EliminationLevel(fillerPuzzleBlueprint);
+		//eliminationLevels.add(fillerEliminationLevel);
+
+
+		fillerSquares = new Square[9][9];
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				fillerSquares[i][j] = new Square(new Tile(j % 5 +1, i % 5 + 1), false, false);
+				fillerSquares[i][j].setRowCol(j % 5 +1, i % 5 +1);
+			}
+		}
+		fillerBoard = new Board(fillerSquares, new int[]{3,3,3,3,3,3}, new int[]{3,3,3});
+		for(int i = 0; i < 9; i++){
+			for(int j = 0; j < 9; j++){
+				fillerSquares[i][j].setParentBoard(fillerBoard);
+			}
+		}
+
+		//ReleaseLevel fillerReleaseLevel = new ReleaseLevel(fillerPuzzleBlueprint);
+		//releaseLevels.add(fillerReleaseLevel);
+
+
+	}
+
 
 	/**
 	 * loads a blueprint from a file location
@@ -91,7 +196,6 @@ public class Model {
 	 */
 	public Blueprint loadBlueprintMac(String fileLoc) {
 		try {
-			System.out.println(fileLoc);
 			//System.out.println(System.getProperty("os.name"));
 			ClassLoader classLoader = getClass().getClassLoader();
 			//System.out.println("attempting to open file name " + fileLoc);

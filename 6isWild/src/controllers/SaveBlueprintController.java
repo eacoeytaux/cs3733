@@ -30,7 +30,6 @@ public class SaveBlueprintController implements ActionListener {
 		//FileNameExtensionFilter filter = new FileNameExtensionFilter("JPG & GIF Images", "jpg", "gif");
 		//chooser.setFileFilter(filter);
 		chooser.setSelectedFile(new File("level.txt"));
-		chooser.setCurrentDirectory(new File("./bin/levels/"));
 
 		try {
 			int returnVal = chooser.showSaveDialog(null);
