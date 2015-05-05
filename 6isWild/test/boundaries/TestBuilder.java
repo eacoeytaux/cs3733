@@ -2,6 +2,8 @@ package boundaries;
 
 import junit.framework.TestCase;
 import entities.Builder;
+import entities.IBuilderMove;
+import entities.SquareBuilderMove;
 
 public class TestBuilder extends TestCase {
 	Builder builder;
@@ -25,5 +27,11 @@ public class TestBuilder extends TestCase {
 		builder.getBuilderApplication().getDisplay().getBoardDisplay().getSquareDisplay(0, 1).changeSquare();
 
 		assertEquals(2, builder.getBuilderApplication().getDisplay().getBoardDisplay().getSquareDisplay(0, 1).getSquare().getTile().getValue());
+
+		BuilderSquareDisplay bsq1 = builder.getBuilderApplication().getDisplay().getBoardDisplay().getSquareDisplay(0, 0);
+		IBuilderMove move = new SquareBuilderMove(bsq1);
+		move.doMove();
+		
+		builder.pushRedo(move);	
 	}
 }
