@@ -53,7 +53,7 @@ public class TestSquareController extends TestCase {
 		sq3.getMouseListeners()[0].mouseReleased(new MouseEvent(sq3.getParent(), MouseEvent.MOUSE_RELEASED, 
 				System.currentTimeMillis(), 0, 0, 0, 0, false));
 		
-		assertTrue(lvlDisplay.getLevel().getInfo().getScore() >= 30);
+
 
 //		assertEquals(5, lvlDisplay.getLevel().getInfo().getRemoves());
 //		lvlDisplay.getBtnRemove().doClick();
@@ -131,6 +131,8 @@ public class TestSquareController extends TestCase {
 		SquareDisplay sq1 = lvlDisplay.getBoardDisplay().getSquareDisplay(0, 0);
 		SquareDisplay sq2 = lvlDisplay.getBoardDisplay().getSquareDisplay(1, 0);
 		SquareDisplay sq3 = lvlDisplay.getBoardDisplay().getSquareDisplay(2, 0);
+		SquareDisplay sq4 = lvlDisplay.getBoardDisplay().getSquareDisplay(0, 1);
+		SquareDisplay sq5 = lvlDisplay.getBoardDisplay().getSquareDisplay(0, 3);
 		
 		sq1.getMouseListeners()[0].mousePressed(new MouseEvent(sq1.getParent(), MouseEvent.MOUSE_PRESSED, 
 				System.currentTimeMillis(), 0, 0, 0, 0, false));
@@ -142,7 +144,29 @@ public class TestSquareController extends TestCase {
 				System.currentTimeMillis(), 0, 0, 0, 0, false));
 		
 		assertTrue(lvlDisplay.getLevel().getInfo().getScore() >= 30);
-
+		
+		lvlDisplay.getBtnSwap().doClick();
+		
+		assertEquals(4, lvlDisplay.getLevel().getInfo().getSwaps());
+		assertTrue(lvlDisplay.getLevel().getBoard().swapMove);
+		
+		sq4.getMouseListeners()[0].mouseClicked(new MouseEvent(sq4.getParent(), MouseEvent.MOUSE_PRESSED, 
+				System.currentTimeMillis(), 0, 0, 0, 0, false));
+		
+		sq5.getMouseListeners()[0].mouseClicked(new MouseEvent(sq5.getParent(), MouseEvent.MOUSE_PRESSED, 
+				System.currentTimeMillis(), 0, 0, 0, 0, false));
+		
+		assertEquals(6, lvlDisplay.getLevel().getBoard().getSquare(0, 1).getTile().getValue());
+		
+		lvlDisplay.getBtnRemove().doClick();
+		assertTrue(lvlDisplay.getLevel().getBoard().removeMove);
+		
+		sq5.getMouseListeners()[0].mouseClicked(new MouseEvent(sq4.getParent(), MouseEvent.MOUSE_PRESSED, 
+				System.currentTimeMillis(), 0, 0, 0, 0, false));
+		
+		assertEquals(5, lvlDisplay.getLevel().getBoard().getSquare(0, 3).getTile().getValue());
+		
+		
 //		assertEquals(5, lvlDisplay.getLevel().getInfo().getRemoves());
 //		lvlDisplay.getBtnRemove().doClick();
 //		assertEquals(4, lvlDisplay.getLevel().getInfo().getRemoves());

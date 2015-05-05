@@ -24,39 +24,33 @@ public class Model {
 
 	public Model() {
 		
-		System.out.println("puzzpack");
-
 		puzzleLevels = new ArrayList<PuzzleLevel>();
-		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 0));
+		//puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 0));
 		//puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel2.txt"), 1));
 		//puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel3.txt"), 2));
 		//puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel4.txt"), 3));
 
-
-		System.out.println("lightning");
 		lightningLevels = new ArrayList<LightningLevel>(); 
-		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 0));
+		//lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 0));
 		//lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel2.txt"), 1));
 		//lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel3.txt"), 2));
 		//lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel4.txt"), 3));
-		
-		System.out.println("elimination");
-		
+
 		eliminationLevels = new ArrayList<EliminationLevel>();
-		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt"), 0));
+		//eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt"), 0));
 		//eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel2.txt"), 1));
 		//eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel3.txt"), 2));
 		//eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel4.txt"), 3));
-
-		System.out.println("release");
 		releaseLevels = new ArrayList<ReleaseLevel>();
-		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel1.txt"), 0));
+		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel1.txt"), 0));
 		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel2.txt"), 1));
 		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel3.txt"), 2));
 		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel4.txt"), 3));
 
 		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevelTest.txt")));
 
+		
+		loadLevels("levels");
 		
 		loadScores();
 
@@ -77,9 +71,37 @@ public class Model {
 		{
 			globalStats.setStats(releaseLevels.get(i).getStats(), Game.RELEASE_ID, releaseLevels.get(i).getLevel());
 		}
+		
 	}
 
-
+	public void loadLevels(String fileLoc) {
+		int[] index = {0, 0, 0, 0};
+		
+		fileLoc = new File("").getAbsolutePath() + "/bin/" + fileLoc;
+		File folder = new File(fileLoc);
+		for (File file : folder.listFiles()) {
+			if (!file.isDirectory()) {
+				if (file.getName().equals(".DS_Store")) continue;
+				System.out.println(file.getName());
+				Blueprint blueprint = loadBlueprint(fileLoc + "/" + file.getName());
+				int type = blueprint.getLevelType();
+				switch (type) {
+				case (Game.PUZZLE_ID):
+					puzzleLevels.add(new PuzzleLevel(blueprint, index[type]++));
+				break;
+				case (Game.LIGHTNING_ID):
+					lightningLevels.add(new LightningLevel(blueprint, index[type]++));
+				break;
+				case (Game.ELIMINATION_ID):
+					eliminationLevels.add(new EliminationLevel(blueprint, index[type]++));
+				break;
+				case (Game.RELEASE_ID):
+					releaseLevels.add(new ReleaseLevel(blueprint, index[type]++));
+				break;
+				}
+			}
+		}
+	}
 
 	/**
 	 * loads a blueprint from a file location
@@ -91,7 +113,7 @@ public class Model {
 		if (os.charAt(0) == 'W') return loadBlueprintWindows(fileLoc);
 		else return loadBlueprintMac(fileLoc);
 	}
-	
+
 	/**
 	 * loads a blueprint on a mac operating system
 	 * @param fileLoc
@@ -100,17 +122,11 @@ public class Model {
 	public Blueprint loadBlueprintMac(String fileLoc) {
 		try {
 			System.out.println(fileLoc);
-			//System.out.println(System.getProperty("os.name"));
 			ClassLoader classLoader = getClass().getClassLoader();
-			//System.out.println("attempting to open file name " + fileLoc);
 			File file = new File(classLoader.getResource(fileLoc).getFile());
 			FileInputStream fis = new FileInputStream(file);
-			//System.out.println("created fis");
-			//InputStreamReader in = new InputStreamReader();
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			//System.out.println("trying to read blueprint");
 			Blueprint blueprint = (Blueprint)ois.readObject();
-			//System.out.println("" + blueprint.getLevelType());
 			fis.close();
 			return blueprint;
 		} catch (Exception e) {
@@ -126,7 +142,6 @@ public class Model {
 	 */
 	public Blueprint loadBlueprintWindows(String fileLoc) {
 		try {
-			fileLoc = new File("").getAbsolutePath() + "/bin/" + fileLoc;
 			FileInputStream fis = new FileInputStream(fileLoc);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			Blueprint blueprint = (Blueprint)ois.readObject();

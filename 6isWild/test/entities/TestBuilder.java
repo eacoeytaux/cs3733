@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 
-//import entities.AbstractBuilderMove;
+import entities.IBuilderMove;
 import entities.Blueprint;
 import entities.Builder;
 import entities.Model;
@@ -15,7 +15,6 @@ import boundaries.BlueprintDisplay;
 import boundaries.BuilderApplication;
 import boundaries.BuilderBoardDisplay;
 import boundaries.BuilderSquareDisplay;
-import boundaries.SquareDisplay;
 
 public class TestBuilder extends TestCase {
 
@@ -64,13 +63,13 @@ public class TestBuilder extends TestCase {
 			builder.setBlueprint(null);
 		//	assertEquals(builder.getBlueprint(), bp);
 			
-			//AbstractBuilderMove move = new SquareBuilderMove(bsq1);
-			//move.doMove();
+			IBuilderMove move = new SquareBuilderMove(bsq1);
+			move.doMove();
 		//	assertTrue(builder.moveStack.contains(move));
 			
 		//	assertEquals(builder.popMove(), move);
 			
-			//builder.pushRedo(move);
+			builder.pushRedo(move);
 		//	assertTrue(builder.redoStack.contains(move));
 //			assertTrue(builder.setRedoEnabled;)
 		//	assertEquals(builder.popRedo(), move);			
