@@ -11,10 +11,10 @@ import boundaries.BuilderApplication;
  *
  */
 public class Builder {
-	public Blueprint blueprint;
-	public BuilderApplication builderApplication;
-	public Stack<IBuilderMove> moveStack = new Stack<IBuilderMove>(); //stack of moves performed
-	public Stack<IBuilderMove> redoStack = new Stack<IBuilderMove>(); //stack of moves undone.  used for redo
+	Blueprint blueprint;
+	BuilderApplication builderApplication;
+	Stack<IBuilderMove> moveStack = new Stack<IBuilderMove>(); //stack of moves performed
+	Stack<IBuilderMove> redoStack = new Stack<IBuilderMove>(); //stack of moves undone.  used for redo
 	
 	
 	public Builder(boolean skipSplashScreen) {

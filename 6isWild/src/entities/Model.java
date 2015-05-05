@@ -77,13 +77,26 @@ public class Model {
 	public void loadLevels(String fileLoc) {
 		int[] index = {0, 0, 0, 0};
 		
-		fileLoc = new File("").getAbsolutePath() + "/bin/" + fileLoc;
-		File folder = new File(fileLoc);
+		File folder;
+		
+		String os = System.getProperty("os.name");
+		boolean isWindows = (os.charAt(0) == 'W');
+		
+		//reading file is different for windows vs mac
+		if (isWindows) {
+			fileLoc = new File("").getAbsolutePath() + "/bin/" + fileLoc;
+			folder = new File(fileLoc);
+		} else {
+			ClassLoader classLoader = getClass().getClassLoader();
+			folder = new File(classLoader.getResource(fileLoc).getFile());
+		}
+		
+		
 		for (File file : folder.listFiles()) {
 			if (!file.isDirectory()) {
 				if (file.getName().equals(".DS_Store")) continue;
 				System.out.println(file.getName());
-				Blueprint blueprint = loadBlueprint(fileLoc + "/" + file.getName());
+				Blueprint blueprint = loadBlueprint(fileLoc + "/" + file.getName(), isWindows);
 				int type = blueprint.getLevelType();
 				switch (type) {
 				case (Game.PUZZLE_ID):
@@ -106,16 +119,16 @@ public class Model {
 	/**
 	 * loads a blueprint from a file location
 	 * @param fileLoc location of the file
+	 * @param isWindows if operating system is windows
 	 * @return Blueprint loaded
 	 */
-	public Blueprint loadBlueprint(String fileLoc) {
-		String os = System.getProperty("os.name");
-		if (os.charAt(0) == 'W') return loadBlueprintWindows(fileLoc);
+	public Blueprint loadBlueprint(String fileLoc, boolean isWindows) {
+		if (isWindows) return loadBlueprintWindows(fileLoc);
 		else return loadBlueprintMac(fileLoc);
 	}
 
 	/**
-	 * loads a blueprint on a mac operating system
+	 * loads a blueprint on a non-windows operating system
 	 * @param fileLoc
 	 * @return
 	 */
@@ -142,6 +155,7 @@ public class Model {
 	 */
 	public Blueprint loadBlueprintWindows(String fileLoc) {
 		try {
+			//fileLoc = new File("").getAbsolutePath() + "/bin/" + fileLoc;
 			FileInputStream fis = new FileInputStream(fileLoc);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			Blueprint blueprint = (Blueprint)ois.readObject();
