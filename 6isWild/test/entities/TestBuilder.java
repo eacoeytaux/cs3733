@@ -10,8 +10,6 @@ import entities.Builder;
 import entities.Model;
 import junit.framework.TestCase;
 
-import org.junit.*;
-
 import boundaries.BlueprintDisplay;
 import boundaries.BuilderApplication;
 import boundaries.BuilderBoardDisplay;

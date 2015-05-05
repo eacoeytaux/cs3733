@@ -27,32 +27,32 @@ public class Model {
 
 		puzzleLevels = new ArrayList<PuzzleLevel>();
 		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 0));
-//		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 1));
-//		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 2));
-//		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel1.txt"), 3));
+		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel2.txt"), 1));
+		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel3.txt"), 2));
+		puzzleLevels.add(new PuzzleLevel(loadBlueprint("levels/puzzleLevel4.txt"), 3));
 
 
 		System.out.println("lightning");
 		lightningLevels = new ArrayList<LightningLevel>(); 
 		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 0));
-//		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 1));
-//		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 2));
-//		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel1.txt"), 3));
+		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel2.txt"), 1));
+		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel3.txt"), 2));
+		lightningLevels.add(new LightningLevel(loadBlueprint("levels/lightningLevel4.txt"), 3));
 		
 		System.out.println("elimination");
 		
 		eliminationLevels = new ArrayList<EliminationLevel>();
 		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt"), 0));
-//		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt"), 1));
-//		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt"), 2));
-//		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel1.txt"), 3));
+		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel2.txt"), 1));
+		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel3.txt"), 2));
+		eliminationLevels.add(new EliminationLevel(loadBlueprint("levels/eliminationLevel4.txt"), 3));
 
 		System.out.println("release");
 		releaseLevels = new ArrayList<ReleaseLevel>();
 		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel1.txt"), 0));
-//		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel1.txt"), 1));
-//		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel1.txt"), 2));
-//		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel1.txt"), 3));
+		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel2.txt"), 1));
+		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel3.txt"), 2));
+		releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevel4.txt"), 3));
 
 		//releaseLevels.add(new ReleaseLevel(loadBlueprint("levels/releaseLevelTest.txt")));
 
