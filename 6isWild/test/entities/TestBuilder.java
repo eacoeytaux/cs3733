@@ -15,7 +15,6 @@ import boundaries.BlueprintDisplay;
 import boundaries.BuilderApplication;
 import boundaries.BuilderBoardDisplay;
 import boundaries.BuilderSquareDisplay;
-import boundaries.SquareDisplay;
 
 public class TestBuilder extends TestCase {
 

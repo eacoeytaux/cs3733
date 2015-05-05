@@ -1,9 +1,7 @@
 package entities;
 
-import java.awt.event.MouseEvent;
-
-import boundaries.Application;
 import junit.framework.TestCase;
+import boundaries.Application;
 
 public class TestBoard extends TestCase {
 	

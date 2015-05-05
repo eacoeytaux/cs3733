@@ -32,6 +32,7 @@ public class LoadBlueprintController implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JFileChooser chooser = new JFileChooser();
 		chooser.setSelectedFile(new File("level.txt"));
+		chooser.setCurrentDirectory(new File("./bin/levels/"));
 
 		try {
 			int returnVal = chooser.showOpenDialog(null);

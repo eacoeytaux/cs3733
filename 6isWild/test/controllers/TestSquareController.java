@@ -53,11 +53,7 @@ public class TestSquareController extends TestCase {
 		sq3.getMouseListeners()[0].mouseReleased(new MouseEvent(sq3.getParent(), MouseEvent.MOUSE_RELEASED, 
 				System.currentTimeMillis(), 0, 0, 0, 0, false));
 		
-		assertTrue(lvlDisplay.getLevel().getInfo().getScore() >= 30);
-		
-		lvlDisplay.getBtnSwap().doClick();
-		
-		assertTrue(lvlDisplay.getLevel().getInfo().getSwaps() == 1);
+
 
 //		assertEquals(5, lvlDisplay.getLevel().getInfo().getRemoves());
 //		lvlDisplay.getBtnRemove().doClick();
