@@ -4,6 +4,7 @@ package entities;
 /**
  * Type of level
  * @author Hugh Whelan
+ * @author Jon Sawin
  *
  */
 public class PuzzleLevel extends AbstractLevel {

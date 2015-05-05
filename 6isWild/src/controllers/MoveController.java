@@ -13,6 +13,7 @@ import entities.Square;
 /**
  * handles mouse events on a square
  * @author Hugh Whelan
+ * @author Jon Sawin
  *
  */
 public class MoveController implements MouseListener {

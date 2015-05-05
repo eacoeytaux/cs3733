@@ -5,6 +5,7 @@ package entities;
  * type of level
  * @author Hugh Whelan
  * @author Ethan Coeytaux
+ * @author Jon Sawin
  */
 public class ReleaseLevel extends AbstractLevel {
 	

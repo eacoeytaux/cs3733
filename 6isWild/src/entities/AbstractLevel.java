@@ -7,6 +7,7 @@ import java.util.Scanner;
  * Abstract class for all levels
  * @author Hugh Whelan
  * @author Ethan Coeytaux
+ * @author Jon Sawin
  *
  */
 public abstract class AbstractLevel {
@@ -32,6 +33,7 @@ public abstract class AbstractLevel {
 	}
 	
 	/**
+	 * @author Jon Sawin
 	 * initializes stats from save file
 	 */
 	public void initializeStats(){

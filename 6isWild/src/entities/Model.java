@@ -10,6 +10,7 @@ import java.util.ArrayList;
  * the model contains all levels and stats for the game
  * @author Ethan Coeytaux
  * @author Hugh Whelan
+ * @author Jon Sawin
  *
  */
 public class Model {
