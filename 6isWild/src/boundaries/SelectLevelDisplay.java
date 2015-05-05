@@ -217,9 +217,6 @@ public class SelectLevelDisplay extends AbstractDisplay {
 	public void setBackController(BackController c) {
 		btnBack.addActionListener(c);
 	}
-
-	public void setButtonControllers() {
-	}
 	
 	/**
 	 * 

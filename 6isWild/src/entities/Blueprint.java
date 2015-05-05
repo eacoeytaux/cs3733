@@ -115,6 +115,10 @@ public class Blueprint implements Serializable {
 		return this.board;
 	}
 	
+	/**
+	 * return a clone of the board
+	 * @return clone of the board
+	 */
 	public Board getBoardClone(){
 		Board newBoard = new Board(this.board.board, valueFrequencies, multiplierFrequencies);
 		newBoard.selectedSquares = new ArrayList<Square>();

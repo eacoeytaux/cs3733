@@ -36,7 +36,7 @@ public class SquareController implements MouseListener {
 	}
 
 	/**
-	 * try to select on mouse click
+	 * determines whether to do a powerup or a regular move
 	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -45,6 +45,9 @@ public class SquareController implements MouseListener {
 		else moveControl.mouseClicked(e);
 	}
 
+	/**
+	 * determines whether to do a powerup or a regular move
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if (board.swapMove) swapControl.mousePressed(e);
@@ -53,6 +56,9 @@ public class SquareController implements MouseListener {
 
 	}
 
+	/**
+	 * determines whether to do a powerup or a regular move
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		if (board.swapMove) swapControl.mouseReleased(e);
@@ -60,6 +66,9 @@ public class SquareController implements MouseListener {
 		else moveControl.mouseReleased(e);
 	}
 
+	/**
+	 * determines whether to do a powerup or a regular move
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		if (board.swapMove) swapControl.mouseEntered(e);
@@ -67,7 +76,10 @@ public class SquareController implements MouseListener {
 		else moveControl.mouseEntered(e);
 
 	}
-
+	
+	/**
+	 * determines whether to do a powerup or a regular move
+	 */
 	@Override
 	public void mouseExited(MouseEvent e) {
 		if (board.swapMove) swapControl.mouseExited(e);

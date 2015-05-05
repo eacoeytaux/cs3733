@@ -1,5 +1,11 @@
 package entities;
 
+
+/**
+ * type of level
+ * @author Hugh Whelan
+ * @author Ethan Coeytaux
+ */
 public class ReleaseLevel extends AbstractLevel {
 	
 	public ReleaseLevel(Blueprint blueprint, int id){

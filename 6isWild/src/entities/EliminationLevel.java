@@ -1,5 +1,11 @@
 package entities;
 
+/**
+ * type of level
+ * @author Hugh Whelan
+ * @author Ethan Coeytaux
+ */
+
 public class EliminationLevel extends AbstractLevel {
 	
 	public EliminationLevel(Blueprint blueprint, int id){

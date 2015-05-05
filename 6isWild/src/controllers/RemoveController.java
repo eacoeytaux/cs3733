@@ -27,9 +27,11 @@ public class RemoveController implements MouseListener {
 
 	}
 
+	/**
+	 * attempts to remove a tile
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		System.out.println("remove");
 		
 		if (square.isInert() || square.isBucket()) return;
 		

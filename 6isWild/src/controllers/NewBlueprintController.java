@@ -18,6 +18,9 @@ public class NewBlueprintController implements ActionListener {
 		this.application = application;
 	}
 
+	/**
+	 * resets the blueprint in builder to start a new board
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		application.getParentBuilder().makeNewBlueprint();

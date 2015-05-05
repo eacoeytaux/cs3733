@@ -122,7 +122,9 @@ public class Square implements Serializable {
 
 	}
 	
-
+	/**
+	 * sets selected boolean to false
+	 */
 	public void deselect(){
 		this.selected = false;
 	}

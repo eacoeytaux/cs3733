@@ -21,6 +21,9 @@ public class SwapButtonController implements ActionListener {
 		this.level = level;
 	}
 
+	/**
+	 * sets the swap boolean to true to indicate that next move is a swap move
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(level.getInfo().getSwaps() <= 0) return;

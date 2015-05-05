@@ -1,5 +1,10 @@
 package entities;
 
+/**
+ * type of level
+ * @author Hugh Whelan
+ * @author Ethan Coeytaux
+ */
 public class LightningLevel extends AbstractLevel {
 
 	public LightningLevel(Blueprint blueprint, int id){

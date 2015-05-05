@@ -3,8 +3,8 @@ package controllers;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import entities.AbstractBuilderMove;
 import entities.Builder;
+import entities.IBuilderMove;
 
 /**
  * handles undoes the last move made or redone
@@ -24,7 +24,7 @@ public class UndoButtonController implements ActionListener{
 	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		AbstractBuilderMove popped = builder.popMove();
+		IBuilderMove popped = builder.popMove();
 		builder.pushRedo(popped);
 		popped.undo();
 	}

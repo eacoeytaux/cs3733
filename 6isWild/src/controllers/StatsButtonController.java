@@ -20,6 +20,9 @@ public class StatsButtonController implements ActionListener {
 		this.lsDisplay = lsDisplay;
 	}
 
+	/**
+	 * change the view to the stats view
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		application.changePanel(lsDisplay);

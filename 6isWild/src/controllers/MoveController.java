@@ -27,14 +27,14 @@ public class MoveController implements MouseListener {
 		this.model = model;
 	}
 
-	/**
-	 * try to select on mouse click
-	 */
+	
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		
 	}
 
+	/**
+	 * selects the square the mouse is pressed on
+	 */
 	@Override
 	public void mousePressed(MouseEvent e) {
 		if(isValid()){
@@ -43,6 +43,9 @@ public class MoveController implements MouseListener {
 		}
 	}
 
+	/**
+	 * attempts to make a move when the mouse is released on a square
+	 */
 	@Override
 	public void mouseReleased(MouseEvent e) {
 		Board board = this.square.getParentBoard();
@@ -80,6 +83,9 @@ public class MoveController implements MouseListener {
 		if(outOfMoves()) squareDisplay.getParentBoardDisplay().getParentLevelDisplay().gameOver(requirementsMet());
 	}
 
+	/**
+	 * selects the square if the left mouse button is being pressed
+	 */
 	@Override
 	public void mouseEntered(MouseEvent e) {
 		if(this.square.getParentBoard().getNumberOfSelected() != 0 && isValid()){
@@ -168,11 +174,19 @@ public class MoveController implements MouseListener {
 		}
 	}
 	
+	/**
+	 * determines whether or not there are moves remaining
+	 * @return boolean indicating whether or not there moves>0
+	 */
 	public boolean outOfMoves() {
 		if(model.getCurrentLevel().getInfo().getMovesTotal() - model.getCurrentLevel().getInfo().getMovesPlayed() <= 0) return true;
 		else return false;
 	}
 	
+	/**
+	 * determines whether gamemode specific requirements are met
+	 * @return boolean indicating wehther or not requirements are met
+	 */
 	public boolean requirementsMet() {
 		int gameMode = model.getCurrentLevel().getLevelType();
 		Board board = this.square.getParentBoard();

@@ -13,8 +13,8 @@ import boundaries.BuilderApplication;
 public class Builder {
 	public Blueprint blueprint;
 	public BuilderApplication builderApplication;
-	public Stack<AbstractBuilderMove> moveStack = new Stack<AbstractBuilderMove>(); //stack of moves performed
-	public Stack<AbstractBuilderMove> redoStack = new Stack<AbstractBuilderMove>(); //stack of moves undone.  used for redo
+	public Stack<IBuilderMove> moveStack = new Stack<IBuilderMove>(); //stack of moves performed
+	public Stack<IBuilderMove> redoStack = new Stack<IBuilderMove>(); //stack of moves undone.  used for redo
 	
 	
 	public Builder(boolean skipSplashScreen) {
@@ -23,6 +23,9 @@ public class Builder {
 		builderApplication = new BuilderApplication(this, skipSplashScreen);
 	}
 	
+	/**
+	 * creates new blueprint when blueprint needs to be reset
+	 */
 	public void makeNewBlueprint() {
 		Square[][] squareArray = new Square[9][9];
 		Board newBoard = new Board(squareArray, new int[]{1, 1, 1, 1, 1, 1}, new int[]{1, 1, 1});
@@ -58,6 +61,7 @@ public class Builder {
 		return builderApplication;
 	}
 	
+	
 	public void setBlueprint(Blueprint newBlueprint){
 		if(newBlueprint == null){
 			System.out.println("Builder::setBlueprint - Cannot accept null input");
@@ -70,7 +74,7 @@ public class Builder {
 	 * pushes move onto move stack
 	 * @return AbstractBuilderMove added to stack
 	 */
-	public void pushMove(AbstractBuilderMove move){
+	public void pushMove(IBuilderMove move){
 		moveStack.push(move);
 		redoStack.clear();
 		builderApplication.setUndoEnabled(true);
@@ -81,7 +85,7 @@ public class Builder {
 	 * pops the top move off the move stack
 	 * @return AbstractBuilderMove from top of stack
 	 */
-	public AbstractBuilderMove popMove(){
+	public IBuilderMove popMove(){
 		builderApplication.setRedoEnabled(true);
 		if (moveStack.size() <= 1) builderApplication.setUndoEnabled(false);
 		return moveStack.pop();
@@ -91,7 +95,7 @@ public class Builder {
 	 * pushes a move onto redo stack
 	 * @return AbstractBuilderMove added to stack
 	 */
-	public AbstractBuilderMove pushRedo(AbstractBuilderMove move){
+	public IBuilderMove pushRedo(IBuilderMove move){
 		if (redoStack.size() <= 1) builderApplication.setRedoEnabled(true);
 		return redoStack.push(move);
 	}
@@ -100,7 +104,7 @@ public class Builder {
 	 * pops the top move off the redo stack
 	 * @return AbstractBuilderMove from top of stack
 	 */
-	public AbstractBuilderMove popRedo(){
+	public IBuilderMove popRedo(){
 		return redoStack.pop();
 	}
 	

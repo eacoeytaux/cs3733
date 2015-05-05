@@ -31,6 +31,9 @@ public abstract class AbstractLevel {
 		initializeStats();
 	}
 	
+	/**
+	 * initializes stats from save file
+	 */
 	public void initializeStats(){
 		File file = new File("res/Scores.txt");
 
@@ -55,6 +58,10 @@ public abstract class AbstractLevel {
 		}
 	}
 	
+	/**
+	 * increases the score
+	 * @param score amount to increase score by
+	 */
 	public void increaseScore(int score){
 		info.increaseScore(score);
 	}
@@ -79,14 +86,9 @@ public abstract class AbstractLevel {
 		return this.info;
 	}
 	
-	public void updateStats(){
-		
-	}
-	
-	public void addBoard(){
-		
-	}
-	
+	/**
+	 * resets the board to match the blueprint
+	 */
 	public void resetBoard() {
 		this.board = blueprint.board.clone();
 		this.info = new Info(blueprint.movesTotal, blueprint.swap, blueprint.shuffle, blueprint.remove, blueprint.starRequirements, blueprint.valueFrequencies, blueprint.multiplierFrequencies);
@@ -101,7 +103,7 @@ public abstract class AbstractLevel {
 	}
 	
 	public void handleWrongBlueprint() {
-		//TODO print error
+		System.err.println("Attempted to load invalid blueprint");
 	}
 	
 }

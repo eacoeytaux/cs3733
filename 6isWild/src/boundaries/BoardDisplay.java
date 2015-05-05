@@ -50,6 +50,9 @@ public class BoardDisplay extends AbstractDisplay {
 		}
 	}
 
+	/**
+	 * sets up the board display
+	 */
 	@Override
 	public void setup() {
 		for (SquareDisplay[] squares : squares) {

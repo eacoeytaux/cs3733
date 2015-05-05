@@ -7,7 +7,7 @@ import boundaries.BuilderSquareDisplay;
  * @author Hugh Whelan
  *
  */
-public class SquareBuilderMove extends AbstractBuilderMove{
+public class SquareBuilderMove implements IBuilderMove{
 	BuilderSquareDisplay squareDisplay;
 	Square oldSquare;
 	Square newSquare;

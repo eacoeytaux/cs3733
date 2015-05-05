@@ -4,8 +4,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.EmptyStackException;
 
-import entities.AbstractBuilderMove;
 import entities.Builder;
+import entities.IBuilderMove;
 
 /**
  * handles redoes the last move undone
@@ -26,7 +26,7 @@ public class RedoButtonController implements ActionListener{
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		try{
-			AbstractBuilderMove popped = builder.popRedo();
+			IBuilderMove popped = builder.popRedo();
 			builder.pushMove(popped);
 			popped.redo();
 		} catch (EmptyStackException ex){System.err.println("Tried to redo but there is nothing to redo");}

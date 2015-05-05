@@ -21,6 +21,9 @@ public class RemoveButtonController implements ActionListener {
 		this.level = level;
 	}
 
+	/**
+	 * sets the remove boolean to true to allow next square selected to be removed
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if (level.getInfo().getRemoves() <= 0) return;

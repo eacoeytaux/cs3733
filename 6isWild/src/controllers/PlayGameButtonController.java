@@ -7,7 +7,7 @@ import boundaries.Application;
 import boundaries.SelectGameModeDisplay;
 
 /**
- * 
+ * brings the user to the level select screen 
  * @author Ethan Coeytaux
  *
  */
@@ -20,6 +20,9 @@ public class PlayGameButtonController implements ActionListener {
 		this.sgmDisplay = sgmDisplay;
 	}
 	
+	/**
+	 * brings the user to the level select screen 
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		application.changePanel(sgmDisplay);

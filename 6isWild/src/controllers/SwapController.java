@@ -26,6 +26,9 @@ public class SwapController implements MouseListener {
 
 	}
 
+	/**
+	 * selects a tile for a swap move and handles logic
+	 */
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		int numSquaresSelected = this.square.getParentBoard().getNumberOfSelected();

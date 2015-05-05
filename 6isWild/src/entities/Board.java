@@ -246,6 +246,13 @@ public class Board implements Serializable {
 		}
 	}
 
+	/**
+	 * swaps the positions of two tiles
+	 * @param iIndex
+	 * @param jIndex
+	 * @param iIndex2
+	 * @param jIndex2
+	 */
 	public void swapSquares(int iIndex, int jIndex, int iIndex2, int jIndex2) {
 		if ((iIndex == iIndex2) && (jIndex == jIndex2)) return;
 
@@ -257,6 +264,11 @@ public class Board implements Serializable {
 		square.copyValues(tempSquare);
 	}
 	
+	/**
+	 * mark a square as eliminated
+	 * @param i
+	 * @param j
+	 */
 	public void eliminateSquare(int i, int j){
 		Square square = getSquare(i,j);
 		
@@ -264,6 +276,9 @@ public class Board implements Serializable {
 		eliminatedSquares.add(square);
 	}
 	
+	/**
+	 * eliminate all squares that are involved in the move
+	 */
 	public void eliminateMoved(){
 		for(Square square : selectedSquares){
 			if(!eliminatedSquares.contains(square)) eliminatedSquares.add(square);

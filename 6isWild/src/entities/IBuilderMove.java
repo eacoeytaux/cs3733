@@ -6,7 +6,7 @@ package entities;
  * @author Hugh Whelan
  *
  */
-public abstract class AbstractBuilderMove {
+public interface IBuilderMove {
 	
 	/**
 	 * performs the move

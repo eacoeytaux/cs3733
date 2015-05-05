@@ -232,7 +232,6 @@ public class LevelDisplay extends AbstractDisplay {
 	 * adds an action listener to make move button
 	 * @param c controller for back button
 	 */
-
 	public BoardDisplay getBoardDisplay(){
 		return this.panel;
 	}
@@ -276,21 +275,34 @@ public class LevelDisplay extends AbstractDisplay {
 		timerThread.start();
 	}
 
+	/**
+	 * initializes controllers for powerup buttons
+	 */
 	public void initControllers() {
 		btnSwap.addActionListener(new SwapButtonController(btnSwap, level));
 		btnRemove.addActionListener(new RemoveButtonController(btnRemove, level));
 		btnShuffle.addActionListener(new ShuffleButtonController(btnShuffle, this));
 	}
 
+	/**
+	 * begins the countdown if the gamemode is lightning
+	 */
 	public void startLevel() {
 		if (gameMode == Game.LIGHTNING_ID) startCountdown();
 	}
 
+	/**
+	 * refreshes the entire board display
+	 */
 	public void refreshBoardDisplay() {
 		panel = new BoardDisplay(model, this.board, this);
 	}
 
 
+	/**
+	 * displays a message at the end of a level indicating how well you did in the level
+	 * @param requirementsMet boolean indicating whether or not gamemode specific rewuirements have been met
+	 */
 	public void gameOver(boolean requirementsMet) {
 		String message;
 

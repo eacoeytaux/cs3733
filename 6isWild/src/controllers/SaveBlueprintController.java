@@ -22,6 +22,9 @@ public class SaveBlueprintController implements ActionListener {
 		this.application = application;
 	}
 
+	/**
+	 * saves the blueprint
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		application.getDisplay().setValues();

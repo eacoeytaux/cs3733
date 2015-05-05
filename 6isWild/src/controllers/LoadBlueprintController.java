@@ -25,6 +25,9 @@ public class LoadBlueprintController implements ActionListener {
 		this.application = application;
 	}
 	
+	/**
+	 * loads a level that the user selects
+	 */
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		JFileChooser chooser = new JFileChooser();
