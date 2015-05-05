@@ -5,8 +5,6 @@ import java.io.FileInputStream;
 import java.io.ObjectInputStream;
 import java.util.ArrayList;
 
-import com.sun.org.apache.bcel.internal.generic.NEW;
-
 /**
  * the model contains all levels and stats for the game
  * @author Ethan Coeytaux

@@ -45,19 +45,9 @@ public class Board implements Serializable {
 		this.board = new Square[9][9];
 		if (board != null) {
 			if (board[0][0] != null) {
-				for (int i = 0; i < 9; i++) {
-					for (int j = 0; j < 9; j++) {
-						this.board[i][j] = board[i][j].clone(this);
-						this.board[i][j].setRowCol(i, j);
-						this.board[i][j].setParentBoard(this);
-						if (this.board[i][j].isInert()) inertCount++;
-						if (this.board[i][j].isBucket()) bucketCount++;
-					}
-				}
+				setSquares(board);
 			}
 		}
-		
-		bucketsLeft = bucketCount;
 		
 		eliminatedSquares = new ArrayList<Square>();
 		
@@ -74,8 +64,11 @@ public class Board implements Serializable {
 				this.board[i][j] = board[i][j].clone(this);
 				this.board[i][j].setRowCol(i, j);
 				this.board[i][j].setParentBoard(this);
+				if (this.board[i][j].isInert()) inertCount++;
+				if (this.board[i][j].isBucket()) bucketCount++;
 			}
 		}
+		bucketsLeft = bucketCount;
 	}
 
 	/**
