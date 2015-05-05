@@ -40,7 +40,7 @@ public class BuilderApplication extends JFrame {
 		setBackground(new Color(0x006600));
 		SplashScreenDisplay splashScreenDisplay = new SplashScreenDisplay();
 		setContentPane(splashScreenDisplay);
-		setPreferredSize(new Dimension(800, 620));
+		setPreferredSize(new Dimension(800, 650));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		pack();

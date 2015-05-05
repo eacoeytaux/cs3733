@@ -33,7 +33,7 @@ public class Application extends JFrame {
 		init();
 		SplashScreenDisplay splashScreenDisplay = new SplashScreenDisplay();
 		setContentPane(splashScreenDisplay);
-		setPreferredSize(new Dimension(800, 600));
+		setPreferredSize(new Dimension(800, 610));
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setResizable(false);
 		pack();
